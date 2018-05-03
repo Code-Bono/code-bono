@@ -1,8 +1,7 @@
 {
   "name": "code-bono",
   "version": "1.0.0",
-  "description":
-    "**Prototype**: Platform for collaboration on tech projects for non-profits",
+  "description": "platform connecting developers to non-profit projects",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -48,7 +47,8 @@
     "semantic-ui": "^2.3.1",
     "semantic-ui-react": "^0.80.0",
     "sequelize": "^4.3.1",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
