@@ -19,3 +19,9 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#textbox {
+  width: 40%;
+  height: 200px;
+  overflow: scroll;
+}
