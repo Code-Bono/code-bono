@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Chatbox from './chatbox'
+import ChatboxContainer from './chatboxContainer'
 import GitHubUpdates from './GitHubUpdates'
 
 export default class Collab extends Component {
@@ -7,9 +7,8 @@ export default class Collab extends Component {
     return (
       <div>
         <GitHubUpdates />
-        <Chatbox />
+        <ChatboxContainer />
       </div>
-
     )
   }
 }
