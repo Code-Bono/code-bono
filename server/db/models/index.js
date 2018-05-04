@@ -1,4 +1,5 @@
 const User = require('./user')
+const Chatroom = require('./chatroom')
 const Project = require('./project')
 const Cause = require('./cause')
 
@@ -16,6 +17,7 @@ Cause.belongsToMany(User, { through: 'interests' })
  */
 module.exports = {
   User,
+  Chatroom,
   Project,
   Cause
 }
