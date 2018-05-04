@@ -30,12 +30,15 @@ export default class Chatbox extends Component {
   //when message is sent, emits to the socket to broadcast to all with the message and appends that mesasge to our current chatbox div
   handleClick(name) {
     let message = document.getElementById('currentMessage')
+    //send message to db
+    this.props.postMessage({
+      content: message.value,
+      userId: this.props.currentUser.id,
+      chatroomId: 1
+    })
     let data = name + ': ' + message.value
     if (message.value) {
-      addToBox(data)
       socket.emit('sendMessage', data)
-      //send message to db
-      this.props.putMessage(data)
       message.value = ''
     }
   }
@@ -48,7 +51,11 @@ export default class Chatbox extends Component {
         <div id="textbox">
           {allMessages &&
             allMessages.map(message => {
-              return <p key={message}>{message}</p>
+              return (
+                <p key={message.id}>
+                  {message.user.email + ': ' + message.content}
+                </p>
+              )
             })}
         </div>
         <div>

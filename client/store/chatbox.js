@@ -1,8 +1,7 @@
 import axios from 'axios'
 
-const initialValues = []
 const GET_ALL_MESSAGES = 'GET_ALL_MESSAGES'
-const PUT_TO_DB = 'PUT_TO_DB'
+const POST_MESSAGE = 'POST_MESSAGE'
 
 const getAllMessages = messages => {
   return {
@@ -11,33 +10,37 @@ const getAllMessages = messages => {
   }
 }
 
-const putMessageToDb = messages => {
+const postMessage = message => {
   return {
-    type: PUT_TO_DB,
-    messages
+    type: POST_MESSAGE,
+    message
   }
 }
-
-export const sendMessageToDb = message => dispatch =>
-  //should edit later to be able to get chatroom by id
-  axios
-    .put('/api/chatroom', { message })
-    .then(res => dispatch(putMessageToDb(res.data.messages)))
-    .catch(err => console.log(err))
 
 export const fetchAllMessages = () => dispatch =>
   //should edit later to be able to get chatroom by id
   axios
-    .get('/api/chatroom')
-    .then(res => dispatch(getAllMessages(res.data.messages)))
+    .get('/api/chatroom/1/messages')
+    .then(res => {
+      dispatch(getAllMessages(res.data))
+    })
     .catch(err => console.log(err))
 
-export default function(state = initialValues, action) {
+export const postMessageToDb = message => dispatch =>
+  //should edit later to be able to get chatroom by id
+  axios
+    .post('/api/chatroom/1/messages', message)
+    .then(res => {
+      dispatch(postMessage(res.data))
+    })
+    .catch(err => console.log(err))
+
+export default function(state = [], action) {
   switch (action.type) {
     case GET_ALL_MESSAGES:
       return action.messages
-    case PUT_TO_DB:
-      return action.messages
+    case POST_MESSAGE:
+      return [...state, action.message]
     default:
       return state
   }
