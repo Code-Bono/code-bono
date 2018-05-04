@@ -19,3 +19,11 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#remoteVideos video {
+  height: 250px;
+}
+
+#localVideo {
+  height: 250px;
+}

@@ -23,6 +23,7 @@ export default class Chatbox extends Component {
     })
     return (
       <div>
+        <h2>Chatbox here</h2>
         <div id="textbox" />
         <div>
           <form onSubmit={this.handleSubmit}>
