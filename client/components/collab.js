@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Chatbox from './chatbox'
+import ChatboxContainer from './chatboxContainer'
 
 export default class Collab extends Component {
   render() {
-    return <Chatbox />
+    return <ChatboxContainer />
   }
 }
