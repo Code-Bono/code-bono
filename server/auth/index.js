@@ -3,7 +3,7 @@ const User = require('../db/models/user')
 module.exports = router
 
 router.post('/login', (req, res, next) => {
-  User.findOne({where: {email: req.body.email}})
+  User.findOne({ where: { email: req.body.email } })
     .then(user => {
       if (!user) {
         console.log('No such user found:', req.body.email)
@@ -43,3 +43,4 @@ router.get('/me', (req, res) => {
 })
 
 router.use('/google', require('./google'))
+router.use('/github', require('./github'))
