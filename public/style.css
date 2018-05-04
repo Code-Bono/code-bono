@@ -20,6 +20,14 @@ form div {
   display: inline-block;
 }
 
+#remoteVideos video {
+  height: 250px;
+}
+
+#localVideo {
+  height: 250px;
+}
+
 #textbox {
   width: 40%;
   height: 200px;

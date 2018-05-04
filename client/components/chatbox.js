@@ -45,6 +45,7 @@ export default class Chatbox extends Component {
     //listens for the emit for updating the chatbox
     return (
       <div>
+        <h2>Chatbox here</h2>
         <div id="textbox">
           {allMessages &&
             allMessages.map(message => {
