@@ -23,11 +23,11 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {/* Temporary route to a landing page for MPV */}
         <Route path="/home" component={LandingPage} />
-        <Route exact path="/collab" component={Collab} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
