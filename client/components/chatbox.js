@@ -16,8 +16,15 @@ export default class Chatbox extends Component {
 
   componentDidMount() {
     this.props.loadUsers()
+    this.props.loadMessages()
     socket.on('updateChat', data => {
       addToBox(data)
+    })
+    //allows enter key to submit message
+    window.addEventListener('keypress', e => {
+      if (e.keyCode === 13) {
+        this.handleClick(this.props.currentUser.email)
+      }
     })
   }
   //when message is sent, emits to the socket to broadcast to all with the message and appends that mesasge to our current chatbox div
@@ -27,16 +34,23 @@ export default class Chatbox extends Component {
     if (message.value) {
       addToBox(data)
       socket.emit('sendMessage', data)
+      //send message to db
+      this.props.putMessage(data)
       message.value = ''
     }
   }
   render() {
-    console.log('logging current props', this.props)
-    const { currentUser } = this.props
+    const { currentUser, allMessages } = this.props
+    console.log(this.props)
     //listens for the emit for updating the chatbox
     return (
       <div>
-        <div id="textbox" />
+        <div id="textbox">
+          {allMessages &&
+            allMessages.map(message => {
+              return <p key={message}>{message}</p>
+            })}
+        </div>
         <div>
           <label htmlFor="sendMessage">Enter Message</label>
           <input id="currentMessage" name="sendMessage" type="text" />
