@@ -41,7 +41,6 @@ export default class Chatbox extends Component {
   }
   render() {
     const { currentUser, allMessages } = this.props
-    console.log(this.props)
     //listens for the emit for updating the chatbox
     return (
       <div>

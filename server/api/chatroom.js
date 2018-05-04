@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.put('/', (req, res, next) => {
-  console.log('received message', req.body)
   const message = req.body.message
   //update later for dynamic id
   Chatroom.findById(1)
