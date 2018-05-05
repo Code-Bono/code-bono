@@ -11,7 +11,11 @@ const sessionStore = new SequelizeStore({ db })
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const fs = require('fs')
 module.exports = app
+
+const createProject = require('./github')
+createProject()
 
 /**
  * In your development environment, you can keep all of your
