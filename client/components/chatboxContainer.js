@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Chatbox from './chatbox'
 import { connect } from 'react-redux'
 import { fetchOtherUsers } from '../store/otherUsers'
-import { fetchAllMessages, sendMessageToDb } from '../store/chatbox'
+import { fetchAllMessages, postMessageToDb } from '../store/chatbox'
 
 const mapState = state => {
   return {
@@ -21,8 +21,8 @@ const mapDispatch = dispatch => {
     loadMessages: () => {
       dispatch(fetchAllMessages())
     },
-    putMessage: message => {
-      dispatch(sendMessageToDb(message))
+    postMessage: message => {
+      dispatch(postMessageToDb(message))
     }
   }
 }

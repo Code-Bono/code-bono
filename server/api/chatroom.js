@@ -1,22 +1,29 @@
 const router = require('express').Router()
-const { Chatroom } = require('../db/models')
+const { Chatroom, Message } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
   //placeholder to get the only chatroom currently in db
-  Chatroom.findById(1)
+  Chatroom.findAll()
     .then(room => res.json(room))
     .catch(next)
 })
 
-router.put('/', (req, res, next) => {
-  const message = req.body.message
-  //update later for dynamic id
-  Chatroom.findById(1)
-    .then(room => {
-      let messages = [...room.messages, message]
-      return room.update({ messages }, { where: { id: 1 } })
+router.get('/:id/messages', (req, res, next) => {
+  Message.findAll({
+    where: {
+      chatroomId: req.params.id
+    }
+  })
+    .then(messages => res.json(messages))
+    .catch(next)
+})
+
+router.post('/:id/messages', (req, res, next) => {
+  Message.create(req.body)
+    .then(message => {
+      return Message.findById(message.id)
     })
-    .then(data => res.json(data))
+    .then(message => res.json(message))
     .catch(next)
 })
