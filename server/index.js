@@ -14,9 +14,6 @@ const socketio = require('socket.io')
 const fs = require('fs')
 module.exports = app
 
-const createProject = require('./github')
-createProject()
-
 /**
  * In your development environment, you can keep all of your
  * app's secret API keys in a file called `secrets.js`, in your project

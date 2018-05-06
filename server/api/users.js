@@ -12,3 +12,7 @@ router.get('/', (req, res, next) => {
     .then(users => res.json(users))
     .catch(next)
 })
+
+// router.post('/', (req, res, next) => {
+//   console.log('USER REQ', req)
+// })
