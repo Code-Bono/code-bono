@@ -7,8 +7,52 @@ export default class Vidchat extends Component {
   }
 
   componentDidMount() {
-    var errorElement = document.querySelector('#errorMsg')
-    var video = document.querySelector('video')
+    let webrtc = new SimpleWebRTC({
+      // the id/element dom element that will hold "our" video
+      localVideoEl: document.getElementById('gum-local'),
+      // the id/element dom element that will hold remote videos
+      remoteVideosEl: '',
+      // immediately ask for camera access
+      autoRequestMedia: true
+    })
+
+    // we have to wait until it's ready
+    webrtc.on('readyToCall', function() {
+      // you can name it anything
+      webrtc.joinRoom('your awesome room name')
+    })
+
+    webrtc.on('videoAdded', function(video, peer) {
+      console.log('video added', peer)
+      var remotes = document.getElementById('gum-remote')
+      if (remotes) {
+        var container = document.createElement('div')
+        container.className = 'gum-remote'
+        container.id = 'container_' + webrtc.getDomId(peer)
+        container.appendChild(video)
+
+        // suppress contextmenu
+        video.oncontextmenu = function() {
+          return false
+        }
+
+        remotes.appendChild(container)
+      }
+    })
+
+    webrtc.on('videoRemoved', function(video, peer) {
+      console.log('video removed ', peer)
+      var remotes = document.getElementById('gum-remote')
+      var el = document.getElementById(
+        peer ? 'container_' + webrtc.getDomId(peer) : 'localScreenContainer'
+      )
+      if (remotes && el) {
+        remotes.removeChild(el)
+      }
+    })
+
+    let errorElement = document.querySelector('#errorMsg')
+    let video = document.querySelector('video')
 
     // Put variables in global scope to make them available to the browser console.
     var constraints = (window.constraints = {
@@ -63,11 +107,15 @@ export default class Vidchat extends Component {
     return (
       <div>
         <head>
-          {/*<script src="https://simplewebrtc.com/latest-v2.js" />*/}
+          <script src="https://webrtc.github.io/adapter/adapter-latest.js" />
+          <script src="https://simplewebrtc.com/latest-v3.js" />
         </head>
         <h2>Vidchat here</h2>
         <body>
-          <video id="gum-local" autoPlay playsinline />
+          <div id="all-videos">
+            <video id="gum-local" autoPlay playsinline />
+            <div id="gum-remote" autoPlay playsinline />
+          </div>
         </body>
       </div>
     )
