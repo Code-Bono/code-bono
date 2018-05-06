@@ -83,7 +83,7 @@ export default class Vidchat extends Component {
       } else if (error.name === 'PermissionDeniedError') {
         errorMsg(
           'Permissions have not been granted to use your camera and ' +
-            'microphone, you need to allow the page access to your devices in ' +
+            'microphone. You need to allow the page access to your devices in ' +
             'order for the demo to work.'
         )
       }
@@ -91,7 +91,7 @@ export default class Vidchat extends Component {
     }
 
     function errorMsg(msg, error) {
-      errorElement.innerHTML += '<p>' + msg + '</p>'
+      // errorElement.innerHTML += '<p>' + msg + '</p>'
       if (typeof error !== 'undefined') {
         console.error(error)
       }
@@ -106,17 +106,13 @@ export default class Vidchat extends Component {
   render() {
     return (
       <div>
-        <head>
-          <script src="https://webrtc.github.io/adapter/adapter-latest.js" />
-          <script src="https://simplewebrtc.com/latest-v3.js" />
-        </head>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js" />
+        <script src="https://simplewebrtc.com/latest-v3.js" />
         <h2>Vidchat here</h2>
-        <body>
-          <div id="all-videos">
-            <video id="gum-local" autoPlay playsinline />
-            <div id="gum-remote" autoPlay playsinline />
-          </div>
-        </body>
+        <div id="all-videos">
+          <video id="gum-local" autoPlay playsInline />
+          <div id="gum-remote" autoPlay playsInline />
+        </div>
       </div>
     )
   }
