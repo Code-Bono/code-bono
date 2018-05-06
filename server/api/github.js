@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const createToken = require('./utils').default.default
+const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
 module.exports = router
 
