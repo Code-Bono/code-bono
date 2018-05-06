@@ -1,23 +1,9 @@
 const router = require('express').Router()
-const fs = require('fs')
+const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
 module.exports = router
 
-// generate JWT (sign with RSA SHA256)
-const jwt = require('jsonwebtoken');
-const cert = fs.readFileSync('/Users/yoni/Downloads/code-bono-projects.2018-05-04.private-key.pem');  // get private key
-const payload = {
-  exp: Date.now() / 1000 + 100,
-  iss: 11788
-}
-const token = jwt.sign(payload, cert, { algorithm: 'RS256'});
-const createToken = octokit.apps.createInstallationToken({
-    headers: {
-    authorization: `Bearer ${token}`,
-    accept: 'application/vnd.github.machine-man-preview+json'
-  },
-  installation_id: 152649
-})
+
 
 router.get('/projects/columns/cards', (req, res, next) => {
 
@@ -34,7 +20,7 @@ router.get('/projects/columns/cards', (req, res, next) => {
     return octokit.projects.getRepoProjects({
       headers,
       owner: 'Code-Bono-Projects',
-      repo: 'code-bono-test1'
+      repo: 'code-bono-test-2'
     })
   })
   .then(repoProjects => {
@@ -46,6 +32,7 @@ router.get('/projects/columns/cards', (req, res, next) => {
     })
   })
   .then(projectColumns => {
+    console.log('ALL COLUMNS', projectColumns)
     const columnId = projectColumns.data[0].id
     return octokit.projects.getProjectCards({
       headers,
