@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { markdown } from 'markdown'
 
 export default class GitHubUpdates extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       projectCards: []
     }
@@ -17,30 +18,30 @@ export default class GitHubUpdates extends Component {
 
     // const repoName = 'code-bono-test1'
     // const projectName = 'code-bono-project1'
-    axios.get(`/api/github/projects/columns/cards`)
-    .then(res => res.data)
-    .then(projectCards => {
-      this.setState({projectCards})
-    })
+    axios
+      .get(`/api/github/projects/columns/cards`)
+      .then(res => res.data)
+      .then(projectCards => {
+        this.setState({ projectCards })
+      })
   }
 
-  render () {
-
+  render() {
     const projectCards = this.state.projectCards
     return (
       <div>
         <h1>Github updates</h1>
-        {
-          projectCards.length ?
-                    projectCards.length && projectCards.map((card, i) => {
-            return (
-              <div key={i}>
-                <h4>{card}</h4>
-              </div>
-            )
+        {projectCards.length ? (
+          projectCards.length &&
+          projectCards.map((card, i) => {
+            let parsedCard = {
+              __html: markdown.toHTML(card)
+            }
+            return <div key={i} dangerouslySetInnerHTML={parsedCard} />
           })
-          : <h3>Loading project cards...</h3>
-        }
+        ) : (
+          <h3>Loading project cards...</h3>
+        )}
       </div>
     )
   }
