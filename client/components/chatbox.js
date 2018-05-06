@@ -27,9 +27,10 @@ export default class Chatbox extends Component {
       chatroomId: 1
     })
     let data = email + ': ' + message.value
-    if (message) {
+    if (message.value) {
       socket.emit('sendMessage', data)
       message.value = ''
+      box.scrollTop = box.scrollHeight
     }
   }
   //helper function for adding messages to the chatbox
