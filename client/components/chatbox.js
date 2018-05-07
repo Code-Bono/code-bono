@@ -48,7 +48,7 @@ export default class Chatbox extends Component {
     //listens for the emit for updating the chatbox
     return (
       <Container>
-        <Container text className="textbox">
+        <Container id="textbox">
           {allMessages &&
             allMessages.map(message => {
               return (
@@ -58,18 +58,20 @@ export default class Chatbox extends Component {
               )
             })}
         </Container>
-        <Form onSubmit={this.handleSubmit}>
-          <Input
-            autoComplete="off"
-            name="sendMessage"
-            type="text"
-            placeholder="Type here"
-            focus
-          />
-          <FormButton inverted color="red" type="submit">
-            Send Message
-          </FormButton>
-        </Form>
+        <Container textAlign="center">
+          <Form onSubmit={this.handleSubmit}>
+            <Input
+              autoComplete="off"
+              name="sendMessage"
+              type="text"
+              placeholder="Type here"
+              focus
+            />
+            <FormButton inverted color="red" type="submit">
+              Send Message
+            </FormButton>
+          </Form>
+        </Container>
       </Container>
     )
   }

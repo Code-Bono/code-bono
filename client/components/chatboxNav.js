@@ -24,25 +24,20 @@ class ChatboxNavbar extends Component {
     const { isLoggedIn, chatStatus } = this.props
     return (
       <nav>
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <div>
             {chatStatus ? (
               <div>
-                <ChatboxContainer />
                 <Button secondary onClick={this.handleClick}>
                   Hide Chat
                 </Button>
+                <ChatboxContainer />
               </div>
             ) : (
               <Button primary onClick={this.handleClick}>
                 Open Chat
               </Button>
             )}
-          </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <h4>Login to see chat</h4>
           </div>
         )}
       </nav>

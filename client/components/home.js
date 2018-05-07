@@ -1,11 +1,10 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 /**
  * COMPONENT
  */
-export default function LandingPage() {
+export default function Home() {
   return (
     <div>
       <Link to="/collab">

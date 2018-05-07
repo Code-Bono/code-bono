@@ -27,14 +27,14 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         {/* Temporary route to a landing page for MPV */}
         <Route exact path="/home" component={Home} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/account" component={UserHome} />
+            <Route path="/home" component={UserHome} />
             <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
