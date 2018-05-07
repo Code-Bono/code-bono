@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import ChatboxContainer from './chatboxContainer'
 import { openChat, hideChat } from '../store/chatboxNav'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 class ChatboxNavbar extends Component {
   constructor(props) {
@@ -23,21 +24,20 @@ class ChatboxNavbar extends Component {
     const { isLoggedIn, chatStatus } = this.props
     return (
       <nav>
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <div>
             {chatStatus ? (
               <div>
+                <Button secondary onClick={this.handleClick}>
+                  Hide Chat
+                </Button>
                 <ChatboxContainer />
-                <button onClick={this.handleClick}>Hide Chat</button>
               </div>
             ) : (
-              <button onClick={this.handleClick}>Show Chat</button>
+              <Button primary onClick={this.handleClick}>
+                Open Chat
+              </Button>
             )}
-          </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <h4>Login to see chat</h4>
           </div>
         )}
       </nav>

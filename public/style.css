@@ -31,7 +31,6 @@ video {
 }
 
 #textbox {
-  width: 40%;
   height: 150px;
   overflow: scroll;
 }

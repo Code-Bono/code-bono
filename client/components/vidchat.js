@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SimpleWebRTC from 'simplewebrtc'
+import { Button } from 'semantic-ui-react'
 
 export default class Vidchat extends Component {
   constructor(props) {
@@ -106,12 +107,10 @@ export default class Vidchat extends Component {
   render() {
     return (
       <div>
-        <script src="https://webrtc.github.io/adapter/adapter-latest.js" />
-        <script src="https://simplewebrtc.com/latest-v3.js" />
         <h2>Vidchat here</h2>
         <div id="all-videos">
-          <video id="gum-local" autoPlay playsInline />
-          <div id="gum-remote" autoPlay playsInline />
+          <video id="gum-local" autoPlay />
+          <div id="gum-remote" autoPlay />
         </div>
       </div>
     )

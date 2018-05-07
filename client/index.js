@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom'
 import history from './history'
 import store from './store'
 import App from './app'
+import { Container } from 'semantic-ui-react'
 
 // establishes socket connection
 import './socket'
@@ -12,7 +13,9 @@ import './socket'
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <Container>
+        <App />
+      </Container>
     </Router>
   </Provider>,
   document.getElementById('app')
