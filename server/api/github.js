@@ -29,7 +29,6 @@ router.get('/projects/columns/cards', (req, res, next) => {
       })
     })
     .then(projectColumns => {
-      console.log('ALL COLUMNS', projectColumns)
       const columnId = projectColumns.data[0].id
       return octokit.projects.getProjectCards({
         headers,
@@ -73,6 +72,32 @@ router.post('/projects/:testProjectName', (req, res, next) => {
         .then(result => {
           res.json(result)
         })
+    })
+    .catch(next)
+})
+
+router.get('/repos/:owner/:repo/issues/events', (req, res, next) => {
+  let headers
+  const owner = req.params.owner
+  const repo = req.params.repo
+
+  createToken
+    .then(installationToken => {
+      headers = {
+        authorization: `token ${installationToken.data.token}`,
+        accept: 'application/vnd.github.inertia-preview+json'
+      }
+    })
+    .then(() => {
+      return octokit.activity.getEventsForRepo({
+        headers,
+        owner,
+        repo
+      })
+    })
+    .then(events => {
+      // console.log('**Events**: ', events)
+      res.json(events)
     })
     .catch(next)
 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { markdown } from 'markdown'
 
-export default class GitHubUpdates extends Component {
+export default class GithubUpdates extends Component {
   constructor(props) {
     super(props)
     this.state = {
