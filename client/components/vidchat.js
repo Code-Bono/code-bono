@@ -84,7 +84,7 @@ export default class Vidchat extends Component {
       } else if (error.name === 'PermissionDeniedError') {
         errorMsg(
           'Permissions have not been granted to use your camera and ' +
-            'microphone, you need to allow the page access to your devices in ' +
+            'microphone. You need to allow the page access to your devices in ' +
             'order for the demo to work.'
         )
       }
@@ -92,7 +92,7 @@ export default class Vidchat extends Component {
     }
 
     function errorMsg(msg, error) {
-      errorElement.innerHTML += '<p>' + msg + '</p>'
+      // errorElement.innerHTML += '<p>' + msg + '</p>'
       if (typeof error !== 'undefined') {
         console.error(error)
       }
