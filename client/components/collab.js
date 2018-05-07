@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import Vidchat from './vidchat'
 import ChatboxContainer from './chatboxContainer'
-import GithubUpdates from './GithubUpdates'
 import GithubFeed from './GithubFeed'
+import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 
 export default class Collab extends Component {
   render() {
     return (
       <div>
+        <GitHubProjectBoardContainer />
         <Vidchat />
         <ChatboxContainer />
-        <GithubUpdates />
         <GithubFeed />
       </div>
     )
