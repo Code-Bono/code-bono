@@ -8,5 +8,8 @@ module.exports = io => {
     socket.on('sendMessage', data => {
       socket.broadcast.emit('updateChat', data)
     })
+    socket.on('test', () => {
+      console.log('testing connection to video chat!!!!')
+    })
   })
 }
