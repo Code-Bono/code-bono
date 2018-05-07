@@ -30,8 +30,7 @@ video {
   margin: 5px;
 }
 
-#textbox {
-  width: 40%;
+.textbox {
   height: 150px;
   overflow: scroll;
 }

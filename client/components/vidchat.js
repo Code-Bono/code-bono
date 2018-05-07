@@ -113,7 +113,7 @@ export default class Vidchat extends Component {
         <h2>Vidchat here</h2>
         <body>
           <div id="all-videos">
-            <video id="gum-local" autoPlay playsinline />
+            <div id="gum-local" autoPlay playsinline />
             <div id="gum-remote" autoPlay playsinline />
           </div>
         </body>

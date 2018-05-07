@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import socket from '../socket'
+import { Input, FormButton, Form, Container } from 'semantic-ui-react'
 
 export default class Chatbox extends Component {
   constructor(props) {
@@ -46,8 +47,8 @@ export default class Chatbox extends Component {
     const { currentUser, allMessages } = this.props
     //listens for the emit for updating the chatbox
     return (
-      <div>
-        <div id="textbox">
+      <Container>
+        <Container text className="textbox">
           {allMessages &&
             allMessages.map(message => {
               return (
@@ -56,19 +57,20 @@ export default class Chatbox extends Component {
                 </p>
               )
             })}
-        </div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              autoComplete="off"
-              name="sendMessage"
-              type="text"
-              placeholder="Type here"
-            />
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
+        </Container>
+        <Form onSubmit={this.handleSubmit}>
+          <Input
+            autoComplete="off"
+            name="sendMessage"
+            type="text"
+            placeholder="Type here"
+            focus
+          />
+          <FormButton inverted color="red" type="submit">
+            Send Message
+          </FormButton>
+        </Form>
+      </Container>
     )
   }
 }

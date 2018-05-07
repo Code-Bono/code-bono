@@ -3,18 +3,21 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../store'
+import { Menu } from 'semantic-ui-react'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Code Bono</h1>
+  <Menu className="ui grid">
+    <Link to="/" className="thirteen wide column">
+      <h1>Code Bono</h1>
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
+          <Link to="/home">User Home</Link>
         </div>
       ) : (
         <div>
@@ -24,8 +27,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         </div>
       )}
     </nav>
-    <hr />
-  </div>
+  </Menu>
 )
 
 /**

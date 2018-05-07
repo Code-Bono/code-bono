@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import ChatboxContainer from './chatboxContainer'
 import { openChat, hideChat } from '../store/chatboxNav'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 class ChatboxNavbar extends Component {
   constructor(props) {
@@ -28,10 +29,14 @@ class ChatboxNavbar extends Component {
             {chatStatus ? (
               <div>
                 <ChatboxContainer />
-                <button onClick={this.handleClick}>Hide Chat</button>
+                <Button secondary onClick={this.handleClick}>
+                  Hide Chat
+                </Button>
               </div>
             ) : (
-              <button onClick={this.handleClick}>Show Chat</button>
+              <Button primary onClick={this.handleClick}>
+                Open Chat
+              </Button>
             )}
           </div>
         ) : (
