@@ -5,8 +5,7 @@ import { fetchCards } from '../store/github'
 
 const mapState = state => {
   return {
-    projectCards: state.githubProject,
-    test: 'hello'
+    projectCards: state.githubProject
   }
 }
 
