@@ -9,9 +9,9 @@ export default class Collab extends Component {
     return (
       <div>
         <Vidchat />
+        <ChatboxContainer />
         <GithubUpdates />
         <GithubFeed />
-        <ChatboxContainer />
       </div>
     )
   }
