@@ -3,9 +3,7 @@ const jwt = require('jsonwebtoken')
 const octokit = require('@octokit/rest')()
 
 // generate JWT (sign with RSA SHA256)
-const cert = fs.readFileSync(
-  '/Users/iandewsbury/Desktop/code-bono-projects.2018-05-04.private-key.pem'
-) // get private key
+const cert = process.env.GITHUB_PRIVATE_KEY // get private key
 const payload = {
   exp: Date.now() / 1000 + 100,
   iss: 11788
