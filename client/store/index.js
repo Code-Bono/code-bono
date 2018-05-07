@@ -3,10 +3,12 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import user from './user'
+import messages from './chatbox'
 import others from './otherUsers'
 import githubProject from './github'
 
-const reducer = combineReducers({ user, others, githubProject })
+const reducer = combineReducers({ user, others, messages, githubProject })
+
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 )

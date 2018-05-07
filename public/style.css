@@ -20,8 +20,24 @@ form div {
   display: inline-block;
 }
 
+/* #gum-local {
+  height: 250px;
+} */
+
+video {
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+}
+
 #textbox {
   width: 40%;
   height: 200px;
   overflow: scroll;
+}
+
+#all-videos {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
