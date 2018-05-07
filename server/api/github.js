@@ -3,12 +3,11 @@ const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
 module.exports = router
 
-
-
 router.get('/projects/columns/cards', (req, res, next) => {
 
   let headers;
 
+  // use installation token to access restricted api
   createToken
   .then(installationToken => {
     headers = {
@@ -32,19 +31,46 @@ router.get('/projects/columns/cards', (req, res, next) => {
     })
   })
   .then(projectColumns => {
-    console.log('ALL COLUMNS', projectColumns)
-    const columnId = projectColumns.data[0].id
-    return octokit.projects.getProjectCards({
+    const toDoColumnId = projectColumns.data[0].id
+    const inProgressColumnId = projectColumns.data[1].id
+    const doneColumnId = projectColumns.data[2].id
+    const toDoProjectCards = octokit.projects.getProjectCards({
       headers,
-      column_id: columnId
+      column_id: toDoColumnId
     })
+    const inProgressProjectCards = octokit.projects.getProjectCards({
+      headers,
+      column_id: inProgressColumnId
+    })
+    const doneProjectCards = octokit.projects.getProjectCards({
+      headers,
+      column_id: doneColumnId
+    })
+    return Promise.all([toDoProjectCards, inProgressProjectCards, doneProjectCards])
   })
-  .then(projectCards => {
-    // only sending the actual content of the card
-    const notes = projectCards.data.map(card => {
-      return card.note
-    })
-    res.send(notes)
+  .then(projectColumnCards => {
+    const columns = [...projectColumnCards]
+    const cards = [
+      {
+        columnName: 'To Do',
+        notes: []
+      },
+      {
+        columnName: 'In Progress',
+        notes: []
+      },
+      {
+        columnName: 'Done',
+        notes: []
+      }
+    ]
+
+    for(let i = 0; i < columns.length; i++) {
+      columns[i].data.forEach(card => {
+        cards[i].notes.push(card.note)
+      })
+    }
+    res.send(cards)
   })
   .catch(next)
 })
