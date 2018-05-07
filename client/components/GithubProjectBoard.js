@@ -8,7 +8,7 @@ export default class GitHubProjectBoard extends Component {
 
   componentDidMount() {
     this.props.loadProjectCards()
-    this.interval = setInterval(this.props.loadProjectCards, 60000)
+    // this.interval = setInterval(this.props.loadProjectCards, 60000)
   }
   componentWillUnmount () {
     clearInterval(this.interval);
@@ -16,7 +16,6 @@ export default class GitHubProjectBoard extends Component {
 
   render () {
 
-    console.log('PROPS!!!', this.props)
     const projectCards = this.props.projectCards
 
     return (
