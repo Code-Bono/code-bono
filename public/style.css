@@ -40,3 +40,14 @@ video {
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+
+#ChatboxNavbar {
+  width: 600px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 7px 0px 0px 0px;
+  background-color: white;
+}

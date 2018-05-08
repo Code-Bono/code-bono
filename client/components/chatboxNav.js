@@ -23,7 +23,7 @@ class ChatboxNavbar extends Component {
   render() {
     const { isLoggedIn, chatStatus } = this.props
     return (
-      <nav>
+      <nav id="ChatboxNavbar">
         {isLoggedIn && (
           <div>
             {chatStatus ? (
