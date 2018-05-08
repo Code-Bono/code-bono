@@ -3,23 +3,37 @@ const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
 module.exports = router
 
-router.get('/projects/columns/cards', (req, res, next) => {
-  let headers
+// use installation token to access restricted api and set headers to include with each api call
+let headers
+createToken.then(installationToken => {
+  headers = {
+    authorization: `token ${installationToken.data.token}`,
+    accept: 'application/vnd.github.inertia-preview+json'
+  }
+})
 
-  // use installation token to access restricted api
-  createToken
-    .then(installationToken => {
-      headers = {
-        authorization: `token ${installationToken.data.token}`,
-        accept: 'application/vnd.github.inertia-preview+json'
-      }
+router.get('/:org/repos', (req, res, next) => {
+  const org = req.params.org
+
+  octokit.repos
+    .getForOrg({
+      org
     })
-    .then(() => {
-      return octokit.projects.getRepoProjects({
-        headers,
-        owner: 'Code-Bono-Projects',
-        repo: 'code-bono-test-2'
+    .then(orgRepos => {
+      const repos = orgRepos.data.map(repo => {
+        return repo.name
       })
+      res.send(repos)
+    })
+    .catch(next)
+})
+
+router.get('/projects/columns/cards', (req, res, next) => {
+  octokit.projects
+    .getRepoProjects({
+      headers,
+      owner: 'Code-Bono-Projects',
+      repo: 'code-bono-test-2'
     })
     .then(repoProjects => {
       // for now, just returning the first project in the repo
