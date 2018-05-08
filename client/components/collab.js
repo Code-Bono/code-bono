@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Vidchat from './vidchat'
+import Vidchat2 from './vidchat2'
 import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 
@@ -8,7 +8,7 @@ export default class Collab extends Component {
     return (
       <div>
         <GitHubProjectBoardContainer />
-        <Vidchat />
+        <Vidchat2 />
         <GithubFeed />
       </div>
     )
