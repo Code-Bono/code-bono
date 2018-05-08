@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 
 export default class OrganizationPostRequest extends Component {
+  constructor(props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
   handleSubmit(evt) {
     evt.preventDefault()
-    console.log(evt.target.requestName.value)
-    console.log(evt.target.requestDescription.value)
-    console.log(evt.target.deadline.value)
+    let request = {}
+    request.deadline = evt.target.requestDeadline.value
+    request.name = evt.target.requestName.value
+    request.description = evt.target.requestDescription.value
+    request.isActive = true
+    //set up later so we can choose specific organizations to post to
+    request.organizationId = 1
+    this.props.addRequestToDb(request, this.props.history)
   }
   render() {
     return (
@@ -19,7 +28,7 @@ export default class OrganizationPostRequest extends Component {
             placeholder="Request Name"
           />
           <Form.Input
-            name="deadline"
+            name="requestDeadline"
             fluid
             label="Deadline"
             placeholder="Deadline"
@@ -30,7 +39,6 @@ export default class OrganizationPostRequest extends Component {
           label="Description"
           placeholder="Description for the request"
         />
-        <Form.Checkbox label="I agree to the Terms and Conditions" />
         <Form.Button>Submit</Form.Button>
       </Form>
     )
