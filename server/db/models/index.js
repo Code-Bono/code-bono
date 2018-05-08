@@ -3,7 +3,7 @@ const Message = require('./message')
 const Chatroom = require('./chatroom')
 const Project = require('./project')
 const Cause = require('./cause')
-const Org = require('./org')
+const Organization = require('./organization')
 const Request = require('./request')
 
 // Associations go here:
@@ -19,6 +19,7 @@ Org.hasMany(Request)
 User.hasMany(Message)
 Message.belongsTo(Chatroom)
 Message.belongsTo(User)
+Request.belongsTo(Organization)
 /*
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -30,5 +31,7 @@ module.exports = {
   Chatroom,
   Project,
   Cause,
-  Message
+  Message,
+  Organization,
+  Request
 }

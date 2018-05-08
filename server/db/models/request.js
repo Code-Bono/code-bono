@@ -7,13 +7,15 @@ const Request = db.define('request', {
     unique: true
   },
   description: {
-    type: Sequelize.TEXT
+    type: Sequelize.TEXT,
+    allowNull: false
   },
   timeframe: {
     type: Sequelize.ENUM('hours', 'days', 'weeks', 'months')
   },
   deadline: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    allowNull: false
   },
   isActive: {
     type: Sequelize.BOOLEAN
