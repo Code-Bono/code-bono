@@ -12,4 +12,4 @@ export { default as Collab } from './collab'
 export { default as Vidchat } from './vidchat'
 export { default as GithubFeed } from './GithubFeed'
 export { default as ChatboxNav } from './chatboxNav'
-
+export { default as OrganizationPostRequest } from './OrganizationPostRequest'
