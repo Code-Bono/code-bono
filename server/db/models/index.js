@@ -13,13 +13,14 @@ User.belongsToMany(Cause, { through: 'interests' })
 Cause.belongsToMany(User, { through: 'interests' })
 Request.belongsToMany(Cause, { through: 'requestCause' })
 Cause.belongsToMany(Request, { through: 'requestCause' })
-Org.belongsToMany(Cause, { through: 'orgCause' })
-Cause.belongsToMany(Org, { through: 'orgCause' })
-Org.hasMany(Request)
+Organization.belongsToMany(Cause, { through: 'orgCause' })
+Cause.belongsToMany(Organization, { through: 'orgCause' })
+Organization.hasMany(Request)
 User.hasMany(Message)
 Message.belongsTo(Chatroom)
 Message.belongsTo(User)
 Request.belongsTo(Organization)
+Organization.hasOne(User, { as: 'Representative' })
 /*
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
