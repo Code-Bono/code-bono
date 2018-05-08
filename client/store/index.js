@@ -8,8 +8,17 @@ import others from './otherUsers'
 import githubProject from './github'
 import chatStatus from './chatboxNav'
 import githubRepos from './githubRepos'
+import request from './request'
 
-const reducer = combineReducers({ user, others, messages, chatStatus, githubProject, githubRepos })
+const reducer = combineReducers({
+  user,
+  others,
+  messages,
+  chatStatus,
+  githubProject,
+  githubRepos,
+  request
+})
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
