@@ -45,6 +45,7 @@ router.get('/projects/columns/cards', (req, res, next) => {
   })
   .then(projectColumns => {
     const toDoColumnId = projectColumns.data[0].id
+    console.log('toDoColumnId', toDoColumnId)
     const inProgressColumnId = projectColumns.data[1].id
     const doneColumnId = projectColumns.data[2].id
     const toDoProjectCards = octokit.projects.getProjectCards({

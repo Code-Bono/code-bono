@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image } from 'semantic-ui-react'
-import axios from 'axios'
+import AddProjectCard from './AddProjectCard'
 
 export default class GitHubProjectBoard extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ export default class GitHubProjectBoard extends Component {
     return (
       <div>
         <h1>Github Project Board</h1>
+        <AddProjectCard />
         <div className="githubContainer">
           <Grid container columns={projectCards.length}>
             {projectCards.length ? (
