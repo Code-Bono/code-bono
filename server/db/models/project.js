@@ -4,12 +4,14 @@ const db = require('../db')
 const Project = db.define('project', {
   name: {
     type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+    unique: true
+  },
+  repoName: {
+    type: Sequelize.STRING,
+    unique: true
   },
   description: {
-    type: Sequelize.TEXT,
-    allowNull: false
+    type: Sequelize.TEXT
   },
   isActive: {
     type: Sequelize.BOOLEAN,
