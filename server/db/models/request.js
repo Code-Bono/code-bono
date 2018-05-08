@@ -14,7 +14,7 @@ const Request = db.define('request', {
     type: Sequelize.ENUM('hours', 'days', 'weeks', 'months')
   },
   deadline: {
-    type: Sequelize.DATE,
+    type: Sequelize.STRING,
     allowNull: false
   },
   isActive: {
