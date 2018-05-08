@@ -9,7 +9,6 @@ router.get('/projects/columns/cards', (req, res, next) => {
   // use installation token to access restricted api
   createToken
     .then(installationToken => {
-      console.log('installationToken: ', installationToken)
       headers = {
         authorization: `token ${installationToken.data.token}`,
         accept: 'application/vnd.github.inertia-preview+json'
@@ -86,7 +85,6 @@ router.get('/repos/:owner/:repo/issues/events', (req, res, next) => {
 
   createToken
     .then(installationToken => {
-      console.log('installationToken: ', installationToken)
       headers = {
         authorization: `token ${installationToken.data.token}`,
         accept: 'application/vnd.github.inertia-preview+json'
