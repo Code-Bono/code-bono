@@ -4,6 +4,7 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Login, Signup, UserHome, Collab, LandingPage } from './components'
 import { me } from './store'
+import { fetchRepos } from './store/githubRepos'
 
 /**
  * COMPONENT
@@ -11,9 +12,11 @@ import { me } from './store'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
+    this.props.loadRepos()
   }
 
   render() {
+    console.log('route props', this.props)
     const { isLoggedIn } = this.props
 
     return (
@@ -52,6 +55,9 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+    },
+    loadRepos() {
+      dispatch(fetchRepos('Code-Bono-Projects'))
     }
   }
 }
