@@ -4,14 +4,16 @@ const db = require('../db')
 const Request = db.define('request', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    unique: true
   },
   description: {
     type: Sequelize.TEXT,
     allowNull: false
   },
+  timeframe: {
+    type: Sequelize.ENUM('hours', 'days', 'weeks', 'months')
+  },
   deadline: {
-    //will change to date later, put it as string for simplicity's sake for now
     type: Sequelize.STRING,
     allowNull: false
   },

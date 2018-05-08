@@ -37,8 +37,10 @@ async function seed() {
     User.create({ email: 'ian@email.com', password: '123' }),
     User.create({ email: 'yoni@email.com', password: '123' })
   ])
+
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${chatrooms.length} chatrooms`)
   console.log(`seeded ${organization.length} organization`)
