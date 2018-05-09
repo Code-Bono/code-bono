@@ -12,11 +12,8 @@ import {
   LandingPage,
   Home,
   OrganizationProposalContainer,
-<<<<<<< HEAD
-  UserProfileContainer
-=======
+  UserProfileContainer,
   OrganizationHomeContainer
->>>>>>> master
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
@@ -50,15 +47,11 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-<<<<<<< HEAD
             <Route path="/profile" component={UserProfileContainer} />
-=======
-            <Route path="/home" component={UserHome} />
             <Route
               path="/organization/home"
               component={OrganizationHomeContainer}
             />
->>>>>>> master
             <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
