@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Organization, Request } = require('../db/models')
+const { Organization, Proposal } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -9,8 +9,8 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/post-request', (req, res, next) => {
-  Request.create(req.body)
+router.post('/proposal', (req, res, next) => {
+  Proposal.create(req.body)
     .then(data => res.json(data))
     .catch(next)
 })
