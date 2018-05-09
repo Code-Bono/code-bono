@@ -9,8 +9,18 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:id', (req, res, next) => {
+  //finds user by id provided and returns the organization they represent
+  User.findById(req.params.id)
+    .then(user => {
+      return Organization.findById(user.orgId)
+    })
+    .then(room => res.json(room))
+    .catch(next)
+})
+
 router.post('/', (req, res, next) => {
-  //creates a organization then uses the email provided in the req.body to find a user and assign him to the created org
+  // creates a organization then uses the email provided in the req.body to find a user and assign him to the created org
   Organization.create(req.body.orgObj)
     .then(org => {
       User.findOne({
@@ -18,9 +28,7 @@ router.post('/', (req, res, next) => {
           email: req.body.email
         }
       }).then(user => {
-        user.update({
-          RepresentativeId: org.id
-        })
+        user.update({ orgId: org.id })
       })
       res.json(org)
     })
