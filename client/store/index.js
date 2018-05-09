@@ -12,6 +12,7 @@ import chatStatus from './chatboxNav'
 import githubRepos from './githubRepos'
 import proposal from './proposal'
 import noteToAdd from './addProjectCard'
+import currentOrg from './organization'
 
 const reducer = combineReducers({
   singleProposal,
@@ -23,7 +24,8 @@ const reducer = combineReducers({
   githubProject,
   githubRepos,
   proposal,
-  noteToAdd
+  noteToAdd,
+  currentOrg
 })
 
 const middleware = composeWithDevTools(

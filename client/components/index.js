@@ -15,5 +15,8 @@ export { default as ChatboxNav } from './chatboxNav'
 export {
   default as OrganizationProposalContainer
 } from './OrganizationProposalContainer'
+export {
+  default as OrganizationHomeContainer
+} from './OrganizationHomeContainer'
 export { default as AllProposalsContainer } from './AllProposalsContainer'
 export { default as SingleProposal } from './SingleProposal'

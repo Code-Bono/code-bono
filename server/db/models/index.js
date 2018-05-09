@@ -26,7 +26,7 @@ User.hasMany(Message)
 Message.belongsTo(Chatroom)
 Message.belongsTo(User)
 
-Organization.belongsTo(User, { as: 'rep' })
+User.belongsTo(Organization, { as: 'org' })
 
 /*
  * We'll export all of our models here, so that any time a module needs a model,
