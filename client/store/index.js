@@ -12,14 +12,14 @@ import proposal from './proposal'
 import noteToAdd from './addProjectCard'
 
 const reducer = combineReducers({
-  user,
-  others,
-  messages,
   chatStatus,
+  others,
   githubProject,
   githubRepos,
+  messages,
+  noteToAdd,
   proposal,
-  noteToAdd
+  user
 })
 
 const middleware = composeWithDevTools(
