@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Grid, Image } from 'semantic-ui-react'
-import AddProjectCard from './AddProjectCard'
 
 export default class GitHubProjectBoard extends Component {
   constructor(props) {
@@ -21,14 +20,13 @@ export default class GitHubProjectBoard extends Component {
     return (
       <div>
         <h1>Github Project Board</h1>
-        <AddProjectCard />
         <div className="githubContainer">
           <Grid container columns={projectCards.length}>
             {projectCards.length ? (
               projectCards.map((card, i) => {
                 return (
-                  <Grid.Column>
-                    <div key={i}>
+                  <Grid.Column key={i}>
+                    <div >
                       <h3>{card.columnName}</h3>
                       <ul>
                         {card.notes.map((note, i) => {
@@ -44,7 +42,7 @@ export default class GitHubProjectBoard extends Component {
                 )
               })
             ) : (
-              <h3>Loading project cards...</h3>
+              <h3 className="loading">Loading project cards...</h3>
             )}
           </Grid>
         </div>

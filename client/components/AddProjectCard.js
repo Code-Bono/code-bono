@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
-export default class AddProjectCard extends Component {
-  render() {
-    return (
-      <Form>
-        <Form.TextArea label='note' placeholder='Tell us more about you...' />
-      </Form>
-    )
-  }
+export const AddProjectCard = props => {
+
+  const { noteToAdd, handleChange, handleSubmit } = props
+
+  return (
+    <form className="ui form" method="post" onSubmit={evt => handleSubmit(noteToAdd, evt)} >
+      <div className="field">
+        <label>Add Card To Project Board</label>
+          <textarea
+          className="form-control"
+          type="text"
+          name="noteToAdd"
+          value={noteToAdd}
+          onChange={handleChange}
+          placeholder="Enter a note"
+        />
+      </div>
+      <button className="ui button" type="submit">Submit</button>
+    </form>
+  )
+
 }

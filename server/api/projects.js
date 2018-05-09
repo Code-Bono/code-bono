@@ -35,16 +35,19 @@ router.post('/:name', (req, res, next) => {
   .catch(next)
 })
 
-router.post('/:name/project-board-cards/add', (req, res, next) => {
+router.post('/project-board-cards/add', (req, res, next) => {
+  //for now this is the 'To Do' column id for code-bono-test-2
   const columnId = 2666662
+  const note = req.body.note
 
   octokit.projects.createProjectCard({
     headers,
     column_id: columnId,
-    note: 'this is a test ticket created remotely...'
+    note
   })
   .then(result => {
-    console.log(result)
+    res.sendStatus(201)
   })
+  .catch(next)
 
 })
