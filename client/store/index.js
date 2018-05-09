@@ -3,6 +3,7 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import proposals from './allProposals'
+import singleProposal from './singleProposal'
 import user from './user'
 import messages from './chatbox'
 import others from './otherUsers'
@@ -13,6 +14,7 @@ import proposal from './proposal'
 import noteToAdd from './addProjectCard'
 
 const reducer = combineReducers({
+  singleProposal,
   proposals,
   user,
   others,
