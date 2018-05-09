@@ -9,6 +9,14 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:proposalId', (req, res, next) => {
+  const proposalId = +req.params.proposalId
+
+  Proposal.findById(proposalId)
+    .then(proposal => res.json(proposal))
+    .catch(next)
+})
+
 router.post('/:proposalId', (req, res, next) => {
   Proposal.create(req.body)
     .then(data => res.json(data))
