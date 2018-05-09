@@ -11,7 +11,7 @@ export default class Collab extends Component {
         <AddProjectCardContainer />
         <GitHubProjectBoardContainer />
         <Vidchat2 />
-        {/*<GithubFeed />*/}
+        <GithubFeed />
       </div>
     )
   }
