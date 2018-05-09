@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 import { Menu, Button } from 'semantic-ui-react'
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
   <Menu className="ui grid">
     <Link to="/" className="eight wide column">
       <h1>Code Bono</h1>
@@ -15,9 +15,15 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           {/* The navbar will show these links after you log in */}
           <Button onClick={handleClick}>Logout</Button>
-          <Link to="/profile">
-            <Button>User Home</Button>
-          </Link>
+          {isOrg ? (
+            <Link to="/organization/home">
+              <Button>Organization Home</Button>
+            </Link>
+          ) : (
+            <Link to="/profile">
+              <Button>User Home</Button>
+            </Link>
+          )}
         </div>
       ) : (
         <div>
@@ -38,8 +44,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
  * CONTAINER
  */
 const mapState = state => {
+  console.log(state)
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isOrg: !!state.user.orgId
   }
 }
 

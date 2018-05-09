@@ -3,14 +3,20 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
+  AllProposalsContainer,
   Login,
   Signup,
+  SingleProposal,
   UserHome,
   Collab,
   LandingPage,
   Home,
   OrganizationProposalContainer,
+<<<<<<< HEAD
   UserProfileContainer
+=======
+  OrganizationHomeContainer
+>>>>>>> master
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
@@ -31,6 +37,8 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/proposals" component={AllProposalsContainer} />
+        <Route exact path="/proposals/:proposalId" component={SingleProposal} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route
@@ -42,7 +50,15 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+<<<<<<< HEAD
             <Route path="/profile" component={UserProfileContainer} />
+=======
+            <Route path="/home" component={UserHome} />
+            <Route
+              path="/organization/home"
+              component={OrganizationHomeContainer}
+            />
+>>>>>>> master
             <Route exact path="/collab" component={Collab} />
           </Switch>
         )}

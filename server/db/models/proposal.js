@@ -14,7 +14,7 @@ const Proposal = db.define('proposal', {
     type: Sequelize.ENUM('hours', 'days', 'weeks', 'months')
   },
   deadline: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATEONLY,
     allowNull: false
   },
   isActive: {
