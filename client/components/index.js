@@ -18,3 +18,4 @@ export {
 export {
   default as OrganizationHomeContainer
 } from './OrganizationHomeContainer'
+export { default as AllProposalsContainer } from './AllProposalsContainer'
