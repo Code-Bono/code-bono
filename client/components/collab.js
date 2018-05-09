@@ -8,7 +8,7 @@ export default class Collab extends Component {
   render() {
     return (
       <div>
-      <AddProjectCardContainer />
+        <AddProjectCardContainer />
         <GitHubProjectBoardContainer />
         <Vidchat2 />
         {/*<GithubFeed />*/}
