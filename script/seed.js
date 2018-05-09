@@ -10,61 +10,137 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const { User, Chatroom, Message, Organization } = require('../server/db/models')
+const {
+  User,
+  Chatroom,
+  Message,
+  Organization,
+  Proposal
+} = require('../server/db/models')
 
-async function seed() {
-  await db.sync({ force: true })
-  console.log('db synced!')
-  // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
-  // executed until that promise resolves!
-  const chatrooms = await Promise.all([Chatroom.create({ name: 'Test Room' })])
+const users = [
+  { email: 'cody@email.com', password: '123' },
+  { email: 'murphy@email.com', password: '123' },
+  { email: 'danny@email.com', password: '123' },
+  { email: 'gg@email.com', password: '123' },
+  { email: 'ian@email.com', password: '123' },
+  { email: 'yoni@email.com', password: '123' }
+]
 
-  const organization = await Promise.all([
-    Organization.create({
-      name: 'Test Org',
-      description: 'Cool organization',
-      address: 'fake address 201020',
-      email: 'fakeEmail@email.com',
-      phoneNumber: '1231232132131'
-    })
-  ])
+const organizations = [
+  {
+    name: 'Federation for Orphans',
+    description: 'We help orphaned children',
+    address: '123 Hanover Sq',
+    email: 'info@ffo.org',
+    phoneNumber: '1234567890'
+  },
+  {
+    name: 'Cyborg Panda Conservation Consortium',
+    description: 'Save the cyborg pandas',
+    address: '987 Wall St',
+    email: 'hello@cpcc.org',
+    phoneNumber: '0987654321'
+  }
+]
 
-  const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123' }),
-    User.create({ email: 'murphy@email.com', password: '123' }),
-    User.create({ email: 'danny@email.com', password: '123' }),
-    User.create({ email: 'gg@email.com', password: '123' }),
-    User.create({ email: 'ian@email.com', password: '123' }),
-    User.create({ email: 'yoni@email.com', password: '123' })
-  ])
+const chatrooms = [{ name: 'Test Room 1' }, { name: 'Test Room 2' }]
 
-  // Wowzers! We can even `await` on the right-hand side of the assignment operator
-  // and store the result that the promise resolves to in a variable! This is nice!
+const proposals = [
+  {
+    name: 'Give Our Kids a Home',
+    description:
+      'We are looking for a team to create a mobile app that matches orphans with prospective adoptive parents.',
+    deadline: '2018-06-22',
+    isActive: true,
+    organizationId: 1
+  },
+  {
+    name: 'Federation for Orphans Website Update',
+    description:
+      'We are looking for a team to help us migrate our website from Angular to React.',
+    deadline: '2018-08-13',
+    isActive: true,
+    organizationId: 1
+  },
+  {
+    name: 'Volunteer Platform',
+    description:
+      'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers.',
+    deadline: '2018-07-03',
+    isActive: true,
+    organizationId: 1
+  },
+  {
+    name: 'Database Management System Migration',
+    description:
+      'We are changing how we manage our data and are very confused.',
+    deadline: '2018-05-29',
+    isActive: true,
+    organizationId: 1
+  },
+  {
+    name: 'Save the Cyborg Bamboo Forest',
+    description:
+      'Help us build a mobile app that tracks cyborg bamboo deforestation.',
+    deadline: '2018-10-17',
+    isActive: true,
+    organizationId: 2
+  },
+  {
+    name: 'Cyborg Panda Maintanence Tool',
+    description:
+      'Cyborg pandas are some of the most beautiful creatures in captivity. We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs.',
+    deadline: '2018-08-13',
+    isActive: true,
+    organizationId: 2
+  },
+  {
+    name: 'Firebase Integration',
+    description:
+      'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it.',
+    deadline: '2018-12-19',
+    isActive: true,
+    organizationId: 2
+  },
+  {
+    name: 'Manual Data Entry',
+    description:
+      'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system, which will be the most efficient way of completing the task.',
+    deadline: '2019-01-15',
+    isActive: true,
+    organizationId: 2
+  }
+]
 
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${chatrooms.length} chatrooms`)
-  console.log(`seeded ${organization.length} organization`)
-  console.log(`seeded successfully`)
+const seed = async () => {
+  await User.bulkCreate(users)
+  await Organization.bulkCreate(organizations)
+  await Chatroom.bulkCreate(chatrooms)
+  await Proposal.bulkCreate(proposals)
 }
 
-// Execute the `seed` function
-// `Async` functions always return a promise, so we can use `catch` to handle any errors
-// that might occur inside of `seed`
-seed()
-  .catch(err => {
-    console.error(err.message)
-    console.error(err.stack)
-    process.exitCode = 1
-  })
-  .then(() => {
-    console.log('closing db connection')
-    db.close()
-    console.log('db connection closed')
-  })
+const main = () => {
+  console.log('Syncing db...')
+  db
+    .sync({ force: true })
+    .then(() => {
+      console.log('Seeding databse...')
+      console.log(`seeded ${users.length} users`)
+      console.log(`seeded ${chatrooms.length} chatrooms`)
+      console.log(`seeded ${organizations.length} organizations`)
+      console.log(`seeded ${proposals.length} proposals`)
+      console.log(`seeded successfully`)
+      return seed()
+    })
+    .catch(err => {
+      console.log('Error while seeding')
+      console.log(err.stack)
+    })
+    .then(() => {
+      db.close()
+      return null
+    })
+}
 
-/*
- * note: everything outside of the async function is totally synchronous
- * The console.log below will occur before any of the logs that occur inside
- * of the async function
- */
-console.log('seeding...')
+main()

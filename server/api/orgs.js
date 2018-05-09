@@ -9,8 +9,8 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/proposal', (req, res, next) => {
-  Proposal.create(req.body)
-    .then(data => res.json(data))
-    .catch(next)
-})
+// router.post('/proposal', (req, res, next) => {
+//   Proposal.create(req.body)
+//     .then(data => res.json(data))
+//     .catch(next)
+// })
