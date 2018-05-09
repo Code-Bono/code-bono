@@ -10,7 +10,7 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const { User, Chatroom, Message } = require('../server/db/models')
+const { User, Chatroom, Message, Organization } = require('../server/db/models')
 
 async function seed() {
   await db.sync({ force: true })
@@ -18,6 +18,16 @@ async function seed() {
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
   const chatrooms = await Promise.all([Chatroom.create({ name: 'Test Room' })])
+
+  const organization = await Promise.all([
+    Organization.create({
+      name: 'Test Org',
+      description: 'Cool organization',
+      address: 'fake address 201020',
+      email: 'fakeEmail@email.com',
+      phoneNumber: '1231232132131'
+    })
+  ])
 
   const users = await Promise.all([
     User.create({ email: 'cody@email.com', password: '123' }),
@@ -27,10 +37,13 @@ async function seed() {
     User.create({ email: 'ian@email.com', password: '123' }),
     User.create({ email: 'yoni@email.com', password: '123' })
   ])
+
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${chatrooms.length} chatrooms`)
+  console.log(`seeded ${organization.length} organization`)
   console.log(`seeded successfully`)
 }
 

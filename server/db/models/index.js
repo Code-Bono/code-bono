@@ -3,15 +3,24 @@ const Message = require('./message')
 const Chatroom = require('./chatroom')
 const Project = require('./project')
 const Cause = require('./cause')
+const Organization = require('./organization')
+const Request = require('./request')
 
 // Associations go here:
 User.belongsToMany(Project, { through: 'collaboration' })
 Project.belongsToMany(User, { through: 'collaboration' })
 User.belongsToMany(Cause, { through: 'interests' })
 Cause.belongsToMany(User, { through: 'interests' })
+Request.belongsToMany(Cause, { through: 'requestCause' })
+Cause.belongsToMany(Request, { through: 'requestCause' })
+Organization.belongsToMany(Cause, { through: 'orgCause' })
+Cause.belongsToMany(Organization, { through: 'orgCause' })
+Organization.hasMany(Request)
 User.hasMany(Message)
 Message.belongsTo(Chatroom)
 Message.belongsTo(User)
+Request.belongsTo(Organization)
+Organization.hasOne(User, { as: 'Representative' })
 /*
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -23,5 +32,7 @@ module.exports = {
   Chatroom,
   Project,
   Cause,
-  Message
+  Message,
+  Organization,
+  Request
 }
