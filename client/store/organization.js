@@ -23,6 +23,7 @@ export const createOrg = (orgObj, email) => dispatch =>
     .post('/api/orgs', { orgObj, email })
     .then(res => {
       dispatch(postOrg(res.data))
+      history.push('/organization/home')
     })
     .catch(err => console.log(err))
 

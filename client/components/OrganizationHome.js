@@ -20,7 +20,7 @@ export default class OrganizationHome extends Component {
         ) : (
           <div>Loading...</div>
         )}
-        {currentUser && <p>Organization Rep Email: currentUser.email</p>}
+        {currentUser && <p>Organization Rep Email: {currentUser.email}</p>}
       </Container>
     )
   }
