@@ -23,7 +23,7 @@ export const postProposalToDb = (proposal, history) => dispatch =>
     .then(res => res.data)
     .then(proposal => {
       dispatch(postProposal(proposal))
-      history.push('/')
+      history.push('/proposals')
     })
     .catch(err => console.log(err))
 
