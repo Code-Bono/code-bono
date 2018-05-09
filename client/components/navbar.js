@@ -24,6 +24,9 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
               <Button>User Home</Button>
             </Link>
           )}
+          <Link to="/proposals">
+            <Button>View Proposals</Button>
+          </Link>
         </div>
       ) : (
         <div>
@@ -33,6 +36,9 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
           </Link>
           <Link to="/signup">
             <Button>Sign Up</Button>
+          </Link>
+          <Link to="/proposals">
+            <Button>View Proposals</Button>
           </Link>
         </div>
       )}
@@ -44,7 +50,6 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
  * CONTAINER
  */
 const mapState = state => {
-  console.log(state)
   return {
     isLoggedIn: !!state.user.id,
     isOrg: !!state.user.orgId

@@ -40,3 +40,13 @@ router.post('/proposal', (req, res, next) => {
     .then(data => res.json(data))
     .catch(next)
 })
+
+router.get('/proposals', (req, res, next) => {
+  Proposal.findAll({
+    where: {
+      organizationId: req.body.orgId
+    }
+  })
+    .then(proposals => res.json(proposals))
+    .catch(next)
+})

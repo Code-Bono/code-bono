@@ -38,7 +38,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route
-          path="/orgs/proposal"
+          path="/organization/make-proposal"
           component={OrganizationProposalContainer}
         />
         {/* Temporary route to a landing page for MPV */}
