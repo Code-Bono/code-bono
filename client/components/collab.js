@@ -5,9 +5,7 @@ import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import AddProjectCardContainer from './AddProjectCardContainer'
 
 export default class Collab extends Component {
-
   render() {
-
     return (
       <div>
       <AddProjectCardContainer />
