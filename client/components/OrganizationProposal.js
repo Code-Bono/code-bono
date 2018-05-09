@@ -14,7 +14,7 @@ export default class OrganizationProposal extends Component {
     proposal.description = evt.target.proposalDescription.value
     proposal.isActive = true
     //set up later so we can choose specific organizations to post to
-    proposal.organizationId = 1
+    proposal.organizationId = this.props.currentOrg.id
     this.props.addProposalToDb(proposal, this.props.history)
   }
   render() {
@@ -28,6 +28,7 @@ export default class OrganizationProposal extends Component {
             placeholder="Proposal Name"
           />
           <Form.Input
+            type="date"
             name="proposalDeadline"
             fluid
             label="Deadline"
