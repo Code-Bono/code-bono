@@ -9,7 +9,7 @@ import {
   Collab,
   LandingPage,
   Home,
-  OrganizationPostRequestContainer
+  OrganizationProposalContainer
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
@@ -33,8 +33,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route
-          path="/orgs/post-request"
-          component={OrganizationPostRequestContainer}
+          path="/orgs/proposal"
+          component={OrganizationProposalContainer}
         />
         {/* Temporary route to a landing page for MPV */}
         <Route exact path="/home" component={Home} />

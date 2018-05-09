@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Request = db.define('request', {
+const Proposal = db.define('proposal', {
   name: {
     type: Sequelize.STRING,
     unique: true
@@ -22,4 +22,4 @@ const Request = db.define('request', {
   }
 })
 
-module.exports = Request
+module.exports = Proposal
