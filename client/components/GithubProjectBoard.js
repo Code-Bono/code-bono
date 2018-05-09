@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Grid, Image } from 'semantic-ui-react'
-import axios from 'axios'
 
 import { CardNote, ProjectCard } from './utils/GitHubUtils'
 
@@ -29,7 +28,7 @@ export default class GitHubProjectBoard extends Component {
                 return <ProjectCard card={card} i={i} />
               })
             ) : (
-              <h3>Loading project cards...</h3>
+              <h3 className="loading">Loading project cards...</h3>
             )}
           </Grid>
         </div>

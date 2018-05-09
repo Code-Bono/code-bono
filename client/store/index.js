@@ -9,6 +9,7 @@ import githubProject from './github'
 import chatStatus from './chatboxNav'
 import githubRepos from './githubRepos'
 import request from './request'
+import noteToAdd from './addProjectCard'
 
 const reducer = combineReducers({
   user,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   chatStatus,
   githubProject,
   githubRepos,
-  request
+  request,
+  noteToAdd
 })
 
 const middleware = composeWithDevTools(
