@@ -1,4 +1,3 @@
-const fs = require('fs')
 const jwt = require('jsonwebtoken')
 const octokit = require('@octokit/rest')()
 

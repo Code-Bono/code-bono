@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Organization, Request, User } = require('../db/models')
+const { Organization, Proposal, User } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -10,6 +10,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  //creates a organization then uses the email provided in the req.body to find a user and assign him to the created org
   Organization.create(req.body.orgObj)
     .then(org => {
       User.findOne({
@@ -26,8 +27,8 @@ router.post('/', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/post-request', (req, res, next) => {
-  Request.create(req.body)
+router.post('/proposal', (req, res, next) => {
+  Proposal.create(req.body)
     .then(data => res.json(data))
     .catch(next)
 })

@@ -32,7 +32,7 @@ export default class GithubFeed extends Component {
         <h1>Events for your repo: </h1>
         {events.length ? (
           events.length &&
-          events.map(event => {
+          events.slice(0, 10).map(event => {
             return (
               <div key={event.id}>
                 {' '}

@@ -13,5 +13,5 @@ export { default as Vidchat } from './vidchat'
 export { default as GithubFeed } from './GithubFeed'
 export { default as ChatboxNav } from './chatboxNav'
 export {
-  default as OrganizationPostRequestContainer
-} from './OrganizationPostRequestContainer'
+  default as OrganizationProposalContainer
+} from './OrganizationProposalContainer'
