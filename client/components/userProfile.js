@@ -8,7 +8,7 @@ export default class UserProfile extends Component {
   }
 
   componentDidMount() {
-    this.props.loadUser()
+    this.props.loadUser(this.props.user.id)
   }
   // componentWillUnmount() {}
 

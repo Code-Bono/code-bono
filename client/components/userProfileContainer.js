@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserProfile from './userProfile'
 import { connect } from 'react-redux'
-import { me } from '../store/user'
+import { fetchUser } from '../store/user'
 
 const mapState = state => {
   return {
@@ -11,8 +11,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    loadUser: function() {
-      dispatch(me())
+    loadUser: function(userId) {
+      dispatch(fetchUser(userId))
     }
   }
 }
