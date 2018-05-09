@@ -17,6 +17,10 @@ const Proposal = db.define('proposal', {
     type: Sequelize.DATEONLY,
     allowNull: false
   },
+  image: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://organicthemes.com/demo/nonprofit/wp-content/themes/organic-nonprofit/images/logo.png'
+  },
   isActive: {
     type: Sequelize.BOOLEAN
   }

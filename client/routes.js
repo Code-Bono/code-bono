@@ -11,7 +11,8 @@ import {
   Collab,
   LandingPage,
   Home,
-  OrganizationProposalContainer
+  OrganizationProposalContainer,
+  OrganizationHomeContainer
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
@@ -50,6 +51,10 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route
+              path="/organization/home"
+              component={OrganizationHomeContainer}
+            />
             <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
