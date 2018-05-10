@@ -13,6 +13,14 @@ export default class SingleProposal extends Component {
 
   render() {
     const { singleProposal } = this.props
-    return <h1>{singleProposal.name}</h1>
+    return (
+      <div>
+        <h1>{singleProposal.name}</h1>
+        <img src={singleProposal.image} />
+        <h2>Request description</h2>
+        <p>{singleProposal.description}</p>
+        <h3>Deadline: {singleProposal.deadline}</h3>
+      </div>
+    )
   }
 }
