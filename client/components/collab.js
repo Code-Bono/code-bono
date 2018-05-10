@@ -14,8 +14,9 @@ export default class Collab extends Component {
   }
 
   render() {
+
     const projectName = this.props.project.name
-    const repoURL = this.props.project.repoURL
+    const repoURL = this.props.project.id ? this.props.project.repo.URL : null
 
     return (
       <div>

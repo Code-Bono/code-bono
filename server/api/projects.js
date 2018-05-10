@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
-const { Project, Collaboration } = require('../db/models')
+const { Project, Collaboration, Repo } = require('../db/models')
 module.exports = router
 
 let headers
@@ -16,12 +16,36 @@ createToken
 router.get('/:projectId', (req, res, next) => {
   const projectId = req.params.projectId
 
-  Project.findById(projectId)
+  Project.findOne({
+    where: {
+      id: projectId
+    },
+    include: [{
+      model: Repo
+    }]
+  })
   .then(project => {
     res.send(project)
   })
   .catch(next)
 })
+
+function githubRepoAndProjectBoardCreation (name, description) {
+  return octokit.repos.createForOrg({
+    headers,
+    org: 'Code-Bono-Projects',
+    name,
+    description,
+    has_projects: true
+  })
+  .then((repo) => {
+    return octokit.projects.createRepoProject({
+      owner: 'Code-Bono-Projects',
+      repo: data.name,
+      name: data.name
+    })
+  })
+}
 
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
@@ -29,7 +53,6 @@ router.post('/', (req, res, next) => {
   const name = req.body.proposalName
   const description = req.body.proposalDescription
   const repoName = name.split(' ').join('-')
-
   Project.findOrCreate({
     where: {
       name,
@@ -38,16 +61,21 @@ router.post('/', (req, res, next) => {
       proposalId
     }
   })
-  .spread((project, created) => {
+  .tap(([project, created]) => {
     if(created) {
-      octokit.repos.createForOrg({
-        headers,
-        org: 'Code-Bono-Projects',
-        name,
-        description
+      return githubRepoAndProjectBoardCreation(repoName, description)
+      .then((stuff) => {
+        console.log('STUFF from github', stuff)
+        // return Repo.create({
+        //   name: repoName,
+
+        // })
       })
+
     }
-    project.addUsers(userId)
+  })
+  .spread((project, created) => {
+    return project.addUsers(userId)
   })
   .then(projectAndUser => {
     res.status(201).json(projectAndUser)

@@ -5,6 +5,7 @@ const Project = require('./project')
 const Cause = require('./cause')
 const Organization = require('./organization')
 const Proposal = require('./proposal')
+const Repo = require('./repo')
 
 // Associations go here:
 User.belongsToMany(Project, { through: 'collaboration' })
@@ -31,6 +32,9 @@ Message.belongsTo(User)
 
 User.belongsTo(Organization, { as: 'org' })
 
+Project.belongsTo(Repo)
+
+
 /*
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -44,5 +48,6 @@ module.exports = {
   Cause,
   Message,
   Organization,
-  Proposal
+  Proposal,
+  Repo
 }
