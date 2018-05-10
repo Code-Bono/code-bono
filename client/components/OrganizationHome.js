@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Header } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class OrganizationHome extends Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ export default class OrganizationHome extends Component {
             <p>Organization Address: {currentOrg.address}</p>
             <p>Organization Phone Number: {currentOrg.phoneNumber}</p>
             <p>Organization Email: {currentOrg.email}</p>
+            <Link to="/organization/make-proposal">Make a Proposal!</Link>
           </div>
         ) : (
           <div>Loading...</div>

@@ -5,7 +5,8 @@ import { postProposalToDb } from '../store/proposal'
 
 const mapState = state => {
   return {
-    proposal: state.proposal
+    proposal: state.proposal,
+    currentOrg: state.currentOrg
   }
 }
 
