@@ -14,7 +14,6 @@ router.get('/:proposalId', (req, res, next) => {
 
   Proposal.findById(proposalId)
     .then(proposal => {
-      console.log(proposal)
       res.json(proposal)
     })
     .catch(next)

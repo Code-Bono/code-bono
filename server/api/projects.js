@@ -14,6 +14,8 @@ createToken
   })
 
 router.post('/:name', (req, res, next) => {
+  // need proposalId, name of project, description can come from proposal
+  // /api/projects/:name
   const name = req.params.name
   const repoName = name.toLowerCase().split(' ').join('-')
 
