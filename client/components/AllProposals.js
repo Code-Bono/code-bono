@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import ProjectSignupButton from './ProjectSignupButton'
 
 export default class AllProposals extends Component {
   constructor(props) {
@@ -41,7 +40,6 @@ export default class AllProposals extends Component {
                 </div>
                 <div className="extra content">
                   <button className="ui button" onClick={(evt) => handleClick(evt, proposal.id)}><Link to={`/proposals/${proposal.id}`}>More info</Link></button>
-                  <ProjectSignupButton proposalId={proposal.id} proposalName={proposal.name} proposalDescription={proposal.description} />
                 </div>
               </Card>
 

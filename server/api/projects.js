@@ -14,11 +14,9 @@ createToken
   })
 
 router.post('/', (req, res, next) => {
-
   const userId = req.body.userId
   const proposalId = req.body.proposalId
-  let number = 1
-  let name = `${req.body.proposalName} ${number}`
+  const name = req.body.proposalName
   const description = req.body.proposalDescription
   const repoName = name.toLowerCase().split(' ').join('-')
 
@@ -37,18 +35,6 @@ router.post('/', (req, res, next) => {
         org: 'Code-Bono-Projects',
         name,
         description
-      })
-
-    }
-    else {
-      project.getUsers()
-      .then(users => {
-        if(users.length % 4 === 0) {
-          number++
-          // number not incrememnting for name - not sure why - need fixing!
-          console.log('number', number)
-          console.log('name!', name)
-        }
       })
     }
     project.addUsers(userId)
