@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import ProjectSignupButton from './ProjectSignupButton'
 
 export default class AllProposals extends Component {
   constructor(props) {
@@ -46,11 +45,6 @@ export default class AllProposals extends Component {
                     >
                       <Link to={`/proposals/${proposal.id}`}>More info</Link>
                     </button>
-                    <ProjectSignupButton
-                      proposalId={proposal.id}
-                      proposalName={proposal.name}
-                      proposalDescription={proposal.description}
-                    />
                   </div>
                 </Card>
               )

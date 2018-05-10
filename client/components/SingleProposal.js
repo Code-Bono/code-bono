@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
+import ProjectSignupButton from './ProjectSignupButton'
 
 export default class SingleProposal extends Component {
   constructor(props) {
@@ -33,6 +34,11 @@ export default class SingleProposal extends Component {
         ) : (
           <h2>Loading selected proposal...</h2>
         )}
+        <ProjectSignupButton
+          proposalId={singleProposal.id}
+          proposalName={singleProposal.name}
+          proposalDescription={singleProposal.description}
+        />
       </div>
     )
   }

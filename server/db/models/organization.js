@@ -25,6 +25,11 @@ const Organization = db.define('organization', {
   phoneNumber: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  image: {
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://vignette.wikia.nocookie.net/undertale-rho/images/5/5f/Placeholder.jpg/revision/latest?cb=20180213155916'
   }
 })
 
