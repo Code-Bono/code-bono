@@ -10,6 +10,7 @@ import others from './otherUsers'
 import githubProject from './github'
 import chatStatus from './chatboxNav'
 import githubRepos from './githubRepos'
+import projectSignup from './projectSignup'
 import proposal from './proposal'
 import noteToAdd from './addProjectCard'
 import currentOrg from './organization'
@@ -23,6 +24,7 @@ const reducer = combineReducers({
   chatStatus,
   githubProject,
   githubRepos,
+  projectSignup,
   proposal,
   noteToAdd,
   currentOrg

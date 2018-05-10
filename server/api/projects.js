@@ -13,28 +13,51 @@ createToken
     }
   })
 
-router.post('/:name', (req, res, next) => {
+router.post('/', (req, res, next) => {
   // need proposalId, name of project, description can come from proposal
   // /api/projects/:name
-  const name = req.params.name
+  console.log('REQ!!!!!', req.body)
+  const proposalId = req.body.proposalId
+  const name = req.body.proposalName
+  const description = req.body.proposalDescription
   const repoName = name.toLowerCase().split(' ').join('-')
 
-  Project.create({
-    name,
-    repoName
-  })
-  .then(() => {
-    return octokit.repos.createForOrg({
+  octokit.repos.createForOrg({
     headers,
     org: 'Code-Bono-Projects',
-    name: repoName,
-    description: 'this is a test repo creation!'
-    })
+    name,
+    description
   })
   .then(() => {
-    res.sendStatus(201)
+    Project.create({
+      name,
+      repoName,
+      description,
+      proposalId
+    })
+  })
+  .then(project => {
+    res.status(201).json(project)
   })
   .catch(next)
+
+  // Project.create({
+  //   name,
+  //   repoName,
+  //   description
+  // })
+  // .then(() => {
+  //   return octokit.repos.createForOrg({
+  //   headers,
+  //   org: 'Code-Bono-Projects',
+  //   name,
+  //   description
+  //   })
+  // })
+  // .then(() => {
+  //   res.sendStatus(201)
+  // })
+  // .catch(next)
 })
 
 router.post('/project-board-cards/add', (req, res, next) => {

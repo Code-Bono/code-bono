@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { createProject } from '../store/projectSignup'
 
-export const ProjectSignUpButton = (props) => {
+export const ProjectSignupButton = (props) => {
 
   const { handleClick } = props
   const proposalDetails = {
@@ -23,10 +24,11 @@ const mapDispatch = dispatch => {
     handleClick: function(evt, proposalDetails) {
       evt.preventDefault()
       console.log('heeyyyyy buttton', proposalDetails)
+      dispatch(createProject(proposalDetails))
       // dispatch(fetchSingleProposal(proposalId))
     }
   }
 }
 
-export default connect(null, mapDispatch)(ProjectSignUpButton)
+export default connect(null, mapDispatch)(ProjectSignupButton)
 
