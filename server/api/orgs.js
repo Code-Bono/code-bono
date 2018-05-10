@@ -19,6 +19,17 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+  //finds user by id provided and returns the organization they represent
+  Organization.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(org => res.json(org))
+    .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   // creates a organization then uses the email provided in the req.body to find a user and assign him to the created org
   Organization.create(req.body.orgObj)
