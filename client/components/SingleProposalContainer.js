@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { fetchSingleProposal } from '../store/singleProposal'
 
 const mapState = state => {
-  console.log('Inside mapState')
   return {
     singleProposal: state.singleProposal
   }

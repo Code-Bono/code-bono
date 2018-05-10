@@ -21,7 +21,6 @@ export default class GithubFeed extends Component {
       .then(res => res.data)
       .then(events => {
         this.setState({ events: events.data })
-        console.log('This.state: ', this.state)
       })
   }
 

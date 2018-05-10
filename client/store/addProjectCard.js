@@ -15,7 +15,6 @@ export function submitProjectCard () {
 
 
 export function postProjectCard (note) {
-  console.log('note!',note)
   return function thunk (dispatch) {
     return axios.post('/api/projects/project-board-cards/add', {note})
       .then(res => res.data)
