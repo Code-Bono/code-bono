@@ -24,11 +24,16 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
+  displayName: {
+    type: Sequelize.TEXT
+  },
   bio: {
     type: Sequelize.TEXT
   },
   imageUrl: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9-AlyVziieSgrLtXOV_ePRPXEGc3nSjxKmpv57ACyqyq6__1XNA'
   },
   googleId: {
     type: Sequelize.STRING

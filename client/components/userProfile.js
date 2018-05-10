@@ -20,7 +20,10 @@ export default class UserProfile extends Component {
         <h1>Your Profile!</h1>
         <div className="userContainer">
           {user ? (
-            <div>Welcome {user.email}!</div>
+            <div>
+              <h3>Welcome {user.displayName || user.email}!</h3>
+              <Image src={user.imageUrl} />
+            </div>
           ) : (
             <h3 className="loading">Loading current user...</h3>
           )}
