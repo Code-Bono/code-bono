@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const GET_SINGLE_PROPOSAL = 'GET_SINGLE_PROPOSAL'
 
-const getSingleProposal = proposal => {
+const getSingleProposal = singleProposal => {
   return {
     type: GET_SINGLE_PROPOSAL,
-    proposal
+    singleProposal
   }
 }
 
-export const fetchSingleProposal = (proposalId) => dispatch =>
+export const fetchSingleProposal = proposalId => dispatch =>
   axios
     .get(`/api/proposals/${proposalId}`)
     .then(res => {
@@ -20,7 +20,7 @@ export const fetchSingleProposal = (proposalId) => dispatch =>
 export default function(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_PROPOSAL:
-      return action.proposal
+      return action.singleProposal
     default:
       return state
   }

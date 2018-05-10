@@ -13,7 +13,9 @@ router.get('/:proposalId', (req, res, next) => {
   const proposalId = +req.params.proposalId
 
   Proposal.findById(proposalId)
-    .then(proposal => res.json(proposal))
+    .then(proposal => {
+      res.json(proposal)
+    })
     .catch(next)
 })
 

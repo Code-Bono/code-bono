@@ -10,6 +10,9 @@ export default function Home() {
       <Link to="/collab">
         <h3>Take me to my collaboration eden!!</h3>
       </Link>
+      <Link to="/proposals">
+        <h3>See all open proposals!</h3>
+      </Link>
     </div>
   )
 }

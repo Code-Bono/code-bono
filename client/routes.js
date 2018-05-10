@@ -6,7 +6,7 @@ import {
   AllProposalsContainer,
   Login,
   Signup,
-  SingleProposal,
+  SingleProposalContainer,
   UserHome,
   Collab,
   LandingPage,
@@ -35,11 +35,15 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
-        <Route exact path="/proposals/:proposalId" component={SingleProposal} />
+        <Route
+          exact
+          path="/proposals/:proposalId"
+          component={SingleProposalContainer}
+        />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route
-          path="/orgs/proposal"
+          path="/organization/make-proposal"
           component={OrganizationProposalContainer}
         />
         {/* Temporary route to a landing page for MPV */}

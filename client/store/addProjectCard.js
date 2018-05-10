@@ -13,10 +13,10 @@ export function submitProjectCard() {
   return action
 }
 
-export function postProjectCard(note) {
-  return function thunk(dispatch) {
-    return axios
-      .post('/api/projects/project-board-cards/add', { note })
+
+export function postProjectCard (note) {
+  return function thunk (dispatch) {
+    return axios.post('/api/projects/project-board-cards/add', {note})
       .then(res => res.data)
       .then(() => {
         dispatch(submitProjectCard())
