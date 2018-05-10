@@ -129,6 +129,14 @@ const proposals = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuqkdNkU2FgaEss7GdUh2-YA2XXYuFEqVlxSHbqj58UN9tT_hNoA',
     isActive: true,
     organizationId: 2
+  },
+  {
+    name: 'Feed the cats',
+    description: 'Wine cats would appreciate some wine.',
+    deadline: '2018-04-13',
+    image: 'https://i.imgflip.com/f0g9y.jpg',
+    isActive: true,
+    organizationId: 2
   }
 ]
 
