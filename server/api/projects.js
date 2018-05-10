@@ -13,12 +13,22 @@ createToken
     }
   })
 
+router.get('/:projectId', (req, res, next) => {
+  const projectId = req.params.projectId
+
+  Project.findById(projectId)
+  .then(project => {
+    res.send(project)
+  })
+  .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
   const proposalId = req.body.proposalId
   const name = req.body.proposalName
   const description = req.body.proposalDescription
-  const repoName = name.toLowerCase().split(' ').join('-')
+  const repoName = name.split(' ').join('-')
 
   Project.findOrCreate({
     where: {

@@ -10,6 +10,14 @@ const Project = db.define('project', {
     type: Sequelize.STRING,
     unique: true
   },
+  repoURL: {
+    type: Sequelize.VIRTUAL,
+    get() {
+      return (
+        `https://github.com/Code-Bono-Projects/${this.getDataValue('repoName')}`
+      );
+    }
+  },
   description: {
     type: Sequelize.TEXT
   },

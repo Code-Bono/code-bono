@@ -25,7 +25,11 @@ export default class GitHubProjectBoard extends Component {
           <Grid container columns={projectCards.length}>
             {projectCards.length ? (
               projectCards.map((card, i) => {
-                return <ProjectCard card={card} i={i} />
+                return (
+                  <div key={i}>
+                    <ProjectCard card={card} />
+                  </div>
+                )
               })
             ) : (
               <h3 className="loading">Loading project cards...</h3>
