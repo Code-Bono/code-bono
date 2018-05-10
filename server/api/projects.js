@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const createToken = require('./utils')
 const octokit = require('@octokit/rest')()
-const { Project } = require('../db/models')
+const { Project, Collaboration } = require('../db/models')
 module.exports = router
 
 let headers
@@ -14,50 +14,49 @@ createToken
   })
 
 router.post('/', (req, res, next) => {
-  // need proposalId, name of project, description can come from proposal
-  // /api/projects/:name
-  console.log('REQ!!!!!', req.body)
+
+  const userId = req.body.userId
   const proposalId = req.body.proposalId
-  const name = req.body.proposalName
+  let number = 1
+  let name = `${req.body.proposalName} ${number}`
   const description = req.body.proposalDescription
   const repoName = name.toLowerCase().split(' ').join('-')
 
-  octokit.repos.createForOrg({
-    headers,
-    org: 'Code-Bono-Projects',
-    name,
-    description
-  })
-  .then(() => {
-    Project.create({
+  Project.findOrCreate({
+    where: {
       name,
       repoName,
       description,
       proposalId
-    })
+    }
   })
-  .then(project => {
-    res.status(201).json(project)
+  .spread((project, created) => {
+    if(created) {
+      octokit.repos.createForOrg({
+        headers,
+        org: 'Code-Bono-Projects',
+        name,
+        description
+      })
+
+    }
+    else {
+      project.getUsers()
+      .then(users => {
+        if(users.length % 4 === 0) {
+          number++
+          // number not incrememnting for name - not sure why - need fixing!
+          console.log('number', number)
+          console.log('name!', name)
+        }
+      })
+    }
+    project.addUsers(userId)
+  })
+  .then(projectAndUser => {
+    res.status(201).json(projectAndUser)
   })
   .catch(next)
-
-  // Project.create({
-  //   name,
-  //   repoName,
-  //   description
-  // })
-  // .then(() => {
-  //   return octokit.repos.createForOrg({
-  //   headers,
-  //   org: 'Code-Bono-Projects',
-  //   name,
-  //   description
-  //   })
-  // })
-  // .then(() => {
-  //   res.sendStatus(201)
-  // })
-  // .catch(next)
 })
 
 router.post('/project-board-cards/add', (req, res, next) => {

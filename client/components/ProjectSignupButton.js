@@ -9,7 +9,8 @@ export const ProjectSignupButton = (props) => {
   const proposalDetails = {
     proposalId: props.proposalId,
     proposalName: props.proposalName,
-    proposalDescription: props.proposalDescription
+    proposalDescription: props.proposalDescription,
+    userId: props.userId
   }
 
   return (
@@ -19,16 +20,20 @@ export const ProjectSignupButton = (props) => {
   )
 }
 
+const mapState = state => {
+  return {
+    userId: state.user.id
+  }
+}
+
 const mapDispatch = dispatch => {
   return {
     handleClick: function(evt, proposalDetails) {
       evt.preventDefault()
-      console.log('heeyyyyy buttton', proposalDetails)
       dispatch(createProject(proposalDetails))
-      // dispatch(fetchSingleProposal(proposalId))
     }
   }
 }
 
-export default connect(null, mapDispatch)(ProjectSignupButton)
+export default connect(mapState, mapDispatch)(ProjectSignupButton)
 
