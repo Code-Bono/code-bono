@@ -56,6 +56,11 @@ export const logout = () => dispatch =>
     })
     .catch(err => console.log(err))
 
+export const getUserById = id => dispatch =>
+  axios
+    .get(`/api/users/${id}`)
+    .then(res => dispatch(getUser(res.data)))
+    .catch(err => console.log(err))
 /**
  * REDUCER
  */

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 export default class OrganizationHome extends Component {
   componentDidMount() {
     this.props.fetchCurrentOrg(this.props.currentUser.id)
+    //refetches user to get the updated user after they are assigned to an org. Navbar checks if user is assigned to an org and renders out User Home vs Organization Home
+    this.props.fetchUpdatedUser(this.props.currentUser.id)
   }
   render() {
     let { currentUser, currentOrg } = this.props
