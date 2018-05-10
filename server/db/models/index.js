@@ -22,6 +22,9 @@ Cause.belongsToMany(Organization, { through: 'orgCause' })
 Organization.hasMany(Proposal)
 Proposal.belongsTo(Organization)
 
+Proposal.hasMany(Project)
+Project.belongsTo(Proposal)
+
 User.hasMany(Message)
 Message.belongsTo(Chatroom)
 Message.belongsTo(User)
