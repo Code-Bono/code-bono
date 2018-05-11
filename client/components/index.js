@@ -6,6 +6,8 @@
 export { default as Navbar } from './navbar'
 export { default as UserProfile } from './userProfile'
 export { default as LandingPage } from './LandingPage'
+export { default as UserHome } from './user-home'
+export { default as LandingPageContainer } from './LandingPageContainer'
 export { default as Home } from './home'
 export { Login, Signup } from './auth-form'
 export { default as Collab } from './collab'
@@ -24,3 +26,4 @@ export { default as SingleProposalContainer } from './SingleProposalContainer'
 export {
   default as EditOrganizationContainer
 } from './EditOrganizationContainer'
+export { default as Footer } from './footer'

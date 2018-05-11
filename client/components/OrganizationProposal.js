@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Dropdown, Container, Button } from 'semantic-ui-react'
 
 export default class OrganizationProposal extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      causes: []
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
+
+  componentDidMount() {
+    this.props.loadCauses()
+  }
+
+  handleChange(e, { value }) {
+    this.setState({ causes: value })
+  }
+
   handleSubmit(evt) {
     evt.preventDefault()
     let proposal = {}
@@ -13,11 +26,19 @@ export default class OrganizationProposal extends Component {
     proposal.name = evt.target.proposalName.value
     proposal.description = evt.target.proposalDescription.value
     proposal.isActive = true
-    //set up later so we can choose specific organizations to post to
     proposal.organizationId = this.props.currentOrg.id
+    proposal.causes = this.state.causes
     this.props.addProposalToDb(proposal, this.props.history)
   }
   render() {
+    const { causes } = this.props
+    //maps over causes array and changes the key names so we can use it in the Semantic UI Dropdown
+    const options = causes.map(cause => {
+      const obj = {}
+      obj.text = cause.name
+      obj.value = cause.id
+      return obj
+    })
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group widths="equal">
@@ -28,6 +49,12 @@ export default class OrganizationProposal extends Component {
             placeholder="Proposal Name"
           />
           <Form.Input
+            name="proposalImage"
+            fluid
+            label="Proposal Image"
+            placeholder="Proposal ImageURL"
+          />
+          <Form.Input
             type="date"
             name="proposalDeadline"
             fluid
@@ -35,11 +62,25 @@ export default class OrganizationProposal extends Component {
             placeholder="Deadline"
           />
         </Form.Group>
-        <Form.TextArea
-          name="proposalDescription"
-          label="Description"
-          placeholder="Description for the proposal"
-        />
+        <Form.Group>
+          <Form.TextArea
+            width="16"
+            name="proposalDescription"
+            label="Description"
+            placeholder="Description for the proposal"
+          />
+        </Form.Group>
+        {causes && (
+          <Dropdown
+            placeholder="Select Causes"
+            fluid
+            multiple
+            search
+            selection
+            options={options}
+            onChange={this.handleChange}
+          />
+        )}
         <Form.Button>Submit</Form.Button>
       </Form>
     )
