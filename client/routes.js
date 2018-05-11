@@ -4,18 +4,18 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
-  Login,
-  Signup,
-  SingleProposalContainer,
-  UserHome,
-  ProjectContainer,
-  LandingPage,
   Collab,
+  EditOrganizationContainer,
+  LandingPage,
   LandingPageContainer,
-  OrganizationProposalContainer,
-  UserProfileContainer,
+  Login,
   OrganizationHomeContainer,
-  EditOrganizationContainer
+  OrganizationProposalContainer,
+  ProjectContainer,
+  SingleProposalContainer,
+  Signup,
+  UserHome,
+  UserProfileContainer
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
