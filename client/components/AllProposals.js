@@ -12,43 +12,47 @@ export default class AllProposals extends Component {
   }
 
   render() {
-
     const { proposals, handleClick } = this.props
 
     return (
       <div>
         <h1>All Proposals</h1>
-        {
-          proposals.length ?
+        {proposals.length ? (
           <Card.Group itemsPerRow={3}>
-          {
-          proposals.map(proposal => {
-            return (
-
-              <Card  key={proposal.id} className="ui card">
-                <div className="image">
-                  <img src={proposal.image}></img>
-                </div>
-                <div className="content">
-                  <a className="header">{proposal.name}</a>
-                  <div className="meta">
-                    <span className="date">Deadline: {proposal.deadline}</span>
+            {proposals.map(proposal => {
+              return (
+                <Card key={proposal.id} className="ui card">
+                  <div className="image">
+                    <img src={proposal.image} />
                   </div>
-                  <div className="description">
-                    {proposal.description}
+                  <div className="content">
+                    <a className="header">{proposal.name}</a>
+                    <a className="ui sub header">
+                      {proposal.organization.name}
+                    </a>
+                    <div className="description">{proposal.snippet}</div>
+                    <br />
+                    <div className="meta">
+                      <span className="date">
+                        Deadline: {proposal.deadline}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="extra content">
-                  <button className="ui button" onClick={(evt) => handleClick(evt, proposal.id)}><Link to={`/proposals/${proposal.id}`}>More info</Link></button>
-                </div>
-              </Card>
-
-            )
-          })
-        }
-        </Card.Group>
-          : <h3 className="loading">Loading project cards...</h3>
-        }
+                  <div className="extra content">
+                    <button
+                      className="ui button"
+                      onClick={evt => handleClick(evt, proposal.id)}
+                    >
+                      <Link to={`/proposals/${proposal.id}`}>More info</Link>
+                    </button>
+                  </div>
+                </Card>
+              )
+            })}
+          </Card.Group>
+        ) : (
+          <h3 className="loading">Loading project cards...</h3>
+        )}
       </div>
     )
   }

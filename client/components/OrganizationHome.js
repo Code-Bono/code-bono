@@ -14,6 +14,8 @@ export default class OrganizationHome extends Component {
       <Container text>
         {currentOrg ? (
           <div>
+            <img src={currentOrg.image} />
+            <Link to="/organization/edit">Edit Details</Link>
             <Header as="h2">Organization Name: {currentOrg.name}</Header>
             <p>Organization Description: {currentOrg.description}</p>
             <p>Organization Address: {currentOrg.address}</p>

@@ -12,10 +12,12 @@ import {
   LandingPage,
   Home,
   OrganizationProposalContainer,
-  OrganizationHomeContainer
+  OrganizationHomeContainer,
+  EditOrganizationContainer
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
+import EditOrganization from './components/EditOrganization'
 
 /**
  * COMPONENT
@@ -57,6 +59,10 @@ class Routes extends Component {
             />
             <Route exact path="/projects" component={ProjectContainer} />
             <Route exact path="/projects/:projectId" component={ProjectContainer} />
+            <Route
+              path="/organization/edit"
+              component={EditOrganizationContainer}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
