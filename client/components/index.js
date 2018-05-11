@@ -26,4 +26,8 @@ export { default as SingleProposalContainer } from './SingleProposalContainer'
 export {
   default as EditOrganizationContainer
 } from './EditOrganizationContainer'
+export {
+  default as ViewOrganizationProposalsContainer
+} from './ViewOrganizationProposalsContainer'
+export { default as EditProposalsContainer } from './EditProposalsContainer'
 export { default as Footer } from './footer'

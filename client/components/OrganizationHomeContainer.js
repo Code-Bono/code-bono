@@ -17,12 +17,12 @@ const mapDispatch = dispatch => {
     fetchCurrentOrg: id => {
       dispatch(getCurrentOrg(id))
     },
-    fetchAllProposals: function(id) {
-      dispatch(getProposalsForOrg(id))
-    },
     //retrieves the user after being assigned an org id to correctly render the nav home button
     fetchUpdatedUser: function(id) {
       dispatch(getUserById(id))
+    },
+    fetchOrgProposals: id => {
+      dispatch(getProposalsForOrg(id))
     }
   }
 }
