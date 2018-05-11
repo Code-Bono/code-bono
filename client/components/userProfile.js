@@ -47,12 +47,12 @@ export default class UserProfile extends Component {
                       <div className="description">{project.description}</div>
                     </div>
                     <div className="extra content">
-                      <button
+                      {/* <button
                         className="ui button"
                         onClick={evt => handleClick(evt, project.id)}
-                      >
+                      > */}
                         <Link to={`/projects/${project.id}`}>More info</Link>
-                      </button>
+                      {/* </button> */}
                     </div>
                   </Card>
                 )
