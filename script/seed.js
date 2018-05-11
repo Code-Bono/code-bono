@@ -15,7 +15,8 @@ const {
   Chatroom,
   Message,
   Organization,
-  Proposal
+  Proposal,
+  Cause
 } = require('../server/db/models')
 
 const users = [
@@ -25,6 +26,13 @@ const users = [
   { email: 'gg@email.com', password: '123' },
   { email: 'ian@email.com', password: '123' },
   { email: 'yoni@email.com', password: '123' }
+]
+
+const causes = [
+  { name: 'Mentoring' },
+  { name: 'Arts' },
+  { name: 'Counselling' },
+  { name: 'Conservation' }
 ]
 
 const organizations = [
@@ -123,6 +131,14 @@ const proposals = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuqkdNkU2FgaEss7GdUh2-YA2XXYuFEqVlxSHbqj58UN9tT_hNoA',
     isActive: true,
     organizationId: 2
+  },
+  {
+    name: 'Feed the cats',
+    description: 'Wine cats would appreciate some wine.',
+    deadline: '2018-04-13',
+    image: 'https://i.imgflip.com/f0g9y.jpg',
+    isActive: true,
+    organizationId: 2
   }
 ]
 
@@ -131,6 +147,7 @@ const seed = async () => {
   await Organization.bulkCreate(organizations)
   await Chatroom.bulkCreate(chatrooms)
   await Proposal.bulkCreate(proposals)
+  await Cause.bulkCreate(causes)
 }
 
 const main = () => {
@@ -143,6 +160,7 @@ const main = () => {
       console.log(`seeded ${chatrooms.length} chatrooms`)
       console.log(`seeded ${organizations.length} organizations`)
       console.log(`seeded ${proposals.length} proposals`)
+      console.log(`seeded ${causes.length} causes`)
       console.log(`seeded successfully`)
       return seed()
     })
