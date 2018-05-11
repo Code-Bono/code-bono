@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Image, Card } from 'semantic-ui-react'
+import { Grid, Image, Item, Button } from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -10,7 +10,6 @@ export default class UserProfile extends Component {
   componentDidMount() {
     this.props.loadUser(this.props.user.id)
   }
-  // componentWillUnmount() {}
 
   render() {
     const user = this.props.user
@@ -28,36 +27,39 @@ export default class UserProfile extends Component {
           ) : (
             <h3 className="loading">Loading current user...</h3>
           )}
+          <h2>Your current projects</h2>
 
-          {projects.length && (
-            <Card.Group itemsPerRow={3}>
+          {projects.length ? (
+            <Item.Group>
               {projects.map(project => {
                 return (
-                  <Card key={project.id} className="ui card">
-                    <div className="image">
-                      <img src={project.image} />
-                    </div>
+                  <Item key={project.id}>
                     <div className="content">
                       <a className="header">{project.name}</a>
-                      <div className="meta">
-                        <span className="date">
-                          Deadline: {project.deadline}
-                        </span>
+                      <div className="description">
+                        {project.description.slice(0, 80)}...
                       </div>
-                      <div className="description">{project.description}</div>
                     </div>
-                    <div className="extra content">
-                      {/* <button
-                        className="ui button"
-                        onClick={evt => handleClick(evt, project.id)}
-                      > */}
-                        <Link to={`/projects/${project.id}`}>More info</Link>
-                      {/* </button> */}
+                    <div>
+                      <Button primary>
+                        <Link to={`/projects/${project.id}`}>
+                          Check in on this project
+                        </Link>
+                      </Button>
                     </div>
-                  </Card>
+                  </Item>
                 )
               })}
-            </Card.Group>
+            </Item.Group>
+          ) : (
+            <div>
+              <h3>You currently have no active projects.</h3>
+              <Button primary>
+                <Link to={`/projects`}>
+                  <h3>Click here to view all proposals-></h3>
+                </Link>
+              </Button>
+            </div>
           )}
         </div>
       </div>
