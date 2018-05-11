@@ -71,16 +71,29 @@ video {
 
 .ui.text.container {
   padding-top: 6em;
-  padding-bottom: 6em;
+  padding-bottom: 5em;
 }
 
 .inverted.header {
   font-size: 3em;
-  color: rgb(48, 48, 48);
+  color: #303030;
 }
 
 .header-alt {
   color: white;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.how-it-works-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.how-it-works-image-singular {
+  height: 120px;
 }
 
 /* .footer {

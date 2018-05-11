@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card } from 'semantic-ui-react'
+import { Grid, Image, Card, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 // import PropTypes from 'prop-types
@@ -30,6 +30,16 @@ export default class LandingPage extends React.Component {
               Code Bono connects nonprofits with developers looking to
               contribute their skills.
             </h2>
+            <br />
+            <div>
+              <Link to="/signup">
+                <Button>Sign Up Now</Button>
+              </Link>
+              <span> or </span>
+              <Link to="/proposals" style={{ color: '#303030' }}>
+                Browse proposals
+              </Link>
+            </div>
           </div>
         </div>
         <h1>Featured Proposals</h1>
@@ -69,6 +79,21 @@ export default class LandingPage extends React.Component {
         ) : (
           <h3 className="loading">Loading project cards...</h3>
         )}
+        <h2 className="text-center">How does it work?</h2>
+        <div className="flex how-it-works-container">
+          <div className="how-it-works-singular">
+            <img
+              className="how-it-works-image-singular"
+              src="https://www.taprootplus.org/assets/how-it-works/consultant-1-e1026477c616922f7f2d724b52b0ec95ade7ded3fee25c3828033145e7d38ae3.svg"
+            />
+          </div>
+          <div className="how-it-works-text-singular">
+            <h4 className="subheading">Let us know your skills</h4>
+            <p className="how-it-works-text">
+              Tell us more about which parts of the stack you enjoy working with
+            </p>
+          </div>
+        </div>
       </div>
     )
   }
