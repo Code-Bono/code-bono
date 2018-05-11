@@ -31,6 +31,14 @@ router.get('/:projectId', (req, res, next) => {
 })
 
 function githubRepoAndProjectBoardCreation (name, description) {
+  let project_id;
+
+  let columnIds = {
+    toDoColumnId: null,
+    inProgressColumnId: null,
+    doneColumnId: null
+  }
+
   return octokit.repos.createForOrg({
     headers,
     org: 'Code-Bono-Projects',
@@ -39,11 +47,41 @@ function githubRepoAndProjectBoardCreation (name, description) {
     has_projects: true
   })
   .then((repo) => {
+    const repoNameForProjectBoard = repo.data.name
     return octokit.projects.createRepoProject({
+      headers,
       owner: 'Code-Bono-Projects',
-      repo: data.name,
-      name: data.name
+      repo: repoNameForProjectBoard,
+      name: repoNameForProjectBoard
     })
+  })
+  .then(projectBoard => {
+    project_id = projectBoard.data.id
+    return octokit.projects.createProjectColumn({
+      headers,
+      project_id,
+      name: 'To Do'
+    })
+  })
+  .then(toDoColumn => {
+    columnIds.toDoColumnId = toDoColumn.data.id
+    return octokit.projects.createProjectColumn({
+      headers,
+      project_id,
+      name: 'In Progress'
+    })
+  })
+  .then(inProgressColumn => {
+    columnIds.inProgressColumnId = inProgressColumn.data.id
+    return octokit.projects.createProjectColumn({
+      headers,
+      project_id,
+      name: 'Done'
+    })
+  })
+  .then(doneColumn => {
+    columnIds.doneColumnId = doneColumn.data.id
+    return columnIds
   })
 }
 
