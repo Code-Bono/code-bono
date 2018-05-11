@@ -6,10 +6,6 @@ const Project = db.define('project', {
     type: Sequelize.STRING,
     unique: true
   },
-  repoName: {
-    type: Sequelize.STRING,
-    unique: true
-  },
   description: {
     type: Sequelize.TEXT
   },

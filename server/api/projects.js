@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const createToken = require('./utils')
+const {createToken, githubRepoAndProjectBoardCreation} = require('./utils')
 const octokit = require('@octokit/rest')()
-const { Project, Collaboration } = require('../db/models')
+const { Project, Collaboration, Repo } = require('../db/models')
 module.exports = router
 
 let headers
@@ -13,34 +13,65 @@ createToken
     }
   })
 
+router.get('/:projectId', (req, res, next) => {
+  const projectId = req.params.projectId
+
+  Project.findOne({
+    where: {
+      id: projectId
+    },
+    include: [{
+      model: Repo
+    }]
+  })
+  .then(project => {
+    res.send(project)
+  })
+  .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
   const proposalId = req.body.proposalId
   const name = req.body.proposalName
   const description = req.body.proposalDescription
-  const repoName = name.toLowerCase().split(' ').join('-')
+  const repoName = name.split(' ').join('-')
+  let repoId;
 
   Project.findOrCreate({
     where: {
       name,
-      repoName,
       description,
       proposalId
     }
   })
-  .spread((project, created) => {
+  .tap(([project, created]) => {
+    console.log('CREATED?', created)
     if(created) {
-      octokit.repos.createForOrg({
-        headers,
-        org: 'Code-Bono-Projects',
-        name,
-        description
+      return githubRepoAndProjectBoardCreation(repoName, description)
+      .then((githubProjectColumns) => {
+        const {toDoColumnId, inProgressColumnId, doneColumnId} = githubProjectColumns
+        return Repo.create({
+          name: repoName,
+          toDoColumnId,
+          inProgressColumnId,
+          doneColumnId
+        })
+        .then(createdRepo => {
+          repoId = createdRepo.dataValues.id
+        })
+        .catch(next)
       })
     }
-    project.addUsers(userId)
   })
-  .then(projectAndUser => {
-    res.status(201).json(projectAndUser)
+  .spread((project, created) => {
+    if(created) {
+      project.setRepo(repoId)
+    }
+    return project.addUsers(userId)
+  })
+  .then(() => {
+    res.sendStatus(201)
   })
   .catch(next)
 })
