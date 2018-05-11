@@ -24,3 +24,11 @@ router.get('/:id', (req, res, next) => {
     .then(user => res.json(user))
     .catch(next)
 })
+
+router.get('/:id/projects', (req, res, next) => {
+  const id = req.params.id
+  User.findById(id)
+    .then(user => user.getProjects())
+    .then(projects => res.json(projects))
+    .catch(next)
+})

@@ -17,19 +17,17 @@ const postMessage = message => {
   }
 }
 
-export const fetchAllMessages = () => dispatch =>
-  //should edit later to be able to get chatroom by id
+export const fetchMessagesForChannel = id => dispatch =>
   axios
-    .get('/api/chatroom/1/messages')
+    .get(`/api/chatroom/${id}/messages`)
     .then(res => {
       dispatch(getAllMessages(res.data))
     })
     .catch(err => console.log(err))
 
-export const postMessageToDb = message => dispatch =>
-  //should edit later to be able to get chatroom by id
+export const postMessageToDb = (id, message) => dispatch =>
   axios
-    .post('/api/chatroom/1/messages', message)
+    .post(`/api/chatroom/${id}/messages`, message)
     .then(res => {
       dispatch(postMessage(res.data))
     })
