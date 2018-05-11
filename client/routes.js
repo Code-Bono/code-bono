@@ -4,7 +4,6 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
-  Collab,
   EditOrganizationContainer,
   EditProposalsContainer,
   LandingPage,
@@ -37,6 +36,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
+        <Route exact path="/home" component={LandingPageContainer} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
@@ -77,7 +77,6 @@ class Routes extends Component {
               path="/organization/proposals/:id/edit"
               component={EditProposalsContainer}
             />
-            <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
