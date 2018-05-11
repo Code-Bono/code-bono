@@ -20,7 +20,7 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
               <Button>Organization Home</Button>
             </Link>
           ) : (
-            <Link to="/home">
+            <Link to="/profile">
               <Button>User Home</Button>
             </Link>
           )}

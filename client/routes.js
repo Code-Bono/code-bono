@@ -14,6 +14,7 @@ import {
   LandingPageContainer,
   Home,
   OrganizationProposalContainer,
+  UserProfileContainer,
   OrganizationHomeContainer,
   EditOrganizationContainer
 } from './components'
@@ -54,7 +55,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={UserProfileContainer} />
             <Route
               path="/organization/home"
               component={OrganizationHomeContainer}

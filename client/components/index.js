@@ -4,6 +4,8 @@
  * having to figure out which file they belong to!
  */
 export { default as Navbar } from './navbar'
+export { default as UserProfile } from './userProfile'
+export { default as LandingPage } from './LandingPage'
 export { default as UserHome } from './user-home'
 export { default as LandingPageContainer } from './LandingPageContainer'
 export { default as Home } from './home'
@@ -15,6 +17,7 @@ export { default as ChatboxNav } from './chatboxNav'
 export {
   default as OrganizationProposalContainer
 } from './OrganizationProposalContainer'
+export { default as UserProfileContainer } from './userProfileContainer'
 export {
   default as OrganizationHomeContainer
 } from './OrganizationHomeContainer'
