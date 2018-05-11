@@ -41,7 +41,7 @@ export default class UserProfile extends Component {
                       </div>
                     </div>
                     <div>
-                      <Button primary>
+                      <Button primary onClick={(evt) => this.props.loadProject(project.id)} >
                         <Link to={`/projects/${project.id}`}>
                           Check in on this project
                         </Link>
