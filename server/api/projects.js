@@ -30,6 +30,66 @@ router.get('/:projectId', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/:projectId/cards', (req, res, next) => {
+  const projectId = req.params.projectId
+
+  Project.findOne({
+    where: {
+      id: projectId
+    },
+    include: [{
+      model: Repo
+    }]
+  })
+  .then(project => {
+    const toDoColumnId = project.dataValues.repo.dataValues.toDoColumnId
+    const inProgressColumnId = project.dataValues.repo.dataValues.inProgressColumnId
+    const doneColumnId = project.dataValues.repo.dataValues.doneColumnId
+    const toDoProjectCards = octokit.projects.getProjectCards({
+      headers,
+      column_id: toDoColumnId
+    })
+    const inProgressProjectCards = octokit.projects.getProjectCards({
+      headers,
+      column_id: inProgressColumnId
+    })
+    const doneProjectCards = octokit.projects.getProjectCards({
+      headers,
+      column_id: doneColumnId
+    })
+    return Promise.all([
+      toDoProjectCards,
+      inProgressProjectCards,
+      doneProjectCards
+    ])
+  })
+  .then(projectColumnCards => {
+    const columns = [...projectColumnCards]
+    const cards = [
+      {
+        columnName: 'To Do',
+        notes: []
+      },
+      {
+        columnName: 'In Progress',
+        notes: []
+      },
+      {
+        columnName: 'Done',
+        notes: []
+      }
+    ]
+
+    for (let i = 0; i < columns.length; i++) {
+      columns[i].data.forEach(card => {
+        cards[i].notes.push(card.note)
+      })
+    }
+    res.send(cards)
+  })
+  .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
   const proposalId = req.body.proposalId
@@ -46,7 +106,6 @@ router.post('/', (req, res, next) => {
     }
   })
   .tap(([project, created]) => {
-    console.log('CREATED?', created)
     if(created) {
       return githubRepoAndProjectBoardCreation(repoName, description)
       .then((githubProjectColumns) => {
@@ -76,14 +135,14 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
-router.post('/project-board-cards/add', (req, res, next) => {
-  //for now this is the 'To Do' column id for code-bono-test-2
-  const columnId = 2666662
+router.post('/:projectId/projectBoardColumn/:toDoColumnId/add', (req, res, next) => {
+
+  const column_id = req.params.toDoColumnId
   const note = req.body.note
 
   octokit.projects.createProjectCard({
     headers,
-    column_id: columnId,
+    column_id,
     note
   })
   .then(result => {

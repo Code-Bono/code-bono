@@ -7,9 +7,8 @@ import singleProposal from './singleProposal'
 import user from './user'
 import messages from './chatbox'
 import others from './otherUsers'
-import githubProject from './github'
+import githubProjectCards from './githubProjectCards'
 import chatStatus from './chatboxNav'
-import githubRepos from './githubRepos'
 import projectSignup from './projectSignup'
 import proposal from './proposal'
 import noteToAdd from './addProjectCard'
@@ -24,8 +23,7 @@ const reducer = combineReducers({
   others,
   messages,
   chatStatus,
-  githubProject,
-  githubRepos,
+  githubProjectCards,
   projectSignup,
   proposal,
   noteToAdd,

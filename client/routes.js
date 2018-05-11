@@ -21,7 +21,6 @@ import {
   EditProposalsContainer
 } from './components'
 import { me } from './store'
-import { fetchRepos } from './store/githubRepos'
 import EditOrganization from './components/EditOrganization'
 
 /**
@@ -30,7 +29,6 @@ import EditOrganization from './components/EditOrganization'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
-    // this.props.loadRepos()
   }
 
   render() {
@@ -107,9 +105,6 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
-    },
-    loadRepos() {
-      dispatch(fetchRepos('Code-Bono-Projects'))
     }
   }
 }
