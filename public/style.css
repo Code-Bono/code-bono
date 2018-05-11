@@ -87,13 +87,41 @@ video {
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+  padding-left: 1em;
+  color: #c0c4c9"
+}
+
 .how-it-works-container {
   display: flex;
   flex-direction: row;
+  margin: 3em;
+}
+
+.how-it-works-singular {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.how-it-works-text-singular {
+  flex-grow: 3;
+  background-color: white;
+  margin: auto;
+  padding: 1.5em;
+  width: 10em;
 }
 
 .how-it-works-image-singular {
-  height: 120px;
+  height: 100px;
+}
+
+.subheading {
+  color: #5b9bfa;
+}
+
+.how-it-works-text {
+  color: #303030;
 }
 
 /* .footer {

@@ -42,7 +42,14 @@ export default class LandingPage extends React.Component {
             </div>
           </div>
         </div>
-        <h1>Featured Proposals</h1>
+        <h2 className="text-center" style={{ color: '#303030' }}>
+          Featured Nonprofit Proposals
+        </h2>
+        <p className="text-center" style={{ color: '#303030' }}>
+          Browse through proposals for technical projects for see which
+          organizations need your skills
+        </p>
+        <br />
         {proposals.length ? (
           <Card.Group itemsPerRow={3}>
             {proposals.slice(0, 3).map(proposal => {
@@ -79,6 +86,7 @@ export default class LandingPage extends React.Component {
         ) : (
           <h3 className="loading">Loading project cards...</h3>
         )}
+        <br />
         <h2 className="text-center">How does it work?</h2>
         <div className="flex how-it-works-container">
           <div className="how-it-works-singular">
@@ -88,10 +96,56 @@ export default class LandingPage extends React.Component {
             />
           </div>
           <div className="how-it-works-text-singular">
-            <h4 className="subheading">Let us know your skills</h4>
+            <h4 className="subheading">Tell us about yourself</h4>
             <p className="how-it-works-text">
-              Tell us more about which parts of the stack you enjoy working with
+              Fill out a profile to tell us about your skills and which causes
+              you're interested in working with
             </p>
+          </div>
+        </div>
+        <div className="flex how-it-works-container">
+          <div className="how-it-works-text-singular">
+            <h4 className="subheading">Browse Open Requests</h4>
+            <p className="how-it-works-text">
+              Explore proposals from nonprofits that need your technical skills
+              and support causes that interest you
+            </p>
+          </div>
+          <div className="how-it-works-singular">
+            <img
+              className="how-it-works-image-singular"
+              src="https://www.taprootplus.org/assets/how-it-works/consultant-3-7b6b073661ba6e96889e5a5c8d9428af7d12747af2ca592e3badf2adff6e2516.svg"
+            />
+          </div>
+        </div>
+        <div className="flex how-it-works-container">
+          <div className="how-it-works-singular">
+            <img
+              className="how-it-works-image-singular"
+              src="https://www.taprootplus.org/assets/how-it-works/consultant-2-1dcc982baf7099a70a235a5fb996339d8ccef2c9b80b78c5ab395377a9119b84.svg"
+            />
+          </div>
+          <div className="how-it-works-text-singular">
+            <h4 className="subheading">Sign up</h4>
+            <p className="how-it-works-text">
+              We'll match you with a team with like-minded developers who want
+              to work on the same proposal
+            </p>
+          </div>
+        </div>
+        <div className="flex how-it-works-container">
+          <div className="how-it-works-text-singular">
+            <h4 className="subheading">Start hacking for good</h4>
+            <p className="how-it-works-text">
+              The nonprofit will send you and your team specifics for the
+              project scope via our online collaboration tool.
+            </p>
+          </div>
+          <div className="how-it-works-singular">
+            <img
+              className="how-it-works-image-singular"
+              src="https://www.taprootplus.org/assets/how-it-works/consultant-5-2a833af811dc184b4fbaa3f28631d0f9730263184bbead32abd654bfa7584c41.svg"
+            />
           </div>
         </div>
       </div>
