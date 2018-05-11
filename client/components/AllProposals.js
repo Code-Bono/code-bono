@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card } from 'semantic-ui-react'
+import { Grid, Image, Card, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class AllProposals extends Component {
@@ -12,7 +12,7 @@ export default class AllProposals extends Component {
   }
 
   render() {
-    const { proposals, handleClick } = this.props
+    const { proposals } = this.props
 
     return (
       <div>
@@ -39,12 +39,9 @@ export default class AllProposals extends Component {
                     </div>
                   </div>
                   <div className="extra content">
-                    <button
-                      className="ui button"
-                      onClick={evt => handleClick(evt, proposal.id)}
-                    >
-                      <Link to={`/proposals/${proposal.id}`}>More info</Link>
-                    </button>
+                    <Link to={`/proposals/${proposal.id}`}>
+                      <Button primary>More info</Button>
+                    </Link>
                   </div>
                 </Card>
               )

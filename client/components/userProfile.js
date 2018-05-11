@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Image, Item, Button } from 'semantic-ui-react'
+import { Header, Image, Item, Button } from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -14,7 +14,6 @@ export default class UserProfile extends Component {
   render() {
     const user = this.props.user
     const projects = user.projects ? user.projects : []
-    console.log(user)
     return (
       <div>
         <h1>Your Profile!</h1>
@@ -41,11 +40,14 @@ export default class UserProfile extends Component {
                       </div>
                     </div>
                     <div>
-                      <Button primary onClick={(evt) => this.props.loadProject(project.id)} >
-                        <Link to={`/projects/${project.id}`}>
-                          Check in on this project
-                        </Link>
-                      </Button>
+                      <Link to={`/projects/${project.id}`}>
+                        <Button
+                          primary
+                          onClick={evt => this.props.loadProject(project.id)}
+                        >
+                          <Header as="h3">Check in on this project</Header>
+                        </Button>
+                      </Link>
                     </div>
                   </Item>
                 )
@@ -54,11 +56,11 @@ export default class UserProfile extends Component {
           ) : (
             <div>
               <h3>You currently have no active projects.</h3>
-              <Button primary>
-                <Link to={`/projects`}>
-                  <h3>Click here to view all proposals-></h3>
-                </Link>
-              </Button>
+              <Link to={`/proposals`}>
+                <Button primary>
+                  <Header as="h3">Click here to view all proposals-></Header>
+                </Button>
+              </Link>
             </div>
           )}
         </div>
