@@ -16,8 +16,48 @@ const {
   Message,
   Organization,
   Proposal,
-  Cause
+  Cause,
+  Project
 } = require('../server/db/models')
+
+const messages = [
+  {
+    content: 'Hello friends and cats',
+    userId: 1,
+    chatroomId: 1
+  },
+  {
+    content: 'I prefer hard liquor',
+    userId: 2,
+    chatroomId: 1
+  },
+  {
+    content: '...',
+    userId: 1,
+    chatroomId: 1
+  },
+  {
+    content: "Let's save the trees!",
+    userId: 3,
+    chatroomId: 2
+  }
+]
+
+const projects = [
+  {
+    name: 'Feed the cats',
+    description: 'Wine cats would appreciate some wine.',
+    isActive: true,
+    proposalId: 9
+  },
+  {
+    name: 'Save the Cyborg Bamboo Forest',
+    description:
+      'Help us build a mobile app that tracks cyborg bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
+    isActive: true,
+    proposalId: 5
+  }
+]
 
 const users = [
   { email: 'cody@email.com', password: '123' },
@@ -54,7 +94,7 @@ const organizations = [
   }
 ]
 
-const chatrooms = [{ name: 'Test Room 1' }, { name: 'Test Room 2' }]
+const chatrooms = [{ name: 'Wine Cats!' }, { name: 'Trees!' }]
 
 const proposals = [
   {
@@ -148,6 +188,8 @@ const seed = async () => {
   await Chatroom.bulkCreate(chatrooms)
   await Proposal.bulkCreate(proposals)
   await Cause.bulkCreate(causes)
+  await Project.bulkCreate(projects)
+  await Message.bulkCreate(messages)
 }
 
 const main = () => {
@@ -161,6 +203,8 @@ const main = () => {
       console.log(`seeded ${organizations.length} organizations`)
       console.log(`seeded ${proposals.length} proposals`)
       console.log(`seeded ${causes.length} causes`)
+      console.log(`seeded ${messages.length} messages`)
+      console.log(`seeded ${projects.length} projects`)
       console.log(`seeded successfully`)
       return seed()
     })
