@@ -32,7 +32,7 @@ Message.belongsTo(User)
 
 User.belongsTo(Organization, { as: 'org' })
 
-Project.belongsTo(Repo)
+Project.hasOne(Repo)
 
 
 /*
