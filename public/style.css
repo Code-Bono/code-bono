@@ -87,3 +87,17 @@ video {
   position: absolute;
   bottom: 0;
 } */
+
+.project-card {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.column-container {
+  margin: 50px;
+}
+
+.add-project-textarea {
+  width: 80%;
+  text-align: center;
+}
