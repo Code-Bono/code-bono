@@ -14,6 +14,7 @@ import projectSignup from './projectSignup'
 import proposal from './proposal'
 import noteToAdd from './addProjectCard'
 import currentOrg from './organization'
+import singleProject from './project'
 import causes from './cause'
 
 const reducer = combineReducers({
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   proposal,
   noteToAdd,
   currentOrg,
+  singleProject,
   causes
 })
 

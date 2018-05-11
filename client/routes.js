@@ -8,10 +8,13 @@ import {
   Signup,
   SingleProposalContainer,
   UserHome,
-  Collab,
+  ProjectContainer,
   LandingPage,
+  Collab,
+  LandingPageContainer,
   Home,
   OrganizationProposalContainer,
+  UserProfileContainer,
   OrganizationHomeContainer,
   EditOrganizationContainer,
   ViewOrganizationProposalsContainer,
@@ -36,7 +39,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPageContainer} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
@@ -54,10 +57,16 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={UserProfileContainer} />
             <Route
               path="/organization/home"
               component={OrganizationHomeContainer}
+            />
+            <Route exact path="/projects" component={ProjectContainer} />
+            <Route
+              exact
+              path="/projects/:projectId"
+              component={ProjectContainer}
             />
             <Route
               path="/organization/edit"

@@ -16,12 +16,12 @@ export const ProjectSignupButton = (props) => {
 
   return (
     <div>
-      {
-        userId ?
-        <button className="ui button" onClick={(evt) => handleClick(evt, proposalDetails)}><Link to={`/users/${userId}`}>Sign up for this project!</Link></button>
-        : <button className="ui button"><Link to='/login'>Log in to sign up for this project!</Link></button>
-      }
-    </div>
+     {
+       userId ?
+       <button className="ui button" onClick={(evt) => handleClick(evt, proposalDetails)}><Link to={`/users/${userId}`}>Sign up for this project!</Link></button>
+       : <button className="ui button"><Link to='/login'>Log in to sign up for this project!</Link></button>
+     }
+   </div>
   )
 }
 
@@ -41,4 +41,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(ProjectSignupButton)
-

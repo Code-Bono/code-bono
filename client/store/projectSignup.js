@@ -27,6 +27,3 @@ export default function(state = {}, action) {
   }
 }
 
-// export const createProject = () => {
-//   console.log('yop there')
-// }

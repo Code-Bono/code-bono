@@ -37,7 +37,7 @@ export const auth = (email, password, method) => dispatch =>
         if (res.data.orgId) {
           history.push('/organization/home')
         } else if (res.data.orgId === null) {
-          history.push('/home')
+          history.push('/profile')
         }
       },
       authError => {
@@ -46,6 +46,12 @@ export const auth = (email, password, method) => dispatch =>
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+export const fetchUser = userId => dispatch =>
+  axios
+    .get(`/api/users/${userId}`)
+    .then(res => dispatch(getUser(res.data)))
+    .catch(err => console.log(err))
 
 export const logout = () => dispatch =>
   axios
