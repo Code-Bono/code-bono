@@ -6,21 +6,16 @@ import { createProject } from '../store/projectSignup'
 export const ProjectSignupButton = (props) => {
 
   const { handleClick } = props
-  const { userId } = props
   const proposalDetails = {
     proposalId: props.proposalId,
     proposalName: props.proposalName,
     proposalDescription: props.proposalDescription,
-    userId
+    userId: props.userId
   }
 
   return (
     <div>
-      {
-        userId ?
-        <button className="ui button" onClick={(evt) => handleClick(evt, proposalDetails)}><Link to={`/users/${userId}`}>Sign up for this project!</Link></button>
-        : <button className="ui button"><Link to='/login'>Log in to sign up for this project!</Link></button>
-      }
+      <button className="ui button" onClick={(evt) => handleClick(evt, proposalDetails)}><Link to={`/proposals`}>Sign up!</Link></button>
     </div>
   )
 }
@@ -41,4 +36,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(ProjectSignupButton)
-

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function Home() {
   return (
     <div>
-      <Link to="/collab">
+      <Link to="/projects">
         <h3>Take me to my collaboration eden!!</h3>
       </Link>
       <Link to="/proposals">

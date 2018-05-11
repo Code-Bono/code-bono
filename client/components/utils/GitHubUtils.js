@@ -15,7 +15,11 @@ export const ProjectCard = ({ card, i }) => (
     <div key={i}>
       <h3>{card.columnName}</h3>
       {card.notes.map((note, i) => {
-        return <CardNote note={note} i={i} />
+        return (
+          <div key={i}>
+            <CardNote note={note}/>
+          </div>
+        )
       })}
     </div>
   </Grid.Column>
