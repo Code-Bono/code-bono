@@ -7,7 +7,6 @@ import chatStatus from './chatboxNav'
 import currentOrg from './organization'
 import githubProject from './github'
 import githubProjectCards from './githubProjectCards'
-import githubRepos from './githubRepos'
 import messages from './chatbox'
 import noteToAdd from './addProjectCard'
 import others from './otherUsers'
@@ -24,7 +23,6 @@ const reducer = combineReducers({
   currentOrg,
   githubProject,
   githubProjectCards,
-  githubRepos,
   messages,
   noteToAdd,
   others,
