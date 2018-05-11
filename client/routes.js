@@ -8,7 +8,7 @@ import {
   Signup,
   SingleProposalContainer,
   UserHome,
-  CollabContainer,
+  ProjectContainer,
   LandingPage,
   Home,
   OrganizationProposalContainer,
@@ -55,8 +55,8 @@ class Routes extends Component {
               path="/organization/home"
               component={OrganizationHomeContainer}
             />
-            <Route exact path="/collab" component={CollabContainer} />
-            <Route exact path="/collab/:projectId" component={CollabContainer} />
+            <Route exact path="/projects" component={ProjectContainer} />
+            <Route exact path="/projects/:projectId" component={ProjectContainer} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

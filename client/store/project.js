@@ -14,6 +14,7 @@ export const fetchSingleProject = projectId => dispatch =>
     .get(`/api/projects/${projectId}`)
     .then(res => {
       dispatch(getSingleProject(res.data))
+      console.log('DATA', res.data)
     })
     .catch(err => console.log(err))
 

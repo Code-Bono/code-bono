@@ -22,19 +22,21 @@ export default class GitHubProjectBoard extends Component {
       <div>
         <h1>Github Project Board</h1>
         <div className="githubContainer">
+          {
+          projectCards.length ?
           <Grid container columns={projectCards.length}>
-            {projectCards.length ? (
-              projectCards.map((card, i) => {
-                return (
-                  <div key={i}>
-                    <ProjectCard card={card} />
-                  </div>
-                )
-              })
-            ) : (
-              <h3 className="loading">Loading project cards...</h3>
-            )}
+              {
+                projectCards.map((card, i) => {
+                  return (
+                    <div key={i}>
+                      <ProjectCard card={card} />
+                    </div>
+                  )
+                })
+              }
           </Grid>
+          :  <h3 className="loading">Loading project...</h3>
+          }
         </div>
       </div>
     )

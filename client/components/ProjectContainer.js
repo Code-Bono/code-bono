@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Collab from './Collab'
+import Project from './Project'
 import { connect } from 'react-redux'
 import { fetchSingleProject } from '../store/project'
 
@@ -21,4 +21,4 @@ const mapDispatch = dispatch => {
 
 
 
-export default connect(mapState, mapDispatch)(Collab)
+export default connect(mapState, mapDispatch)(Project)

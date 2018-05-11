@@ -4,18 +4,19 @@ import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import AddProjectCardContainer from './AddProjectCardContainer'
 
-export default class Collab extends Component {
+export default class Project extends Component {
   constructor(props) {
     super(props)
   }
 
   componentDidMount() {
-    this.props.loadProject('1')
+    this.props.loadProject('2')
   }
 
   render() {
 
     const projectName = this.props.project.name
+    console.log('this.props', this.props)
     const repoURL = this.props.project.id ? this.props.project.repo.URL : null
 
     return (

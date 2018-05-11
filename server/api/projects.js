@@ -30,61 +30,6 @@ router.get('/:projectId', (req, res, next) => {
   .catch(next)
 })
 
-// function githubRepoAndProjectBoardCreation (name, description) {
-//   let project_id;
-
-//   let columnIds = {
-//     toDoColumnId: null,
-//     inProgressColumnId: null,
-//     doneColumnId: null
-//   }
-
-//   return octokit.repos.createForOrg({
-//     headers,
-//     org: 'Code-Bono-Projects',
-//     name,
-//     description,
-//     has_projects: true
-//   })
-//   .then((repo) => {
-//     const repoNameForProjectBoard = repo.data.name
-//     return octokit.projects.createRepoProject({
-//       headers,
-//       owner: 'Code-Bono-Projects',
-//       repo: repoNameForProjectBoard,
-//       name: repoNameForProjectBoard
-//     })
-//   })
-//   .then(projectBoard => {
-//     project_id = projectBoard.data.id
-//     return octokit.projects.createProjectColumn({
-//       headers,
-//       project_id,
-//       name: 'To Do'
-//     })
-//   })
-//   .then(toDoColumn => {
-//     columnIds.toDoColumnId = toDoColumn.data.id
-//     return octokit.projects.createProjectColumn({
-//       headers,
-//       project_id,
-//       name: 'In Progress'
-//     })
-//   })
-//   .then(inProgressColumn => {
-//     columnIds.inProgressColumnId = inProgressColumn.data.id
-//     return octokit.projects.createProjectColumn({
-//       headers,
-//       project_id,
-//       name: 'Done'
-//     })
-//   })
-//   .then(doneColumn => {
-//     columnIds.doneColumnId = doneColumn.data.id
-//     return columnIds
-//   })
-// }
-
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
   const proposalId = req.body.proposalId
@@ -101,6 +46,7 @@ router.post('/', (req, res, next) => {
     }
   })
   .tap(([project, created]) => {
+    console.log('CREATED?', created)
     if(created) {
       return githubRepoAndProjectBoardCreation(repoName, description)
       .then((githubProjectColumns) => {
@@ -119,8 +65,9 @@ router.post('/', (req, res, next) => {
     }
   })
   .spread((project, created) => {
-    console.log('createdRepo???', repoId)
-    project.setRepo(repoId)
+    if(created) {
+      project.setRepo(repoId)
+    }
     return project.addUsers(userId)
   })
   .then(() => {
