@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Vidchat2 from './vidchat2'
 import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
-import AddProjectCardContainer from './AddProjectCardContainer'
 
 export default class Project extends Component {
   constructor(props) {
@@ -32,9 +31,8 @@ export default class Project extends Component {
           <h2>{projectName}</h2>
           <h4><a href={repoURL} target="_blank">Go to Github repo</a></h4>
         </div>
-        <AddProjectCardContainer />
-        <GitHubProjectBoardContainer projectId={projectId}/>
         <Vidchat2 />
+        <GitHubProjectBoardContainer projectId={projectId}/>
         {/*<GithubFeed />*/}
       </div>
     )

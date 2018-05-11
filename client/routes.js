@@ -4,21 +4,19 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
-  Login,
-  Signup,
-  SingleProposalContainer,
-  UserHome,
-  ProjectContainer,
-  LandingPage,
-  Collab,
-  LandingPageContainer,
-  Home,
-  OrganizationProposalContainer,
-  UserProfileContainer,
-  OrganizationHomeContainer,
   EditOrganizationContainer,
-  ViewOrganizationProposalsContainer,
-  EditProposalsContainer
+  EditProposalsContainer,
+  LandingPage,
+  LandingPageContainer,
+  Login,
+  OrganizationHomeContainer,
+  OrganizationProposalContainer,
+  ProjectContainer,
+  SingleProposalContainer,
+  Signup,
+  UserHome,
+  UserProfileContainer,
+  ViewOrganizationProposalsContainer
 } from './components'
 import { me } from './store'
 import EditOrganization from './components/EditOrganization'
@@ -38,6 +36,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
+        <Route exact path="/home" component={LandingPageContainer} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
@@ -50,8 +49,6 @@ class Routes extends Component {
           path="/organization/make-proposal"
           component={OrganizationProposalContainer}
         />
-        {/* Temporary route to a landing page for MPV */}
-        <Route exact path="/home" component={Home} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -80,7 +77,6 @@ class Routes extends Component {
               path="/organization/proposals/:id/edit"
               component={EditProposalsContainer}
             />
-            <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

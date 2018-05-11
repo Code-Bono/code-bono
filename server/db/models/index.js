@@ -1,11 +1,11 @@
-const User = require('./user')
-const Message = require('./message')
-const Chatroom = require('./chatroom')
-const Project = require('./project')
 const Cause = require('./cause')
+const Chatroom = require('./chatroom')
+const Message = require('./message')
 const Organization = require('./organization')
+const Project = require('./project')
 const Proposal = require('./proposal')
 const Repo = require('./repo')
+const User = require('./user')
 
 // Associations go here:
 User.belongsToMany(Project, { through: 'collaboration' })
@@ -43,12 +43,12 @@ Project.hasOne(Repo)
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
-  User,
-  Chatroom,
-  Project,
   Cause,
+  Chatroom,
   Message,
   Organization,
+  Project,
   Proposal,
-  Repo
+  Repo,
+  User
 }

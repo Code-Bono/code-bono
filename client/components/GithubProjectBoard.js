@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Grid, Image } from 'semantic-ui-react'
-
+import { Grid, Image, Header } from 'semantic-ui-react'
+import AddProjectCardContainer from './AddProjectCardContainer'
 import { CardNote, ProjectCard } from './utils/GitHubUtils'
 
 export default class GitHubProjectBoard extends Component {
@@ -9,13 +9,20 @@ export default class GitHubProjectBoard extends Component {
   }
 
   render() {
-
     const projectCards = this.props.projectCards
 
     return (
       <div>
-        <h1>Github Project Board</h1>
-        <div className="githubContainer">
+        <div>
+          <Header as='h2' icon textAlign='center'>
+            <Header.Content>
+              Github Project Board
+            </Header.Content>
+          </Header>
+          <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
+        </div>
+
+        <div className="column-container">
           {
           projectCards.length ?
           <Grid container columns={projectCards.length}>
@@ -32,6 +39,7 @@ export default class GitHubProjectBoard extends Component {
           :  <h3 className="loading">Loading project...</h3>
           }
         </div>
+        <AddProjectCardContainer />
       </div>
     )
   }

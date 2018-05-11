@@ -2,34 +2,34 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import proposals from './allProposals'
-import singleProposal from './singleProposal'
-import user from './user'
-import messages from './chatbox'
-import others from './otherUsers'
-import githubProjectCards from './githubProjectCards'
+import causes from './cause'
 import chatStatus from './chatboxNav'
+import currentOrg from './organization'
+import githubProjectCards from './githubProjectCards'
+import messages from './chatbox'
+import noteToAdd from './addProjectCard'
+import others from './otherUsers'
 import projectSignup from './projectSignup'
 import proposal from './proposal'
-import noteToAdd from './addProjectCard'
-import currentOrg from './organization'
+import proposals from './allProposals'
 import singleProject from './project'
-import causes from './cause'
+import singleProposal from './singleProposal'
+import user from './user'
 
 const reducer = combineReducers({
-  singleProposal,
-  proposals,
-  user,
-  others,
-  messages,
+  causes,
   chatStatus,
+  currentOrg,
   githubProjectCards,
+  messages,
+  noteToAdd,
+  others,
   projectSignup,
   proposal,
-  noteToAdd,
-  currentOrg,
+  proposals,
   singleProject,
-  causes
+  singleProposal,
+  user
 })
 
 const middleware = composeWithDevTools(
