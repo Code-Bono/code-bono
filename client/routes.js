@@ -9,7 +9,7 @@ import {
   SingleProposalContainer,
   UserHome,
   Collab,
-  LandingPage,
+  LandingPageContainer,
   Home,
   OrganizationProposalContainer,
   OrganizationHomeContainer,
@@ -34,7 +34,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPageContainer} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
