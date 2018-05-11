@@ -5,11 +5,26 @@ import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import AddProjectCardContainer from './AddProjectCardContainer'
 
 export default class Project extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    const projectId = this.props.match.params.projectId
+    this.props.loadProject(projectId)
+    this.props.loadProjectCards(projectId)
+    // this.interval = setInterval(this.props.loadProjectCards(projectId), 60000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
 
   render() {
 
     const projectName = this.props.project.name
     const repoURL = this.props.project.id ? this.props.project.repo.URL : null
+    const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
       <div>
@@ -18,9 +33,9 @@ export default class Project extends Component {
           <h4><a href={repoURL} target="_blank">Go to Github repo</a></h4>
         </div>
         <AddProjectCardContainer />
-        <GitHubProjectBoardContainer />
+        <GitHubProjectBoardContainer projectId={projectId}/>
         <Vidchat2 />
-        <GithubFeed />
+        {/*<GithubFeed />*/}
       </div>
     )
   }

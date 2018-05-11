@@ -3,11 +3,12 @@ import { AddProjectCard } from './AddProjectCard'
 import { connect } from 'react-redux'
 import {addProjectCard} from '../store/addProjectCard'
 import { postProjectCard } from '../store/addProjectCard'
-import { fetchCards } from '../store/github'
+import { fetchCards } from '../store/githubProjectCards'
 
 const mapState = state => {
   return {
-    noteToAdd: state.noteToAdd
+    noteToAdd: state.noteToAdd,
+    project: state.singleProject
   }
 }
 
@@ -16,10 +17,10 @@ const mapDispatch = dispatch => {
     handleChange: function(evt) {
       dispatch(addProjectCard(evt.target.value))
     },
-    handleSubmit: function(noteToAdd, evt) {
+    handleSubmit: function(noteToAdd, projectId, toDoColumnId, evt) {
       evt.preventDefault()
-      dispatch(postProjectCard(noteToAdd))
-      dispatch(fetchCards())
+      dispatch(postProjectCard(noteToAdd, projectId, toDoColumnId))
+      dispatch(fetchCards(projectId))
     }
   }
 }
