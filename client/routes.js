@@ -13,7 +13,9 @@ import {
   Home,
   OrganizationProposalContainer,
   OrganizationHomeContainer,
-  EditOrganizationContainer
+  EditOrganizationContainer,
+  ViewOrganizationProposalsContainer,
+  EditProposalsContainer
 } from './components'
 import { me } from './store'
 import { fetchRepos } from './store/githubRepos'
@@ -60,6 +62,16 @@ class Routes extends Component {
             <Route
               path="/organization/edit"
               component={EditOrganizationContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals"
+              component={ViewOrganizationProposalsContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals/:id/edit"
+              component={EditProposalsContainer}
             />
             <Route exact path="/collab" component={Collab} />
           </Switch>

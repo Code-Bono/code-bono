@@ -22,6 +22,9 @@ export default class OrganizationHome extends Component {
             <p>Organization Phone Number: {currentOrg.phoneNumber}</p>
             <p>Organization Email: {currentOrg.email}</p>
             <Link to="/organization/make-proposal">Make a Proposal!</Link>
+            <Link to="/organization/proposals">
+              View Your Current Proposals
+            </Link>
           </div>
         ) : (
           <div>Loading...</div>

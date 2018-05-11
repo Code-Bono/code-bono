@@ -19,6 +19,16 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:id/proposals', (req, res, next) => {
+  Proposal.findAll({
+    where: {
+      organizationId: req.params.id
+    }
+  })
+    .then(proposals => res.json(proposals))
+    .catch(next)
+})
+
 router.put('/:id', (req, res, next) => {
   //finds user by id provided and returns the organization they represent
   Organization.update(req.body, {
@@ -53,15 +63,5 @@ router.post('/proposal', (req, res, next) => {
       proposal.addCauses(req.body.causes)
     })
     .then(data => res.json(data))
-    .catch(next)
-})
-
-router.get('/proposals', (req, res, next) => {
-  Proposal.findAll({
-    where: {
-      organizationId: req.body.orgId
-    }
-  })
-    .then(proposals => res.json(proposals))
     .catch(next)
 })
