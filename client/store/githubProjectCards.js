@@ -2,15 +2,16 @@ import axios from 'axios'
 
 const GET_PROJECT_CARDS = 'GET_PROJECT_CARDS'
 
-const getProjectCards = (projectCards) => {
+const getProjectCards = projectCards => {
   return {
     type: GET_PROJECT_CARDS,
     projectCards
   }
 }
 
-export const fetchCards = () => dispatch =>
-  axios.get(`/api/github/projects/columns/cards`)
+export const fetchCards = (projectId) => dispatch =>
+  axios
+    .get(`/api/projects/${projectId}/cards`)
     .then(res => res.data)
     .then(projectCards => {
       dispatch(getProjectCards(projectCards))
@@ -25,4 +26,3 @@ export default function(state = [], action) {
       return state
   }
 }
-

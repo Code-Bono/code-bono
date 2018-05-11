@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Grid, Image } from 'semantic-ui-react'
-
+import { Grid, Image, Header } from 'semantic-ui-react'
+import AddProjectCardContainer from './AddProjectCardContainer'
 import { CardNote, ProjectCard } from './utils/GitHubUtils'
 
 export default class GitHubProjectBoard extends Component {
@@ -8,31 +8,42 @@ export default class GitHubProjectBoard extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.loadProjectCards()
-    // this.interval = setInterval(this.props.loadProjectCards, 60000)
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
   render() {
     const projectCards = this.props.projectCards
+
     return (
       <div>
-        <h1>Github Project Board</h1>
-        <div className="githubContainer">
-          <Grid container columns={projectCards.length}>
-            {projectCards.length ? (
-              projectCards.map((card, i) => {
-                return <ProjectCard card={card} i={i} />
-              })
-            ) : (
-              <h3 className="loading">Loading project cards...</h3>
-            )}
-          </Grid>
+        <div>
+          <Header as='h2' icon textAlign='center'>
+            <Header.Content>
+              Github Project Board
+            </Header.Content>
+          </Header>
+          <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
         </div>
+
+        <div className="column-container">
+          {
+          projectCards.length ?
+          <Grid container columns={projectCards.length}>
+              {
+                projectCards.map((card, i) => {
+                  return (
+                    <div key={i}>
+                      <ProjectCard card={card} />
+                    </div>
+                  )
+                })
+              }
+          </Grid>
+          :  <h3 className="loading">Loading project...</h3>
+          }
+        </div>
+        <AddProjectCardContainer />
       </div>
     )
   }
 }
+
+
+

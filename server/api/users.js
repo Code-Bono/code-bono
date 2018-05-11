@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../db/models')
+const { User, Project } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -14,7 +14,13 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  User.findById(req.params.id)
+  const id = req.params.id
+  User.findOne({
+    where: { id },
+    // Don't return password!
+    attributes: ['id', 'email', 'displayName', 'bio', 'imageUrl', 'orgId'],
+    include: [{ model: Project }]
+  })
     .then(user => res.json(user))
     .catch(next)
 })

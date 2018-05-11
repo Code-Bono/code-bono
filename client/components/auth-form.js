@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 import { createOrg } from '../store/organization'
-import { Form, Button, Container } from 'semantic-ui-react'
+import { Form, Button, Container, Icon } from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -75,12 +75,19 @@ class AuthForm extends Component {
               />
             </Container>
           )}
-          <Button type="submit">{displayName}</Button>
+          <Button primary type="submit">
+            {displayName}
+          </Button>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
-        <div>
-          <a href="/auth/github">{displayName} with GitHub</a>
-        </div>
+        <span>
+          <a href="/auth/github">
+            <Button color="facebook" size="big">
+              <Icon name="github" />
+              {displayName} with GitHub
+            </Button>
+          </a>
+        </span>
       </div>
     )
   }

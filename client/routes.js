@@ -4,19 +4,21 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
-  Login,
-  Signup,
-  SingleProposalContainer,
-  UserHome,
-  Collab,
+  EditOrganizationContainer,
+  EditProposalsContainer,
+  LandingPage,
   LandingPageContainer,
-  Home,
-  OrganizationProposalContainer,
+  Login,
   OrganizationHomeContainer,
-  EditOrganizationContainer
+  OrganizationProposalContainer,
+  ProjectContainer,
+  SingleProposalContainer,
+  Signup,
+  UserHome,
+  UserProfileContainer,
+  ViewOrganizationProposalsContainer
 } from './components'
 import { me } from './store'
-import { fetchRepos } from './store/githubRepos'
 import EditOrganization from './components/EditOrganization'
 
 /**
@@ -25,7 +27,6 @@ import EditOrganization from './components/EditOrganization'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
-    // this.props.loadRepos()
   }
 
   render() {
@@ -35,6 +36,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
+        <Route exact path="/home" component={LandingPageContainer} />
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
@@ -47,21 +49,34 @@ class Routes extends Component {
           path="/organization/make-proposal"
           component={OrganizationProposalContainer}
         />
-        {/* Temporary route to a landing page for MPV */}
-        <Route exact path="/home" component={Home} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={UserProfileContainer} />
             <Route
               path="/organization/home"
               component={OrganizationHomeContainer}
+            />
+            <Route exact path="/projects" component={ProjectContainer} />
+            <Route
+              exact
+              path="/projects/:projectId"
+              component={ProjectContainer}
             />
             <Route
               path="/organization/edit"
               component={EditOrganizationContainer}
             />
-            <Route exact path="/collab" component={Collab} />
+            <Route
+              exact
+              path="/organization/proposals"
+              component={ViewOrganizationProposalsContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals/:id/edit"
+              component={EditProposalsContainer}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -86,9 +101,6 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
-    },
-    loadRepos() {
-      dispatch(fetchRepos('Code-Bono-Projects'))
     }
   }
 }

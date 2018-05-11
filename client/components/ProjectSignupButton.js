@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createProject } from '../store/projectSignup'
+import { Button } from 'semantic-ui-react'
 
-export const ProjectSignupButton = (props) => {
-
+export const ProjectSignupButton = props => {
   const { handleClick } = props
   const { userId } = props
   const proposalDetails = {
@@ -16,11 +16,15 @@ export const ProjectSignupButton = (props) => {
 
   return (
     <div>
-      {
-        userId ?
-        <button className="ui button" onClick={(evt) => handleClick(evt, proposalDetails)}><Link to={`/users/${userId}`}>Sign up for this project!</Link></button>
-        : <button className="ui button"><Link to='/login'>Log in to sign up for this project!</Link></button>
-      }
+      {userId ? (
+        <Button primary onClick={evt => handleClick(evt, proposalDetails)}>
+          Sign up for this project!
+        </Button>
+      ) : (
+        <Link to="/login">
+          <Button primary>Log in to sign up for this project!</Button>
+        </Link>
+      )}
     </div>
   )
 }
@@ -41,4 +45,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(ProjectSignupButton)
-

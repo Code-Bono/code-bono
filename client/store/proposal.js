@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const POST_PROPOSAL = 'POST_PROPOSAL'
 const GET_PROPOSALS = 'GET_PROPOSALS'
+const UPDATE_PROPOSAL = 'UPDATE_PROPOSAL'
+const GET_PROPOSAL = 'GET_PROPOSAL'
 
 const postProposal = proposal => {
   return {
@@ -17,6 +19,20 @@ const fetchProposals = proposals => {
   }
 }
 
+const updateProposal = proposal => {
+  return {
+    type: UPDATE_PROPOSAL,
+    proposal
+  }
+}
+
+const fetchSingleProposal = proposal => {
+  return {
+    type: GET_PROPOSAL,
+    proposal
+  }
+}
+
 export const postProposalToDb = (proposal, history) => dispatch =>
   axios
     .post(`/api/orgs/proposal`, proposal)
@@ -27,14 +43,40 @@ export const postProposalToDb = (proposal, history) => dispatch =>
     })
     .catch(err => console.log(err))
 
-export const getProposalsForOrg = orgId => dispatch =>
+export const getProposalsForOrg = orgId => dispatch => {
   axios
-    .get('/api/orgs/proposals', orgId)
+    .get(`/api/orgs/${orgId}/proposals/`)
     .then(res => res.data)
     .then(proposals => {
-      dispatch(GET_PROPOSALS(proposals))
+      dispatch(fetchProposals(proposals))
     })
     .catch(err => console.log(err))
+}
+
+export const getSingleProposalForOrg = proposalId => dispatch => {
+  axios
+    .get(`/api/proposals/${proposalId}`)
+    .then(res => res.data)
+    .then(proposal => {
+      dispatch(fetchSingleProposal(proposal))
+    })
+    .catch(err => console.log(err))
+}
+
+export const updateSingleProposal = (
+  proposalId,
+  proposal,
+  history
+) => dispatch => {
+  axios
+    .put(`/api/proposals/${proposalId}`, proposal)
+    .then(res => res.data)
+    .then(proposal => {
+      dispatch(updateProposal(proposal))
+      history.push(`/proposals/${proposalId}`)
+    })
+    .catch(err => console.log(err))
+}
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -42,6 +84,8 @@ export default function(state = {}, action) {
       return action.proposal
     case GET_PROPOSALS:
       return action.proposals
+    case GET_PROPOSAL:
+      return action.proposal
     default:
       return state
   }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 const CREATE_PROJECT = 'CREATE_PROJECT'
 
@@ -9,13 +10,14 @@ const projectSignup = project => {
   }
 }
 
-export const createProject = (proposalDetails) => dispatch =>
+export const createProject = proposalDetails => dispatch =>
   axios
     .post('/api/projects', proposalDetails)
     .then(res => res.data)
     .then(project => {
       dispatch(projectSignup(project))
     })
+    .then(() => history.push('/profile'))
     .catch(err => console.log(err))
 
 export default function(state = {}, action) {
@@ -26,7 +28,3 @@ export default function(state = {}, action) {
       return state
   }
 }
-
-// export const createProject = () => {
-//   console.log('yop there')
-// }

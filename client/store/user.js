@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+// const UPDATE_PROFILE = 'UPDATE_PROFILE'
 
 /**
  * INITIAL STATE
@@ -37,7 +38,7 @@ export const auth = (email, password, method) => dispatch =>
         if (res.data.orgId) {
           history.push('/organization/home')
         } else if (res.data.orgId === null) {
-          history.push('/home')
+          history.push('/profile')
         }
       },
       authError => {
@@ -46,6 +47,12 @@ export const auth = (email, password, method) => dispatch =>
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+export const fetchUser = userId => dispatch =>
+  axios
+    .get(`/api/users/${userId}`)
+    .then(res => dispatch(getUser(res.data)))
+    .catch(err => console.log(err))
 
 export const logout = () => dispatch =>
   axios
@@ -61,6 +68,17 @@ export const getUserById = id => dispatch =>
     .get(`/api/users/${id}`)
     .then(res => dispatch(getUser(res.data)))
     .catch(err => console.log(err))
+
+//Model for editing profile
+//   export const postProposalToDb = (proposal) => dispatch =>
+// axios
+//   .post(`/api/orgs/proposal`, proposal)
+//   .then(res => res.data)
+//   .then(proposal => {
+//     dispatch(postProposal(proposal))
+//     history.push('/proposals')
+//   })
+//   .catch(err => console.log(err))
 /**
  * REDUCER
  */
