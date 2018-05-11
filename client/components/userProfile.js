@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Card } from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class UserProfile extends Component {
 
   render() {
     const user = this.props.user
+    const projects = user.projects ? user.projects : []
     console.log(user)
     return (
       <div>
@@ -28,46 +29,36 @@ export default class UserProfile extends Component {
             <h3 className="loading">Loading current user...</h3>
           )}
 
-          {user.projects &&
-            user.projects.length && (
-              <Card.Group itemsPerRow={3}>
-                {proposals.map(proposal => {
-                  return (
-                    <Card key={proposal.id} className="ui card">
-                      <div className="image">
-                        <img src={proposal.image} />
+          {projects.length && (
+            <Card.Group itemsPerRow={3}>
+              {projects.map(project => {
+                return (
+                  <Card key={project.id} className="ui card">
+                    <div className="image">
+                      <img src={project.image} />
+                    </div>
+                    <div className="content">
+                      <a className="header">{project.name}</a>
+                      <div className="meta">
+                        <span className="date">
+                          Deadline: {project.deadline}
+                        </span>
                       </div>
-                      <div className="content">
-                        <a className="header">{proposal.name}</a>
-                        <div className="meta">
-                          <span className="date">
-                            Deadline: {proposal.deadline}
-                          </span>
-                        </div>
-                        <div className="description">
-                          {proposal.description}
-                        </div>
-                      </div>
-                      <div className="extra content">
-                        <button
-                          className="ui button"
-                          onClick={evt => handleClick(evt, proposal.id)}
-                        >
-                          <Link to={`/proposals/${proposal.id}`}>
-                            More info
-                          </Link>
-                        </button>
-                        <ProjectSignupButton
-                          proposalId={proposal.id}
-                          proposalName={proposal.name}
-                          proposalDescription={proposal.description}
-                        />
-                      </div>
-                    </Card>
-                  )
-                })}
-              </Card.Group>
-            )}
+                      <div className="description">{project.description}</div>
+                    </div>
+                    <div className="extra content">
+                      <button
+                        className="ui button"
+                        onClick={evt => handleClick(evt, project.id)}
+                      >
+                        <Link to={`/projects/${project.id}`}>More info</Link>
+                      </button>
+                    </div>
+                  </Card>
+                )
+              })}
+            </Card.Group>
+          )}
         </div>
       </div>
     )
