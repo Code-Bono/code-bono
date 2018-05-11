@@ -21,3 +21,6 @@ export {
 } from './OrganizationHomeContainer'
 export { default as AllProposalsContainer } from './AllProposalsContainer'
 export { default as SingleProposalContainer } from './SingleProposalContainer'
+export {
+  default as EditOrganizationContainer
+} from './EditOrganizationContainer'
