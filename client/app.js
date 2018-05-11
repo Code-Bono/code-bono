@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, ChatboxNav } from './components'
+import { Footer } from './components'
 import Routes from './routes'
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Navbar />
       <Routes />
       <ChatboxNav />
+      <Footer />
     </div>
   )
 }
