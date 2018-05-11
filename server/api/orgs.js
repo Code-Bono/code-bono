@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Organization, Proposal, User } = require('../db/models')
+const { Organization, Proposal, User, Cause } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -48,6 +48,10 @@ router.post('/', (req, res, next) => {
 
 router.post('/proposal', (req, res, next) => {
   Proposal.create(req.body)
+    .then(proposal => {
+      //sets causes sent from the request to the proposal that was just created
+      proposal.addCauses(req.body.causes)
+    })
     .then(data => res.json(data))
     .catch(next)
 })

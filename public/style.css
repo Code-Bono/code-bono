@@ -52,6 +52,10 @@ video {
   background-color: white;
 }
 
+#footer {
+  bottom: 0;
+}
+
 /* .githubContainer {
   display: flex;
   flex-direction: row;
@@ -60,3 +64,26 @@ video {
 .loading {
   padding-bottom: 200px;
 }
+
+.masthead {
+  background-color: #5b9bfa !important;
+}
+
+.ui.text.container {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+.inverted.header {
+  font-size: 3em;
+  color: rgb(48, 48, 48);
+}
+
+.header-alt {
+  color: white;
+}
+
+/* .footer {
+  position: absolute;
+  bottom: 0;
+} */
