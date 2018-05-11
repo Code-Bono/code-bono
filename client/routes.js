@@ -12,7 +12,6 @@ import {
   LandingPage,
   Collab,
   LandingPageContainer,
-  Home,
   OrganizationProposalContainer,
   UserProfileContainer,
   OrganizationHomeContainer,
@@ -50,8 +49,6 @@ class Routes extends Component {
           path="/organization/make-proposal"
           component={OrganizationProposalContainer}
         />
-        {/* Temporary route to a landing page for MPV */}
-        <Route exact path="/home" component={Home} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -61,7 +58,11 @@ class Routes extends Component {
               component={OrganizationHomeContainer}
             />
             <Route exact path="/projects" component={ProjectContainer} />
-            <Route exact path="/projects/:projectId" component={ProjectContainer} />
+            <Route
+              exact
+              path="/projects/:projectId"
+              component={ProjectContainer}
+            />
             <Route
               path="/organization/edit"
               component={EditOrganizationContainer}
