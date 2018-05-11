@@ -138,7 +138,7 @@ export default class LandingPage extends React.Component {
             <h4 className="subheading">Start hacking for good</h4>
             <p className="how-it-works-text">
               The nonprofit will send you and your team specifics for the
-              project scope via our online collaboration tool.
+              project scope via our online collaboration tool
             </p>
           </div>
           <div className="how-it-works-singular">
