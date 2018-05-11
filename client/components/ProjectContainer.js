@@ -10,15 +10,4 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    loadProject: function(projectId) {
-      dispatch(fetchSingleProject(projectId))
-    }
-  }
-}
-
-
-
-
-export default connect(mapState, mapDispatch)(Project)
+export default connect(mapState)(Project)
