@@ -9,9 +9,9 @@ const getProjectCards = projectCards => {
   }
 }
 
-export const fetchCards = () => dispatch =>
+export const fetchCards = (projectId) => dispatch =>
   axios
-    .get(`/api/github/projects/columns/cards`)
+    .get(`/api/projects/${projectId}/cards`)
     .then(res => res.data)
     .then(projectCards => {
       dispatch(getProjectCards(projectCards))

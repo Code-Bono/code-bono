@@ -9,6 +9,7 @@ export { default as LandingPage } from './LandingPage'
 export {
   default as EditOrganizationContainer
 } from './EditOrganizationContainer'
+export { default as EditProposalsContainer } from './EditProposalsContainer'
 export { default as Footer } from './footer'
 export { default as GithubFeed } from './GithubFeed'
 export { default as LandingPageContainer } from './LandingPageContainer'
@@ -26,3 +27,6 @@ export { default as UserProfile } from './userProfile'
 export { default as UserHome } from './user-home'
 export { default as UserProfileContainer } from './userProfileContainer'
 export { default as Vidchat } from './vidchat'
+export {
+  default as ViewOrganizationProposalsContainer
+} from './ViewOrganizationProposalsContainer'

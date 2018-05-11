@@ -8,16 +8,10 @@ export default class GitHubProjectBoard extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.loadProjectCards()
-    // this.interval = setInterval(this.props.loadProjectCards, 60000)
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
   render() {
+
     const projectCards = this.props.projectCards
+
     return (
       <div>
         <h1>Github Project Board</h1>
@@ -42,3 +36,6 @@ export default class GitHubProjectBoard extends Component {
     )
   }
 }
+
+
+

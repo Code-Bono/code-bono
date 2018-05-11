@@ -6,6 +6,7 @@ import causes from './cause'
 import chatStatus from './chatboxNav'
 import currentOrg from './organization'
 import githubProject from './github'
+import githubProjectCards from './githubProjectCards'
 import githubRepos from './githubRepos'
 import messages from './chatbox'
 import noteToAdd from './addProjectCard'
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   chatStatus,
   currentOrg,
   githubProject,
+  githubProjectCards,
   githubRepos,
   messages,
   noteToAdd,

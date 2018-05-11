@@ -6,6 +6,7 @@ import {
   AllProposalsContainer,
   Collab,
   EditOrganizationContainer,
+  EditProposalsContainer,
   LandingPage,
   LandingPageContainer,
   Login,
@@ -15,10 +16,10 @@ import {
   SingleProposalContainer,
   Signup,
   UserHome,
-  UserProfileContainer
+  UserProfileContainer,
+  ViewOrganizationProposalsContainer
 } from './components'
 import { me } from './store'
-import { fetchRepos } from './store/githubRepos'
 import EditOrganization from './components/EditOrganization'
 
 /**
@@ -27,7 +28,6 @@ import EditOrganization from './components/EditOrganization'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
-    // this.props.loadRepos()
   }
 
   render() {
@@ -67,6 +67,17 @@ class Routes extends Component {
               path="/organization/edit"
               component={EditOrganizationContainer}
             />
+            <Route
+              exact
+              path="/organization/proposals"
+              component={ViewOrganizationProposalsContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals/:id/edit"
+              component={EditProposalsContainer}
+            />
+            <Route exact path="/collab" component={Collab} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -91,9 +102,6 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
-    },
-    loadRepos() {
-      dispatch(fetchRepos('Code-Bono-Projects'))
     }
   }
 }
