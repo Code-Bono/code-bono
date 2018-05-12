@@ -17,7 +17,8 @@ const {
   Organization,
   Proposal,
   Cause,
-  Project
+  Project,
+  Repo
 } = require('../server/db/models')
 
 const messages = [
@@ -45,10 +46,28 @@ const messages = [
 
 const projects = [
   {
-    name: 'Feed the cats',
-    description: 'Wine cats would appreciate some wine.',
+    name: 'Give Our Kids a Home',
+    description: 'We are looking for a team to create a mobile app that matches orphans with prospective adoptive parents. The final project should support cross-platform functionality (i.e. both iOS and Android compatible). Experience with development in React Native is a major plus!',
     isActive: true,
-    proposalId: 9
+    proposalId: 1
+  },
+  {
+    name: 'Federation for Orphans Website Update',
+    description: 'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
+    isActive: true,
+    proposalId: 2
+  },
+  {
+    name: 'Volunteer Platform',
+    description: 'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers. The end project is a user-friendly way for us to review profiles and select passionate volunteers with appropriate backgrounds to help us with long-term contributions.',
+    isActive: true,
+    proposalId: 3
+  },
+  {
+    name: 'Database Management System Migration',
+    description: 'We are changing how we manage our data and are are looking for a team with experience in database transformation. We currenly use an Oracle database management system and are considering switching to SQL. We are also open to other alternatives, and are hoping to gather expertise from the team working on this project.',
+    isActive: true,
+    proposalId: 4
   },
   {
     name: 'Save the Cyborg Bamboo Forest',
@@ -56,6 +75,98 @@ const projects = [
       'Help us build a mobile app that tracks cyborg bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
     isActive: true,
     proposalId: 5
+  },
+  {
+    name: 'Cyborg Panda Maintanence Tool',
+    description: 'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs. Cyborg pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
+    isActive: true,
+    proposalId: 6
+  },
+  {
+    name: 'Firebase Integration',
+    description: 'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it. We are also open to the use of Cloud FireStore - experience with either of these technologies would be greatly appreciated.',
+    isActive: true,
+    proposalId: 7
+  },
+  {
+    name: 'Manual Data Entry',
+    description: 'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system. This will definitely be the most efficient way of completing the task.',
+    isActive: true,
+    proposalId: 8
+  },
+  {
+    name: 'Feed the cats',
+    description: 'Wine cats would appreciate some wine.',
+    isActive: true,
+    proposalId: 9
+  }
+]
+
+
+
+const repos = [
+  {
+    name: 'Give-Our-Kids-a-Home',
+    toDoColumnId: 2702966,
+    inProgressColumnId: 2702967,
+    doneColumnId: 2702968,
+    projectId: 1
+  },
+  {
+    name: 'Federation-for-Orphans-Website-Update',
+    toDoColumnId: 2702969,
+    inProgressColumnId: 2702970,
+    doneColumnId: 2702971,
+    projectId: 2
+  },
+  {
+    name: 'Volunteer-Platform',
+    toDoColumnId: 2702972,
+    inProgressColumnId: 2702973,
+    doneColumnId: 2702974,
+    projectId: 3
+  },
+  {
+    name: 'Database-Management-System-Migration',
+    toDoColumnId: 2702975,
+    inProgressColumnId: 2702976,
+    doneColumnId: 2702977,
+    projectId: 4
+  },
+  {
+    name: 'Save-the-Cyborg-Bamboo-Forest',
+    toDoColumnId: 2702978,
+    inProgressColumnId: 2702979,
+    doneColumnId: 2702980,
+    projectId: 5
+  },
+  {
+    name: 'Cyborg-Panda-Maintanence-Tool',
+    toDoColumnId: 2702981,
+    inProgressColumnId: 2702982,
+    doneColumnId: 2702983,
+    projectId: 6
+  },
+  {
+    name: 'Firebase-Integration',
+    toDoColumnId: 2702986,
+    inProgressColumnId: 2702987,
+    doneColumnId: 2702988,
+    projectId: 7
+  },
+  {
+    name: 'Manual-Data-Entry',
+    toDoColumnId: 2702989,
+    inProgressColumnId: 2702990,
+    doneColumnId: 2702991,
+    projectId: 8
+  },
+  {
+    name: 'Feed-the-cats',
+    toDoColumnId: 2702992,
+    inProgressColumnId: 2702993,
+    doneColumnId: 2702994,
+    projectId: 9
   }
 ]
 
@@ -190,6 +301,7 @@ const seed = async () => {
   await Cause.bulkCreate(causes)
   await Project.bulkCreate(projects)
   await Message.bulkCreate(messages)
+  await Repo.bulkCreate(repos)
 }
 
 const main = () => {
@@ -205,6 +317,7 @@ const main = () => {
       console.log(`seeded ${causes.length} causes`)
       console.log(`seeded ${messages.length} messages`)
       console.log(`seeded ${projects.length} projects`)
+      console.log(`seeded ${repos.length} repos`)
       console.log(`seeded successfully`)
       return seed()
     })
