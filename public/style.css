@@ -124,6 +124,11 @@ video {
   color: #303030;
 }
 
+.grey-text {
+    color: #303030;
+
+}
+
 /* .footer {
   position: absolute;
   bottom: 0;
@@ -142,3 +147,4 @@ video {
   width: 80%;
   text-align: center;
 }
+
