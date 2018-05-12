@@ -15,6 +15,19 @@ nav a {
   margin: 1em;
 }
 
+#left-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-flex-item {
+  margin: auto
+}
+
+.nav-buttons {
+  padding-top: 1em;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -50,10 +63,6 @@ video {
   border-width: 1px;
   border-radius: 7px 0px 0px 0px;
   background-color: white;
-}
-
-#footer {
-  bottom: 0;
 }
 
 /* .githubContainer {
@@ -124,10 +133,20 @@ video {
   color: #303030;
 }
 
-/* .footer {
+.grey-text {
+    color: #303030;
+
+}
+
+.logo {
+  height: 60px;
+  padding-right: 1em;
+}
+
+#footer {
   position: absolute;
   bottom: 0;
-} */
+}
 
 .project-card {
   border-bottom: 1px solid black;
@@ -146,3 +165,4 @@ video {
 /*.project-board-container {
   margin-left: 10%;
 }*/
+
