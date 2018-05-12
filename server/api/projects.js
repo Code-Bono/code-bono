@@ -68,21 +68,24 @@ router.get('/:projectId/cards', (req, res, next) => {
     const cards = [
       {
         columnName: 'To Do',
-        notes: []
+        cards: []
       },
       {
         columnName: 'In Progress',
-        notes: []
+        cards: []
       },
       {
         columnName: 'Done',
-        notes: []
+        cards: []
       }
     ]
 
     for (let i = 0; i < columns.length; i++) {
       columns[i].data.forEach(card => {
-        cards[i].notes.push(card.note)
+        cards[i].cards.push({
+          note: card.note,
+          cardId: card.id
+          })
       })
     }
     res.send(cards)

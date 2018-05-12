@@ -12,22 +12,22 @@ export default class GitHubProjectBoard extends Component {
   render() {
 
     const projectCards = this.props.projectCards
-    console.log('PROPS?', this.props)
+    console.log('new projectCards!', projectCards)
 
-
-    const allNotes = projectCards.length ? projectCards.map((card, i) => {
-      const columnNotes = card.notes.map((note, i) => {
+    // data structure required by react-trello module
+    const allNotes = projectCards.length ? projectCards.map((column, i) => {
+      const columnNotes = column.cards.map((card, i) => {
         return (
           {
             id: `Card${i+1}`,
-            description: note
+            description: card.note
           }
         )
       })
       return (
         {
           id: `lane${i+1}`,
-          title: card.columnName,
+          title: column.columnName,
           cards: columnNotes
         }
       )
@@ -37,11 +37,10 @@ export default class GitHubProjectBoard extends Component {
       lanes: allNotes
     }
 
+    //using react-trello's "onCardAdd" attribute to dispatch thunk to update github
     const handleSubmit = this.props.handleSubmit
     const projectId = this.props.project.id
     const project = this.props.project
-
-
     function onCardAdd(card, laneId) {
       let columnId;
       if(laneId === 'lane1') columnId = project.repo.toDoColumnId
@@ -50,6 +49,8 @@ export default class GitHubProjectBoard extends Component {
 
       handleSubmit(card, projectId, columnId)
     }
+
+
 
 
     return (
@@ -61,7 +62,7 @@ export default class GitHubProjectBoard extends Component {
             editable={true}
             hideCardDeleteIcon={true}
             onCardAdd={onCardAdd}
-            style={{backgroundColor: 'white'}}
+            style={{backgroundColor: 'black'}}
             />
           : null
         }
