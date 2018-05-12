@@ -93,7 +93,7 @@ export default class Chatbox extends Component {
               placeholder="Type here"
               focus
             />
-            <FormButton inverted color="red" type="submit">
+            <FormButton inverted color="blue" type="submit">
               Send Message
             </FormButton>
           </Form>

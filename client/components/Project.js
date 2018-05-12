@@ -20,7 +20,6 @@ export default class Project extends Component {
   }
 
   render() {
-
     const projectName = this.props.project.name
     const repoURL = this.props.project.id ? this.props.project.repo.URL : null
     const projectId = this.props.project.id ? this.props.project.id : null
@@ -29,11 +28,15 @@ export default class Project extends Component {
       <div>
         <div>
           <h2>{projectName}</h2>
-          <h4><a href={repoURL} target="_blank">Go to Github repo</a></h4>
+          <h4>
+            <a href={repoURL} target="_blank">
+              Go to Github repo
+            </a>
+          </h4>
         </div>
         <Vidchat2 />
-        <GitHubProjectBoardContainer projectId={projectId}/>
-        {/*<GithubFeed />*/}
+        <GitHubProjectBoardContainer projectId={projectId} />
+        {/* <GithubFeed /> */}
       </div>
     )
   }

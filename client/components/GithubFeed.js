@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import socket from '../socket'
+import { Feed } from 'semantic-ui-react'
 
 export default class GithubFeed extends Component {
   constructor(props) {
@@ -14,14 +16,24 @@ export default class GithubFeed extends Component {
   componentDidMount() {
     //Gets 'repository events' (which turn out to be not that useful)
     //Triggered when a repository is created, archived, unarchived, made public, or made private
-    axios
-      .get(
-        `/api/github/repos/${this.state.owner}/${this.state.repo}/issues/events`
-      )
-      .then(res => res.data)
-      .then(events => {
-        this.setState({ events: events.data })
-      })
+    // axios
+    //   .get(
+    //     `/api/github/repos/${this.state.owner}/${this.state.repo}/issues/events`
+    //   )
+    //   .then(res => res.data)
+    //   .then(events => {
+    //     this.setState({ events: events.data })
+    //   })
+    this.props.loadFeed()
+    socket.on('updateFeed', event => {
+      this.addToFeed(event)
+    })
+  }
+
+  addToFeed(event) {
+    let box = document.getElementById('textbox')
+    let p = document.createElement('p')
+    p.textContent = event
   }
 
   render() {

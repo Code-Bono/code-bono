@@ -12,5 +12,8 @@ module.exports = io => {
       console.log('data here!!!', data)
       socket.broadcast.emit('message', data)
     })
+    socket.on('githubEvent', function(event) {
+      socket.broadcast.emit('githubEvent', event)
+    })
   })
 }
