@@ -21,7 +21,8 @@ export default class GitHubProjectBoard extends Component {
         return (
           {
             id: card.cardId.toString(),
-            description: card.note
+            description: card.note,
+            cardStyle: { borderRadius: 6, marginBottom: 10 }
           }
         )
       })
@@ -53,18 +54,28 @@ export default class GitHubProjectBoard extends Component {
 
     return (
       <div>
-        {
-          projectCards.length ?
-          <Board data={data}
-            draggable={true}
-            editable={true}
-            hideCardDeleteIcon={true}
-            handleDragEnd={handleDragEnd}
-            onCardAdd={onCardAdd}
-            style={{backgroundColor: 'black'}}
-            />
-          : null
-        }
+        <div>
+          <Header as='h2' icon textAlign='center'>
+            <Header.Content>
+              Github Project Board
+            </Header.Content>
+          </Header>
+          <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
+        </div>
+          <div className="project-board-container">
+          {
+            projectCards.length ?
+            <Board data={data}
+              draggable={true}
+              editable={true}
+              hideCardDeleteIcon={true}
+              handleDragEnd={handleDragEnd}
+              onCardAdd={onCardAdd}
+              style={{backgroundColor: '#e7f0ff', marginLeft: '30px', marginRight: '30px'}}
+              />
+            : null
+          }
+          </div>
       </div>
     )
   }
