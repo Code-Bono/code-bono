@@ -26,10 +26,13 @@ export default class AllProposals extends Component {
                     <img src={proposal.image} />
                   </div>
                   <div className="content">
-                    <a className="header">{proposal.name}</a>
+                    <Link to={`/proposals/${proposal.id}`}>
+                      <a className="header">{proposal.name}</a>
+                    </Link>
                     <a className="ui sub header">
                       {proposal.organization.name}
                     </a>
+
                     <div className="description">{proposal.snippet}</div>
                     <br />
                     <div className="meta">

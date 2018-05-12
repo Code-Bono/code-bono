@@ -184,6 +184,20 @@ const causes = [
   { name: 'Arts' },
   { name: 'Counselling' },
   { name: 'Conservation' }
+  { name: 'Climate Change' }
+  { name: 'Human Rights' }
+  { name: 'Equality' }
+  { name: 'Animal Welfare' }
+  { name: 'Criminal Justice' }
+  { name: 'Youth Issues' }
+  { name: 'Resource Preservation' }
+  { name: 'Water' }
+  { name: 'Diversity' }
+  { name: 'Equal Access' }
+  { name: 'Microfinance' }
+  { name: 'Early Childhood Development' }
+  { name: 'Disaster Relief' }
+  { name: 'Conflict Resolution' }
 ]
 
 const organizations = [
