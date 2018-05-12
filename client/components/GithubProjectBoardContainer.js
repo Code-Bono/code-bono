@@ -17,9 +17,7 @@ const mapDispatch = dispatch => {
       dispatch(fetchCards(projectId))
     },
     handleSubmit: function(noteToAdd, projectId, columnId) {
-      console.log('ALLTHE INFO', noteToAdd, projectId, columnId)
       dispatch(postProjectCard(noteToAdd, projectId, columnId))
-
     }
   }
 }
