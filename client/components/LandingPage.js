@@ -47,7 +47,7 @@ export default class LandingPage extends React.Component {
         </h2>
         <Container>
           <p className="text-center" style={{ color: '#303030' }}>
-            Browse through proposals for technical projects for see which
+            Browse through proposals for technical projects to see which
             organizations need your skills
           </p>
           <br />
