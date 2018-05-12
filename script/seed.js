@@ -47,25 +47,29 @@ const messages = [
 const projects = [
   {
     name: 'Give Our Kids a Home',
-    description: 'We are looking for a team to create a mobile app that matches orphans with prospective adoptive parents. The final project should support cross-platform functionality (i.e. both iOS and Android compatible). Experience with development in React Native is a major plus!',
+    description:
+      'We are looking for a team to create a mobile app that matches orphans with prospective adoptive parents. The final project should support cross-platform functionality (i.e. both iOS and Android compatible). Experience with development in React Native is a major plus!',
     isActive: true,
     proposalId: 1
   },
   {
     name: 'Federation for Orphans Website Update',
-    description: 'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
+    description:
+      'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
     isActive: true,
     proposalId: 2
   },
   {
     name: 'Volunteer Platform',
-    description: 'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers. The end project is a user-friendly way for us to review profiles and select passionate volunteers with appropriate backgrounds to help us with long-term contributions.',
+    description:
+      'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers. The end project is a user-friendly way for us to review profiles and select passionate volunteers with appropriate backgrounds to help us with long-term contributions.',
     isActive: true,
     proposalId: 3
   },
   {
     name: 'Database Management System Migration',
-    description: 'We are changing how we manage our data and are are looking for a team with experience in database transformation. We currenly use an Oracle database management system and are considering switching to SQL. We are also open to other alternatives, and are hoping to gather expertise from the team working on this project.',
+    description:
+      'We are changing how we manage our data and are are looking for a team with experience in database transformation. We currenly use an Oracle database management system and are considering switching to SQL. We are also open to other alternatives, and are hoping to gather expertise from the team working on this project.',
     isActive: true,
     proposalId: 4
   },
@@ -78,19 +82,22 @@ const projects = [
   },
   {
     name: 'Cyborg Panda Maintanence Tool',
-    description: 'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs. Cyborg pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
+    description:
+      'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs. Cyborg pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
     isActive: true,
     proposalId: 6
   },
   {
     name: 'Firebase Integration',
-    description: 'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it. We are also open to the use of Cloud FireStore - experience with either of these technologies would be greatly appreciated.',
+    description:
+      'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it. We are also open to the use of Cloud FireStore - experience with either of these technologies would be greatly appreciated.',
     isActive: true,
     proposalId: 7
   },
   {
     name: 'Manual Data Entry',
-    description: 'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system. This will definitely be the most efficient way of completing the task.',
+    description:
+      'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system. This will definitely be the most efficient way of completing the task.',
     isActive: true,
     proposalId: 8
   },
@@ -101,8 +108,6 @@ const projects = [
     proposalId: 9
   }
 ]
-
-
 
 const repos = [
   {
@@ -183,20 +188,20 @@ const causes = [
   { name: 'Mentoring' },
   { name: 'Arts' },
   { name: 'Counselling' },
-  { name: 'Conservation' }
-  { name: 'Climate Change' }
-  { name: 'Human Rights' }
-  { name: 'Equality' }
-  { name: 'Animal Welfare' }
-  { name: 'Criminal Justice' }
-  { name: 'Youth Issues' }
-  { name: 'Resource Preservation' }
-  { name: 'Water' }
-  { name: 'Diversity' }
-  { name: 'Equal Access' }
-  { name: 'Microfinance' }
-  { name: 'Early Childhood Development' }
-  { name: 'Disaster Relief' }
+  { name: 'Conservation' },
+  { name: 'Climate Change' },
+  { name: 'Human Rights' },
+  { name: 'Equality' },
+  { name: 'Animal Welfare' },
+  { name: 'Criminal Justice' },
+  { name: 'Youth Issues' },
+  { name: 'Resource Preservation' },
+  { name: 'Water' },
+  { name: 'Diversity' },
+  { name: 'Equal Access' },
+  { name: 'Microfinance' },
+  { name: 'Early Childhood Development' },
+  { name: 'Disaster Relief' },
   { name: 'Conflict Resolution' }
 ]
 
