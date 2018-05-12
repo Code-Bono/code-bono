@@ -135,10 +135,10 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
-router.post('/:projectId/projectBoardColumn/:toDoColumnId/add', (req, res, next) => {
-
-  const column_id = req.params.toDoColumnId
-  const note = req.body.note
+router.post('/:projectId/projectBoardColumn/:columnId/add', (req, res, next) => {
+  console.log('ANY DATA?', req.body)
+  const column_id = req.params.columnId
+  const note = `${req.body.note.title} - ${req.body.note.description}`
 
   octokit.projects.createProjectCard({
     headers,
