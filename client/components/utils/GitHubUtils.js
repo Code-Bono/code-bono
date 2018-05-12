@@ -54,3 +54,6 @@ export const ProjectCard = ({ card }) => {
     </Grid.Column>
   )
 }
+
+
+
