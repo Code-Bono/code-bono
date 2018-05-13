@@ -11,5 +11,8 @@ module.exports = io => {
     socket.on('message', function(data) {
       socket.broadcast.emit('message', data)
     })
+    socket.on('updateChannelName', function(channelObj) {
+      socket.broadcast.emit('sendChannelName', channelObj)
+    })
   })
 }
