@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { createToken, githubRepoAndProjectBoardCreation } = require('./utils')
 const octokit = require('@octokit/rest')()
-const { Project, Collaboration, Repo } = require('../db/models')
+const { Project, Collaboration, Repo, Chatroom } = require('../db/models')
 module.exports = router
 
 let headers
@@ -144,6 +144,9 @@ router.post('/', (req, res, next) => {
     .spread((project, created) => {
       if (created) {
         project.setRepo(repoId)
+        Chatroom.findOrCreate({
+          where: { name: project.name, projectId: project.id }
+        })
       }
       return project.addUsers(userId)
     })
