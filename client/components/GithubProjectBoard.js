@@ -29,7 +29,7 @@ export default class GitHubProjectBoard extends Component {
             }
           })
           return {
-            id: column.columnId,
+            id: column.columnId.toString(),
             title: column.columnName,
             cards: columnNotes
           }
@@ -59,35 +59,29 @@ export default class GitHubProjectBoard extends Component {
 
     return (
       <div>
-        <Container>
-          <div>
-            <Header as="h2" icon textAlign="center">
-              <Header.Content>Github Project Board</Header.Content>
-            </Header>
-            <Image
-              centered
-              size="mini"
-              src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
+        <div className="projectBoard-header">
+          <Header as="h2" icon textAlign="center">
+            <Header.Content>Github Project Board</Header.Content>
+          </Header>
+          <Image
+            centered
+            size="mini"
+            src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
+          />
+        </div>
+        <div className="project-board-container">
+          {projectCards.length ? (
+            <Board
+              data={data}
+              draggable={true}
+              editable={true}
+              hideCardDeleteIcon={true}
+              handleDragEnd={handleDragEnd}
+              onCardAdd={onCardAdd}
+              style={{ backgroundColor: '#e7f0ff' }}
             />
-          </div>
-          <div className="project-board-container">
-            {projectCards.length ? (
-              <Board
-                data={data}
-                draggable={true}
-                editable={true}
-                hideCardDeleteIcon={true}
-                handleDragEnd={handleDragEnd}
-                onCardAdd={onCardAdd}
-                style={{
-                  backgroundColor: '#e7f0ff',
-                  marginLeft: '30px',
-                  marginRight: '30px'
-                }}
-              />
-            ) : null}
-          </div>
-        </Container>
+          ) : null}
+        </div>
       </div>
     )
   }
