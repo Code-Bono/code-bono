@@ -53,34 +53,32 @@ class Routes extends Component {
         />
         {isLoggedIn && (
           <Switch>
-            <Container>
-              {/* Routes placed here are only available after logging in */}
-              <Route path="/profile" component={UserProfileContainer} />
-              <Route
-                path="/organization/home"
-                component={OrganizationHomeContainer}
-              />
-              <Route exact path="/projects" component={ProjectContainer} />
-              <Route
-                exact
-                path="/projects/:projectId"
-                component={ProjectContainer}
-              />
-              <Route
-                path="/organization/edit"
-                component={EditOrganizationContainer}
-              />
-              <Route
-                exact
-                path="/organization/proposals"
-                component={ViewOrganizationProposalsContainer}
-              />
-              <Route
-                exact
-                path="/organization/proposals/:id/edit"
-                component={EditProposalsContainer}
-              />
-            </Container>
+            {/* Routes placed here are only available after logging in */}
+            <Route path="/profile" component={UserProfileContainer} />
+            <Route
+              path="/organization/home"
+              component={OrganizationHomeContainer}
+            />
+            <Route exact path="/projects" component={ProjectContainer} />
+            <Route
+              exact
+              path="/projects/:projectId"
+              component={ProjectContainer}
+            />
+            <Route
+              path="/organization/edit"
+              component={EditOrganizationContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals"
+              component={ViewOrganizationProposalsContainer}
+            />
+            <Route
+              exact
+              path="/organization/proposals/:id/edit"
+              component={EditProposalsContainer}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

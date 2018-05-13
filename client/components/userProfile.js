@@ -14,7 +14,6 @@ export default class UserProfile extends Component {
   render() {
     const user = this.props.user
     const projects = user.projects ? user.projects : []
-    console.log('WTF???')
     return (
       <div>
         <h1>Your Profile!</h1>
@@ -29,7 +28,7 @@ export default class UserProfile extends Component {
           )}
           <h2>Your current projects</h2>
 
-          {/* {projects.length ? (
+          {projects.length ? (
             <Item.Group>
               {projects.map(project => {
                 return (
@@ -63,7 +62,7 @@ export default class UserProfile extends Component {
                 </Button>
               </Link>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     )
