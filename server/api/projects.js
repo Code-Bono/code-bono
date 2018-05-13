@@ -100,53 +100,6 @@ router.get('/:projectId/cards', (req, res, next) => {
       }
       res.send(cards)
     })
-    .then(project => {
-      const toDoColumnId = project.dataValues.repo.dataValues.toDoColumnId
-      const inProgressColumnId =
-        project.dataValues.repo.dataValues.inProgressColumnId
-      const doneColumnId = project.dataValues.repo.dataValues.doneColumnId
-      const toDoProjectCards = octokit.projects.getProjectCards({
-        headers,
-        column_id: toDoColumnId
-      })
-      const inProgressProjectCards = octokit.projects.getProjectCards({
-        headers,
-        column_id: inProgressColumnId
-      })
-      const doneProjectCards = octokit.projects.getProjectCards({
-        headers,
-        column_id: doneColumnId
-      })
-      return Promise.all([
-        toDoProjectCards,
-        inProgressProjectCards,
-        doneProjectCards
-      ])
-    })
-    .then(projectColumnCards => {
-      const columns = [...projectColumnCards]
-      const cards = [
-        {
-          columnName: 'To Do',
-          notes: []
-        },
-        {
-          columnName: 'In Progress',
-          notes: []
-        },
-        {
-          columnName: 'Done',
-          notes: []
-        }
-      ]
-
-      for (let i = 0; i < columns.length; i++) {
-        columns[i].data.forEach(card => {
-          cards[i].notes.push(card.note)
-        })
-      }
-      res.send(cards)
-    })
     .catch(next)
 })
 
