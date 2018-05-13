@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'semantic-ui-react'
 import socket from '../socket'
 
 export default class Vidchat2 extends Component {
@@ -110,8 +111,8 @@ export default class Vidchat2 extends Component {
 
   render() {
     return (
-      <div>
-        <button id="setup-new-room">Setup New Conference</button>
+      <div className="video-conference-container">
+        <Button id="setup-new-room">Setup New Video Conference</Button>
         <table id="rooms-list" />
         <div id="videos-container" />
       </div>

@@ -94,11 +94,6 @@ video {
   background-color: white;
 }
 
-/* .githubContainer {
-  display: flex;
-  flex-direction: row;
-} */
-
 .loading {
   padding-bottom: 200px;
 }
@@ -128,7 +123,7 @@ video {
 .text-left {
   text-align: left;
   padding-left: 1em;
-  color: #c0c4c9";
+  color: #c0c4c9;
 }
 
 .how-it-works-container {
@@ -200,6 +195,17 @@ video {
   text-align: center;
 }
 
+.projectBoard-headers-container {
+  background-color: grey;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.project-title {
+  padding-top: 2%;
+  font-size: 46px;
+}
+
 .project-board-container {
   margin-top: 1%;
   display: flex;
@@ -207,18 +213,24 @@ video {
 }
 
 .projectBoard-header {
-  margin-top: 2%;
+  padding-top: 1%;
+  margin-top: 1%;
 }
 
-.project-title {
-  padding-top: 1%;
-  font-size: 26px;
+.image-container {
+  display: flex;
+  justify-content: center;
 }
 
 .project-subtitle {
   padding: 1%;
+  padding-bottom: 3%;
   letter-spacing: 1px;
-  background-color: grey;
+  font size: 16px;
+}
+
+.github-link {
+  position: absolute;
 }
 
 .open-chat {
@@ -249,4 +261,16 @@ video {
   overflow: auto;
   height: 180px;
   padding: 5px 0 0 0;
+}
+
+.video-conference-container {
+  margin-top: 2rem;
+  margin-left: 4rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#setup-new-room {
+  flex-grow: .1;
+  align-self: auto;
 }
