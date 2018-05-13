@@ -14,21 +14,31 @@ export default class GitHubProjectBoard extends Component {
     const { projectCards, project, handleSubmit, handleColumnChange } = this.props
     const projectId = project.id
 
+    // console.log('projectCards', projectCards)
+    // console.log('project', project)
+
     // data structure required by react-trello module
     const projectBoard = projectCards.length ? projectCards.map((column, i) => {
-
-      const columnNotes = column.cards.map((card) => {
-        return (
-          {
-            id: card.cardId.toString(),
-            description: card.note,
-            cardStyle: { borderRadius: 6, marginBottom: 10 }
-          }
-        )
-      })
+      let columnNotes
+      if(column.cards.length) {
+        columnNotes = column.cards.map((card) => {
+          return (
+            {
+              id: card.cardId.toString(),
+              description: card.note,
+              cardStyle: { borderRadius: 6, marginBottom: 10 }
+            }
+          )
+        })
+      }
+      // if(!columnNotes.length)  columnNotes = [            {
+      //         id: '1',
+      //         description: 'helllo',
+      //         cardStyle: { borderRadius: 6, marginBottom: 10 }
+      //       }]
       return (
         {
-          id: column.columnId,
+          id: column.columnId.toString(),
           title: column.columnName,
           cards: columnNotes
         }

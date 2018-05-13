@@ -32,6 +32,9 @@ router.get('/:projectId', (req, res, next) => {
 
 router.get('/:projectId/cards', (req, res, next) => {
   const projectId = req.params.projectId
+  let toDoColumnId
+  let inProgressColumnId
+  let doneColumnId
 
   Project.findOne({
     where: {
@@ -42,9 +45,9 @@ router.get('/:projectId/cards', (req, res, next) => {
     }]
   })
   .then(project => {
-    const toDoColumnId = project.dataValues.repo.dataValues.toDoColumnId
-    const inProgressColumnId = project.dataValues.repo.dataValues.inProgressColumnId
-    const doneColumnId = project.dataValues.repo.dataValues.doneColumnId
+    toDoColumnId = project.dataValues.repo.dataValues.toDoColumnId
+    inProgressColumnId = project.dataValues.repo.dataValues.inProgressColumnId
+    doneColumnId = project.dataValues.repo.dataValues.doneColumnId
     const toDoProjectCards = octokit.projects.getProjectCards({
       headers,
       column_id: toDoColumnId
@@ -84,10 +87,10 @@ router.get('/:projectId/cards', (req, res, next) => {
     ]
 
     for (let i = 0; i < columns.length; i++) {
-    let columnId;
+      if(i === 0) cards[i].columnId = toDoColumnId
+      else if(i === 1) cards[i].columnId = inProgressColumnId
+      else if(i === 2) cards[i].columnId = doneColumnId
       columns[i].data.forEach(card => {
-        columnId = card.column_url.split('/').pop()
-        cards[i].columnId = columnId
         cards[i].cards.push({
           note: card.note,
           cardId: card.id,
