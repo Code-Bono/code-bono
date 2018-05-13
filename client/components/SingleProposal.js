@@ -21,7 +21,7 @@ export default class SingleProposal extends Component {
             <h1 className="blue-text">
               {singleProposal.organization.name.toUpperCase()}
             </h1>
-            <h2 className="grey-text">Proposal: {singleProposal.name}</h2>
+            <h2 className="grey-text">{singleProposal.name}</h2>
             <img className="singlePageImg" src={singleProposal.image} />
             <div id="single-proposal-body">
               <h2 className="blue-text">Proposal description</h2>
