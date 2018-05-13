@@ -38,21 +38,19 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
-        <Container>
-          <Route exact path="/home" component={LandingPageContainer} />
-          <Route exact path="/proposals" component={AllProposalsContainer} />
-          <Route
-            exact
-            path="/proposals/:proposalId"
-            component={SingleProposalContainer}
-          />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route
-            path="/organization/make-proposal"
-            component={OrganizationProposalContainer}
-          />
-        </Container>
+        <Route exact path="/home" component={LandingPageContainer} />
+        <Route exact path="/proposals" component={AllProposalsContainer} />
+        <Route
+          exact
+          path="/proposals/:proposalId"
+          component={SingleProposalContainer}
+        />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route
+          path="/organization/make-proposal"
+          component={OrganizationProposalContainer}
+        />
         {isLoggedIn && (
           <Switch>
             <Container>
@@ -86,9 +84,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Container>
-          <Route component={Login} />
-        </Container>
+        <Route component={Login} />
       </Switch>
     )
   }
