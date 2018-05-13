@@ -3,13 +3,32 @@ const db = require('../db')
 
 const Event = db.define('event', {
   type: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  action: {
+    type: Sequelize.STRING
+  },
+  title: {
     type: Sequelize.STRING
   },
   description: {
     type: Sequelize.STRING
   },
-  sender: {
-    type: Sequelize.STRING
+  url: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  githubUser: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  merged: {
+    type: Sequelize.BOOLEAN
+  },
+  repoId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 })
 
