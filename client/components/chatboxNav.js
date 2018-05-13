@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ChatboxContainer from './chatboxContainer'
 import { openChat, hideChat } from '../store/chatboxNav'
 import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 
 class ChatboxNavbar extends Component {
   constructor(props) {
@@ -23,24 +23,31 @@ class ChatboxNavbar extends Component {
   render() {
     const { isLoggedIn, chatStatus } = this.props
     return (
-      <nav id="ChatboxNavbar">
+      <Container id="ChatboxNavbar">
         {isLoggedIn && (
           <div>
             {chatStatus ? (
               <div>
-                <Button secondary onClick={this.handleClick}>
-                  Hide Chat
-                </Button>
+                <div className="open-nav">
+                  <Button
+                    fluid
+                    size="mini"
+                    secondary
+                    onClick={this.handleClick}
+                  >
+                    Hide Chat
+                  </Button>
+                </div>
                 <ChatboxContainer />
               </div>
             ) : (
-              <Button primary onClick={this.handleClick}>
+              <Button fluid size="mini" primary onClick={this.handleClick}>
                 Open Chat
               </Button>
             )}
           </div>
         )}
-      </nav>
+      </Container>
     )
   }
 }

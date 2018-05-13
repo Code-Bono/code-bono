@@ -31,6 +31,7 @@ Message.belongsTo(Chatroom)
 Message.belongsTo(User)
 
 Chatroom.belongsTo(Project)
+Project.hasOne(Chatroom)
 
 User.belongsTo(Organization, { as: 'org' })
 
