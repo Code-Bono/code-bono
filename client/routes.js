@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
@@ -31,6 +32,7 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props
+    console.log('Props: ', this.props)
 
     return (
       <Switch>

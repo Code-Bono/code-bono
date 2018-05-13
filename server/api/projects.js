@@ -72,6 +72,62 @@ router.get('/:projectId/cards', (req, res, next) => {
       const cards = [
         {
           columnName: 'To Do',
+          columnId: null,
+          cards: []
+        },
+        {
+          columnName: 'In Progress',
+          columnId: null,
+          cards: []
+        },
+        {
+          columnName: 'Done',
+          columnId: null,
+          cards: []
+        }
+      ]
+
+      for (let i = 0; i < columns.length; i++) {
+        let columnId
+        columns[i].data.forEach(card => {
+          columnId = card.column_url.split('/').pop()
+          cards[i].columnId = columnId
+          cards[i].cards.push({
+            note: card.note,
+            cardId: card.id
+          })
+        })
+      }
+      res.send(cards)
+    })
+    .then(project => {
+      const toDoColumnId = project.dataValues.repo.dataValues.toDoColumnId
+      const inProgressColumnId =
+        project.dataValues.repo.dataValues.inProgressColumnId
+      const doneColumnId = project.dataValues.repo.dataValues.doneColumnId
+      const toDoProjectCards = octokit.projects.getProjectCards({
+        headers,
+        column_id: toDoColumnId
+      })
+      const inProgressProjectCards = octokit.projects.getProjectCards({
+        headers,
+        column_id: inProgressColumnId
+      })
+      const doneProjectCards = octokit.projects.getProjectCards({
+        headers,
+        column_id: doneColumnId
+      })
+      return Promise.all([
+        toDoProjectCards,
+        inProgressProjectCards,
+        doneProjectCards
+      ])
+    })
+    .then(projectColumnCards => {
+      const columns = [...projectColumnCards]
+      const cards = [
+        {
+          columnName: 'To Do',
           notes: []
         },
         {
@@ -147,10 +203,10 @@ router.post('/', (req, res, next) => {
 })
 
 router.post(
-  '/:projectId/projectBoardColumn/:toDoColumnId/add',
+  '/:projectId/projectBoardColumn/:columnId/add',
   (req, res, next) => {
-    const column_id = req.params.toDoColumnId
-    const note = req.body.note
+    const column_id = req.params.columnId
+    const note = `${req.body.note.title} - ${req.body.note.description}`
 
     octokit.projects
       .createProjectCard({
@@ -164,3 +220,19 @@ router.post(
       .catch(next)
   }
 )
+
+router.post('/:projectId/cards/move', (req, res, next) => {
+  const id = req.body.cardId
+  const column_id = +req.body.targetColumn
+  octokit.projects
+    .moveProjectCard({
+      headers,
+      id,
+      position: 'top',
+      column_id
+    })
+    .then(() => {
+      res.sendStatus(201)
+    })
+    .catch(next)
+})
