@@ -14,14 +14,9 @@ export default class GitHubProjectBoard extends Component {
     const { projectCards, project, handleSubmit, handleColumnChange } = this.props
     const projectId = project.id
 
-    // console.log('projectCards', projectCards)
-    // console.log('project', project)
-
     // data structure required by react-trello module
     const projectBoard = projectCards.length ? projectCards.map((column, i) => {
-      let columnNotes
-      if(column.cards.length) {
-        columnNotes = column.cards.map((card) => {
+        const columnNotes = column.cards.map((card) => {
           return (
             {
               id: card.cardId.toString(),
@@ -30,12 +25,6 @@ export default class GitHubProjectBoard extends Component {
             }
           )
         })
-      }
-      // if(!columnNotes.length)  columnNotes = [            {
-      //         id: '1',
-      //         description: 'helllo',
-      //         cardStyle: { borderRadius: 6, marginBottom: 10 }
-      //       }]
       return (
         {
           id: column.columnId.toString(),
@@ -64,10 +53,10 @@ export default class GitHubProjectBoard extends Component {
 
     return (
       <div>
-        <div>
+        <div className='projectBoard-header'>
           <Header as='h2' icon textAlign='center'>
             <Header.Content>
-              Github Project Board
+                Github Project Board
             </Header.Content>
           </Header>
           <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
@@ -81,7 +70,7 @@ export default class GitHubProjectBoard extends Component {
               hideCardDeleteIcon={true}
               handleDragEnd={handleDragEnd}
               onCardAdd={onCardAdd}
-              style={{backgroundColor: '#e7f0ff', marginLeft: '30px', marginRight: '30px'}}
+              style={{backgroundColor: '#e7f0ff'}}
               />
             : null
           }
@@ -90,6 +79,3 @@ export default class GitHubProjectBoard extends Component {
     )
   }
 }
-
-
-
