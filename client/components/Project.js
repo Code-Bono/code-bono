@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Vidchat2 from './vidchat2'
 import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
+import { Container } from 'semantic-ui-react'
 
 export default class Project extends Component {
   constructor(props) {
@@ -20,21 +21,24 @@ export default class Project extends Component {
   }
 
   render() {
-
     const projectName = this.props.project.name
     const repoURL = this.props.project.id ? this.props.project.repo.URL : null
     const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
-      <div>
+      <Container>
         <div>
           <h2>{projectName}</h2>
-          <h4><a href={repoURL} target="_blank">Go to Github repo</a></h4>
+          <h4>
+            <a href={repoURL} target="_blank">
+              Go to Github repo
+            </a>
+          </h4>
         </div>
         <Vidchat2 />
-        <GitHubProjectBoardContainer projectId={projectId}/>
+        <GitHubProjectBoardContainer projectId={projectId} />
         {/*<GithubFeed />*/}
-      </div>
+      </Container>
     )
   }
 }

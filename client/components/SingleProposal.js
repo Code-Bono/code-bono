@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card } from 'semantic-ui-react'
+import { Grid, Image, Card, Container } from 'semantic-ui-react'
 import ProjectSignupButton from './ProjectSignupButton'
 
 export default class SingleProposal extends Component {
@@ -15,7 +15,7 @@ export default class SingleProposal extends Component {
   render() {
     const { singleProposal } = this.props
     return (
-      <div>
+      <Container>
         {singleProposal.id ? (
           <div>
             <h2>{singleProposal.organization.name.toUpperCase()}</h2>
@@ -39,7 +39,7 @@ export default class SingleProposal extends Component {
           proposalName={singleProposal.name}
           proposalDescription={singleProposal.description}
         />
-      </div>
+      </Container>
     )
   }
 }
