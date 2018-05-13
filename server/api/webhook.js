@@ -16,8 +16,16 @@ router.post('/pull_request', (req, res, next) => {
   Event.create(event).then(event => res.sendStatus(200))
 })
 router.post('/pull_request_review', (req, res, next) => {
-  console.log(req.body.sender)
-  res.sendStatus(200)
+  let event = {
+    type: 'pull request review',
+    action: req.body.action,
+    title: req.body.review.state,
+    description: req.body.review.body,
+    url: req.body.review.html_url,
+    githubUser: req.body.review.user.login,
+    repoId: req.body.repository.id
+  }
+  Event.create(event).then(event => res.sendStatus(200))
 })
 router.post('/push', (req, res, next) => {
   console.log(req.body.sender)
