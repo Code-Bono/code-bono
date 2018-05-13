@@ -16,13 +16,16 @@ export default class Chatbox extends Component {
     this.props.loadUsers()
     this.props.loadProjects(this.props.currentUser.id)
     socket.on('updateChat', data => {
-      this.addToBox(data)
+      //checks if the message you received is for the right channel before appending it
+      if (data.channelId === this.state.currentChannel) {
+        this.addToBox(data.message)
+      }
     })
   }
   //when message is sent, emits to the socket to broadcast to all with the message and appends that mesasge to our current chatbox div
   handleSubmit(event) {
     event.preventDefault()
-    let box = document.getElementById('textbox')
+    let box = document.getElementById('inside-box')
     let { id, email } = this.props.currentUser
     let message = event.target.sendMessage
     //send message to db
@@ -31,7 +34,9 @@ export default class Chatbox extends Component {
       userId: id,
       chatroomId: this.state.currentChannel
     })
-    let data = email + ': ' + message.value
+    let data = {}
+    data.message = email + ': ' + message.value
+    data.channelId = this.state.currentChannel
     if (message.value) {
       socket.emit('sendMessage', data)
       message.value = ''
@@ -46,7 +51,7 @@ export default class Chatbox extends Component {
   }
   //helper function for adding messages to the chatbox
   addToBox(data) {
-    let box = document.getElementById('textbox')
+    let box = document.getElementById('inside-box')
     let p = document.createElement('p')
     p.textContent = data
     box.appendChild(p)
@@ -57,46 +62,60 @@ export default class Chatbox extends Component {
     const { currentUser, allMessages, assignedProjects } = this.props
     //listens for the emit for updating the chatbox
     return (
-      <Container>
+      <Container id="chatbox">
         <Container id="textbox">
-          {allMessages &&
-            allMessages.map(message => {
-              return (
-                <p key={message.id}>
-                  {message.user.email + ': ' + message.content}
-                </p>
-              )
-            })}
+          <div id="inside-box">
+            {allMessages &&
+              allMessages.map(message => {
+                return (
+                  <div className="message-border" key={message.id}>
+                    {message.user.email + ': '}
+                    <p className="message">{message.content}</p>
+                  </div>
+                )
+              })}
+          </div>
+          <Container textAlign="center" id="message-form">
+            <Form onSubmit={this.handleSubmit}>
+              <Input
+                size="mini"
+                autoComplete="off"
+                name="sendMessage"
+                type="text"
+                placeholder="Type here"
+                focus
+              />
+              <FormButton size="mini" inverted color="green" type="submit">
+                Send
+              </FormButton>
+            </Form>
+          </Container>
         </Container>
-        <Container>
-          <h4>Your Channels</h4>
-          {assignedProjects.length &&
-            assignedProjects.map(project => {
-              return (
-                <Button
-                  name="channel"
-                  key={project.id}
-                  onClick={this.handleClick}
-                  value={project.id}
-                >
-                  {project.name}
-                </Button>
-              )
-            })}
-        </Container>
-        <Container textAlign="center">
-          <Form onSubmit={this.handleSubmit}>
-            <Input
-              autoComplete="off"
-              name="sendMessage"
-              type="text"
-              placeholder="Type here"
-              focus
-            />
-            <FormButton inverted color="blue" type="submit">
-              Send Message
-            </FormButton>
-          </Form>
+        <Container id="channel-box">
+          <Container textAlign="center">
+            <h4>Channel List</h4>
+          </Container>
+          <div id="inside-channel">
+            <Button.Group vertical>
+              {assignedProjects.length &&
+                assignedProjects.map(project => {
+                  return (
+                    <Button
+                      toggle
+                      inverted
+                      color="blue"
+                      size="mini"
+                      name="channel"
+                      key={project.id}
+                      onClick={this.handleClick}
+                      value={project.id}
+                    >
+                      {project.name}
+                    </Button>
+                  )
+                })}
+            </Button.Group>
+          </div>
         </Container>
       </Container>
     )

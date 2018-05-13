@@ -9,7 +9,6 @@ module.exports = io => {
       socket.broadcast.emit('updateChat', data)
     })
     socket.on('message', function(data) {
-      console.log('data here!!!', data)
       socket.broadcast.emit('message', data)
     })
     socket.on('githubEvent', function(event) {

@@ -25,23 +25,35 @@ const messages = [
   {
     content: 'Hello friends and cats',
     userId: 1,
-    chatroomId: 1
+    chatroomId: 9
   },
   {
     content: 'I prefer hard liquor',
     userId: 2,
-    chatroomId: 1
+    chatroomId: 9
   },
   {
     content: '...',
     userId: 1,
-    chatroomId: 1
+    chatroomId: 9
   },
   {
     content: "Let's save the trees!",
     userId: 3,
-    chatroomId: 2
+    chatroomId: 5
   }
+]
+
+const chatrooms = [
+  { name: 'Give Kids a Home!', projectId: 1 },
+  { name: 'Update Site!', projectId: 2 },
+  { name: 'Volunteer Platform!', projectId: 3 },
+  { name: 'Database Migration!', projectId: 4 },
+  { name: 'Save the Trees!', projectId: 5 },
+  { name: 'Cyborg Pandas!', projectId: 6 },
+  { name: 'Firebas!', projectId: 7 },
+  { name: 'Manual Data Entry!', projectId: 8 },
+  { name: 'Wine Cats!', projectId: 9 }
 ]
 
 const projects = [
@@ -233,8 +245,6 @@ const organizations = [
   }
 ]
 
-const chatrooms = [{ name: 'Wine Cats!' }, { name: 'Trees!' }]
-
 const proposals = [
   {
     name: 'Give Our Kids a Home',
@@ -324,10 +334,10 @@ const proposals = [
 const seed = async () => {
   await User.bulkCreate(users)
   await Organization.bulkCreate(organizations)
-  await Chatroom.bulkCreate(chatrooms)
   await Proposal.bulkCreate(proposals)
   await Cause.bulkCreate(causes)
   await Project.bulkCreate(projects)
+  await Chatroom.bulkCreate(chatrooms)
   await Message.bulkCreate(messages)
   await Repo.bulkCreate(repos)
 }
