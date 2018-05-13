@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card, Button, Header } from 'semantic-ui-react'
+import { Grid, Image, Card, Button, Container, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class AllProposals extends Component {
@@ -15,7 +15,7 @@ export default class AllProposals extends Component {
     const { proposals } = this.props
 
     return (
-      <div>
+      <Container>
         <h1>All Proposals</h1>
         {proposals.length ? (
           <Card.Group itemsPerRow={3}>
@@ -55,7 +55,7 @@ export default class AllProposals extends Component {
         ) : (
           <h3 className="loading">Loading project cards...</h3>
         )}
-      </div>
+      </Container>
     )
   }
 }

@@ -6,7 +6,7 @@ router.post('/pull_request', (req, res, next) => {
   // 'action' can be of several types. Most common are opened, closed, assigned, review_requested
   // if the action is 'closed', the merged field indicates whether the changes pulled in to the relevant branch
   // 'description' will be the comment submitted with the request
-  let event = {
+  let newEvent = {
     type: 'pull request',
     action: req.body.action,
     title: req.body.pull_request.title,
@@ -16,13 +16,13 @@ router.post('/pull_request', (req, res, next) => {
     merged: req.body.pull_request.merged,
     repoId: req.body.repository.id
   }
-  Event.create(event).then(event => res.sendStatus(200))
+  Event.create(newEvent).then(event => res.sendStatus(200))
 })
 
 router.post('/pull_request_review', (req, res, next) => {
   // 'action' will be submitted, edited or dismissed
   // 'title' will indicate whether the changes were accepted
-  let event = {
+  let newEvent = {
     type: 'pull request review',
     action: req.body.action,
     title: req.body.review.state,
@@ -31,7 +31,7 @@ router.post('/pull_request_review', (req, res, next) => {
     githubUser: req.body.review.user.login,
     repoId: req.body.repository.id
   }
-  Event.create(event).then(event => res.sendStatus(200))
+  Event.create(newEvent).then(event => res.sendStatus(200))
 })
 
 router.post('/push', (req, res, next) => {
@@ -40,7 +40,7 @@ router.post('/push', (req, res, next) => {
   let pathLength = req.body.ref.split('/').length
   let branch = req.body.ref.split('/')[pathLength - 1]
   let description = `pushed to branch ${branch}`
-  let event = {
+  let newEvent = {
     type: 'push',
     description,
     url: req.body.compare,
@@ -48,18 +48,18 @@ router.post('/push', (req, res, next) => {
     size,
     repoId: req.body.repository.id
   }
-  Event.create(event).then(event => res.sendStatus(200))
+  Event.create(newEvent).then(event => res.sendStatus(200))
 })
 
 router.post('/member', (req, res, next) => {
   // 'action' will be added, deleted or edited
   // 'url' will link to the added or removed member's page
-  let event = {
+  let newEvent = {
     type: 'member',
     action: req.body.action,
     url: req.body.member.html_url,
     githubUser: req.body.member.login,
     repoId: req.body.repository.id
   }
-  Event.create(event).then(event => res.sendStatus(200))
+  Event.create(newEvent).then(event => res.sendStatus(200))
 })
