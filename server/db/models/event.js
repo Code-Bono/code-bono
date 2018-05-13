@@ -26,6 +26,9 @@ const Event = db.define('event', {
   merged: {
     type: Sequelize.BOOLEAN
   },
+  size: {
+    type: Sequelize.INTEGER
+  },
   repoId: {
     type: Sequelize.INTEGER,
     allowNull: false

@@ -103,6 +103,19 @@ router.get('/:projectId/cards', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:projectId/events', (req, res, next) => {
+  Repo.findById(req.params.projectId).then(repo => {
+    Events.findAll({
+      where: { repoId: repo.id }
+    })
+      .then(events => {
+        console.log(events)
+        res.send(events)
+      })
+      .catch(next)
+  })
+})
+
 router.post('/', (req, res, next) => {
   const userId = req.body.userId
   const proposalId = req.body.proposalId
