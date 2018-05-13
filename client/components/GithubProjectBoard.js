@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Header } from 'semantic-ui-react'
+import { Grid, Image, Header, Container } from 'semantic-ui-react'
 import { CardNote, ProjectCard } from './utils/GitHubUtils'
 import Board from 'react-trello'
 import axios from 'axios'
@@ -29,7 +29,7 @@ export default class GitHubProjectBoard extends Component {
             }
           })
           return {
-            id: column.columnId,
+            id: column.columnId.toString(),
             title: column.columnName,
             cards: columnNotes
           }
@@ -59,7 +59,7 @@ export default class GitHubProjectBoard extends Component {
 
     return (
       <div>
-        <div>
+        <div className="projectBoard-header">
           <Header as="h2" icon textAlign="center">
             <Header.Content>Github Project Board</Header.Content>
           </Header>
@@ -78,11 +78,7 @@ export default class GitHubProjectBoard extends Component {
               hideCardDeleteIcon={true}
               handleDragEnd={handleDragEnd}
               onCardAdd={onCardAdd}
-              style={{
-                backgroundColor: '#e7f0ff',
-                marginLeft: '30px',
-                marginRight: '30px'
-              }}
+              style={{ backgroundColor: '#e7f0ff' }}
             />
           ) : null}
         </div>

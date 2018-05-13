@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Header, Image, Item, Button } from 'semantic-ui-react'
+import { Header, Image, Item, Button, Container } from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class UserProfile extends Component {
     const user = this.props.user
     const projects = user.projects ? user.projects : []
     return (
-      <div>
+      <Container>
         <h1>Your Profile!</h1>
         <div className="userContainer">
           {user ? (
@@ -64,7 +64,7 @@ export default class UserProfile extends Component {
             </div>
           )}
         </div>
-      </div>
+      </Container>
     )
   }
 }
