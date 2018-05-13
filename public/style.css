@@ -31,8 +31,37 @@ video {
 }
 
 #textbox {
-  height: 150px;
-  overflow: scroll;
+  height: 210px;
+  overflow: hidden;
+  width: 65%;
+  padding-left: 2px;
+}
+
+#chatbox {
+  display:flex;
+  height: 210px;
+}
+
+#channel-box {
+  overflow: hidden;
+  height: 210px;
+  width:35%;
+  padding-left: 5px;
+}
+
+.open-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.channels {
+  display:flex;
+  width: 25%;
+}
+
+.channels-inner {
+  font-weight: bold;
+  justify-content: center;
 }
 
 #all-videos {
@@ -42,7 +71,7 @@ video {
 }
 
 #ChatboxNavbar {
-  width: 600px;
+  width: 400px;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -141,4 +170,34 @@ video {
 .add-project-textarea {
   width: 80%;
   text-align: center;
+}
+
+.open-chat {
+  justify-content: right;
+}
+
+.message {
+  background-color: lightskyblue;
+  display: inline-block;
+  padding: .1% 1% .1% 1%;
+  border-radius: 10%;
+}
+
+
+.message-border {
+  margin-bottom: .5%;
+}
+
+#inside-box {
+  background-image: url("https://cdn.pixabay.com/photo/2014/01/23/21/33/blue-250770__340.jpg");
+  overflow: auto;
+  height: 150px;
+  padding: 10px 0 0 10px;
+  border-radius: 10%;
+  margin-top: 20px;
+}
+#inside-channel{
+  overflow: auto;
+  height: 180px;
+  padding: 5px 0 0 0;
 }
