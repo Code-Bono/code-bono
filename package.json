@@ -52,6 +52,7 @@
     "simplewebrtc": "^3.0.1",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.1.0",
+    "styled-components": "^3.2.6",
     "webrtc-adapter": "^6.1.5"
   },
   "devDependencies": {
