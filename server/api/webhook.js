@@ -8,7 +8,7 @@ router.post('/pull_request', (req, res, next) => {
     action: req.body.action,
     title: req.body.pull_request.title,
     description: req.body.pull_request.body,
-    url: req.body.pull_request.url,
+    url: req.body.pull_request.html_url,
     githubUser: req.body.pull_request.user.login,
     merged: req.body.pull_request.merged,
     repoId: req.body.repository.id
