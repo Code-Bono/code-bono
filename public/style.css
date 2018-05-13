@@ -15,6 +15,19 @@ nav a {
   margin: 1em;
 }
 
+#left-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-flex-item {
+  margin: auto
+}
+
+.nav-buttons {
+  padding-top: 1em;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -81,10 +94,6 @@ video {
   background-color: white;
 }
 
-#footer {
-  bottom: 0;
-}
-
 /* .githubContainer {
   display: flex;
   flex-direction: row;
@@ -119,7 +128,7 @@ video {
 .text-left {
   text-align: left;
   padding-left: 1em;
-  color: #c0c4c9"
+  color: #c0c4c9";
 }
 
 .how-it-works-container {
@@ -153,10 +162,20 @@ video {
   color: #303030;
 }
 
-/* .footer {
+.grey-text {
+    color: #303030;
+
+}
+
+.logo {
+  height: 60px;
+  padding-right: 1em;
+}
+
+#footer {
   position: absolute;
   bottom: 0;
-} */
+}
 
 .project-card {
   border-bottom: 1px solid black;

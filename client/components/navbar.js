@@ -6,11 +6,17 @@ import { logout } from '../store'
 import { Menu, Button } from 'semantic-ui-react'
 
 const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
-  <Menu className="ui grid">
-    <Link to="/" className="eight wide column">
-      <h1>Code Bono</h1>
-    </Link>
-    <nav className="eight wide column">
+  <Menu id="navbar" className="ui grid">
+    <div id="left-flex">
+      <img
+        className="logo left-flex-item"
+        src="https://image.flaticon.com/icons/svg/185/185816.svg"
+      />
+      <Link className="left-flex-item" to="/">
+        <h2>Code Bono</h2>
+      </Link>
+    </div>
+    <Menu.Menu className="nav-buttons" position="right">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
@@ -25,24 +31,24 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
             </Link>
           )}
           <Link to="/proposals">
-            <Button>View Proposals</Button>
+            <Button>View Open Opportunities</Button>
           </Link>
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
+          <Link to="/proposals">
+            <Button>View Open Opportunities</Button>
+          </Link>
           <Link to="/login">
             <Button>Login</Button>
           </Link>
           <Link to="/signup">
             <Button>Sign Up</Button>
           </Link>
-          <Link to="/proposals">
-            <Button>View Proposals</Button>
-          </Link>
         </div>
       )}
-    </nav>
+    </Menu.Menu>
   </Menu>
 )
 

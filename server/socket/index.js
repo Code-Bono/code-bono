@@ -6,11 +6,9 @@ module.exports = io => {
       console.log(`Connection ${socket.id} has left the building`)
     })
     socket.on('sendMessage', data => {
-      console.log(data)
       socket.broadcast.emit('updateChat', data)
     })
     socket.on('message', function(data) {
-      console.log('data here!!!', data)
       socket.broadcast.emit('message', data)
     })
   })
