@@ -14,36 +14,33 @@ export default class GitHubProjectBoard extends Component {
     return (
       <div>
         <div>
-          <Header as='h2' icon textAlign='center'>
-            <Header.Content>
-              Github Project Board
-            </Header.Content>
+          <Header as="h2" icon textAlign="center">
+            <Header.Content>Github Project Board</Header.Content>
           </Header>
-          <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
+          <Image
+            centered
+            size="mini"
+            src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
+          />
         </div>
 
         <div className="column-container">
-          {
-          projectCards.length ?
-          <Grid container columns={projectCards.length}>
-              {
-                projectCards.map((card, i) => {
-                  return (
-                    <div key={i}>
-                      <ProjectCard card={card} />
-                    </div>
-                  )
-                })
-              }
-          </Grid>
-          :  <h3 className="loading">Loading project...</h3>
-          }
+          {projectCards.length ? (
+            <Grid container columns={projectCards.length}>
+              {projectCards.map((card, i) => {
+                return (
+                  <div key={i}>
+                    <ProjectCard card={card} />
+                  </div>
+                )
+              })}
+            </Grid>
+          ) : (
+            <h3 className="loading">Loading project...</h3>
+          )}
         </div>
         <AddProjectCardContainer />
       </div>
     )
   }
 }
-
-
-

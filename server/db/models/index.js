@@ -1,5 +1,6 @@
 const Cause = require('./cause')
 const Chatroom = require('./chatroom')
+const Event = require('./event')
 const Message = require('./message')
 const Organization = require('./organization')
 const Project = require('./project')
@@ -37,9 +38,16 @@ User.belongsTo(Organization, { as: 'org' })
 Project.hasOne(Repo)
 Repo.belongsTo(Project)
 
+Project.hasMany(Event)
+Event.belongsTo(Project)
+
+Repo.hasMany(Event)
+Event.belongsTo(Repo)
+
 module.exports = {
   Cause,
   Chatroom,
+  Event,
   Message,
   Organization,
   Project,
