@@ -16,19 +16,18 @@ export default class GitHubProjectBoard extends Component {
 
     // data structure required by react-trello module
     const projectBoard = projectCards.length ? projectCards.map((column, i) => {
-
-      const columnNotes = column.cards.map((card) => {
-        return (
-          {
-            id: card.cardId.toString(),
-            description: card.note,
-            cardStyle: { borderRadius: 6, marginBottom: 10 }
-          }
-        )
-      })
+        const columnNotes = column.cards.map((card) => {
+          return (
+            {
+              id: card.cardId.toString(),
+              description: card.note,
+              cardStyle: { borderRadius: 6, marginBottom: 10 }
+            }
+          )
+        })
       return (
         {
-          id: column.columnId,
+          id: column.columnId.toString(),
           title: column.columnName,
           cards: columnNotes
         }
@@ -54,10 +53,10 @@ export default class GitHubProjectBoard extends Component {
 
     return (
       <div>
-        <div>
+        <div className='projectBoard-header'>
           <Header as='h2' icon textAlign='center'>
             <Header.Content>
-              Github Project Board
+                Github Project Board
             </Header.Content>
           </Header>
           <Image centered size='mini' src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png" />
@@ -71,7 +70,7 @@ export default class GitHubProjectBoard extends Component {
               hideCardDeleteIcon={true}
               handleDragEnd={handleDragEnd}
               onCardAdd={onCardAdd}
-              style={{backgroundColor: '#e7f0ff', marginLeft: '30px', marginRight: '30px'}}
+              style={{backgroundColor: '#e7f0ff'}}
               />
             : null
           }
@@ -80,6 +79,3 @@ export default class GitHubProjectBoard extends Component {
     )
   }
 }
-
-
-
