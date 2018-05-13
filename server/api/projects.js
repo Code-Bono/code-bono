@@ -68,21 +68,30 @@ router.get('/:projectId/cards', (req, res, next) => {
     const cards = [
       {
         columnName: 'To Do',
-        notes: []
+        columnId: null,
+        cards: []
       },
       {
         columnName: 'In Progress',
-        notes: []
+        columnId: null,
+        cards: []
       },
       {
         columnName: 'Done',
-        notes: []
+        columnId: null,
+        cards: []
       }
     ]
 
     for (let i = 0; i < columns.length; i++) {
+    let columnId;
       columns[i].data.forEach(card => {
-        cards[i].notes.push(card.note)
+        columnId = card.column_url.split('/').pop()
+        cards[i].columnId = columnId
+        cards[i].cards.push({
+          note: card.note,
+          cardId: card.id,
+          })
       })
     }
     res.send(cards)
@@ -136,7 +145,6 @@ router.post('/', (req, res, next) => {
 })
 
 router.post('/:projectId/projectBoardColumn/:columnId/add', (req, res, next) => {
-  console.log('ANY DATA?', req.body)
   const column_id = req.params.columnId
   const note = `${req.body.note.title} - ${req.body.note.description}`
 
@@ -149,5 +157,20 @@ router.post('/:projectId/projectBoardColumn/:columnId/add', (req, res, next) => 
     res.sendStatus(201)
   })
   .catch(next)
+})
 
+router.post('/:projectId/cards/move', (req, res, next) => {
+
+  const id = req.body.cardId
+  const column_id = +req.body.targetColumn
+  octokit.projects.moveProjectCard({
+    headers,
+    id,
+    position: 'top',
+    column_id
+  })
+  .then(() => {
+    res.sendStatus(201)
+  })
+  .catch(next)
 })

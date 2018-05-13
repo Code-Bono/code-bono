@@ -99,7 +99,7 @@ video {
 .text-left {
   text-align: left;
   padding-left: 1em;
-  color: #c0c4c9"
+  color: #c0c4c9";
 }
 
 .how-it-works-container {
@@ -161,4 +161,8 @@ video {
   width: 80%;
   text-align: center;
 }
+
+/*.project-board-container {
+  margin-left: 10%;
+}*/
 
