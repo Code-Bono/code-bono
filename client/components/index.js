@@ -26,7 +26,7 @@ export { default as SingleProposalContainer } from './SingleProposalContainer'
 export { default as UserProfile } from './userProfile'
 export { default as UserHome } from './user-home'
 export { default as UserProfileContainer } from './userProfileContainer'
-export { default as Vidchat } from './Vidchat'
+export { default as Vidchat } from './vidchat'
 export {
   default as ViewOrganizationProposalsContainer
 } from './ViewOrganizationProposalsContainer'

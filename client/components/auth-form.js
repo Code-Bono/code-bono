@@ -25,7 +25,7 @@ class AuthForm extends Component {
     //didn't modularize organization sign up because it would be annoying to pass up form values
     const { name, displayName, handleSubmit, error } = this.props
     return (
-      <div>
+      <Container>
         <Form onSubmit={handleSubmit} name={name}>
           <Form.Group widths="equal">
             <Form.Input name="email" type="text" fluid label="Email" />
@@ -88,7 +88,7 @@ class AuthForm extends Component {
             </Button>
           </a>
         </span>
-      </div>
+      </Container>
     )
   }
 }

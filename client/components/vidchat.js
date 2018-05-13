@@ -27,7 +27,10 @@ export default class Vidchat extends Component {
         //sets name so everyone knows what the current channel name is
         this.setState({ broadcastName: roomName }, () => {
           //emits broadcast name after it is set
-          socket.emit('updateChannelName', this.state.broadcastName)
+          let channelInfo = {}
+          channelInfo.broadcastName = this.state.broadcastName
+          channelInfo.id = this.props.projectId
+          socket.emit('updateChannelName', channelInfo)
         })
         connection.open(roomName)
       } else {
@@ -44,6 +47,19 @@ export default class Vidchat extends Component {
         localStream.stop()
       })
       connection.leave()
+    } else if (e.target.name === 'closeChannel') {
+      connection.attachStreams.forEach(function(localStream) {
+        localStream.stop()
+      })
+      //closes channel and resets broadcastName
+      this.setState({ broadcastName: '' }, () => {
+        //emits broadcast name after it is set
+        let channelInfo = {}
+        channelInfo.broadcastName = this.state.broadcastName
+        channelInfo.id = this.props.projectId
+        socket.emit('updateChannelName', channelInfo)
+      })
+      connection.close()
     }
   }
 
@@ -66,9 +82,11 @@ export default class Vidchat extends Component {
   }
 
   render() {
-    socket.on('sendChannelName', name => {
+    socket.on('sendChannelName', channelObj => {
       //sets broadcast name so everyone knows what channel to join
-      this.setState({ broadcastName: name })
+      if (this.props.projectId === channelObj.id) {
+        this.setState({ broadcastName: channelObj.broadcastName })
+      }
     })
     let broadcast = this.state.broadcastName
     return (
@@ -98,6 +116,14 @@ export default class Vidchat extends Component {
             name="leaveChannel"
           >
             Leave Channel
+          </Button>
+          <Button
+            onClick={this.handleClick}
+            size="mini"
+            id="btn-close-room"
+            name="closeChannel"
+          >
+            Close Channel
           </Button>
           <Input
             onChange={this.handleChange}
