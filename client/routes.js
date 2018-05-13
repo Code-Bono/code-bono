@@ -5,6 +5,7 @@ import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
+  EditOrganization,
   EditOrganizationContainer,
   EditProposalsContainer,
   LandingPage,
@@ -20,7 +21,6 @@ import {
   ViewOrganizationProposalsContainer
 } from './components'
 import { me } from './store'
-import EditOrganization from './components/EditOrganization'
 
 /**
  * COMPONENT

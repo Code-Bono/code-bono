@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card, Button } from 'semantic-ui-react'
+import { Grid, Image, Card, Button, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class AllProposals extends Component {
@@ -27,7 +27,9 @@ export default class AllProposals extends Component {
                   </div>
                   <div className="content">
                     <Link to={`/proposals/${proposal.id}`}>
-                      <a className="header">{proposal.name}</a>
+                      <Header as="h3" color="blue">
+                        {proposal.name}
+                      </Header>
                     </Link>
                     <a className="ui sub header">
                       {proposal.organization.name}
