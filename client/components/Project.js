@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
-import Vidchat2 from './vidchat2'
+import Vidchat from './vidchat'
 import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import { Container } from 'semantic-ui-react'
@@ -45,7 +45,10 @@ export default class Project extends Component {
             </Header.Content>
           </Header>
         </div>
-        <Vidchat2 />
+        <Vidchat
+          user={this.props.user}
+          projectId={this.props.match.params.projectId}
+        />
         <GitHubProjectBoardContainer projectId={projectId} />
         {/*<GithubFeed />*/}
       </div>
