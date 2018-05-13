@@ -164,7 +164,10 @@ video {
 
 .grey-text {
     color: #303030;
+}
 
+.blue-text {
+  color: #5b9bfa;
 }
 
 .logo {
@@ -175,6 +178,12 @@ video {
 #footer {
   position: absolute;
   bottom: 0;
+}
+
+#single-proposal-body {
+  background-color: white;
+  margin: 1em 0em 1em 0em;
+  padding: 1em
 }
 
 .project-card {
@@ -210,6 +219,7 @@ video {
   padding: 1%;
   letter-spacing: 1px;
   background-color: grey;
+}
 
 .open-chat {
   justify-content: right;

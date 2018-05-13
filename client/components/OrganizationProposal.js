@@ -40,49 +40,51 @@ export default class OrganizationProposal extends Component {
       return obj
     })
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group widths="equal">
-          <Form.Input
-            name="proposalName"
-            fluid
-            label="Proposal Name"
-            placeholder="Proposal Name"
-          />
-          <Form.Input
-            name="proposalImage"
-            fluid
-            label="Proposal Image"
-            placeholder="Proposal ImageURL"
-          />
-          <Form.Input
-            type="date"
-            name="proposalDeadline"
-            fluid
-            label="Deadline"
-            placeholder="Deadline"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.TextArea
-            width="16"
-            name="proposalDescription"
-            label="Description"
-            placeholder="Description for the proposal"
-          />
-        </Form.Group>
-        {causes && (
-          <Dropdown
-            placeholder="Select Causes"
-            fluid
-            multiple
-            search
-            selection
-            options={options}
-            onChange={this.handleChange}
-          />
-        )}
-        <Form.Button>Submit</Form.Button>
-      </Form>
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group widths="equal">
+            <Form.Input
+              name="proposalName"
+              fluid
+              label="Proposal Name"
+              placeholder="Proposal Name"
+            />
+            <Form.Input
+              name="proposalImage"
+              fluid
+              label="Proposal Image"
+              placeholder="Proposal ImageURL"
+            />
+            <Form.Input
+              type="date"
+              name="proposalDeadline"
+              fluid
+              label="Deadline"
+              placeholder="Deadline"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.TextArea
+              width="16"
+              name="proposalDescription"
+              label="Description"
+              placeholder="Description for the proposal"
+            />
+          </Form.Group>
+          {causes && (
+            <Dropdown
+              placeholder="Select Causes"
+              fluid
+              multiple
+              search
+              selection
+              options={options}
+              onChange={this.handleChange}
+            />
+          )}
+          <Form.Button>Submit</Form.Button>
+        </Form>
+      </Container>
     )
   }
 }
