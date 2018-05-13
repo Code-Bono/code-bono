@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import {
   AllProposalsContainer,
@@ -31,56 +32,63 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props
+    console.log('Props: ', this.props)
 
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
-        <Route exact path="/home" component={LandingPageContainer} />
-        <Route exact path="/proposals" component={AllProposalsContainer} />
-        <Route
-          exact
-          path="/proposals/:proposalId"
-          component={SingleProposalContainer}
-        />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route
-          path="/organization/make-proposal"
-          component={OrganizationProposalContainer}
-        />
+        <Container>
+          <Route exact path="/home" component={LandingPageContainer} />
+          <Route exact path="/proposals" component={AllProposalsContainer} />
+          <Route
+            exact
+            path="/proposals/:proposalId"
+            component={SingleProposalContainer}
+          />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route
+            path="/organization/make-proposal"
+            component={OrganizationProposalContainer}
+          />
+        </Container>
         {isLoggedIn && (
           <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route path="/profile" component={UserProfileContainer} />
-            <Route
-              path="/organization/home"
-              component={OrganizationHomeContainer}
-            />
-            <Route exact path="/projects" component={ProjectContainer} />
-            <Route
-              exact
-              path="/projects/:projectId"
-              component={ProjectContainer}
-            />
-            <Route
-              path="/organization/edit"
-              component={EditOrganizationContainer}
-            />
-            <Route
-              exact
-              path="/organization/proposals"
-              component={ViewOrganizationProposalsContainer}
-            />
-            <Route
-              exact
-              path="/organization/proposals/:id/edit"
-              component={EditProposalsContainer}
-            />
+            <Container>
+              {/* Routes placed here are only available after logging in */}
+              <Route path="/profile" component={UserProfileContainer} />
+              <Route
+                path="/organization/home"
+                component={OrganizationHomeContainer}
+              />
+              <Route exact path="/projects" component={ProjectContainer} />
+              <Route
+                exact
+                path="/projects/:projectId"
+                component={ProjectContainer}
+              />
+              <Route
+                path="/organization/edit"
+                component={EditOrganizationContainer}
+              />
+              <Route
+                exact
+                path="/organization/proposals"
+                component={ViewOrganizationProposalsContainer}
+              />
+              <Route
+                exact
+                path="/organization/proposals/:id/edit"
+                component={EditProposalsContainer}
+              />
+            </Container>
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        <Container>
+          <Route component={Login} />
+        </Container>
       </Switch>
     )
   }
