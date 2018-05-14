@@ -349,3 +349,24 @@ video {
 .live-channel-name {
   text-align: center;
 }
+
+.footer-design {
+  height: 210px;
+  display: flex;
+  justify-content: center;
+}
+
+.inner-footer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.secondary {
+  display: flex;
+  justify-content: center;
+}
+
+.inspirational-quote {
+  font-style: italic;
+}
