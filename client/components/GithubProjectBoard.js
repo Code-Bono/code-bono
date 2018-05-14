@@ -81,7 +81,7 @@ export default class GitHubProjectBoard extends Component {
               hideCardDeleteIcon={true}
               handleDragEnd={handleDragEnd}
               onCardAdd={onCardAdd}
-              style={{ backgroundColor: '#e7f0ff' }}
+              style={{ backgroundColor: '#309aab' }}
             />
           ) : null}
         </div>
