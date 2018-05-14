@@ -30,7 +30,6 @@ export default class EditProfile extends Component {
     proposalObj.organizationId = this.props.currentOrg.id
     proposalObj.causes = this.state.causes
     this.props.editProposal(this.props.proposalId, proposalObj)
-    console.log(proposalObj)
   }
 
   render() {
@@ -42,8 +41,6 @@ export default class EditProfile extends Component {
       obj.value = cause.id
       return obj
     })
-    console.log(proposal)
-    console.log(proposal.name)
     return (
       <Container>
         {proposal.name ? (

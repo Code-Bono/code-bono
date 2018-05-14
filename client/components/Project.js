@@ -36,11 +36,11 @@ export default class Project extends Component {
           <Header as="h3" icon textAlign="center">
             <Header.Content>
               <h3 className="project-subtitle">
-                Welcome to {projectName}'s collaboration space. <br />This page will
-                act as home base for you and other developers working on this
-                project. <br />From here, you can message each other, video chat,
-                manage your project board, <br />and see live updates from your Github
-                repo. <br /> Go ahead, Code Bono!
+                Welcome to {projectName}'s collaboration space. <br />This page
+                will act as home base for you and other developers working on
+                this project. <br />From here, you can message each other, video
+                chat, manage your project board, <br />and see live updates from
+                your Github repo. <br /> Go ahead, Code Bono!
               </h3>
             </Header.Content>
           </Header>

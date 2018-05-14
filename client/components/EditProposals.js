@@ -27,7 +27,6 @@ export default class EditProposals extends Component {
   }
 
   handleSubmit(evt) {
-    console.log(evt.target.proposalIsActive)
     evt.preventDefault()
     let proposalObj = {}
     proposalObj.name = evt.target.proposalName.value
@@ -38,7 +37,6 @@ export default class EditProposals extends Component {
     proposalObj.organizationId = this.props.currentOrg.id
     proposalObj.causes = this.state.causes
     this.props.editProposal(this.props.proposalId, proposalObj)
-    console.log(proposalObj)
   }
 
   render() {

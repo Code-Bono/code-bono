@@ -20,17 +20,15 @@ export const ProjectCard = ({ card }) => {
               <h3>{card.columnName}</h3>
             </Card.Header>
           </Card.Content>
-          {
-            card.notes.length ?
+          {card.notes.length ? (
             <Card.Content>
               <Feed>
                 <Feed.Event>
                   <Feed.Content>
                     {card.notes.map((note, i) => {
-                      console.log('note', note)
                       return (
                         <div key={i}>
-                          <CardNote note={note}/>
+                          <CardNote note={note} />
                         </div>
                       )
                     })}
@@ -38,7 +36,7 @@ export const ProjectCard = ({ card }) => {
                 </Feed.Event>
               </Feed>
             </Card.Content>
-            :
+          ) : (
             <Card.Content>
               <Feed>
                 <Feed.Event>
@@ -48,12 +46,9 @@ export const ProjectCard = ({ card }) => {
                 </Feed.Event>
               </Feed>
             </Card.Content>
-          }
+          )}
         </Card>
       </div>
     </Grid.Column>
   )
 }
-
-
-
