@@ -14,5 +14,8 @@ module.exports = io => {
     socket.on('updateChannelName', function(channelObj) {
       socket.broadcast.emit('sendChannelName', channelObj)
     })
+    socket.on('closeChannel', function(channelObj) {
+      socket.broadcast.emit('closeAllChannels', channelObj)
+    })
   })
 }

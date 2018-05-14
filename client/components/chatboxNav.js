@@ -23,12 +23,12 @@ class ChatboxNavbar extends Component {
   render() {
     const { isLoggedIn, chatStatus } = this.props
     return (
-      <Container id="ChatboxNavbar">
+      <Container id="ChatboxNavbarClosed">
         {isLoggedIn && (
-          <div>
+          <Container>
             {chatStatus ? (
-              <div>
-                <div className="open-nav">
+              <Container id="ChatboxNavbar">
+                <Container className="open-nav">
                   <Button
                     fluid
                     size="mini"
@@ -37,15 +37,15 @@ class ChatboxNavbar extends Component {
                   >
                     Hide Chat
                   </Button>
-                </div>
+                </Container>
                 <ChatboxContainer />
-              </div>
+              </Container>
             ) : (
               <Button id="open-chat" fluid size="mini" onClick={this.handleClick}>
                 Open Chat
               </Button>
             )}
-          </div>
+          </Container>
         )}
       </Container>
     )

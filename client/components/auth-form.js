@@ -26,7 +26,25 @@ class AuthForm extends Component {
     const { name, displayName, handleSubmit, error } = this.props
     return (
       <Container>
+        <span>
+          <h3>
+            {displayName} or{' '}
+            <a href="/auth/github">
+              <Button color="facebook" size="medium">
+                <Icon name="github" />
+                {displayName} with GitHub
+              </Button>
+            </a>
+          </h3>
+        </span>
         <Form onSubmit={handleSubmit} name={name}>
+          {displayName === 'Sign Up' && (
+            <Form.Checkbox
+              onChange={this.handleChange}
+              label="I am a representative for an organization"
+            />
+          )}
+          <br />
           <Form.Group widths="equal">
             <Form.Input
               required={true}
@@ -42,12 +60,6 @@ class AuthForm extends Component {
               fluid
               label="Password"
             />
-            {displayName === 'Sign Up' && (
-              <Form.Checkbox
-                onChange={this.handleChange}
-                label="I am a representative for an organization"
-              />
-            )}
           </Form.Group>
           {this.state.isOrg && (
             <Container>
@@ -61,10 +73,9 @@ class AuthForm extends Component {
                 />
                 <Form.Input
                   required={true}
-                  name="orgDescription"
+                  name="orgAddress"
                   type="text"
-                  fluid
-                  label="Organization Description"
+                  label="Organization Address"
                 />
               </Form.Group>
               <Form.Group widths="equal">
@@ -83,12 +94,12 @@ class AuthForm extends Component {
                   label="Organization Email"
                 />
               </Form.Group>
-              <Form.Input
+              <Form.TextArea
                 required={true}
-                name="orgAddress"
+                width={16}
+                name="orgDescription"
                 type="text"
-                fluid
-                label="Organization Address"
+                label="Organization Description"
               />
             </Container>
           )}
@@ -97,14 +108,6 @@ class AuthForm extends Component {
           </Button>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
-        <span>
-          <a href="/auth/github">
-            <Button color="facebook" size="medium">
-              <Icon name="github" />
-              {displayName} with GitHub
-            </Button>
-          </a>
-        </span>
       </Container>
     )
   }
