@@ -4,6 +4,7 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import {
+  About,
   AllProposalsContainer,
   EditOrganizationContainer,
   EditProposalsContainer,
@@ -37,19 +38,20 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
-          <Route exact path="/home" component={LandingPageContainer} />
-          <Route exact path="/proposals" component={AllProposalsContainer} />
-          <Route
-            exact
-            path="/proposals/:proposalId"
-            component={SingleProposalContainer}
-          />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route
-            path="/organization/make-proposal"
-            component={OrganizationProposalContainer}
-          />
+        <Route exact path="/home" component={LandingPageContainer} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/proposals" component={AllProposalsContainer} />
+        <Route
+          exact
+          path="/proposals/:proposalId"
+          component={SingleProposalContainer}
+        />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route
+          path="/organization/make-proposal"
+          component={OrganizationProposalContainer}
+        />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -81,8 +83,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-          <Route component={Login} />
-
+        <Route component={Login} />
       </Switch>
     )
   }
