@@ -28,8 +28,20 @@ class AuthForm extends Component {
       <Container>
         <Form onSubmit={handleSubmit} name={name}>
           <Form.Group widths="equal">
-            <Form.Input name="email" type="text" fluid label="Email" />
-            <Form.Input name="password" type="text" fluid label="Password" />
+            <Form.Input
+              required={true}
+              name="email"
+              type="email"
+              fluid
+              label="Email"
+            />
+            <Form.Input
+              required={true}
+              name="password"
+              type="password"
+              fluid
+              label="Password"
+            />
             {displayName === 'Sign Up' && (
               <Form.Checkbox
                 onChange={this.handleChange}
@@ -41,12 +53,14 @@ class AuthForm extends Component {
             <Container>
               <Form.Group widths="equal">
                 <Form.Input
+                  required={true}
                   name="orgName"
                   type="text"
                   fluid
                   label="Organization Name"
                 />
                 <Form.Input
+                  required={true}
                   name="orgDescription"
                   type="text"
                   fluid
@@ -55,19 +69,22 @@ class AuthForm extends Component {
               </Form.Group>
               <Form.Group widths="equal">
                 <Form.Input
+                  required={true}
                   name="orgNumber"
                   type="text"
                   fluid
                   label="Organization Phone Number"
                 />
                 <Form.Input
+                  required={true}
                   name="orgEmail"
-                  type="text"
+                  type="email"
                   fluid
                   label="Organization Email"
                 />
               </Form.Group>
               <Form.Input
+                required={true}
                 name="orgAddress"
                 type="text"
                 fluid
@@ -75,14 +92,14 @@ class AuthForm extends Component {
               />
             </Container>
           )}
-          <Button primary type="submit">
+          <Button size="medium" primary type="submit">
             {displayName}
           </Button>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
         <span>
           <a href="/auth/github">
-            <Button color="facebook" size="big">
+            <Button color="facebook" size="medium">
               <Icon name="github" />
               {displayName} with GitHub
             </Button>

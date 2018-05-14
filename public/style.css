@@ -10,21 +10,21 @@
 }
 
 .Site {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .Site-content {
-    flex: 1 0 auto;
-    padding: var( — space) var( — space) 0;
-    width: 100%;
+  flex: 1 0 auto;
+  padding: var(— space) var(— space) 0;
+  width: 100%;
 }
 .Site-content:after {
-    content: ‘\00a0’;
-    display: block;
-    margin-top: var( — space);
-    height: 0;
-    visibility: hidden;
+  content: ‘\00a0’;
+  display: block;
+  margin-top: var(— space);
+  height: 0;
+  visibility: hidden;
 }
 
 body {
@@ -80,6 +80,7 @@ video {
 }
 
 #chatbox {
+  background-color: black;
   display: flex;
   height: 210px;
 }
@@ -117,7 +118,7 @@ video {
   position: fixed;
   bottom: 0;
   right: 0;
-/*  border-style: solid;
+  /*  border-style: solid;
   border-width: 1px;
   border-radius: 7px 0px 0px 0px;
   background-color: white;*/
@@ -271,7 +272,6 @@ video {
 }
 
 .message {
-  background-color: lightskyblue;
   display: inline-block;
   padding: 0.1% 1% 0.1% 1%;
   border-radius: 10%;
@@ -282,11 +282,11 @@ video {
 }
 
 #inside-box {
-  background-image: url('https://cdn.pixabay.com/photo/2014/01/23/21/33/blue-250770__340.jpg');
+  background-color: white;
   overflow: auto;
   height: 150px;
   padding: 10px 0 0 10px;
-  border-radius: 10%;
+  border-radius: 5%;
   margin-top: 20px;
 }
 #inside-channel {
@@ -305,4 +305,22 @@ video {
 #setup-new-room {
   flex-grow: 0.1;
   align-self: auto;
+}
+
+.channel-list-head {
+  color: white;
+}
+
+.vidchat-container {
+  display: flex;
+  justify-content: center;
+}
+
+.vidchat-children {
+  display: flex;
+  justify-content: center;
+}
+
+.live-channel-name {
+  text-align: center;
 }
