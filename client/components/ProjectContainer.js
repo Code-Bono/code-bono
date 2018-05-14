@@ -7,7 +7,8 @@ import { fetchEvents } from '../store/githubFeed'
 
 const mapState = state => {
   return {
-    project: state.singleProject
+    project: state.singleProject,
+    user: state.user
   }
 }
 

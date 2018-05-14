@@ -14,5 +14,8 @@ module.exports = io => {
     socket.on('githubEvent', function(event) {
       socket.broadcast.emit('githubEvent', event)
     })
+    socket.on('updateChannelName', function(channelObj) {
+      socket.broadcast.emit('sendChannelName', channelObj)
+    })
   })
 }
