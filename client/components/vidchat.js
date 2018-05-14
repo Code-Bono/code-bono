@@ -90,51 +90,55 @@ export default class Vidchat extends Component {
     })
     let broadcast = this.state.broadcastName
     return (
-      <Container>
-        {broadcast && <h4>Live Channel: {broadcast}</h4>}
+      <div className="vidchat-container">
         <Container>
-          <Button
-            onClick={this.handleClick}
-            size="mini"
-            id="btn-open-room"
-            name="openChannel"
-          >
-            Start Channel
-          </Button>
-          <Button
-            onClick={this.handleClick}
-            size="mini"
-            id="btn-join-room"
-            name="joinChannel"
-          >
-            Join Channel
-          </Button>
-          <Button
-            onClick={this.handleClick}
-            size="mini"
-            id="btn-leave-room"
-            name="leaveChannel"
-          >
-            Leave Channel
-          </Button>
-          <Button
-            onClick={this.handleClick}
-            size="mini"
-            id="btn-close-room"
-            name="closeChannel"
-          >
-            Close Channel
-          </Button>
-          <Input
-            onChange={this.handleChange}
-            type="text"
-            size="mini"
-            id="roomId"
-            placeholder="Enter Channel Name"
-          />
+          {broadcast && (
+            <h4 className="live-channel-name">Live Channel: {broadcast}</h4>
+          )}
+          <div className="vidchat-children">
+            <Button
+              onClick={this.handleClick}
+              size="mini"
+              id="btn-open-room"
+              name="openChannel"
+            >
+              Start Channel
+            </Button>
+            <Button
+              onClick={this.handleClick}
+              size="mini"
+              id="btn-join-room"
+              name="joinChannel"
+            >
+              Join Channel
+            </Button>
+            <Button
+              onClick={this.handleClick}
+              size="mini"
+              id="btn-leave-room"
+              name="leaveChannel"
+            >
+              Leave Channel
+            </Button>
+            <Button
+              onClick={this.handleClick}
+              size="mini"
+              id="btn-close-room"
+              name="closeChannel"
+            >
+              Close Channel
+            </Button>
+            <Input
+              onChange={this.handleChange}
+              type="text"
+              size="mini"
+              id="roomId"
+              placeholder="Enter Channel Name"
+            />
+          </div>
+          <Container id="video-container" />
         </Container>
-        <Container id="video-container" />
-      </Container>
+      </div>
     )
   }
 }

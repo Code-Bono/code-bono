@@ -14,7 +14,6 @@ export default class SingleProposal extends Component {
 
   render() {
     const { singleProposal } = this.props
-    console.log(singleProposal)
     return (
       <Container>
         {singleProposal.id ? (
@@ -37,13 +36,15 @@ export default class SingleProposal extends Component {
               <p>Phone: {singleProposal.organization.phoneNumber}</p>
               <p>Address: {singleProposal.organization.address}</p>
             </div>
-            {singleProposal.projects[0].users.length > 1 ? (
+            {singleProposal.projects[0] &&
+            singleProposal.projects[0].users.length > 1 ? (
               <h4>
                 {singleProposal.projects[0].users.length}
                 people are currently signed up for this project.
               </h4>
             ) : null}
-            {singleProposal.projects[0].users.length === 1 ? (
+            {singleProposal.projects[0] &&
+            singleProposal.projects[0].users.length === 1 ? (
               <h4>1 person is currently signed up for this project.</h4>
             ) : null}
           </div>

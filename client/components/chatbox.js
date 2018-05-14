@@ -92,7 +92,7 @@ export default class Chatbox extends Component {
           </Container>
         </Container>
         <Container id="channel-box">
-          <Container textAlign="center">
+          <Container className="channel-list-head" textAlign="center">
             <h4>Channel List</h4>
           </Container>
           <div id="inside-channel">
