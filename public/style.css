@@ -56,7 +56,7 @@ nav a {
 
 .left-flex-item {
   margin: auto;
-  color: #309aaB;
+  color: #309aab;
 }
 
 .nav-buttons {
@@ -86,8 +86,7 @@ video {
 }
 
 #open-chat {
-  background-color: #89898C;
-
+  background-color: #89898c;
 }
 
 #chatbox {
@@ -106,7 +105,6 @@ video {
 .open-nav {
   display: flex;
   justify-content: space-between;
-
 }
 
 .channels {
@@ -148,12 +146,25 @@ video {
 }
 
 .masthead {
-  background-color: #309aaB !important;
+  background-color: #309aab !important;
 }
 
-.ui.text.container {
+.ui.text.container.landing {
   padding-top: 6em;
   padding-bottom: 5em;
+}
+
+.about {
+  padding: 3em;
+}
+
+.team {
+  padding: 1em;
+  margin: 2em;
+}
+
+.yoni {
+  height: 259px;
 }
 
 .inverted.header {
@@ -193,7 +204,7 @@ video {
   margin: auto;
   padding: 1.5em;
   width: 10em;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 
 .how-it-works-image-singular {
