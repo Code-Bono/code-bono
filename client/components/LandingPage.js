@@ -74,10 +74,10 @@ export default class LandingPage extends React.Component {
                     </div>
                     <div className="extra content">
                       <button
-                        className="ui button"
+                        className="ui button" id="more-info-button"
                         onClick={evt => handleClick(evt, proposal.id)}
                       >
-                        <Link to={`/proposals/${proposal.id}`}>More info</Link>
+                        <Link id="more-info-text" to={`/proposals/${proposal.id}`}>More info</Link>
                       </button>
                     </div>
                   </Card>

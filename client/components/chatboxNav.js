@@ -41,7 +41,7 @@ class ChatboxNavbar extends Component {
                 <ChatboxContainer />
               </Container>
             ) : (
-              <Button fluid size="mini" primary onClick={this.handleClick}>
+              <Button id="open-chat" fluid size="mini" onClick={this.handleClick}>
                 Open Chat
               </Button>
             )}

@@ -6,7 +6,6 @@
 .chatboxnav-container {
   position: absolute;
   z-index: 2;
-  background-color: red;
 }
 
 .Site {
@@ -39,6 +38,12 @@ label {
   display: block;
 }
 
+#navbar {
+  margin-bottom: 0;
+  background-color: #212121;
+  border-radius: 0;
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
@@ -51,6 +56,7 @@ nav a {
 
 .left-flex-item {
   margin: auto;
+  color: #309aaB;
 }
 
 .nav-buttons {
@@ -79,6 +85,11 @@ video {
   padding-left: 2px;
 }
 
+#open-chat {
+  background-color: #89898C;
+
+}
+
 #chatbox {
   background-color: black;
   display: flex;
@@ -95,6 +106,7 @@ video {
 .open-nav {
   display: flex;
   justify-content: space-between;
+
 }
 
 .channels {
@@ -136,7 +148,7 @@ video {
 }
 
 .masthead {
-  background-color: #5b9bfa !important;
+  background-color: #309aaB !important;
 }
 
 .ui.text.container {
@@ -172,6 +184,7 @@ video {
 .how-it-works-singular {
   flex-grow: 1;
   text-align: center;
+  /*background-color: #9B9BAB;*/
 }
 
 .how-it-works-text-singular {
@@ -180,6 +193,7 @@ video {
   margin: auto;
   padding: 1.5em;
   width: 10em;
+  background-color: #F0F0F0;
 }
 
 .how-it-works-image-singular {
@@ -187,7 +201,11 @@ video {
 }
 
 .subheading {
-  color: #5b9bfa;
+  color: #309aab;
+}
+
+#more-info-text {
+  color: #5a5a5a;
 }
 
 .how-it-works-text {
