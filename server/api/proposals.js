@@ -1,10 +1,12 @@
 const router = require('express').Router()
-const { Proposal, Organization, Cause } = require('../db/models')
+const { Proposal, Organization, Cause, Project, User } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
   //placeholder to get the only chatroom currently in db
-  Proposal.findAll({ include: [Organization] })
+  Proposal.findAll({
+    include: [Organization, Cause, { model: Project, include: [User] }]
+  })
     .then(proposal => res.json(proposal))
     .catch(next)
 })
@@ -12,7 +14,9 @@ router.get('/', (req, res, next) => {
 router.get('/:proposalId', (req, res, next) => {
   const proposalId = +req.params.proposalId
 
-  Proposal.findById(proposalId, { include: [Organization] })
+  Proposal.findById(proposalId, {
+    include: [Organization, Cause, { model: Project, include: [User] }]
+  })
     .then(proposal => res.json(proposal))
     .catch(next)
 })
