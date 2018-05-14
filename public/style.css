@@ -10,21 +10,21 @@
 }
 
 .Site {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .Site-content {
-    flex: 1 0 auto;
-    padding: var( — space) var( — space) 0;
-    width: 100%;
+  flex: 1 0 auto;
+  padding: var(— space) var(— space) 0;
+  width: 100%;
 }
 .Site-content:after {
-    content: ‘\00a0’;
-    display: block;
-    margin-top: var( — space);
-    height: 0;
-    visibility: hidden;
+  content: ‘\00a0’;
+  display: block;
+  margin-top: var(— space);
+  height: 0;
+  visibility: hidden;
 }
 
 body {
@@ -50,7 +50,7 @@ nav a {
 }
 
 .left-flex-item {
-  margin: auto
+  margin: auto;
 }
 
 .nav-buttons {
@@ -80,14 +80,15 @@ video {
 }
 
 #chatbox {
-  display:flex;
+  background-color: black;
+  display: flex;
   height: 210px;
 }
 
 #channel-box {
   overflow: hidden;
   height: 210px;
-  width:35%;
+  width: 35%;
   padding-left: 5px;
 }
 
@@ -97,7 +98,7 @@ video {
 }
 
 .channels {
-  display:flex;
+  display: flex;
   width: 25%;
 }
 
@@ -117,7 +118,7 @@ video {
   position: fixed;
   bottom: 0;
   right: 0;
-/*  border-style: solid;
+  /*  border-style: solid;
   border-width: 1px;
   border-radius: 7px 0px 0px 0px;
   background-color: white;*/
@@ -187,7 +188,7 @@ video {
 }
 
 .grey-text {
-    color: #303030;
+  color: #303030;
 }
 
 .blue-text {
@@ -207,7 +208,7 @@ video {
 #single-proposal-body {
   background-color: white;
   margin: 1em 0em 1em 0em;
-  padding: 1em
+  padding: 1em;
 }
 
 .singlePageImg {
@@ -259,7 +260,7 @@ video {
   padding: 1%;
   padding-bottom: 3%;
   letter-spacing: 1px;
-  font size: 16px;
+  font-size: 16px;
 }
 
 .github-link {
@@ -271,26 +272,24 @@ video {
 }
 
 .message {
-  background-color: lightskyblue;
   display: inline-block;
-  padding: .1% 1% .1% 1%;
+  padding: 0.1% 1% 0.1% 1%;
   border-radius: 10%;
 }
 
-
 .message-border {
-  margin-bottom: .5%;
+  margin-bottom: 0.5%;
 }
 
 #inside-box {
-  background-image: url("https://cdn.pixabay.com/photo/2014/01/23/21/33/blue-250770__340.jpg");
+  background-color: white;
   overflow: auto;
   height: 150px;
   padding: 10px 0 0 10px;
-  border-radius: 10%;
+  border-radius: 5%;
   margin-top: 20px;
 }
-#inside-channel{
+#inside-channel {
   overflow: auto;
   height: 180px;
   padding: 5px 0 0 0;
@@ -304,6 +303,24 @@ video {
 }*/
 
 #setup-new-room {
-  flex-grow: .1;
+  flex-grow: 0.1;
   align-self: auto;
+}
+
+.channel-list-head {
+  color: white;
+}
+
+.vidchat-container {
+  display: flex;
+  justify-content: center;
+}
+
+.vidchat-children {
+  display: flex;
+  justify-content: center;
+}
+
+.live-channel-name {
+  text-align: center;
 }

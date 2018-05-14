@@ -14,7 +14,6 @@ export default class SingleProposal extends Component {
 
   render() {
     const { singleProposal } = this.props
-    console.log(singleProposal)
     return (
       <Container>
         {singleProposal.id ? (
