@@ -9,7 +9,8 @@ export default class Vidchat extends Component {
     super(props)
     this.state = {
       channelName: '',
-      broadcastName: ''
+      broadcastName: '',
+      isChatLive: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -33,6 +34,7 @@ export default class Vidchat extends Component {
           socket.emit('updateChannelName', channelInfo)
         })
         connection.open(roomName)
+        this.setState({ isChatLive: true })
       } else {
         alert('Enter a channel name!')
       }
@@ -48,18 +50,22 @@ export default class Vidchat extends Component {
       })
       connection.leave()
     } else if (e.target.name === 'closeChannel') {
-      connection.attachStreams.forEach(function(localStream) {
-        localStream.stop()
-      })
-      //closes channel and resets broadcastName
-      this.setState({ broadcastName: '' }, () => {
-        //emits broadcast name after it is set
-        let channelInfo = {}
-        channelInfo.broadcastName = this.state.broadcastName
-        channelInfo.id = this.props.projectId
-        socket.emit('updateChannelName', channelInfo)
-      })
-      connection.close()
+      //checks if channels are live
+      if (this.state.isChatLive) {
+        //closes channel and resets broadcastName
+        connection.attachStreams.forEach(function(localStream) {
+          localStream.stop()
+        })
+        this.setState({ broadcastName: '' }, () => {
+          ///emits close after resetting the new name
+          let channelInfo = {}
+          channelInfo.broadcastName = this.state.broadcastName
+          channelInfo.id = this.props.projectId
+          socket.emit('closeChannel', channelInfo)
+          this.setState({ isChatLive: false })
+        })
+        connection.close()
+      }
     }
   }
 
@@ -87,6 +93,18 @@ export default class Vidchat extends Component {
       if (this.props.projectId === channelObj.id) {
         this.setState({ broadcastName: channelObj.broadcastName })
       }
+      this.setState({ isChatLive: true })
+    })
+    socket.on('closeAllChannels', channelObj => {
+      if (this.props.projectId === channelObj.id) {
+        this.setState({ broadcastName: channelObj.broadcastName })
+      }
+      connection.attachStreams.forEach(function(localStream) {
+        localStream.stop()
+      })
+      connection.close()
+      this.setState({ isChatLive: false })
+      alert('video chat channel has been closed!')
     })
     let broadcast = this.state.broadcastName
     return (
