@@ -207,7 +207,7 @@ const organizations = [
   {
     name: 'Federation for Orphans',
     description:
-      'For over 200 years, we have help orphaned children by providing them with the resources that they need to succeed in childhood and beyond. We opened our doors in 1809 as the first institution in the United States devoted exclusively to the care of abandoned, neglected infants, regardless of race or creed. The Federation for Orphans reaches 34,000 children and families each year in all five boroughs of New York City, surrounding counties, and Puerto Rico. We offer a unique career opportunity: the chance to engage in rewarding daily work, and learn new skills from innovative industry leaders, while having the peace of mind that comes with the stability of a reuptable organization.',
+      'For over 200 years, we have help orphaned children by providing them with the resources that they need to succeed in childhood and beyond. We opened our doors in 1809 as the first institution in the United States devoted exclusively to the care of abandoned, neglected infants, regardless of race or creed. The Federation for Orphans reaches 34,000 children and families each year in all five boroughs of New York City, surrounding counties, and Puerto Rico. We offer a unique career opportunity: the chance to engage in rewarding daily work, and learn new skills from innovative industry leaders, while having the peace of mind that comes with the stability of a reputable organization.',
     address: '123 Hanover Sq, New York, NY 10004',
     email: 'info@ffo.org',
     phoneNumber: '1234567890'

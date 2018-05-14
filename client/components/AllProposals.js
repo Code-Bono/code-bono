@@ -17,6 +17,11 @@ export default class AllProposals extends Component {
     return (
       <Container>
         <h1>All Proposals</h1>
+        <p>
+          Browse through proposals for technical projects to see which
+          organizations need your skills
+        </p>
+        <br />
         {proposals.length ? (
           <Card.Group itemsPerRow={3}>
             {proposals.map(proposal => {
@@ -26,11 +31,19 @@ export default class AllProposals extends Component {
                     <img src={proposal.image} />
                   </div>
                   <div className="content">
-                    <a className="header">{proposal.name}</a>
+                    <Link className="header" to={`/proposals/${proposal.id}`}>
+                      {proposal.name}{' '}
+                    </Link>
                     <a className="ui sub header">
                       {proposal.organization.name}
                     </a>
                     <div className="description">{proposal.snippet}</div>
+                    <br />
+                    {proposal.causes.length ? (
+                      <div className="content">
+                        Causes: {proposal.causes.map(cause => `${cause.name}`)}
+                      </div>
+                    ) : null}
                     <br />
                     <div className="meta">
                       <span className="date">
