@@ -10,8 +10,8 @@ export default class GithubFeed extends Component {
   }
 
   componentDidMount() {
-    socket.on('updateFeed', event => {
-      this.addToFeed(event)
+    socket.on('githubEvent', event => {
+      console.log('From the socket!!: ', event)
     })
   }
 
@@ -31,22 +31,24 @@ export default class GithubFeed extends Component {
               .map(event => {
                 return (
                   <Feed.Event key={event.id}>
-                    event.type === 'pull request' && (
-                    <Feed.Content>
-                      <Feed.Summary>
-                        <Feed.User>{event.githubUser}</Feed.User> {event.action}{' '}
-                        a <a href={event.url}>pull request</a>
-                        <Feed.Date>{event.updatedAt}</Feed.Date>
-                      </Feed.Summary>
-                    </Feed.Content>
-                    ), event.type === 'pull request review' && ({' '}
-                    <Feed.Content>
-                      <Feed.Summary>
-                        <Feed.User>{event.githubUser}</Feed.User> {event.action}{' '}
-                        a <a href={event.url}>pull request</a>
-                        <Feed.Date>{event.updatedAt}</Feed.Date>
-                      </Feed.Summary>
-                    </Feed.Content>)
+                    {event.type === 'pull request' && (
+                      <Feed.Content>
+                        <Feed.Summary>
+                          <Feed.User>{event.githubUser}</Feed.User>{' '}
+                          {event.action} a <a href={event.url}>pull request</a>
+                          <Feed.Date>{event.updatedAt}</Feed.Date>
+                        </Feed.Summary>
+                      </Feed.Content>
+                    )}
+                    {event.type === 'pull request review' && (
+                      <Feed.Content>
+                        <Feed.Summary>
+                          <Feed.User>{event.githubUser}</Feed.User>{' '}
+                          {event.action} a <a href={event.url}>pull request</a>
+                          <Feed.Date>{event.updatedAt}</Feed.Date>
+                        </Feed.Summary>
+                      </Feed.Content>
+                    )}
                   </Feed.Event>
                 )
               })}

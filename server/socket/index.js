@@ -8,14 +8,14 @@ module.exports = io => {
     socket.on('sendMessage', data => {
       socket.broadcast.emit('updateChat', data)
     })
-    socket.on('message', function(data) {
+    socket.on('message', data => {
       socket.broadcast.emit('message', data)
     })
-    socket.on('githubEvent', function(event) {
-      socket.broadcast.emit('githubEvent', event)
-    })
-    socket.on('updateChannelName', function(channelObj) {
+    socket.on('updateChannelName', channelObj => {
       socket.broadcast.emit('sendChannelName', channelObj)
+    })
+    socket.on('githubEvent', event => {
+      socket.emit('githubEvent', event)
     })
   })
 }

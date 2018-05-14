@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { Repo, Event } = require('../db/models')
-module.exports = router
+const io = require('../socket')
+module.exports = { router }
 
 router.post('/pull_request', (req, res, next) => {
   // 'action' can be of several types. Most common are opened, closed, assigned, review_requested
@@ -31,7 +32,14 @@ router.post('/pull_request_review', (req, res, next) => {
     githubUser: req.body.review.user.login,
     repoId: req.body.repository.id
   }
-  Event.create(newEvent).then(event => res.sendStatus(200))
+  Event.create(newEvent)
+    // .then(event =>
+    //   io.on('connection2', socket => {
+    //     console.log(event)
+    //     socket.emit('githubEvent', event)
+    //   })
+    // )
+    .then(() => res.sendStatus(200))
 })
 
 router.post('/push', (req, res, next) => {
@@ -39,7 +47,7 @@ router.post('/push', (req, res, next) => {
   let size = req.body.commits.length
   let pathLength = req.body.ref.split('/').length
   let branch = req.body.ref.split('/')[pathLength - 1]
-  let description = `pushed to branch ${branch}`
+  let description = `pushed to the ${branch} branch`
   let newEvent = {
     type: 'push',
     description,
@@ -48,7 +56,14 @@ router.post('/push', (req, res, next) => {
     size,
     repoId: req.body.repository.id
   }
-  Event.create(newEvent).then(event => res.sendStatus(200))
+  Event.create(newEvent)
+    // .then(event =>
+    //   io.on('connection2', socket => {
+    //     console.log(event)
+    //     socket.emit('githubEvent', event)
+    //   })
+    // )
+    .then(res.sendStatus(200))
 })
 
 router.post('/member', (req, res, next) => {

@@ -41,7 +41,8 @@ function githubRepoAndProjectBoardCreation(name, description) {
       org: 'Code-Bono-Projects',
       name,
       description,
-      has_projects: true
+      has_projects: true,
+      auto_init: true
     })
     .then(repo => {
       columnIds.id = repo.data.id
