@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Container } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class EditOrganization extends Component {
   constructor(props) {
@@ -22,6 +23,9 @@ export default class EditOrganization extends Component {
     const { currentOrg } = this.props
     return (
       <Container>
+        <Link to="/organization/home">
+          <Button size="mini">Go Back</Button>
+        </Link>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
@@ -33,14 +37,6 @@ export default class EditOrganization extends Component {
               defaultValue={currentOrg.name}
             />
             <Form.Input
-              required={true}
-              name="orgDescription"
-              type="text"
-              fluid
-              label="Organization Description"
-              defaultValue={currentOrg.description}
-            />
-            <Form.Input
               name="orgImage"
               type="text"
               fluid
@@ -48,6 +44,15 @@ export default class EditOrganization extends Component {
               defaultValue={currentOrg.image}
             />
           </Form.Group>
+          <Form.Input
+            required={true}
+            name="orgAddress"
+            width="16"
+            type="text"
+            fluid
+            label="Organization Address"
+            defaultValue={currentOrg.address}
+          />
           <Form.Group widths="equal">
             <Form.Input
               required={true}
@@ -66,13 +71,13 @@ export default class EditOrganization extends Component {
               defaultValue={currentOrg.email}
             />
           </Form.Group>
-          <Form.Input
+          <Form.TextArea
+            width={16}
             required={true}
-            name="orgAddress"
+            name="orgDescription"
             type="text"
-            fluid
-            label="Organization Address"
-            defaultValue={currentOrg.address}
+            label="Organization Description"
+            defaultValue={currentOrg.description}
           />
           <Button type="submit">Submit</Button>
         </Form>
