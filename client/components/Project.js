@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
-import Vidchat2 from './vidchat2'
+import Vidchat from './vidchat'
 import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import { Container } from 'semantic-ui-react'
@@ -41,7 +41,10 @@ export default class Project extends Component {
             manage your project board, and see live updates from your Github
             repo. <br /> Go ahead, Code Bono!
           </h4>
-          <Vidchat2 />
+          <Vidchat
+            user={this.props.user}
+            projectId={this.props.match.params.projectId}
+          />
           <h4>
             <a href={repoURL} target="_blank">
               Go to Github repo

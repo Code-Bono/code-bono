@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { fetchSingleProject } from '../store/project'
 import { fetchCards } from '../store/githubProjectCards'
 
-
 const mapState = state => {
   return {
-    project: state.singleProject
+    project: state.singleProject,
+    user: state.user
   }
 }
 
