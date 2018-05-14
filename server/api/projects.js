@@ -119,8 +119,7 @@ router.get('/:projectId/events', (req, res, next) => {
       where: { repoId: repo.id }
     })
       .then(events => {
-        console.log(events)
-        res.send(events)
+        res.json(events)
       })
       .catch(next)
   })

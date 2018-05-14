@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import socket from '../socket'
-import { Feed } from 'semantic-ui-react'
+import { Header, Feed } from 'semantic-ui-react'
+import TimeAgo from 'react-time-ago'
 
 export default class GithubFeed extends Component {
   constructor(props) {
@@ -21,18 +22,35 @@ export default class GithubFeed extends Component {
     const { events } = this.props
     return (
       <div>
-        <h1>Events for your repo: </h1>
+        <Header as="h2">Here are the most recent events for your repo: </Header>
         {events && events.length ? (
-          events.length &&
-          events.slice(0, 10).map(event => {
-            return (
-              <div key={event.id}>
-                {' '}
-                At {event.created_at}, user {event.githubUser} initiated a{' '}
-                {event.type} with the eventId of {event.id}{' '}
-              </div>
-            )
-          })
+          <Feed>
+            {events
+              .slice(events.length - 10, events.length - 1)
+              .reverse()
+              .map(event => {
+                return (
+                  <Feed.Event key={event.id}>
+                    event.type === 'pull request' && (
+                    <Feed.Content>
+                      <Feed.Summary>
+                        <Feed.User>{event.githubUser}</Feed.User> {event.action}{' '}
+                        a <a href={event.url}>pull request</a>
+                        <Feed.Date>{event.updatedAt}</Feed.Date>
+                      </Feed.Summary>
+                    </Feed.Content>
+                    ), event.type === 'pull request review' && ({' '}
+                    <Feed.Content>
+                      <Feed.Summary>
+                        <Feed.User>{event.githubUser}</Feed.User> {event.action}{' '}
+                        a <a href={event.url}>pull request</a>
+                        <Feed.Date>{event.updatedAt}</Feed.Date>
+                      </Feed.Summary>
+                    </Feed.Content>)
+                  </Feed.Event>
+                )
+              })}
+          </Feed>
         ) : (
           <h3>Loading events...</h3>
         )}
