@@ -17,7 +17,6 @@ export default class EditOrganization extends Component {
     orgObj.email = evt.target.orgEmail.value
     orgObj.image = evt.target.orgImage.value
     this.props.editOrg(orgObj)
-    console.log(orgObj)
   }
   render() {
     const { currentOrg } = this.props
@@ -26,6 +25,7 @@ export default class EditOrganization extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
+              required={true}
               name="orgName"
               type="text"
               fluid
@@ -33,6 +33,7 @@ export default class EditOrganization extends Component {
               defaultValue={currentOrg.name}
             />
             <Form.Input
+              required={true}
               name="orgDescription"
               type="text"
               fluid
@@ -49,6 +50,7 @@ export default class EditOrganization extends Component {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
+              required={true}
               name="orgNumber"
               type="text"
               fluid
@@ -56,6 +58,7 @@ export default class EditOrganization extends Component {
               defaultValue={currentOrg.phoneNumber}
             />
             <Form.Input
+              required={true}
               name="orgEmail"
               type="text"
               fluid
@@ -64,6 +67,7 @@ export default class EditOrganization extends Component {
             />
           </Form.Group>
           <Form.Input
+            required={true}
             name="orgAddress"
             type="text"
             fluid
