@@ -23,34 +23,32 @@ export default class Project extends Component {
 
   render() {
     const projectName = this.props.project.name
-    const repoURL = this.props.project.id ? this.props.project.repo.URL : null
     const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
       <div>
-        <Header as="h2" icon textAlign="center">
-          <Header.Content>
-            <h2 className="project-title">{projectName}</h2>
-          </Header.Content>
-        </Header>
-        <Header as="h4" icon textAlign="center">
-          <h4 className="project-subtitle">
-            Welcome to {projectName}'s collaboration space. <br />This page will
-            act as home base for you and other developers working on this
-            project. <br />From here, you can message each other, video chat,
-            manage your project board, and see live updates from your Github
-            repo. <br /> Go ahead, Code Bono!
-          </h4>
-          <Vidchat
-            user={this.props.user}
-            projectId={this.props.match.params.projectId}
-          />
-          <h4>
-            <a href={repoURL} target="_blank">
-              Go to Github repo
-            </a>
-          </h4>
-        </Header>
+        <div className="projectBoard-headers-container">
+          <Header as="h1" icon textAlign="center">
+            <Header.Content>
+              <h1 className="project-title">{projectName}</h1>
+            </Header.Content>
+          </Header>
+          <Header as="h3" icon textAlign="center">
+            <Header.Content>
+              <h3 className="project-subtitle">
+                Welcome to {projectName}'s collaboration space. <br />This page will
+                act as home base for you and other developers working on this
+                project. <br />From here, you can message each other, video chat,
+                manage your project board, <br />and see live updates from your Github
+                repo. <br /> Go ahead, Code Bono!
+              </h3>
+            </Header.Content>
+          </Header>
+        </div>
+        <Vidchat
+          user={this.props.user}
+          projectId={this.props.match.params.projectId}
+        />
         <GitHubProjectBoardContainer projectId={projectId} />
         {/*<GithubFeed />*/}
       </div>
