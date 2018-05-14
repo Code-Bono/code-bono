@@ -17,6 +17,9 @@ export default class GitHubProjectBoard extends Component {
       handleColumnChange
     } = this.props
     const projectId = project.id
+    const repoURL = this.props.project.id ? this.props.project.repo.URL : null
+
+    console.log('project', project)
 
     // data structure required by react-trello module
     const projectBoard = projectCards.length
@@ -60,14 +63,16 @@ export default class GitHubProjectBoard extends Component {
     return (
       <div>
         <div className="projectBoard-header">
-          <Header as="h2" icon textAlign="center">
-            <Header.Content>Github Project Board</Header.Content>
-          </Header>
-          <Image
+            <Header as="h2" icon textAlign="center">
+              <Header.Content>Github Project Board</Header.Content>
+            </Header>
+        </div>
+        <div className="image-container">
+          <a href={repoURL} target="_blank"><Image
             centered
             size="mini"
             src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
-          />
+          /></a>
         </div>
         <div className="project-board-container">
           {projectCards.length ? (
