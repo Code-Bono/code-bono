@@ -52,6 +52,7 @@ export default class EditProfile extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group widths="equal">
                 <Form.Input
+                  required={true}
                   name="proposalName"
                   type="text"
                   fluid
@@ -66,6 +67,7 @@ export default class EditProfile extends Component {
                   defaultValue={proposal.image}
                 />
                 <Form.Input
+                  required={true}
                   type="date"
                   type="text"
                   name="proposalDeadline"
@@ -83,6 +85,7 @@ export default class EditProfile extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.TextArea
+                  required={true}
                   width="16"
                   type="text"
                   name="proposalDescription"

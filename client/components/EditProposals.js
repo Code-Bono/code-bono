@@ -6,10 +6,12 @@ export default class EditProposals extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      causes: []
+      causes: [],
+      active: true
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleActivity = this.handleActivity.bind(this)
   }
   componentDidMount() {
     this.props.getProposal(this.props.proposalId)
@@ -20,14 +22,19 @@ export default class EditProposals extends Component {
     this.setState({ causes: value })
   }
 
+  handleActivity(e, { value }) {
+    this.setState({ active: value })
+  }
+
   handleSubmit(evt) {
+    console.log(evt.target.proposalIsActive)
     evt.preventDefault()
     let proposalObj = {}
     proposalObj.name = evt.target.proposalName.value
     proposalObj.description = evt.target.proposalDescription.value
     proposalObj.image = evt.target.proposalImage.value
     proposalObj.deadline = evt.target.proposalDeadline.value
-    proposalObj.isActive = evt.target.proposalIsActive.value
+    proposalObj.isActive = this.state.active
     proposalObj.organizationId = this.props.currentOrg.id
     proposalObj.causes = this.state.causes
     this.props.editProposal(this.props.proposalId, proposalObj)
@@ -43,8 +50,6 @@ export default class EditProposals extends Component {
       obj.value = cause.id
       return obj
     })
-    console.log(proposal)
-    console.log(proposal.name)
     return (
       <Container>
         {proposal.name ? (
@@ -53,6 +58,7 @@ export default class EditProposals extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group widths="equal">
                 <Form.Input
+                  required={true}
                   name="proposalName"
                   type="text"
                   fluid
@@ -67,23 +73,30 @@ export default class EditProposals extends Component {
                   defaultValue={proposal.image}
                 />
                 <Form.Input
+                  required={true}
                   type="date"
-                  type="text"
                   name="proposalDeadline"
                   fluid
                   label="Deadline"
                   defaultValue={proposal.deadline}
                 />
-                <Form.Input
+                <Dropdown
+                  selection
+                  onChange={this.handleActivity}
+                  options={[
+                    { value: true, text: 'true' },
+                    { value: false, text: 'false' }
+                  ]}
+                  required={true}
                   type="text"
                   name="proposalIsActive"
                   fluid
-                  label="Active"
-                  defaultValue={proposal.isActive}
+                  placeholder="true or false?"
                 />
               </Form.Group>
               <Form.Group>
                 <Form.TextArea
+                  required={true}
                   width="16"
                   type="text"
                   name="proposalDescription"
