@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
 import Vidchat2 from './vidchat2'
-import GithubFeed from './GithubFeed'
+import GithubFeedContainer from './GithubFeedContainer'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import { Container } from 'semantic-ui-react'
 
@@ -14,6 +14,7 @@ export default class Project extends Component {
     const projectId = this.props.match.params.projectId
     this.props.loadProject(projectId)
     this.props.loadProjectCards(projectId)
+    this.props.loadEventsFromServer(projectId)
     // this.interval = setInterval(this.props.loadProjectCards(projectId), 60000)
   }
 
@@ -49,7 +50,7 @@ export default class Project extends Component {
           </h4>
         </Header>
         <GitHubProjectBoardContainer projectId={projectId} />
-        {/*<GithubFeed />*/}
+        <GithubFeedContainer projectId={projectId} />
       </div>
     )
   }

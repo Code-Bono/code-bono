@@ -42,8 +42,8 @@ export default class EditProfile extends Component {
       obj.value = cause.id
       return obj
     })
-    console.log(proposal)
-    console.log(proposal.name)
+    // console.log(proposal)
+    // console.log(proposal.name)
     return (
       <Container>
         {proposal.name ? (
