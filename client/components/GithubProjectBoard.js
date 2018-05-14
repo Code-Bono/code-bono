@@ -19,8 +19,6 @@ export default class GitHubProjectBoard extends Component {
     const projectId = project.id
     const repoURL = this.props.project.id ? this.props.project.repo.URL : null
 
-    console.log('project', project)
-
     // data structure required by react-trello module
     const projectBoard = projectCards.length
       ? projectCards.map((column, i) => {
