@@ -132,9 +132,18 @@ video {
   background-color: #5b9bfa !important;
 }
 
-.ui.text.container {
+.ui.text.container.landing {
   padding-top: 6em;
   padding-bottom: 5em;
+}
+
+.about {
+  padding: 2em;
+}
+
+.team {
+  padding: 1em;
+  margin: 1em;
 }
 
 .inverted.header {

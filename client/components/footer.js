@@ -13,12 +13,13 @@ export default function Footer() {
         <Link to="/">
           <Menu.Item name="Code Bono" />
         </Link>
-        <Link to="/team">
+        <Link to="/about">
           <Menu.Item name="About Us" />
         </Link>
-        <Link to="https://www.fullstackacademy.com/">
-          <Menu.Item name="Fullstack Academy" />
-        </Link>
+        <Menu.Item
+          name="Fullstack Academy"
+          href="https://www.fullstackacademy.com"
+        />
       </Menu>
     </Segment>
   )
