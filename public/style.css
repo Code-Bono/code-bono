@@ -113,6 +113,13 @@ video {
   flex-wrap: wrap;
 }
 
+#ChatboxNavbarClosed {
+  width: 100px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 #ChatboxNavbar {
   width: 400px;
   position: fixed;
