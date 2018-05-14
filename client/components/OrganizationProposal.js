@@ -44,6 +44,7 @@ export default class OrganizationProposal extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
+              required={true}
               name="proposalName"
               fluid
               label="Proposal Name"
@@ -56,6 +57,7 @@ export default class OrganizationProposal extends Component {
               placeholder="Proposal ImageURL"
             />
             <Form.Input
+              required={true}
               type="date"
               name="proposalDeadline"
               fluid
@@ -65,6 +67,7 @@ export default class OrganizationProposal extends Component {
           </Form.Group>
           <Form.Group>
             <Form.TextArea
+              required={true}
               width="16"
               name="proposalDescription"
               label="Description"
