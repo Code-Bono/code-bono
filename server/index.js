@@ -96,6 +96,7 @@ const startListening = () => {
   // set up our socket control center
   const io = socketio(server)
   require('./socket')(io)
+  require('./api/webhook')(io, app)
 }
 
 const syncDb = () => db.sync()

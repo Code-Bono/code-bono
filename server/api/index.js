@@ -3,7 +3,6 @@ module.exports = router
 
 router.use('/users', require('./users'))
 router.use('/chatroom', require('./chatroom'))
-router.use('/webhook', require('./webhook').router)
 router.use('/projects', require('./projects'))
 router.use('/orgs', require('./orgs'))
 router.use('/proposals', require('./proposals'))
