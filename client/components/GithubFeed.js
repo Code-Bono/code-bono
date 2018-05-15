@@ -5,16 +5,19 @@ import { Header, Feed } from 'semantic-ui-react'
 import TimeAgo from 'react-time-ago'
 
 export default class GithubFeed extends Component {
-  constructor(props) {
-    super(props)
+  handleGithubEvent = event => {
+    if (+event.projectId === +this.props.projectId) {
+      this.props.addEmittedEvent(event)
+    }
   }
 
   componentDidMount() {
     this.props.loadEventsFromServer(this.props.projectId)
-    socket.on('githubEvent', event => {
-      console.log('from socket: ', event)
-      this.props.addEmittedEvent(event)
-    })
+    socket.on('githubEvent', this.handleGithubEvent)
+  }
+
+  componentWillUnmount() {
+    socket.off('githubEvent', this.handleGithubEvent)
   }
 
   render() {
@@ -29,26 +32,10 @@ export default class GithubFeed extends Component {
               .reverse()
               .map(event => {
                 return (
-                  <Feed.Event key={event.id}>
-                    {event.type === 'pull request' && (
-                      <Feed.Content>
-                        <Feed.Summary>
-                          <Feed.User>{event.githubUser}</Feed.User>{' '}
-                          {event.action} a <a href={event.url}>pull request</a>
-                          <Feed.Date>{event.updatedAt}</Feed.Date>
-                        </Feed.Summary>
-                      </Feed.Content>
-                    )}
-                    {event.type === 'pull request review' && (
-                      <Feed.Content>
-                        <Feed.Summary>
-                          <Feed.User>{event.githubUser}</Feed.User>{' '}
-                          {event.action} a <a href={event.url}>pull request</a>
-                          <Feed.Date>{event.updatedAt}</Feed.Date>
-                        </Feed.Summary>
-                      </Feed.Content>
-                    )}
-                  </Feed.Event>
+                  <Feed.Content key={event.id}>
+                    <Feed.User>{event.githubUser}</Feed.User>
+                    <Feed.Date>{event.updatedAt}</Feed.Date>
+                  </Feed.Content>
                 )
               })}
           </Feed>

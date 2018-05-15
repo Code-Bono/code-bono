@@ -1,4 +1,4 @@
-const { Event } = require('../db/models')
+const { Event, Repo } = require('../db/models')
 const router = require('express').Router()
 
 router.post('/push', (req, res, next) => {
@@ -17,7 +17,9 @@ router.post('/push', (req, res, next) => {
   }
   Event.create(newEvent)
     .then(event => {
-      req.io.emit('githubEvent', event)
+      Repo.findById(event.repoId)
+        .then(repo => event.update({ projectId: repo.projectId }))
+        .then(updatedEvent => req.io.emit('githubEvent', updatedEvent))
     })
     .then(() => res.sendStatus(200))
     .catch(next)
@@ -39,9 +41,12 @@ router.post('/pull_request', (req, res, next) => {
   }
   Event.create(newEvent)
     .then(event => {
-      req.io.emit('githubEvent', event)
+      Repo.findById(event.repoId)
+        .then(repo => event.update({ projectId: repo.projectId }))
+        .then(updatedEvent => req.io.emit('githubEvent', updatedEvent))
     })
     .then(() => res.sendStatus(200))
+    .catch(next)
 })
 
 router.post('/pull_request_review', (req, res, next) => {
@@ -57,8 +62,13 @@ router.post('/pull_request_review', (req, res, next) => {
     repoId: req.body.repository.id
   }
   Event.create(newEvent)
-    .then(event => req.io.emit('githubEvent', event))
+    .then(event => {
+      Repo.findById(event.repoId)
+        .then(repo => event.update({ projectId: repo.projectId }))
+        .then(updatedEvent => req.io.emit('githubEvent', updatedEvent))
+    })
     .then(() => res.sendStatus(200))
+    .catch(next)
 })
 
 router.post('/member', (req, res, next) => {
@@ -72,8 +82,13 @@ router.post('/member', (req, res, next) => {
     repoId: req.body.repository.id
   }
   Event.create(newEvent)
-    .then(event => req.io.emit('githubEvent', event))
+    .then(event => {
+      Repo.findById(event.repoId)
+        .then(repo => event.update({ projectId: repo.projectId }))
+        .then(updatedEvent => req.io.emit('githubEvent', updatedEvent))
+    })
     .then(() => res.sendStatus(200))
+    .catch(next)
 })
 
 module.exports = router
