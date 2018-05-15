@@ -2,23 +2,18 @@ import React, { Component } from 'react'
 import EditProfile from './EditProfile'
 import { connect } from 'react-redux'
 import { updateProfile } from '../store/user'
-import { fetchAllCauses } from '../store/cause'
 
 const mapState = (state, ownProps) => {
   return {
-    user: state.user,
-    causes: state.causes
+    user: state.user
   }
 }
 
 const mapDispatch = (dispatch, ownProps) => {
   return {
-    loadCauses: function() {
-      dispatch(fetchAllCauses())
-    },
-    editProfile: function(id, profileObj) {
-      // let history = ownProps.history
-      dispatch(updateProfile(profileObj))
+    editUser(userId, userObj) {
+      let history = ownProps.history
+      dispatch(updateProfile(userId, userObj, history))
     }
   }
 }

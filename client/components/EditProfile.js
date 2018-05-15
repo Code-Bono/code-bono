@@ -1,111 +1,88 @@
 import React, { Component } from 'react'
-import { Container, Header, Form, Dropdown } from 'semantic-ui-react'
+import {
+  Container,
+  Header,
+  Form,
+  Dropdown,
+  Grid,
+  Button
+} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class EditProfile extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      causes: []
-    }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-  componentDidMount() {
-    this.props.loadCauses()
-  }
-
-  handleChange(e, { value }) {
-    this.setState({ causes: value })
   }
 
   handleSubmit(evt) {
     evt.preventDefault()
-    let proposalObj = {}
-    proposalObj.name = evt.target.proposalName.value
-    proposalObj.description = evt.target.proposalDescription.value
-    proposalObj.image = evt.target.proposalImage.value
-    proposalObj.deadline = evt.target.proposalDeadline.value
-    proposalObj.isActive = evt.target.proposalIsActive.value
-    proposalObj.organizationId = this.props.currentOrg.id
-    proposalObj.causes = this.state.causes
-    this.props.editProposal(this.props.proposalId, proposalObj)
+    let userObj = {}
+    let userId = this.props.user.id
+    userObj.email = evt.target.email.value
+    userObj.imageUrl = evt.target.image.value
+    userObj.password = evt.target.password.value
+    userObj.firstname = evt.target.firstName.value
+    userObj.lastname = evt.target.lastName.value
+    this.props.editUser(userId, userObj)
   }
 
   render() {
-    let { proposal } = this.props
-    const { causes } = this.props
-    const options = causes.map(cause => {
-      const obj = {}
-      obj.text = cause.name
-      obj.value = cause.id
-      return obj
-    })
+    const FormInput = (name, type, label, value) => (
+      <Grid.Column className="form-inputs" width={9}>
+        <Form.Input
+          width={14}
+          required={true}
+          name={name}
+          type={type}
+          fluid
+          label={label}
+          defaultValue={value}
+        />
+      </Grid.Column>
+    )
+    const {
+      name,
+      email,
+      password,
+      imageUrl,
+      displayName,
+      firstname,
+      lastname
+    } = this.props.user
     return (
       <Container>
-        {proposal.name ? (
-          <div>
-            <h1>Edit Proposal</h1>
+        {this.props.user ? (
+          <div className="form">
+            <h1>Edit Profile</h1>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Group widths="equal">
-                <Form.Input
-                  required={true}
-                  name="proposalName"
-                  type="text"
-                  fluid
-                  label="Proposal Name"
-                  defaultValue={proposal.name}
-                />
-                <Form.Input
-                  name="proposalImage"
-                  type="text"
-                  fluid
-                  label="Proposal Image"
-                  defaultValue={proposal.image}
-                />
-                <Form.Input
-                  required={true}
-                  type="date"
-                  type="text"
-                  name="proposalDeadline"
-                  fluid
-                  label="Deadline"
-                  defaultValue={proposal.deadline}
-                />
-                <Form.Input
-                  type="text"
-                  name="proposalIsActive"
-                  fluid
-                  label="Active"
-                  defaultValue={proposal.isActive}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.TextArea
-                  required={true}
-                  width="16"
-                  type="text"
-                  name="proposalDescription"
-                  label="Description"
-                  defaultValue={proposal.description}
-                />
-              </Form.Group>
-              {causes && (
-                <Dropdown
-                  placeholder="Select Causes"
-                  fluid
-                  multiple
-                  search
-                  selection
-                  options={options}
-                  onChange={this.handleChange}
-                />
-              )}
-              <Form.Button>Submit</Form.Button>
+              <Grid className="grid-style">
+                {FormInput('email', 'email', 'User Email', email)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('firstName', 'text', 'First Name', firstname)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('lastName', 'text', 'Last Name', lastname)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('password', 'password', 'Password', password)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('image', 'text', 'User ImageURL', imageUrl)}
+              </Grid>
+              <Grid className="grid-style">
+                <Container textAlign="center">
+                  <Button type="submit">Submit</Button>
+                  <Link to="/profile">
+                    <Button>Cancel</Button>
+                  </Link>
+                </Container>
+              </Grid>
             </Form>
           </div>
         ) : (
-          <h1>There is no proposal here</h1>
+          <h1>There is no user here</h1>
         )}
       </Container>
     )

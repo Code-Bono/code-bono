@@ -29,9 +29,9 @@ export const me = () => dispatch =>
     .then(res => dispatch(getUser(res.data || defaultUser)))
     .catch(err => console.log(err))
 
-export const auth = (email, password, method) => dispatch =>
+export const auth = (email, password, firstname, lastname, method) => dispatch =>
   axios
-    .post(`/auth/${method}`, { email, password })
+    .post(`/auth/${method}`, { email, password, firstname, lastname })
     .then(
       res => {
         dispatch(getUser(res.data))
@@ -67,6 +67,15 @@ export const getUserById = id => dispatch =>
   axios
     .get(`/api/users/${id}`)
     .then(res => dispatch(getUser(res.data)))
+    .catch(err => console.log(err))
+
+export const updateProfile = (userId, userObj, history) => dispatch =>
+  axios
+    .put(`/api/users/${userId}`, userObj)
+    .then(res => {
+      dispatch(getUser(res.data))
+      history.push('/profile')
+    })
     .catch(err => console.log(err))
 
 //Model for editing profile
