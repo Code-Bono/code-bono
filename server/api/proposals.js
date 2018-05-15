@@ -40,3 +40,13 @@ router.post('/:proposalId', (req, res, next) => {
     .then(data => res.json(data))
     .catch(next)
 })
+
+router.delete('/:proposalId', (req, res, next) => {
+  Proposal.destroy({
+    where: {
+      id: req.params.proposalId
+    }
+  })
+    .then(data => res.json(data))
+    .catch(next)
+})

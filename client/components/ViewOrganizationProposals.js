@@ -26,6 +26,10 @@ export default class ViewOrganizationProposals extends Component {
                 <Link to={`/organization/proposals/${proposal.id}/edit`}>
                   <Button>Edit</Button>
                 </Link>
+
+                <Button onClick={() => this.props.deleteProposal(proposal.id)}>
+                  Delete
+                </Button>
               </div>
             )
           })
