@@ -61,14 +61,14 @@ class AuthForm extends Component {
               {FormInput('orgDescription', 'text', 'Organization Description')}
             </Grid>
           )}
-          <Container>
+          <Container textAlign="center">
             <Button size="medium" primary type="submit">
               {displayName}
             </Button>
           </Container>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
-        <Container>
+        <Container textAlign="center">
           <a href="/auth/github">
             <Button color="facebook" size="medium">
               <Icon name="github" />
