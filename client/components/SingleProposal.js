@@ -39,7 +39,7 @@ export default class SingleProposal extends Component {
             {singleProposal.projects[0] &&
             singleProposal.projects[0].users.length > 1 ? (
               <h4>
-                {singleProposal.projects[0].users.length}
+                {singleProposal.projects[0].users.length + ' '}
                 people are currently signed up for this project.
               </h4>
             ) : null}

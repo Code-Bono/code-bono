@@ -4,6 +4,7 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import {
+  About,
   AllProposalsContainer,
   EditOrganizationContainer,
   EditProposalsContainer,
@@ -39,6 +40,10 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={LandingPageContainer} />
         <Route exact path="/home" component={LandingPageContainer} />
+<<<<<<< HEAD
+=======
+        <Route exact path="/about" component={About} />
+>>>>>>> c8478f7acfc651da18a78d1c1b2524773ccf9b1a
         <Route exact path="/proposals" component={AllProposalsContainer} />
         <Route
           exact
