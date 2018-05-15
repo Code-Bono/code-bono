@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../store'
-import { Menu, Button } from 'semantic-ui-react'
+import { Menu, Button, Segment } from 'semantic-ui-react'
 
 const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
   <Menu id="navbar" className="ui grid">
@@ -13,39 +13,69 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
         src="https://image.flaticon.com/icons/svg/185/185816.svg"
       />
       <Link className="left-flex-item" to="/">
-        <h2>Code Bono</h2>
+        <h2 className="home-button">Code Bono</h2>
       </Link>
     </div>
-    <Menu.Menu className="nav-buttons" position="right">
+    <Menu.Menu className="nav-buttons-container" position="right">
       {isLoggedIn ? (
         <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/proposals">
-            <Button>View Open Opportunities</Button>
-          </Link>
-          <Button onClick={handleClick}>Logout</Button>
-          {isOrg ? (
-            <Link to="/organization/home">
-              <Button>Organization Home</Button>
-            </Link>
-          ) : (
-            <Link to="/profile">
-              <Button>User Home</Button>
-            </Link>
-          )}
+        <Menu inverted pointing secondary compact>
+            {/* The navbar will show these links after you log in */}
+            <Menu.Item >
+              <Link to="/proposals" className="nav-buttons">
+                browse proposals
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/about" className="nav-buttons">
+                about us
+              </Link>
+            </Menu.Item>
+            {isOrg ? (
+            <Menu.Item>
+              <Link to="/organization/home" className="nav-buttons">
+                organization profile
+              </Link>
+            </Menu.Item>
+            ) : (
+            <Menu.Item>
+              <Link to="/profile" className="nav-buttons">
+                my profile
+              </Link>
+            </Menu.Item>
+            )}
+            <Menu.Item>
+              <Link to="#" onClick={handleClick} className="nav-buttons">logout</Link>
+            </Menu.Item>
+          </Menu>
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/proposals">
-            <Button>View Open Opportunities</Button>
-          </Link>
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-          <Link to="/signup">
-            <Button>Sign Up</Button>
-          </Link>
+
+          <Menu inverted pointing secondary compact>
+            <Menu.Item >
+              <Link to="/proposals" className="nav-buttons">
+                browse proposals
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/about" className="nav-buttons">
+                about us
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/login" className="nav-buttons">
+                login
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/signup" className="nav-buttons">
+                sign Up
+              </Link>
+            </Menu.Item>
+          </Menu>
+
         </div>
       )}
     </Menu.Menu>
