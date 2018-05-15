@@ -18,13 +18,13 @@ export default class SingleProposal extends Component {
       <Container>
         {singleProposal.id ? (
           <div>
-            <h1 className="blue-text">
-              {singleProposal.organization.name.toUpperCase()}
+            <h1 className="blue-text single-proposal-header">
+              {singleProposal.name.toUpperCase()}
             </h1>
-            <h2 className="grey-text">{singleProposal.name}</h2>
-            <img className="singlePageImg" src={singleProposal.image} />
+            <h2 className="grey-text org-name">Submitted by {singleProposal.organization.name}</h2>
             <div id="single-proposal-body">
-              <h2 className="blue-text">Proposal description</h2>
+              <img className="singlePageImg" src={singleProposal.image} />
+              <h2 className="blue-text single-proposal-description-header">Proposal description</h2>
               <p>{singleProposal.description}</p>
               <h3>Deadline: {singleProposal.deadline}</h3>
               <h2 className="blue-text">About the organization:</h2>
@@ -32,20 +32,20 @@ export default class SingleProposal extends Component {
               <h3 className="blue-text">
                 Get in touch with {singleProposal.organization.name}:
               </h3>
-              <p>Email: {singleProposal.organization.email}</p>
-              <p>Phone: {singleProposal.organization.phoneNumber}</p>
-              <p>Address: {singleProposal.organization.address}</p>
+              <p className="org-info">Email: {singleProposal.organization.email}</p>
+              <p className="org-info">Phone: {singleProposal.organization.phoneNumber}</p>
+              <p className="org-info">Address: {singleProposal.organization.address}</p>
             </div>
             {singleProposal.projects[0] &&
             singleProposal.projects[0].users.length > 1 ? (
               <h4>
-                {singleProposal.projects[0].users.length}
+                {singleProposal.projects[0].users.length + ' '}
                 people are currently signed up for this project.
               </h4>
             ) : null}
             {singleProposal.projects[0] &&
             singleProposal.projects[0].users.length === 1 ? (
-              <h4>1 person is currently signed up for this project.</h4>
+              <h4 className="signup-count">1 person is currently signed up for this project.</h4>
             ) : null}
           </div>
         ) : (

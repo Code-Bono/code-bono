@@ -10,6 +10,9 @@ export default class ViewOrganizationProposals extends Component {
     let { currentOrg, proposals } = this.props
     return (
       <Container>
+        <Link to="/organization/home">
+          <Button size="mini">Go Back</Button>
+        </Link>
         {proposals.length && <h1>Your Current Proposals!</h1>}
         {proposals.length ? (
           proposals.map(proposal => {

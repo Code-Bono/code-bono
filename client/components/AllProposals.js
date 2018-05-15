@@ -56,7 +56,7 @@ export default class AllProposals extends Component {
                   </div>
                   <div className="extra content">
                     <Link to={`/proposals/${proposal.id}`}>
-                      <Button primary>More info</Button>
+                      <Button primary id="all-proposals-more-info">More info</Button>
                     </Link>
                   </div>
                 </Card>

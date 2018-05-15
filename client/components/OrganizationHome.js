@@ -15,13 +15,16 @@ export default class OrganizationHome extends Component {
         {currentOrg ? (
           <div>
             <img src={currentOrg.image} />
+            <br />
             <Link to="/organization/edit">Edit Details</Link>
             <Header as="h2">Organization Name: {currentOrg.name}</Header>
             <p>Organization Description: {currentOrg.description}</p>
             <p>Organization Address: {currentOrg.address}</p>
             <p>Organization Phone Number: {currentOrg.phoneNumber}</p>
             <p>Organization Email: {currentOrg.email}</p>
+            {currentUser && <p>Organization Rep Email: {currentUser.email}</p>}
             <Link to="/organization/make-proposal">Make a Proposal!</Link>
+            <br />
             <Link to="/organization/proposals">
               View Your Current Proposals
             </Link>
@@ -29,7 +32,6 @@ export default class OrganizationHome extends Component {
         ) : (
           <div>Loading...</div>
         )}
-        {currentUser && <p>Organization Rep Email: {currentUser.email}</p>}
       </Container>
     )
   }

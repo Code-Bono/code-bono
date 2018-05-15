@@ -6,7 +6,6 @@
 .chatboxnav-container {
   position: absolute;
   z-index: 2;
-  background-color: red;
 }
 
 .Site {
@@ -39,6 +38,12 @@ label {
   display: block;
 }
 
+#navbar {
+  margin-bottom: 0;
+  background-color: #212121;
+  border-radius: 0;
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
@@ -51,6 +56,7 @@ nav a {
 
 .left-flex-item {
   margin: auto;
+  color: #309aab;
 }
 
 .nav-buttons {
@@ -77,6 +83,10 @@ video {
   overflow: hidden;
   width: 65%;
   padding-left: 2px;
+}
+
+#open-chat {
+  background-color: #89898c;
 }
 
 #chatbox {
@@ -113,6 +123,13 @@ video {
   flex-wrap: wrap;
 }
 
+#ChatboxNavbarClosed {
+  width: 100px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 #ChatboxNavbar {
   width: 400px;
   position: fixed;
@@ -129,12 +146,21 @@ video {
 }
 
 .masthead {
-  background-color: #5b9bfa !important;
+  background-color: #309aab !important;
 }
 
-.ui.text.container {
+.ui.text.container.landing {
   padding-top: 6em;
   padding-bottom: 5em;
+}
+
+.about {
+  padding: 3em;
+}
+
+.team {
+  padding: 1em;
+  margin: 2em;
 }
 
 .inverted.header {
@@ -165,6 +191,7 @@ video {
 .how-it-works-singular {
   flex-grow: 1;
   text-align: center;
+  /*background-color: #9B9BAB;*/
 }
 
 .how-it-works-text-singular {
@@ -173,6 +200,7 @@ video {
   margin: auto;
   padding: 1.5em;
   width: 10em;
+  background-color: #f0f0f0;
 }
 
 .how-it-works-image-singular {
@@ -180,7 +208,11 @@ video {
 }
 
 .subheading {
-  color: #5b9bfa;
+  color: #309aab;
+}
+
+#more-info-text {
+  color: #5a5a5a;
 }
 
 .how-it-works-text {
@@ -192,7 +224,7 @@ video {
 }
 
 .blue-text {
-  color: #5b9bfa;
+  color: #309aab;
 }
 
 .logo {
@@ -205,14 +237,43 @@ video {
   bottom: 0;
 }
 
+#all-proposals-more-info {
+  color: #5a5a5a;
+  background-color: #e0e1e2;
+}
+
+.single-proposal-header {
+  padding-top: 1.5%;
+
+}
+
+.org-name {
+  margin-top: 0;
+}
+
 #single-proposal-body {
-  background-color: white;
-  margin: 1em 0em 1em 0em;
+  background-color: #f0f0f0;
   padding: 1em;
 }
 
+.single-proposal-description-header {
+  margin-top: 0;
+  font-size: 32px;
+}
+
 .singlePageImg {
-  height: 25em;
+  margin-right: 1em;
+  float: left;
+  height: 20em;
+  width: 25em;
+}
+
+.org-info {
+  margin-bottom: .25em;
+}
+
+.signup-count {
+  float: right;
 }
 
 .project-card {
@@ -323,4 +384,26 @@ video {
 
 .live-channel-name {
   text-align: center;
+}
+
+.footer-design {
+  height: 210px;
+  display: flex;
+  justify-content: center;
+}
+
+.inner-footer {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.secondary {
+  display: flex;
+  justify-content: center;
+}
+
+.inspirational-quote {
+  font-style: italic;
 }

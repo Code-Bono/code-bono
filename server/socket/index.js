@@ -1,7 +1,6 @@
-module.exports = io => {
+export default function(io) {
   io.on('connection', socket => {
     console.log(`A socket connection to the server has been made: ${socket.id}`)
-
     socket.on('disconnect', () => {
       console.log(`Connection ${socket.id} has left the building`)
     })
@@ -16,6 +15,9 @@ module.exports = io => {
     })
     socket.on('githubEvent', event => {
       socket.emit('githubEvent', event)
+    })
+    socket.on('closeChannel', function(channelObj) {
+      socket.broadcast.emit('closeAllChannels', channelObj)
     })
   })
 }

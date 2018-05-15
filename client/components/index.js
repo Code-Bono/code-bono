@@ -3,6 +3,7 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+export { default as About } from './about'
 export { default as AllProposalsContainer } from './AllProposalsContainer'
 export { default as ChatboxNav } from './chatboxNav'
 export { default as LandingPage } from './LandingPage'

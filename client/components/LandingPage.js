@@ -21,7 +21,7 @@ export default class LandingPage extends React.Component {
     return (
       <div className="pusher" id="landingPage">
         <div className="ui inverted vertical masthead center aligned segment">
-          <div className="ui text container">
+          <div className="ui text container landing">
             <h1 className="inverted header">
               CODE FOR
               <span className="header-alt"> GOOD.</span>
@@ -77,7 +77,7 @@ export default class LandingPage extends React.Component {
                         className="ui button"
                         onClick={evt => handleClick(evt, proposal.id)}
                       >
-                        <Link to={`/proposals/${proposal.id}`}>More info</Link>
+                        <Link id="more-info-text" to={`/proposals/${proposal.id}`}>More info</Link>
                       </button>
                     </div>
                   </Card>
@@ -91,7 +91,7 @@ export default class LandingPage extends React.Component {
         <br />
         <br />
         <div className="ui inverted vertical masthead center aligned segment">
-          <div className="ui text container">
+          <div className="ui text container landing">
             <h2 className="grey-text">About Code Bono</h2>
             <p>
               Code Bono creates new opportunities for nonprofit organizations
