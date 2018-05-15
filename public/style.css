@@ -415,8 +415,14 @@ video {
 }
 
 .grid-style {
-  background-color: #c4c4c4;
-  width: 80%;
   display: flex;
   justify-content: center;
+}
+
+.form {
+  margin-top: 1%;
+}
+
+.org-home {
+  margin-top: 5%;
 }

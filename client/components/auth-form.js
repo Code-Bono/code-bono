@@ -37,29 +37,23 @@ class AuthForm extends Component {
       </Grid.Column>
     )
     return (
-      <Container>
-        <h3>
-          {displayName} or{' '}
-          <a href="/auth/github">
-            <Button color="facebook" size="medium">
-              <Icon name="github" />
-              {displayName} with GitHub
-            </Button>
-          </a>
-        </h3>
-        <Form onSubmit={handleSubmit} name={name}>
+      <div className="form">
+        <Container>
+          <h3>{displayName}</h3>
           {displayName === 'Sign Up' && (
             <Form.Checkbox
               onChange={this.handleChange}
               label="I am a representative for an organization"
             />
           )}
-          <Grid className="grid-style" centered>
+        </Container>
+        <Form onSubmit={handleSubmit} name={name}>
+          <Grid className="grid-style">
             {FormInput('email', 'email', 'Email')}
             {FormInput('password', 'password', 'Password')}
           </Grid>
           {this.state.isOrg && (
-            <Grid className="grid-style" centered>
+            <Grid className="grid-style">
               {FormInput('orgName', 'text', 'Organizaton Name')}
               {FormInput('orgAddress', 'text', 'Organization Address')}
               {FormInput('orgNumber', 'text', 'Organization Phone #')}
@@ -67,12 +61,22 @@ class AuthForm extends Component {
               {FormInput('orgDescription', 'text', 'Organization Description')}
             </Grid>
           )}
-          <Button size="medium" primary type="submit">
-            {displayName}
-          </Button>
+          <Container>
+            <Button size="medium" primary type="submit">
+              {displayName}
+            </Button>
+          </Container>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
-      </Container>
+        <Container>
+          <a href="/auth/github">
+            <Button color="facebook" size="medium">
+              <Icon name="github" />
+              {displayName} with GitHub
+            </Button>
+          </a>
+        </Container>
+      </div>
     )
   }
 }
