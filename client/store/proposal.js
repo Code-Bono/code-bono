@@ -79,7 +79,7 @@ export const updateSingleProposal = (
     .catch(err => console.log(err))
 }
 
-export const deleteSingleProposal = id => dispatch =>
+export const deleteSingleProposal = (id, history) => dispatch =>
   axios
     .delete(`/api/proposals/${id}`)
     .then(res => res.data)

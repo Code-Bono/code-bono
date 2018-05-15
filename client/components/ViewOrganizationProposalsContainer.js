@@ -17,7 +17,8 @@ const mapDispatch = (dispatch, ownProps) => {
       dispatch(getProposalsForOrg(id))
     },
     deleteProposal: function(id) {
-      dispatch(deleteSingleProposal(id))
+      let history = ownProps.history
+      dispatch(deleteSingleProposal(id, history))
     }
   }
 }

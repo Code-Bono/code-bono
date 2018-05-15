@@ -18,7 +18,8 @@ import {
   Signup,
   UserHome,
   UserProfileContainer,
-  ViewOrganizationProposalsContainer
+  ViewOrganizationProposalsContainer,
+  EditUserContainer
 } from './components'
 import { me } from './store'
 import EditOrganization from './components/EditOrganization'
@@ -55,7 +56,8 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/profile" component={UserProfileContainer} />
+            <Route exact path="/profile" component={UserProfileContainer} />
+            <Route path="/profile/edit" component={EditUserContainer} />
             <Route
               path="/organization/home"
               component={OrganizationHomeContainer}
