@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Header, Image, Item, Button, Container } from 'semantic-ui-react'
+import { Header, Image, Item, Button, Container, List, Icon } from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -16,51 +16,54 @@ export default class UserProfile extends Component {
     const projects = user.projects ? user.projects : []
     return (
       <Container>
-        <h1>Your Profile!</h1>
-        <div className="userContainer">
+        <h1 id="user-profile-title">{user.fullname}</h1>
+        <div>
           {user ? (
             <div>
-              <h3>Welcome {user.displayName || user.email}!</h3>
+              <h3 id="user-profile-email">{user.email}</h3>
               <Image src={user.imageUrl} />
             </div>
           ) : (
             <h3 className="loading">Loading current user...</h3>
           )}
-          <h2>Your current projects</h2>
+          <h2 id="user-profile-projects-header">Your Projects</h2>
 
           {projects.length ? (
             <Item.Group>
               {projects.map(project => {
                 return (
-                  <Item key={project.id}>
-                    <div className="content">
-                      <a className="header">{project.name}</a>
-                      <div className="description">
-                        {project.description.slice(0, 80)}...
-                      </div>
-                    </div>
-                    <div>
-                      <Link to={`/projects/${project.id}`}>
-                        <Button
-                          primary
-                          onClick={evt => this.props.loadProject(project.id)}
-                        >
-                          <Header as="h3">Check in on this project</Header>
-                        </Button>
-                      </Link>
-                    </div>
-                  </Item>
+                  <List divided verticalAlign='middle' key={project.id}>
+                    <List.Item id="user-profile-project-list">
+                      <List.Content floated='right'>
+                        <Link to={`/projects/${project.id}`}>
+                          <Button primary id="user-profile-browse"
+                            primary
+                            onClick={evt => this.props.loadProject(project.id)}
+                          >
+                            <Icon name="code" />Check in on this project
+                          </Button>
+                        </Link>
+                        </List.Content>
+
+                        <List.Header ><Icon name="marker"/>
+                          {project.name}
+                      </List.Header>
+                        <List.Description>
+                          {project.description}
+                      </List.Description>
+                    </List.Item>
+                  </List>
                 )
               })}
             </Item.Group>
           ) : (
             <div>
               <h3>You currently have no active projects.</h3>
-              <Link to={`/proposals`}>
-                <Button primary>
-                  <Header as="h3">Click here to view all proposals-></Header>
-                </Button>
-              </Link>
+                <Link to={`/proposals`}>
+                  <Button primary id="user-profile-browse">
+                    <Icon name="search" />Browse proposals
+                  </Button>
+                </Link>
             </div>
           )}
         </div>

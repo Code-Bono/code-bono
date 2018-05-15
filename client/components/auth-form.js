@@ -49,6 +49,16 @@ class AuthForm extends Component {
         </Container>
         <Form onSubmit={handleSubmit} name={name}>
           <Grid className="grid-style">
+            {
+              name === 'signup' ?
+              FormInput('firstname', 'text', 'First Name')
+              : null
+            }
+            {
+              name === 'signup' ?
+              FormInput('lastname', 'text', 'Last Name')
+              : null
+            }
             {FormInput('email', 'email', 'Email')}
             {FormInput('password', 'password', 'Password')}
           </Grid>
@@ -109,9 +119,15 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
+      let firstname
+      let lastname
+      if(evt.target.firstname) {
+        firstname = evt.target.firstname.value
+        lastname = evt.target.lastname.value
+      }
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(email, password, firstname, lastname, formName))
       //if organization, dispatches and creates an organization as well and takes the user's email and associates them with the newly created org
       if (evt.target.orgName) {
         let orgObj = {}
