@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 import { createOrg } from '../store/organization'
-import { Form, Button, Container, Icon } from 'semantic-ui-react'
+import { Form, Button, Container, Icon, Grid } from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -24,91 +24,59 @@ class AuthForm extends Component {
   render() {
     //didn't modularize organization sign up because it would be annoying to pass up form values
     const { name, displayName, handleSubmit, error } = this.props
+    const FormInput = (name, type, label) => (
+      <Grid.Column className="form-inputs" width={9}>
+        <Form.Input
+          width={14}
+          required={true}
+          name={name}
+          type={type}
+          fluid
+          label={label}
+        />
+      </Grid.Column>
+    )
     return (
-      <Container>
-        <span>
-          <h3>
-            {displayName} or{' '}
-            <a href="/auth/github">
-              <Button color="facebook" size="medium">
-                <Icon name="github" />
-                {displayName} with GitHub
-              </Button>
-            </a>
-          </h3>
-        </span>
-        <Form onSubmit={handleSubmit} name={name}>
+      <div className="form">
+        <Container>
+          <h3>{displayName}</h3>
           {displayName === 'Sign Up' && (
             <Form.Checkbox
               onChange={this.handleChange}
               label="I am a representative for an organization"
             />
           )}
-          <br />
-          <Form.Group widths="equal">
-            <Form.Input
-              required={true}
-              name="email"
-              type="email"
-              fluid
-              label="Email"
-            />
-            <Form.Input
-              required={true}
-              name="password"
-              type="password"
-              fluid
-              label="Password"
-            />
-          </Form.Group>
+        </Container>
+        <Form onSubmit={handleSubmit} name={name}>
+          <Grid className="grid-style">
+            {FormInput('email', 'email', 'Email')}
+            {FormInput('password', 'password', 'Password')}
+          </Grid>
           {this.state.isOrg && (
-            <Container>
-              <Form.Group widths="equal">
-                <Form.Input
-                  required={true}
-                  name="orgName"
-                  type="text"
-                  fluid
-                  label="Organization Name"
-                />
-                <Form.Input
-                  required={true}
-                  name="orgAddress"
-                  type="text"
-                  label="Organization Address"
-                />
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Input
-                  required={true}
-                  name="orgNumber"
-                  type="text"
-                  fluid
-                  label="Organization Phone Number"
-                />
-                <Form.Input
-                  required={true}
-                  name="orgEmail"
-                  type="email"
-                  fluid
-                  label="Organization Email"
-                />
-              </Form.Group>
-              <Form.TextArea
-                required={true}
-                width={16}
-                name="orgDescription"
-                type="text"
-                label="Organization Description"
-              />
-            </Container>
+            <Grid className="grid-style">
+              {FormInput('orgName', 'text', 'Organizaton Name')}
+              {FormInput('orgAddress', 'text', 'Organization Address')}
+              {FormInput('orgNumber', 'text', 'Organization Phone #')}
+              {FormInput('orgEmail', 'email', 'Organizaton Email')}
+              {FormInput('orgDescription', 'text', 'Organization Description')}
+            </Grid>
           )}
-          <Button size="medium" primary type="submit">
-            {displayName}
-          </Button>
+          <Container textAlign="center">
+            <Button size="medium" primary type="submit">
+              {displayName}
+            </Button>
+          </Container>
           {error && error.response && <div> {error.response.data} </div>}
         </Form>
-      </Container>
+        <Container textAlign="center">
+          <a href="/auth/github">
+            <Button color="facebook" size="medium">
+              <Icon name="github" />
+              {displayName} with GitHub
+            </Button>
+          </a>
+        </Container>
+      </div>
     )
   }
 }

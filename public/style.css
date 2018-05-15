@@ -252,7 +252,6 @@ video {
 
 .single-proposal-header {
   padding-top: 1.5%;
-
 }
 
 .org-name {
@@ -277,7 +276,7 @@ video {
 }
 
 .org-info {
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .signup-count {
@@ -414,4 +413,24 @@ video {
 
 .inspirational-quote {
   font-style: italic;
+}
+
+.form-inputs {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.grid-style {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin-top: 1%;
+}
+
+.org-home {
+  margin-top: 5%;
 }
