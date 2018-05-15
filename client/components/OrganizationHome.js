@@ -13,7 +13,7 @@ export default class OrganizationHome extends Component {
     return (
       <Container text>
         {currentOrg ? (
-          <div>
+          <div className="org-home">
             <img src={currentOrg.image} />
             <br />
             <Link to="/organization/edit">Edit Details</Link>

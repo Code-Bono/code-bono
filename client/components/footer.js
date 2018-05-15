@@ -23,7 +23,7 @@ export default function Footer() {
         </Menu>
         <h3 className="inspirational-quote">
           “The best way to find yourself is to lose yourself in the service of
-          others.” <h3>- Mahatma Gandhi</h3>
+          others.” <br /> - Mahatma Gandhi
         </h3>
         <a href="https://github.com/Code-Bono/code-bono" target="_blank">
           <i className="fab fa-github fa-2x" />
