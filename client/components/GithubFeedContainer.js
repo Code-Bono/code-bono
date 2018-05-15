@@ -5,8 +5,7 @@ import { fetchEvents, addEvent } from '../store/githubFeed'
 
 const mapState = state => {
   return {
-    events: state.events,
-    projectId: state.singleProject.id
+    events: state.events
   }
 }
 

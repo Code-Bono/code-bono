@@ -10,8 +10,8 @@ export default class GithubFeed extends Component {
   }
 
   componentDidMount() {
-    this.props.loadEventsFromServer(this.props.projectId)
     socket.on('githubEvent', event => {
+      console.log('from socket: ', event)
       this.props.addEmittedEvent(event)
     })
   }
