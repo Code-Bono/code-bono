@@ -115,6 +115,7 @@ router.get('/:projectId/events', (req, res, next) => {
   Repo.findOne({
     where: { projectId: req.params.projectId }
   }).then(repo => {
+    console.log(repo.id)
     Event.findAll({
       where: { repoId: repo.id }
     })
