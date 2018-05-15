@@ -17,7 +17,7 @@ export const ProjectSignupButton = props => {
   return (
     <div>
       {userId ? (
-        <Button primary onClick={evt => handleClick(evt, proposalDetails)}>
+        <Button id="project-signup-button" primary onClick={evt => handleClick(evt, proposalDetails)}>
           Sign up for this project!
         </Button>
       ) : (

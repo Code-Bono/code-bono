@@ -39,54 +39,61 @@ export default class OrganizationProposal extends Component {
       obj.value = cause.id
       return obj
     })
+    const FormInput = (name, type, label, placeholder) => {
+      return (
+        <Form.Input
+          required={true}
+          width={9}
+          type={type}
+          name={name}
+          fluid
+          label={label}
+          placeholder={placeholder}
+        />
+      )
+    }
     return (
       <Container>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group widths="equal">
+        <div className="form">
+          <Form onSubmit={this.handleSubmit}>
+            {FormInput(
+              'proposalName',
+              'text',
+              'Proposal Name',
+              'Proposal Name'
+            )}
             <Form.Input
-              required={true}
-              name="proposalName"
-              fluid
-              label="Proposal Name"
-              placeholder="Proposal Name"
-            />
-            <Form.Input
+              width={9}
+              type="text"
               name="proposalImage"
               fluid
               label="Proposal Image"
               placeholder="Proposal ImageURL"
             />
-            <Form.Input
-              required={true}
-              type="date"
-              name="proposalDeadline"
-              fluid
-              label="Deadline"
-              placeholder="Deadline"
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.TextArea
-              required={true}
-              width="16"
-              name="proposalDescription"
-              label="Description"
-              placeholder="Description for the proposal"
-            />
-          </Form.Group>
-          {causes && (
-            <Dropdown
-              placeholder="Select Causes"
-              fluid
-              multiple
-              search
-              selection
-              options={options}
-              onChange={this.handleChange}
-            />
-          )}
-          <Form.Button>Submit</Form.Button>
-        </Form>
+            {FormInput('proposalDeadline', 'date', 'Deadline', 'Deadline')}
+            {causes && (
+              <Dropdown
+                placeholder="Select Causes"
+                fluid
+                multiple
+                search
+                selection
+                options={options}
+                onChange={this.handleChange}
+              />
+            )}
+            <Form.Group>
+              <Form.TextArea
+                required={true}
+                width="16"
+                name="proposalDescription"
+                label="Description"
+                placeholder="Description for the proposal"
+              />
+            </Form.Group>
+            <Form.Button>Submit</Form.Button>
+          </Form>
+        </div>
       </Container>
     )
   }

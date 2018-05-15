@@ -59,7 +59,7 @@ nav a {
 }
 
 .nav-buttons {
-  padding: .5em 0;
+  padding: 0.5em 0;
 }
 
 .nav-buttons:hover {
@@ -143,10 +143,6 @@ video {
   position: fixed;
   bottom: 0;
   right: 0;
-  /*  border-style: solid;
-  border-width: 1px;
-  border-radius: 7px 0px 0px 0px;
-  background-color: white;*/
 }
 
 .loading {
@@ -283,6 +279,11 @@ video {
   float: right;
 }
 
+#project-signup-button {
+  /*color: #e0e1e2;*/
+  background-color: #5a5a5a;
+}
+
 .project-card {
   border-bottom: 1px solid black;
   margin-bottom: 20px;
@@ -363,13 +364,6 @@ video {
   padding: 5px 0 0 0;
 }
 
-/*.video-conference-container {
-  margin-top: 2rem;
-  margin-left: 4rem;
-  display: flex;
-  flex-flow: row wrap;
-}*/
-
 #setup-new-room {
   flex-grow: 0.1;
   align-self: auto;
@@ -428,9 +422,50 @@ video {
 }
 
 .form {
-  margin-top: 1%;
+  margin-top: 5%;
 }
 
 .org-home {
   margin-top: 5%;
+}
+
+.org-proposal-view {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.login-buttons {
+  width: 50%;
+}
+.user-profile-headers-container {
+  background-color: grey;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.no-active-projects {
+  margin-bottom: 1em;
+}
+
+#user-profile-browse {
+  color: #5a5a5a;
+  background-color: #e0e1e2 !important;
+}
+
+#user-profile-title {
+  margin-top: 0.5em;
+}
+
+#user-profile-projects-header {
+  color: #309aab;
+}
+
+#user-profile-email {
+  color: #309aab;
+}
+
+#user-profile-project-list {
+  margin-bottom: 1em;
+  font-size: 16px;
 }

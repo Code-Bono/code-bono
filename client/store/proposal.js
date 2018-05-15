@@ -4,6 +4,7 @@ const POST_PROPOSAL = 'POST_PROPOSAL'
 const GET_PROPOSALS = 'GET_PROPOSALS'
 const UPDATE_PROPOSAL = 'UPDATE_PROPOSAL'
 const GET_PROPOSAL = 'GET_PROPOSAL'
+const DELETE_PROPOSAL = 'DELETE_PROPOSAL'
 
 const postProposal = proposal => {
   return {
@@ -77,6 +78,16 @@ export const updateSingleProposal = (
     })
     .catch(err => console.log(err))
 }
+
+export const deleteSingleProposal = (id, history) => dispatch =>
+  axios
+    .delete(`/api/proposals/${id}`)
+    .then(res => res.data)
+    .then(proposal => {
+      dispatch(updateProposal(proposal))
+      history.push(`/organization/home`)
+    })
+    .catch(err => console.log(err))
 
 export default function(state = {}, action) {
   switch (action.type) {
