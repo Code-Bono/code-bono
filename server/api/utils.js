@@ -41,17 +41,11 @@ function githubRepoAndProjectBoardCreation(name, description) {
       org: 'Code-Bono-Projects',
       name,
       description,
-<<<<<<< HEAD
       has_projects: true,
       auto_init: true
     })
     .then(repo => {
       columnIds.id = repo.data.id
-=======
-      has_projects: true
-    })
-    .then(repo => {
->>>>>>> master
       const repoNameForProjectBoard = repo.data.name
       return octokit.projects.createRepoProject({
         headers,
