@@ -14,7 +14,6 @@ export default class Project extends Component {
     const projectId = this.props.match.params.projectId
     this.props.loadProject(projectId)
     this.props.loadProjectCards(projectId)
-    this.props.loadEventsFromServer(projectId)
     // this.interval = setInterval(this.props.loadProjectCards(projectId), 60000)
   }
 
@@ -24,7 +23,8 @@ export default class Project extends Component {
 
   render() {
     const projectName = this.props.project.name
-    const projectId = this.props.project.id ? this.props.project.id : null
+    const projectId = this.props.match.params.projectId
+    // const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
       <div>
@@ -46,10 +46,7 @@ export default class Project extends Component {
             </Header.Content>
           </Header>
         </div>
-        <Vidchat
-          user={this.props.user}
-          projectId={this.props.match.params.projectId}
-        />
+        <Vidchat user={this.props.user} projectId={projectId} />
         <GitHubProjectBoardContainer projectId={projectId} />
         <GithubFeedContainer projectId={projectId} />
       </div>

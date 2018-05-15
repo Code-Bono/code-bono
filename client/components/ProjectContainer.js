@@ -17,9 +17,6 @@ const mapDispatch = dispatch => {
     loadProject: function(projectId) {
       dispatch(fetchSingleProject(projectId))
     },
-    loadEventsFromServer: function(projectId) {
-      dispatch(fetchEvents(projectId))
-    },
     loadProjectCards: function(projectId) {
       dispatch(fetchCards(projectId))
     }
