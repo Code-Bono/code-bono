@@ -6,7 +6,7 @@ import Routes from './routes'
 
 const App = () => {
   return (
-    <div className="app-container">
+    <div>
       <div className="App Site">
         <div className="Site-content">
           <Navbar />
