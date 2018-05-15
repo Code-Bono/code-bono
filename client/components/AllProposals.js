@@ -20,15 +20,24 @@ export default class AllProposals extends Component {
 
   renderProposalSearch() {
     return (
-      <div className="ui input focus">
-        <input
-          type="text"
-          placeholder="Search..."
-          onChange={evt => {
-            this.setState({ proposalName: evt.target.value })
-            console.log('LOCAL STATE:', this.state)
-          }}
-        />
+      <div>
+        <div className="ui left icon input focus search">
+          <i className="search icon" />
+          <input
+            type="text"
+            placeholder="Search proposal name..."
+            onChange={evt => {
+              this.setState({ proposalName: evt.target.value })
+            }}
+          />
+        </div>
+        {/*<select className="ui compact selection dropdown">
+          <option value="all">All Causes</option>
+          <option selected="" value="mentoring">
+            Mentoring
+          </option>
+          <option value="counselling">Counselling</option>
+          </select>*/}
       </div>
     )
   }
