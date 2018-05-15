@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
 const fs = require('fs')
+let io
 module.exports = app
 
 /**
@@ -56,6 +57,11 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  app.use((req, res, next) => {
+    req.io = io
+    next()
+  })
+
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
@@ -94,9 +100,8 @@ const startListening = () => {
   })
 
   // set up our socket control center
-  const io = socketio(server)
+  io = socketio(server)
   require('./socket')(io)
-  require('./api/webhook')(io, app)
 }
 
 const syncDb = () => db.sync()

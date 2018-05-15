@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import GithubFeed from './GithubFeed'
 import { connect } from 'react-redux'
-import { fetchEvents } from '../store/githubFeed'
+import { fetchEvents, addEvent } from '../store/githubFeed'
 
 const mapState = state => {
   return {
-    events: state.events
+    events: state.events,
+    projectId: state.singleProject.id
   }
 }
 
@@ -13,6 +14,9 @@ const mapDispatch = dispatch => {
   return {
     loadEventsFromServer: function(projectId) {
       dispatch(fetchEvents(projectId))
+    },
+    addEmittedEvent: function(event) {
+      dispatch(addEvent(event))
     }
   }
 }
