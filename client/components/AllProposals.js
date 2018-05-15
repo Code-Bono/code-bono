@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom'
 export default class AllProposals extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      proposalName: ''
+    }
+
+    this.filterProposals = this.filterProposals.bind(this)
   }
 
   componentDidMount() {
@@ -12,7 +18,7 @@ export default class AllProposals extends Component {
   }
 
   render() {
-    const { proposals } = this.props
+    const { proposals, filterProposals } = this.props
 
     return (
       <Container>
@@ -21,10 +27,11 @@ export default class AllProposals extends Component {
           Browse through proposals for technical projects to see which
           organizations need your skills
         </p>
+        {this.renderProposalSearch()}
         <br />
         {proposals.length ? (
           <Card.Group itemsPerRow={3}>
-            {proposals.map(proposal => {
+            {proposals.filter(filterProposals).map(proposal => {
               return (
                 <Card key={proposal.id} className="ui card">
                   <div className="image">
@@ -53,7 +60,9 @@ export default class AllProposals extends Component {
                   </div>
                   <div className="extra content">
                     <Link to={`/proposals/${proposal.id}`}>
-                      <Button primary id="all-proposals-more-info">More info</Button>
+                      <Button primary id="all-proposals-more-info">
+                        More info
+                      </Button>
                     </Link>
                   </div>
                 </Card>
@@ -64,6 +73,14 @@ export default class AllProposals extends Component {
           <h3 className="loading">Loading project cards...</h3>
         )}
       </Container>
+    )
+  }
+
+  renderProposalSearch() {
+    return (
+      <div className="ui input focus">
+        <input type="text" placeholder="Search..." />
+      </div>
     )
   }
 }
