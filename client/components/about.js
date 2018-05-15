@@ -37,9 +37,7 @@ export default function About() {
                   basic
                   color="black"
                 >
-                  <a>
-                    <i className="fab fa-github fa-2x" />
-                  </a>
+                  <i className="fab fa-github fa-2x" />
                 </Button>
                 <Button
                   href="https://www.linkedin.com/in/ian-dewsbury-8806772/"
@@ -47,9 +45,7 @@ export default function About() {
                   basic
                   color="blue"
                 >
-                  <a>
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
+                  <i className="fab fa-linkedin fa-2x" />
                 </Button>
               </div>
             </Card.Content>
@@ -70,9 +66,7 @@ export default function About() {
                   basic
                   color="black"
                 >
-                  <a>
-                    <i className="fab fa-github fa-2x" />
-                  </a>
+                  <i className="fab fa-github fa-2x" />
                 </Button>
                 <Button
                   href="https://www.linkedin.com/in/geenagao/"
@@ -80,9 +74,7 @@ export default function About() {
                   basic
                   color="blue"
                 >
-                  <a>
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
+                  <i className="fab fa-linkedin fa-2x" />
                 </Button>
               </div>
             </Card.Content>
@@ -104,9 +96,7 @@ export default function About() {
                   basic
                   color="black"
                 >
-                  <a>
-                    <i className="fab fa-github fa-2x" />
-                  </a>
+                  <i className="fab fa-github fa-2x" />
                 </Button>
                 <Button
                   href="https://www.linkedin.com/in/da-woon-lee-078938b5/"
@@ -114,17 +104,13 @@ export default function About() {
                   basic
                   color="blue"
                 >
-                  <a>
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
+                  <i className="fab fa-linkedin fa-2x" />
                 </Button>
               </div>
             </Card.Content>
           </Card>
           <Card>
-            <Image
-              src="https://avatars3.githubusercontent.com/u/24399279?s=460&v=4"
-            />
+            <Image src="https://avatars3.githubusercontent.com/u/24399279?s=460&v=4" />
             <Card.Content>
               <Card.Header>Yoni Slotwiner</Card.Header>
               <Card.Description>
@@ -140,9 +126,7 @@ export default function About() {
                   basic
                   color="black"
                 >
-                  <a>
-                    <i className="fab fa-github fa-2x" />
-                  </a>
+                  <i className="fab fa-github fa-2x" />
                 </Button>
                 <Button
                   href="https://www.linkedin.com/in/yonislotwiner/"
@@ -150,9 +134,7 @@ export default function About() {
                   basic
                   color="blue"
                 >
-                  <a>
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
+                  <i className="fab fa-linkedin fa-2x" />
                 </Button>
               </div>
             </Card.Content>
