@@ -23,29 +23,29 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
             {/* The navbar will show these links after you log in */}
             <Menu.Item >
               <Link to="/proposals" className="nav-buttons">
-                browse proposals
+                Browse Proposals
               </Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/about" className="nav-buttons">
-                about us
+                About Us
               </Link>
             </Menu.Item>
             {isOrg ? (
             <Menu.Item>
               <Link to="/organization/home" className="nav-buttons">
-                organization profile
+                Organization Profile
               </Link>
             </Menu.Item>
             ) : (
             <Menu.Item>
               <Link to="/profile" className="nav-buttons">
-                my profile
+                My Profile
               </Link>
             </Menu.Item>
             )}
             <Menu.Item>
-              <Link to="#" onClick={handleClick} className="nav-buttons">logout</Link>
+              <Link to="#" onClick={handleClick} className="nav-buttons">Logout</Link>
             </Menu.Item>
           </Menu>
         </div>
@@ -56,22 +56,22 @@ const Navbar = ({ handleClick, isLoggedIn, isOrg }) => (
           <Menu inverted pointing secondary compact>
             <Menu.Item >
               <Link to="/proposals" className="nav-buttons">
-                browse proposals
+                Browse Proposals
               </Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/about" className="nav-buttons">
-                about us
+                About Us
               </Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/login" className="nav-buttons">
-                login
+                Login
               </Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/signup" className="nav-buttons">
-                sign Up
+                Sign Up
               </Link>
             </Menu.Item>
           </Menu>
