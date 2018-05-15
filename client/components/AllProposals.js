@@ -13,73 +13,91 @@ export default class AllProposals extends Component {
     this.filterProposals = this.filterProposals.bind(this)
   }
 
-  componentDidMount() {
-    this.props.fetchProposalsFromServer()
-  }
-
-  render() {
-    const { proposals, filterProposals } = this.props
-
-    return (
-      <Container>
-        <h1>All Proposals</h1>
-        <p>
-          Browse through proposals for technical projects to see which
-          organizations need your skills
-        </p>
-        {this.renderProposalSearch()}
-        <br />
-        {proposals.length ? (
-          <Card.Group itemsPerRow={3}>
-            {proposals.filter(filterProposals).map(proposal => {
-              return (
-                <Card key={proposal.id} className="ui card">
-                  <div className="image">
-                    <img src={proposal.image} />
-                  </div>
-                  <div className="content">
-                    <Link className="header" to={`/proposals/${proposal.id}`}>
-                      {proposal.name}{' '}
-                    </Link>
-                    <a className="ui sub header">
-                      {proposal.organization.name}
-                    </a>
-                    <div className="description">{proposal.snippet}</div>
-                    <br />
-                    {proposal.causes.length ? (
-                      <div className="content">
-                        Causes: {proposal.causes.map(cause => `${cause.name}`)}
-                      </div>
-                    ) : null}
-                    <br />
-                    <div className="meta">
-                      <span className="date">
-                        Deadline: {proposal.deadline}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="extra content">
-                    <Link to={`/proposals/${proposal.id}`}>
-                      <Button primary id="all-proposals-more-info">
-                        More info
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
-              )
-            })}
-          </Card.Group>
-        ) : (
-          <h3 className="loading">Loading project cards...</h3>
-        )}
-      </Container>
-    )
+  filterProposals(proposal) {
+    const proposalMatch = new RegExp(this.state.proposalName, 'i')
+    return proposalMatch.test(proposal.name)
   }
 
   renderProposalSearch() {
     return (
       <div className="ui input focus">
-        <input type="text" placeholder="Search..." />
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={evt => {
+            this.setState({ proposalName: evt.target.value })
+            console.log('LOCAL STATE:', this.state)
+          }}
+        />
+      </div>
+    )
+  }
+
+  componentDidMount() {
+    this.props.fetchProposalsFromServer()
+  }
+
+  render() {
+    const { proposals } = this.props
+
+    return (
+      <div>
+        <div className="ui inverted vertical masthead center aligned segment">
+          <div className="ui text container stripe">
+            <h2 className="grey-text">All Proposals</h2>
+            <p>
+              Browse through proposals and causes for technical projects to see
+              which organizations need your skills
+            </p>
+          </div>
+        </div>
+        <Container>
+          {this.renderProposalSearch()}
+          {proposals.length ? (
+            <Card.Group itemsPerRow={3}>
+              {proposals.filter(this.filterProposals).map(proposal => {
+                return (
+                  <Card key={proposal.id} className="ui card">
+                    <div className="image">
+                      <img src={proposal.image} />
+                    </div>
+                    <div className="content">
+                      <Link className="header" to={`/proposals/${proposal.id}`}>
+                        {proposal.name}{' '}
+                      </Link>
+                      <a className="ui sub header">
+                        {proposal.organization.name}
+                      </a>
+                      <div className="description">{proposal.snippet}</div>
+                      <br />
+                      {proposal.causes.length ? (
+                        <div className="content">
+                          Causes:{' '}
+                          {proposal.causes.map(cause => `${cause.name}`)}
+                        </div>
+                      ) : null}
+                      <br />
+                      <div className="meta">
+                        <span className="date">
+                          Deadline: {proposal.deadline}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="extra content">
+                      <Link to={`/proposals/${proposal.id}`}>
+                        <Button primary id="all-proposals-more-info">
+                          More info
+                        </Button>
+                      </Link>
+                    </div>
+                  </Card>
+                )
+              })}
+            </Card.Group>
+          ) : (
+            <h3 className="loading">Loading project cards...</h3>
+          )}
+        </Container>
       </div>
     )
   }

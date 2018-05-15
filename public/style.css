@@ -59,7 +59,7 @@ nav a {
 }
 
 .nav-buttons {
-  padding: .5em 0;
+  padding: 0.5em 0;
 }
 
 .nav-buttons:hover {
@@ -162,7 +162,7 @@ video {
   padding-bottom: 5em;
 }
 
-.about {
+.stripe {
   padding: 3em;
 }
 
@@ -433,4 +433,10 @@ video {
 
 .org-home {
   margin-top: 5%;
+}
+
+.focus {
+  border-color: #309aab;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
