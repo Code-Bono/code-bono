@@ -22,6 +22,7 @@ export default class UserProfile extends Component {
             <div>
               <h3 id="user-profile-email">{user.email}</h3>
               <Image src={user.imageUrl} />
+              <Link to="/profile/edit">Edit</Link>
             </div>
           ) : (
             <h3 className="loading">Loading current user...</h3>

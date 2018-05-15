@@ -20,7 +20,7 @@ const Proposal = db.define('proposal', {
   image: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://organicthemes.com/demo/nonprofit/wp-content/themes/organic-nonprofit/images/logo.png'
+      'http://themetapicture.com/media/funny-Panda-laying-down-watching-clouds.jpg'
   },
   isActive: {
     type: Sequelize.BOOLEAN

@@ -59,7 +59,7 @@ nav a {
 }
 
 .nav-buttons {
-  padding: .5em 0;
+  padding: 0.5em 0;
 }
 
 .nav-buttons:hover {
@@ -422,13 +422,22 @@ video {
 }
 
 .form {
-  margin-top: 1%;
+  margin-top: 5%;
 }
 
 .org-home {
   margin-top: 5%;
 }
 
+.org-proposal-view {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.login-buttons {
+  width: 50%;
+}
 .user-profile-headers-container {
   background-color: grey;
   padding-top: 2%;
@@ -445,7 +454,7 @@ video {
 }
 
 #user-profile-title {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 #user-profile-projects-header {
@@ -460,6 +469,3 @@ video {
   margin-bottom: 1em;
   font-size: 16px;
 }
-
-
-

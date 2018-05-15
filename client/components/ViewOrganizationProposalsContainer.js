@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ViewOrganizationProposals from './ViewOrganizationProposals'
 import { connect } from 'react-redux'
-import { getProposalsForOrg } from '../store/proposal'
+import { getProposalsForOrg, deleteSingleProposal } from '../store/proposal'
 
 const mapState = state => {
   return {
@@ -15,6 +15,10 @@ const mapDispatch = (dispatch, ownProps) => {
   return {
     fetchAllProposals: function(id) {
       dispatch(getProposalsForOrg(id))
+    },
+    deleteProposal: function(id) {
+      let history = ownProps.history
+      dispatch(deleteSingleProposal(id, history))
     }
   }
 }
