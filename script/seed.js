@@ -197,12 +197,42 @@ const repos = [
 ]
 
 const users = [
-  { email: 'cody@email.com', password: '123' },
-  { email: 'murphy@email.com', password: '123' },
-  { email: 'danny@email.com', password: '123' },
-  { email: 'gg@email.com', password: '123' },
-  { email: 'ian@email.com', password: '123' },
-  { email: 'yoni@email.com', password: '123' }
+  {
+    firstname: 'Cody',
+    lastname: 'Smith',
+    email: 'cody@email.com',
+    password: '123'
+  },
+  {
+    firstname: 'Murphy',
+    lastname: 'Johnson',
+    email: 'murphy@email.com',
+    password: '123'
+  },
+  {
+    firstname: 'Danny',
+    lastname: 'Brown',
+    email: 'danny@email.com',
+    password: '123'
+  },
+  {
+    firstname: 'Geena',
+    lastname: 'Gao',
+    email: 'gg@email.com',
+    password: '123'
+  },
+  {
+    firstname: 'Ian',
+    lastname: 'Dewsbury',
+    email: 'ian@email.com',
+    password: '123'
+  },
+  {
+    firstname: 'Yoni',
+    lastname: 'Slotwiner',
+    email: 'yoni@email.com',
+    password: 'abc'
+  }
 ]
 
 const causes = [
