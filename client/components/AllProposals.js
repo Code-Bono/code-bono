@@ -75,7 +75,9 @@ export default class AllProposals extends Component {
                         {proposal.name}{' '}
                       </Link>
                       <a className="ui sub header">
-                        {proposal.organization.name}
+                        {proposal.organization
+                          ? proposal.organization.name
+                          : null}
                       </a>
                       <div className="description">{proposal.snippet}</div>
                       <br />

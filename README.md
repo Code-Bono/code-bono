@@ -1,4 +1,4 @@
-## Code-Bono!
+## Code Bono
 
 The perfect platform to match eager and well-meaning developers with great organizations in need of tech talent on a project-based basis.
 
