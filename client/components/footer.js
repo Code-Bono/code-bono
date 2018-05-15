@@ -14,7 +14,7 @@ export default function Footer() {
           <Link to="/">
             <Menu.Item name="Code Bono" />
           </Link>
-          <Link to="/team">
+          <Link to="/about">
             <Menu.Item name="About Us" />
           </Link>
           <a href="https://www.fullstackacademy.com/" target="_blank">

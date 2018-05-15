@@ -123,7 +123,6 @@ export default function About() {
           </Card>
           <Card>
             <Image
-              className="yoni"
               src="https://avatars3.githubusercontent.com/u/24399279?s=460&v=4"
             />
             <Card.Content>
