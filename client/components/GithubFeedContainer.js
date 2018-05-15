@@ -3,11 +3,12 @@ import GithubFeed from './GithubFeed'
 import { connect } from 'react-redux'
 import { fetchEvents, addEvent } from '../store/githubFeed'
 
-const mapState = (state, ownProps) => {
-  ownProps.match.params.id
+const mapState = state => {
+  let projectId = state.singleProject.id
+  console.log(projectId)
   return {
-    events: state.events,
-    projectId: ownProps.match.params.id
+    projectId,
+    events: state.events
   }
 }
 
