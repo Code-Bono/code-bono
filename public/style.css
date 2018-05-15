@@ -59,8 +59,21 @@ nav a {
   color: #309aab;
 }
 
+.nav-buttons-container {
+  vertical-align: middle;
+}
+
 .nav-buttons {
-  padding-top: 1em;
+  padding: .5em 0;
+}
+
+.nav-buttons:hover {
+  color: #309aab !important;
+}
+
+.home-button:hover {
+  border-bottom: 1px solid #595b5b;
+  color: #309aabd9;
 }
 
 form div {
