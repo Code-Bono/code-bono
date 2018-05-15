@@ -18,10 +18,12 @@ router.get('/:id', (req, res, next) => {
   User.findOne({
     where: { id },
     // Don't return password!
-    attributes: ['id', 'email', 'displayName', 'bio', 'imageUrl', 'orgId'],
+    attributes: ['id', 'email', 'firstname', 'lastname', 'displayName', 'bio', 'imageUrl', 'orgId'],
     include: [{ model: Project }]
   })
-    .then(user => res.json(user))
+    .then(user => {
+      res.json(user)
+    })
     .catch(next)
 })
 

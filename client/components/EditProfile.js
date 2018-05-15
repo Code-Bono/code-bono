@@ -22,6 +22,8 @@ export default class EditProfile extends Component {
     userObj.email = evt.target.email.value
     userObj.imageUrl = evt.target.image.value
     userObj.password = evt.target.password.value
+    userObj.firstname = evt.target.firstName.value
+    userObj.lastname = evt.target.lastName.value
     this.props.editUser(userId, userObj)
   }
 
@@ -39,7 +41,15 @@ export default class EditProfile extends Component {
         />
       </Grid.Column>
     )
-    const { name, email, password, imageUrl, displayName } = this.props.user
+    const {
+      name,
+      email,
+      password,
+      imageUrl,
+      displayName,
+      firstname,
+      lastname
+    } = this.props.user
     return (
       <Container>
         {this.props.user ? (
@@ -48,6 +58,12 @@ export default class EditProfile extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Grid className="grid-style">
                 {FormInput('email', 'email', 'User Email', email)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('firstName', 'text', 'First Name', firstname)}
+              </Grid>
+              <Grid className="grid-style">
+                {FormInput('lastName', 'text', 'Last Name', lastname)}
               </Grid>
               <Grid className="grid-style">
                 {FormInput('password', 'password', 'Password', password)}
