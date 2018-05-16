@@ -28,7 +28,7 @@ export default class Project extends Component {
 
     return (
       <div>
-        <div className="projectBoard-headers-container">
+        <div className="ui text container stripe">
           <Header as="h1" icon textAlign="center">
             <Header.Content>
               <h1 className="project-title">{projectName}</h1>
