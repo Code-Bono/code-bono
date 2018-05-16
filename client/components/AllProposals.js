@@ -68,7 +68,7 @@ export default class AllProposals extends Component {
                 return (
                   <Card key={proposal.id} className="ui card">
                     <div className="image">
-                      <img src={proposal.image} />
+                      <img src={proposal.image} id="proposals-card-img" />
                     </div>
                     <div className="content">
                       <Link className="header" to={`/proposals/${proposal.id}`}>

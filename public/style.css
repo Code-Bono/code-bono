@@ -518,3 +518,11 @@ form div {
   width: 15em;
   margin: 1em;
 }
+
+#proposals-card-img {
+  height: 300px;
+}
+
+#landingpage-card-img {
+  height: 300px;
+}
