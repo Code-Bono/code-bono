@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {
   About,
   AllProposalsContainer,
+  EditOrganization,
   EditOrganizationContainer,
   EditProposalsContainer,
   LandingPage,
@@ -22,7 +23,6 @@ import {
   EditUserContainer
 } from './components'
 import { me } from './store'
-import EditOrganization from './components/EditOrganization'
 
 /**
  * COMPONENT
@@ -110,8 +110,6 @@ const mapDispatch = dispatch => {
   }
 }
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
 export default withRouter(connect(mapState, mapDispatch)(Routes))
 
 /**

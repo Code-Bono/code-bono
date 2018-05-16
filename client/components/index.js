@@ -7,6 +7,7 @@ export { default as About } from './about'
 export { default as AllProposalsContainer } from './AllProposalsContainer'
 export { default as ChatboxNav } from './chatboxNav'
 export { default as LandingPage } from './LandingPage'
+export { default as EditOrganization } from './EditOrganization'
 export {
   default as EditOrganizationContainer
 } from './EditOrganizationContainer'

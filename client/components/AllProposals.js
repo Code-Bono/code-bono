@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card, Button, Container } from 'semantic-ui-react'
+import { Grid, Image, Card, Button, Container, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class AllProposals extends Component {

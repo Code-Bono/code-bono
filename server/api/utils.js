@@ -29,6 +29,7 @@ function githubRepoAndProjectBoardCreation(name, description) {
   let project_id
 
   let columnIds = {
+    id: null,
     toDoColumnId: null,
     inProgressColumnId: null,
     doneColumnId: null
@@ -40,9 +41,11 @@ function githubRepoAndProjectBoardCreation(name, description) {
       org: 'Code-Bono-Projects',
       name,
       description,
-      has_projects: true
+      has_projects: true,
+      auto_init: true
     })
     .then(repo => {
+      columnIds.id = repo.data.id
       const repoNameForProjectBoard = repo.data.name
       return octokit.projects.createRepoProject({
         headers,

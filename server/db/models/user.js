@@ -16,7 +16,7 @@ const User = db.define('user', {
     get() {
       return (
         this.getDataValue('firstname') + ' ' + this.getDataValue('lastname')
-      );
+      )
     }
   },
   email: {
@@ -48,8 +48,7 @@ const User = db.define('user', {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9-AlyVziieSgrLtXOV_ePRPXEGc3nSjxKmpv57ACyqyq6__1XNA'
+    defaultValue: 'https://image.flaticon.com/icons/svg/185/185816.svg'
   },
   googleId: {
     type: Sequelize.STRING
