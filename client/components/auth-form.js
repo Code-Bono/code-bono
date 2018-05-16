@@ -81,7 +81,7 @@ class AuthForm extends Component {
               : null
             }
             {FormInput('email', 'email', 'Email', 'jane@doe.com')}
-            {FormInput('password', 'password', 'Password', 'password!')}
+            {FormInput('password', 'password', 'Password', 'password123')}
           </Grid>
           {this.state.isOrg && (
             <Grid className="grid-style">

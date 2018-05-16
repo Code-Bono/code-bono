@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Header, Card } from 'semantic-ui-react'
+import { Container, Header, Card, Button, List, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class OrganizationHome extends Component {
@@ -14,16 +14,36 @@ export default class OrganizationHome extends Component {
       <Container>
         {currentOrg ? (
           <div className="org-home">
-            <img src={currentOrg.image} />
+            <Button primary className="org-profile-buttons">
+              <Link to="/organization/edit" className="org-profile-buttons-text">Edit Details</Link>
+            </Button>
+            <Button primary className="org-profile-buttons">
+              <Link to="/organization/make-proposal" className="org-profile-buttons-text">Make a Proposal!</Link>
+            </Button>
+            <Header as='h1' id="org-profile-header">
+              {currentOrg.name}
+              <Header.Subheader id="org-profile-subheader">
+                {currentOrg.description}
+              </Header.Subheader>
+            </Header>
+            <img id="org-profile-img" src={currentOrg.image} />
             <br />
-            <Link to="/organization/edit">Edit Details</Link>
-            <Header as="h2">Organization Name: {currentOrg.name}</Header>
-            <p>Organization Description: {currentOrg.description}</p>
-            <p>Organization Address: {currentOrg.address}</p>
-            <p>Organization Phone Number: {currentOrg.phoneNumber}</p>
-            <p>Organization Email: {currentOrg.email}</p>
-            {currentUser && <p>Organization Rep Email: {currentUser.email}</p>}
-            <Link to="/organization/make-proposal">Make a Proposal!</Link>
+            <List>
+              <List.Item>
+                <List.Icon name='phone' />
+                <List.Content>{currentOrg.phoneNumber}</List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name='marker' />
+                <List.Content>{currentOrg.address}</List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name='mail' />
+                <List.Content>
+                  <a href={`mailto:${currentOrg.email}`}>{currentOrg.email}</a>
+                </List.Content>
+              </List.Item>
+            </List>
             <br />
             <Link to="/organization/proposals">
               View Your Current Proposals
