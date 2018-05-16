@@ -17,12 +17,17 @@ export const ProjectSignupButton = props => {
   return (
     <div>
       {userId ? (
-        <Button id="project-signup-button" primary onClick={evt => handleClick(evt, proposalDetails)}>
+        <Button
+          className="project-signup-button"
+          onClick={evt => handleClick(evt, proposalDetails)}
+        >
           Sign up for this project!
         </Button>
       ) : (
         <Link to="/login">
-          <Button primary>Log in to sign up for this project!</Button>
+          <Button className="project-signup-button">
+            Log in to sign up for this project!
+          </Button>
         </Link>
       )}
     </div>

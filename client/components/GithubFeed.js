@@ -27,7 +27,7 @@ export default class GithubFeed extends Component {
         <Header as="h3">Here are the most recent events for your repo: </Header>
         {events && events.length ? (
           <Feed id="Feed">
-            {events.reverse().map(event => {
+            {events.map(event => {
               return (
                 <Feed.Event key={event.id}>
                   <Feed.Label>
@@ -38,7 +38,7 @@ export default class GithubFeed extends Component {
                       <TimeAgo datetime={event.updatedAt} />
                     </Feed.Date>
                     <Feed.Summary>
-                      <Feed.User>{event.githubUser}</Feed.User>
+                      <Feed.User>Github user {event.githubUser}</Feed.User>
                       {event.type === 'push' && (
                         <a target="_blank" href={event.url}>{` ${
                           event.description

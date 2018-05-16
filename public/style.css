@@ -288,9 +288,12 @@ video {
   float: right;
 }
 
-#project-signup-button {
-  /*color: #e0e1e2;*/
+/* .project-signup-button {
+  color: #e0e1e2;
   background-color: #5a5a5a;
+} */
+.single-proposal-container {
+  margin-top: 3em;
 }
 
 .project-card {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card, Container } from 'semantic-ui-react'
+import { Grid, Image, Card, Container, Header } from 'semantic-ui-react'
 import ProjectSignupButton from './ProjectSignupButton'
 
 export default class SingleProposal extends Component {
@@ -16,59 +16,61 @@ export default class SingleProposal extends Component {
     const { singleProposal } = this.props
     return (
       <Container>
-        {singleProposal.id ? (
-          <div>
-            <h1 className="blue-text single-proposal-header">
-              {singleProposal.name.toUpperCase()}
-            </h1>
-            <h2 className="grey-text org-name">
-              Submitted by {singleProposal.organization.name}
-            </h2>
-            <div id="single-proposal-body">
-              <Image className="singlePageImg" src={singleProposal.image} />
-              <h2 className="blue-text single-proposal-description-header">
-                Proposal description
+        <div className="single-proposal-container">
+          {singleProposal.id ? (
+            <div className="single-proposal">
+              <h1 className="blue-text single-proposal-header">
+                {singleProposal.name.toUpperCase()}
+              </h1>
+              <h2 className="grey-text org-name">
+                Submitted by {singleProposal.organization.name}
               </h2>
-              <p>{singleProposal.description}</p>
-              <h3>Deadline: {singleProposal.deadline}</h3>
-              <h2 className="blue-text">About the organization:</h2>
-              <p>{singleProposal.organization.description}</p>
-              <h3 className="blue-text">
-                Get in touch with {singleProposal.organization.name}:
-              </h3>
-              <p className="org-info">
-                Email: {singleProposal.organization.email}
-              </p>
-              <p className="org-info">
-                Phone: {singleProposal.organization.phoneNumber}
-              </p>
-              <p className="org-info">
-                Address: {singleProposal.organization.address}
-              </p>
+              <div id="single-proposal-body">
+                <Image className="singlePageImg" src={singleProposal.image} />
+                <h2 className="blue-text single-proposal-description-header">
+                  Proposal description
+                </h2>
+                <p>{singleProposal.description}</p>
+                <h3>Deadline: {singleProposal.deadline}</h3>
+                <h2 className="blue-text">About the organization:</h2>
+                <p>{singleProposal.organization.description}</p>
+                <h3 className="blue-text">
+                  Get in touch with {singleProposal.organization.name}:
+                </h3>
+                <p className="org-info">
+                  Email: {singleProposal.organization.email}
+                </p>
+                <p className="org-info">
+                  Phone: {singleProposal.organization.phoneNumber}
+                </p>
+                <p className="org-info">
+                  Address: {singleProposal.organization.address}
+                </p>
+              </div>
+              {singleProposal.projects[0] &&
+              singleProposal.projects[0].users.length > 1 ? (
+                <h4>
+                  {singleProposal.projects[0].users.length + ' '}
+                  people are currently signed up for this project.
+                </h4>
+              ) : null}
+              {singleProposal.projects[0] &&
+              singleProposal.projects[0].users.length === 1 ? (
+                <h4 className="signup-count">
+                  1 person is currently signed up for this project.
+                </h4>
+              ) : null}
             </div>
-            {singleProposal.projects[0] &&
-            singleProposal.projects[0].users.length > 1 ? (
-              <h4>
-                {singleProposal.projects[0].users.length + ' '}
-                people are currently signed up for this project.
-              </h4>
-            ) : null}
-            {singleProposal.projects[0] &&
-            singleProposal.projects[0].users.length === 1 ? (
-              <h4 className="signup-count">
-                1 person is currently signed up for this project.
-              </h4>
-            ) : null}
-          </div>
-        ) : (
-          <h2>Loading selected proposal...</h2>
-        )}
-        <br />
-        <ProjectSignupButton
-          proposalId={singleProposal.id}
-          proposalName={singleProposal.name}
-          proposalDescription={singleProposal.description}
-        />
+          ) : (
+            <h2>Loading selected proposal...</h2>
+          )}
+          <br />
+          <ProjectSignupButton
+            proposalId={singleProposal.id}
+            proposalName={singleProposal.name}
+            proposalDescription={singleProposal.description}
+          />
+        </div>
       </Container>
     )
   }
