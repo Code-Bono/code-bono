@@ -69,6 +69,15 @@ export const getUserById = id => dispatch =>
     .then(res => dispatch(getUser(res.data)))
     .catch(err => console.log(err))
 
+export const updateProfile = (userId, userObj, history) => dispatch =>
+  axios
+    .put(`/api/users/${userId}`, userObj)
+    .then(res => {
+      dispatch(getUser(res.data))
+      history.push('/profile')
+    })
+    .catch(err => console.log(err))
+
 //Model for editing profile
 //   export const postProposalToDb = (proposal) => dispatch =>
 // axios

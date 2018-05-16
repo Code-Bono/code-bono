@@ -32,3 +32,4 @@ export { default as Vidchat } from './vidchat'
 export {
   default as ViewOrganizationProposalsContainer
 } from './ViewOrganizationProposalsContainer'
+export { default as EditUserContainer } from './EditProfileContainer'
