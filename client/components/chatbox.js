@@ -15,24 +15,25 @@ export default class Chatbox extends Component {
 
   componentDidMount() {
     //sets channel to nothing to show no messages when re-opened
+    let sendNotification = this.props.notification
     this.setState({ currentChannel: 0 }, () =>
       this.props.loadMessages(this.state.currentChannel)
     )
     this.props.loadUsers()
-    this.props.loadProjects(this.props.currentUser.id)
-    let sendNotification = this.props.notification
-    socket.on('updateChat', data => {
-      //checks if the message you received is for the right channel before appending it
-      if (data.channelId === this.state.currentChannel) {
-        this.addToBox(data.message)
-      } else if (
-        //checks if user is assigned to the project before emitting the notification
-        this.props.assignedProjects.find(
-          project => project.id === data.channelId
-        )
-      ) {
-        sendNotification(data.channelId)
-      }
+    this.props.loadProjects(this.props.currentUser.id).then(() => {
+      socket.on('updateChat', data => {
+        //checks if the message you received is for the right channel before appending it
+        if (data.channelId === this.state.currentChannel) {
+          this.addToBox(data.message)
+        } else if (
+          //checks if user is assigned to the project before emitting the notification
+          this.props.assignedProjects.find(
+            project => project.id === data.channelId
+          )
+        ) {
+          sendNotification(data.channelId)
+        }
+      })
     })
   }
 
@@ -66,14 +67,15 @@ export default class Chatbox extends Component {
   //helper function for adding messages to the chatbox
   addToBox(data) {
     let box = document.getElementById('inside-box')
-    let p = document.createElement('p')
-    p.textContent = data
-    box.appendChild(p)
-    //scrolls to the bottom after message is received
-    box.scrollTop = box.scrollHeight
+    if (box) {
+      let p = document.createElement('p')
+      p.textContent = data
+      box.appendChild(p)
+      //scrolls to the bottom after message is received
+      box.scrollTop = box.scrollHeight
+    }
   }
   render() {
-    console.log(this.props)
     const { currentUser, allMessages, assignedProjects } = this.props
     //listens for the emit for updating the chatbox
     return (
