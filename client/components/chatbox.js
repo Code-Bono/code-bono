@@ -35,6 +35,7 @@ export default class Chatbox extends Component {
       }
     })
   }
+
   //when message is sent, emits to the socket to broadcast to all with the message and appends that mesasge to our current chatbox div
   handleSubmit(event) {
     event.preventDefault()

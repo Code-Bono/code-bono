@@ -1,29 +1,39 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
+import GithubFeedContainer from './GithubFeedContainer'
 import Vidchat from './vidchat'
-import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import { Container } from 'semantic-ui-react'
+import socket from '../socket'
 
 export default class Project extends Component {
   constructor(props) {
     super(props)
   }
 
+  projectBoardEvent = event => {
+    const projectId = this.props.match.params.projectId
+    console.log('Event: ', event)
+    if (+event.projectId === +projectId) {
+      this.props.loadProjectCards(projectId)
+    }
+  }
+
   componentDidMount() {
     const projectId = this.props.match.params.projectId
     this.props.loadProject(projectId)
     this.props.loadProjectCards(projectId)
-    // this.interval = setInterval(this.props.loadProjectCards(projectId), 60000)
+    socket.on('projectBoardEvent', this.projectBoardEvent)
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    socket.off('projectBoardEvent', this.projectBoardEvent)
   }
 
   render() {
     const projectName = this.props.project.name
-    const projectId = this.props.project.id ? this.props.project.id : null
+    const projectId = this.props.match.params.projectId
+    // const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
       <div>
@@ -45,12 +55,9 @@ export default class Project extends Component {
             </Header.Content>
           </Header>
         </div>
-        <Vidchat
-          user={this.props.user}
-          projectId={this.props.match.params.projectId}
-        />
+        <Vidchat user={this.props.user} projectId={projectId} />
+        <GithubFeedContainer projectId={projectId} />
         <GitHubProjectBoardContainer projectId={projectId} />
-        {/*<GithubFeed />*/}
       </div>
     )
   }

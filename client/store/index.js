@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import causes from './cause'
 import chatStatus from './chatboxNav'
 import currentOrg from './organization'
+import events from './githubFeed'
 import githubProjectCards from './githubProjectCards'
 import messages from './chatbox'
 import noteToAdd from './addProjectCard'
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   chatStatus,
   currentOrg,
   githubProjectCards,
+  events,
   messages,
   noteToAdd,
   others,

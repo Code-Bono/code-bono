@@ -71,6 +71,21 @@ nav a {
   color: #309aabd9;
 }
 
+<<<<<<< head ======= #Feed {
+  height: 100%;
+  overflow: scroll;
+}
+
+.feedDiv {
+  height: 8em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+>>>>>>> master
 /* #gum-local {
   height: 250px;
 } */
@@ -400,6 +415,10 @@ video {
   justify-content: center;
 }
 
+.profilePicture {
+  height: 25em;
+}
+
 .inspirational-quote {
   font-style: italic;
 }
@@ -490,7 +509,7 @@ form div {
   width: 25.5em;
 }
 
-.dropdown {
+.causes-menu {
   width: 15em;
   margin: 1em;
 }
@@ -502,4 +521,15 @@ form div {
   right: 0;
   position: absolute;
   text-align: center;
+}
+.page-name {
+  margin-top: 5em;
+}
+
+.page-bottom {
+  margin-bottom: 5em;
+}
+
+.centered-elem {
+  justify-content: center;
 }

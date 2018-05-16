@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Header, Image, Item, Button, Container, List, Icon } from 'semantic-ui-react'
+import {
+  Header,
+  Image,
+  Item,
+  Button,
+  Container,
+  List,
+  Icon
+} from 'semantic-ui-react'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -21,7 +29,7 @@ export default class UserProfile extends Component {
           {user ? (
             <div>
               <h3 id="user-profile-email">{user.email}</h3>
-              <Image src={user.imageUrl} />
+              <Image className="profilePicture" src={user.imageUrl} />
               <Link to="/profile/edit">Edit</Link>
             </div>
           ) : (
@@ -33,25 +41,26 @@ export default class UserProfile extends Component {
             <Item.Group>
               {projects.map(project => {
                 return (
-                  <List divided verticalAlign='middle' key={project.id}>
+                  <List divided verticalAlign="middle" key={project.id}>
                     <List.Item id="user-profile-project-list">
-                      <List.Content floated='right'>
+                      <List.Content floated="right">
                         <Link to={`/projects/${project.id}`}>
-                          <Button primary id="user-profile-browse"
+                          <Button
+                            primary
+                            id="user-profile-browse"
                             primary
                             onClick={evt => this.props.loadProject(project.id)}
                           >
                             <Icon name="code" />Check in on this project
                           </Button>
                         </Link>
-                        </List.Content>
+                      </List.Content>
 
-                        <List.Header ><Icon name="marker"/>
-                          {project.name}
+                      <List.Header>
+                        <Icon name="marker" />
+                        {project.name}
                       </List.Header>
-                        <List.Description>
-                          {project.description}
-                      </List.Description>
+                      <List.Description>{project.description}</List.Description>
                     </List.Item>
                   </List>
                 )
@@ -60,11 +69,11 @@ export default class UserProfile extends Component {
           ) : (
             <div>
               <h3>You currently have no active projects.</h3>
-                <Link to={`/proposals`}>
-                  <Button primary id="user-profile-browse">
-                    <Icon name="search" />Browse proposals
-                  </Button>
-                </Link>
+              <Link to={`/proposals`}>
+                <Button primary id="user-profile-browse">
+                  <Icon name="search" />Browse proposals
+                </Button>
+              </Link>
             </div>
           )}
         </div>
