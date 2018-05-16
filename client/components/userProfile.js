@@ -24,58 +24,62 @@ export default class UserProfile extends Component {
     const projects = user.projects ? user.projects : []
     return (
       <Container>
-        <h1 id="user-profile-title">{user.fullname}</h1>
-        <div>
-          {user ? (
-            <div>
-              <h3 id="user-profile-email">{user.email}</h3>
-              <Image className="profilePicture" src={user.imageUrl} />
-              <Link to="/profile/edit">Edit</Link>
-            </div>
-          ) : (
-            <h3 className="loading">Loading current user...</h3>
-          )}
-          <h2 className="user-profile-projects-header">Your Projects</h2>
+        <div id="user-profile-container">
+          <h1 id="user-profile-title">{user.fullname}</h1>
+          <Button primary className="user-profile-buttons">
+            <Link to="/profile/edit" className="user-profile-buttons-text">Edit Details</Link>
+          </Button>
+          <div>
+            {user ? (
+              <div>
+                <h3 id="user-profile-email">{user.email}</h3>
+                <Image className="profilePicture" src={user.imageUrl} />
+              </div>
+            ) : (
+              <h3 className="loading">Loading current user...</h3>
+            )}
+            <h2 className="user-profile-projects-header">Your Projects</h2>
 
-          {projects.length ? (
-            <Item.Group>
-              {projects.map(project => {
-                return (
-                  <List divided verticalAlign="middle" key={project.id}>
-                    <List.Item id="user-profile-project-list">
-                      <List.Content floated="right">
-                        <Link to={`/projects/${project.id}`}>
-                          <Button
-                            primary
-                            id="user-profile-browse"
-                            primary
-                            onClick={evt => this.props.loadProject(project.id)}
-                          >
-                            <Icon name="code" />Check in on this project
-                          </Button>
-                        </Link>
-                      </List.Content>
+            {projects.length ? (
+              <Item.Group>
+                {projects.map(project => {
+                  return (
+                    <List divided verticalAlign="middle" key={project.id}>
+                      <List.Item id="user-profile-project-list">
+                        <List.Content floated="right">
+                          <Link to={`/projects/${project.id}`}>
+                            <Button
+                              primary
+                              id="user-profile-browse"
+                              primary
+                              onClick={evt => this.props.loadProject(project.id)}
+                            >
+                              <Icon name="code" />Check in on this project
+                            </Button>
+                          </Link>
+                        </List.Content>
 
-                      <List.Header>
-                        <Icon name="marker" />
-                        {project.name}
-                      </List.Header>
-                      <List.Description>{project.description}</List.Description>
-                    </List.Item>
-                  </List>
-                )
-              })}
-            </Item.Group>
-          ) : (
-            <div>
-              <h3>You currently have no active projects.</h3>
-              <Link to={`/proposals`}>
-                <Button primary id="user-profile-browse">
-                  <Icon name="search" />Browse proposals
-                </Button>
-              </Link>
-            </div>
-          )}
+                        <List.Header>
+                          <Icon name="marker" />
+                          {project.name}
+                        </List.Header>
+                        <List.Description>{project.description}</List.Description>
+                      </List.Item>
+                    </List>
+                  )
+                })}
+              </Item.Group>
+            ) : (
+              <div>
+                <h3>You currently have no active projects.</h3>
+                <Link to={`/proposals`}>
+                  <Button primary id="user-profile-browse">
+                    <Icon name="search" />Browse proposals
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </Container>
     )

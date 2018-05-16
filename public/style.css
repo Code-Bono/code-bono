@@ -417,7 +417,7 @@ video {
 }
 
 .profilePicture {
-  height: 25em;
+  height: 225px;
 }
 
 .inspirational-quote {
@@ -491,6 +491,15 @@ form div {
 .login-buttons {
   width: 50%;
 }
+
+.user-profile-buttons {
+  /*float: right;*/
+  background-color: #e0e1e2 !important;
+}
+.user-profile-buttons-text {
+  color: #5a5a5a;
+}
+
 .user-profile-headers-container {
   background-color: grey;
   padding-top: 2%;
@@ -506,8 +515,15 @@ form div {
   background-color: #e0e1e2 !important;
 }
 
+#user-profile-container {
+  margin-top: 2em;
+}
+
 #user-profile-title {
-  margin-top: 0.5em;
+
+  margin-right: 0.5em;
+  display: inline;
+
 }
 
 .user-profile-projects-header {
