@@ -295,7 +295,9 @@ video {
 .single-proposal-container {
   margin-top: 3em;
 }
-
+.feedDiv {
+  margin: 2em 1em;
+}
 .project-card {
   border-bottom: 1px solid black;
   margin-bottom: 20px;
