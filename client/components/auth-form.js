@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 import { createOrg } from '../store/organization'
-import { Form, Button, Container, Icon, Grid } from 'semantic-ui-react'
+import { Form, Button, Container, Icon, Grid, Header, Checkbox } from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -24,7 +24,7 @@ class AuthForm extends Component {
   render() {
     //didn't modularize organization sign up because it would be annoying to pass up form values
     const { name, displayName, handleSubmit, error } = this.props
-    const FormInput = (name, type, label) => (
+    const FormInput = (name, type, label, placeholder) => (
       <Grid.Column className="form-inputs" width={9}>
         <Form.Input
           width={14}
@@ -33,44 +33,66 @@ class AuthForm extends Component {
           type={type}
           fluid
           label={label}
+          placeholder={placeholder}
         />
       </Grid.Column>
     )
+
     return (
       <div className="form">
         <Container>
-          <h3>{displayName}</h3>
-          {displayName === 'Sign Up' && (
-            <Form.Checkbox
-              onChange={this.handleChange}
-              label="I am a representative for an organization"
-            />
-          )}
+          <Header as='h2' icon textAlign='center'>
+            {
+              name === 'signup' ?
+              <Icon name='signup' />
+              : <Icon name='sign in' />
+            }
+
+            {displayName}
+          </Header>
         </Container>
+        <Container textAlign="center" id="github-oauth">
+          <a href="/auth/github">
+            <Button color="facebook" size="medium">
+              <Icon name="github"/>
+              Developer?  {displayName} with GitHub!
+            </Button>
+          </a>
+        </Container>
+
         <Form onSubmit={handleSubmit} name={name}>
+          {displayName === 'Sign Up' && (
+            <Form.Field id="org-checkbox">
+              <Checkbox
+                onChange={this.handleChange}
+                label="I am a representative for an organization"
+              />
+            </Form.Field>
+          )}
           <Grid className="grid-style">
             {
               name === 'signup' ?
-              FormInput('firstname', 'text', 'First Name')
+              FormInput('firstname', 'text', 'First Name', 'Jane')
               : null
             }
             {
               name === 'signup' ?
-              FormInput('lastname', 'text', 'Last Name')
+              FormInput('lastname', 'text', 'Last Name', 'Doe')
               : null
             }
-            {FormInput('email', 'email', 'Email')}
-            {FormInput('password', 'password', 'Password')}
+            {FormInput('email', 'email', 'Email', 'jane@doe.com')}
+            {FormInput('password', 'password', 'Password', 'password!')}
           </Grid>
           {this.state.isOrg && (
             <Grid className="grid-style">
-              {FormInput('orgName', 'text', 'Organizaton Name')}
-              {FormInput('orgAddress', 'text', 'Organization Address')}
-              {FormInput('orgNumber', 'text', 'Organization Phone #')}
-              {FormInput('orgEmail', 'email', 'Organizaton Email')}
-              {FormInput('orgDescription', 'text', 'Organization Description')}
+              {FormInput('orgName', 'text', 'Organizaton Name', "Jane's Wildlife Fund")}
+              {FormInput('orgAddress', 'text', 'Organization Address', "15 Jane Street, Suite 2, Tortuguero, Costa Rica")}
+              {FormInput('orgNumber', 'text', 'Organization Phone #', '+506 123 4567')}
+              {FormInput('orgEmail', 'email', 'Organizaton Email', 'wildlifefund@info.org')}
+              {FormInput('orgDescription', 'text', 'Organization Description', 'Tell us about your organization!')}
             </Grid>
           )}
+
           <Container textAlign="center">
             {error && error.response && <div> {error.response.data} </div>}
           </Container>
@@ -80,14 +102,7 @@ class AuthForm extends Component {
             </Button>
           </Container>
         </Form>
-        <Container textAlign="center">
-          <a href="/auth/github">
-            <Button color="facebook" size="medium">
-              <Icon name="github" />
-              {displayName} with GitHub
-            </Button>
-          </a>
-        </Container>
+
       </div>
     )
   }
