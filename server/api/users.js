@@ -27,6 +27,15 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => {
+      return user.update(req.body)
+    })
+    .then(user => res.json(user))
+    .catch(next)
+})
+
 router.get('/:id/projects', (req, res, next) => {
   const id = req.params.id
   User.findById(id)

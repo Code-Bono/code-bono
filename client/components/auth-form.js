@@ -72,11 +72,13 @@ class AuthForm extends Component {
             </Grid>
           )}
           <Container textAlign="center">
+            {error && error.response && <div> {error.response.data} </div>}
+          </Container>
+          <Container textAlign="center">
             <Button size="medium" primary type="submit">
               {displayName}
             </Button>
           </Container>
-          {error && error.response && <div> {error.response.data} </div>}
         </Form>
         <Container textAlign="center">
           <a href="/auth/github">

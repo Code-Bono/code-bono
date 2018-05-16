@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class OrganizationHome extends Component {
@@ -11,7 +11,7 @@ export default class OrganizationHome extends Component {
   render() {
     let { currentUser, currentOrg } = this.props
     return (
-      <Container text>
+      <Container>
         {currentOrg ? (
           <div className="org-home">
             <img src={currentOrg.image} />

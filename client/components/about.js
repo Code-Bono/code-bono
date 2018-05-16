@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div>
       <div className="ui inverted vertical masthead center aligned segment">
-        <div className="ui text container about">
+        <div className="ui text container stripe">
           <h2 className="grey-text">Meet the Team</h2>
           <p>
             Code Bono is a capstone project built by Ian Dewsbury, Geena Gao, Da
