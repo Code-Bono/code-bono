@@ -93,4 +93,22 @@ router.post('/member', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/projectBoard', (req, res, next) => {
+  let repoId = req.body.repository.id
+  console.log(repoId)
+  let projectId
+  Repo.findById(repoId)
+    .then(repo => {
+      projectId = repo.projectId
+      let projectBoardEvent = {
+        type: req.body.action,
+        projectId
+      }
+      return projectBoardEvent
+    })
+    .then(event => req.io.emit('projectBoardEvent', event))
+    .then(() => res.sendStatus(200))
+    .catch(next)
+})
+
 module.exports = router
