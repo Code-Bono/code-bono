@@ -27,7 +27,7 @@ const mapDispatch = dispatch => {
       dispatch(postMessageToDb(id, messageObj))
     },
     loadProjects: id => {
-      dispatch(fetchAllProjectsForUser(id))
+      return dispatch(fetchAllProjectsForUser(id))
     }
   }
 }
