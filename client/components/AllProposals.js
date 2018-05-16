@@ -31,7 +31,7 @@ export default class AllProposals extends Component {
             }}
           />
         </div>
-        {/*<select className="ui compact selection dropdown">
+        {/*<select className="ui compact selection dropdown causes-menu">
           <option value="all">All Causes</option>
           <option selected="" value="mentoring">
             Mentoring

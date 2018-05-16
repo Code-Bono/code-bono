@@ -22,10 +22,11 @@ export default class EditOrganization extends Component {
   render() {
     const { currentOrg } = this.props
     return (
-      <Container>
+      <Container className="page-name">
         <Link to="/organization/home">
           <Button size="mini">Go Back</Button>
         </Link>
+        <h1 className="blue-text text-center">Edit Organization Details</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
