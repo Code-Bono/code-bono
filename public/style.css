@@ -71,6 +71,15 @@ nav a {
   color: #309aabd9;
 }
 
+#Feed {
+  height: 100%;
+  overflow: scroll;
+}
+
+.feedDiv {
+  height: 8em;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
