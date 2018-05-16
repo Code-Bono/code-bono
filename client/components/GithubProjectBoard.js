@@ -5,29 +5,24 @@ import Board from 'react-trello'
 import axios from 'axios'
 
 const GitHubProjectBoard = props => {
-
-  const {
-    projectCards,
-    project,
-    handleSubmit
-  } = props
+  const { projectCards, project, handleSubmit } = props
   const projectId = project.id
   const repoURL = props.project.id ? props.project.repo.URL : null
 
   // data structure required by react-trello module
   const projectBoard = projectCards.map((column, i) => {
-        const columnNotes = column.cards.map(card => {
-          return {
-            id: card.cardId.toString(),
-            description: card.note
-          }
-        })
-        return {
-          id: column.columnId.toString(),
-          title: column.columnName,
-          cards: columnNotes
-        }
-      })
+    const columnNotes = column.cards.map(card => {
+      return {
+        id: card.cardId.toString(),
+        description: card.note
+      }
+    })
+    return {
+      id: column.columnId.toString(),
+      title: column.columnName,
+      cards: columnNotes
+    }
+  })
 
   const data = {
     lanes: projectBoard
@@ -53,16 +48,18 @@ const GitHubProjectBoard = props => {
   return (
     <div>
       <div className="projectBoard-header">
-          <Header as="h2" icon textAlign="center">
-            <Header.Content>Github Project Board</Header.Content>
-          </Header>
+        <Header as="h2" icon textAlign="center">
+          <Header.Content>Github Project Board</Header.Content>
+        </Header>
       </div>
       <div className="image-container">
-        <a href={repoURL} target="_blank"><Image
-          centered
-          size="mini"
-          src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
-        /></a>
+        <a href={repoURL} target="_blank">
+          <Image
+            centered
+            size="mini"
+            src="https://www.freeiconspng.com/uploads/github-logo-icon-30.png"
+          />
+        </a>
       </div>
       <div className="project-board-container">
         {projectCards.length ? (

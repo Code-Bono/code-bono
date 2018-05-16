@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import ChatboxContainer from './chatboxContainer'
 import { openChat, hideChat } from '../store/chatboxNav'
 import { Link } from 'react-router-dom'
+import { fetchToastProject } from '../store/fetchProjectForToast'
 import { Button, Container } from 'semantic-ui-react'
 
 class ChatboxNavbar extends Component {
   constructor(props) {
     super(props)
+    this.handleNotification = this.handleNotification.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
   //function to toggle chatbox
@@ -20,6 +22,14 @@ class ChatboxNavbar extends Component {
       hide()
     }
   }
+
+  handleNotification(projectId) {
+    //updates the current toast projectId for notification and grabs the project name to pass it up to the parent to display in the toast notification
+    this.props.updateToastProject(projectId).then(() => {
+      this.props.notifyMe(this.props.toastProject.name)
+    })
+  }
+
   render() {
     const { isLoggedIn, chatStatus } = this.props
     return (
@@ -38,10 +48,15 @@ class ChatboxNavbar extends Component {
                     Hide Chat
                   </Button>
                 </Container>
-                <ChatboxContainer />
+                <ChatboxContainer notification={this.handleNotification} />
               </Container>
             ) : (
-              <Button id="open-chat" fluid size="mini" onClick={this.handleClick}>
+              <Button
+                id="open-chat"
+                fluid
+                size="mini"
+                onClick={this.handleClick}
+              >
                 Open Chat
               </Button>
             )}
@@ -55,7 +70,8 @@ class ChatboxNavbar extends Component {
 const mapState = state => {
   return {
     chatStatus: state.chatStatus,
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    toastProject: state.toastProject
   }
 }
 
@@ -66,6 +82,9 @@ const mapDispatch = dispatch => {
     },
     open: () => {
       dispatch(openChat())
+    },
+    updateToastProject: id => {
+      return dispatch(fetchToastProject(id))
     }
   }
 }

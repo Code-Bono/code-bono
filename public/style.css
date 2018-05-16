@@ -542,6 +542,15 @@ form div {
   height: 300px;
 }
 
+.toast {
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
+}
+
 .page-name {
   margin-top: 5em;
 }
