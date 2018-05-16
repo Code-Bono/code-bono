@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
-import { Container, Header, Card, Button, List, Icon } from 'semantic-ui-react'
+import { Container, Header, Card, Button, List, Icon, Item } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class OrganizationHome extends Component {
   componentDidMount() {
     this.props.fetchCurrentOrg(this.props.currentUser.id)
+    .then(() => {
+      this.props.fetchOrgProposals(this.props.currentOrg.id)
+    })
 
     //refetches user to get the updated user after they are assigned to an org. Navbar checks if user is assigned to an org and renders out User Home vs Organization Home
     this.props.fetchUpdatedUser(this.props.currentUser.id)
   }
   render() {
-    let { currentUser, currentOrg } = this.props
-    // *MIGHT NEED TO GET ORG ID FROM URL
+    const { currentUser, currentOrg, proposals } = this.props
+
+    console.log('PROPS', this.props)
+
     return (
       <Container>
         {currentOrg ? (
@@ -46,10 +51,49 @@ export default class OrganizationHome extends Component {
                 </List.Content>
               </List.Item>
             </List>
-            <br />
-            <Link to="/organization/proposals">
-              View Your Current Proposals
-            </Link>
+            <h2 className="user-profile-projects-header">Your Proposals</h2>
+
+          {proposals.length ? (
+            <Item.Group>
+              {proposals.map(proposal => {
+                return (
+                  <List divided verticalAlign="middle" key={proposal.id}>
+                    <List.Item id="user-profile-project-list">
+                      <List.Content floated="right">
+                      {
+                        proposal.projects.length ?
+                        <Link to={`/projects/${proposal.projects[0].id}`}>
+                          <Button
+                            primary
+                            id="user-profile-browse"
+                            primary
+                            onClick={evt => this.props.loadProject(proposal.projects[0].id)}
+                          >
+                            <Icon name="code" />Check in on this proposal
+                          </Button>
+                        </Link>
+                        : null
+                      }
+                      </List.Content>
+
+                      <List.Header>
+                        <Icon name="marker" />
+                        {proposal.name}
+                      </List.Header>
+                      <List.Description>{proposal.description}</List.Description>
+                    </List.Item>
+                  </List>
+                )
+              })}
+            </Item.Group>
+          ) : (
+            <div>
+              <h3>You currently have no active proposals</h3>
+            </div>
+          )}
+
+
+
           </div>
         ) : (
           <div>Loading...</div>
