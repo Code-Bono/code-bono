@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Card, Button, Container } from 'semantic-ui-react'
+import { Grid, Image, Card, Button, Container, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class AllProposals extends Component {
@@ -31,7 +31,7 @@ export default class AllProposals extends Component {
             }}
           />
         </div>
-        {/*<select className="ui compact selection dropdown">
+        {/*<select className="ui compact selection dropdown causes-menu">
           <option value="all">All Causes</option>
           <option selected="" value="mentoring">
             Mentoring

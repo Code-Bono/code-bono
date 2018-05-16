@@ -124,6 +124,7 @@ const projects = [
 const repos = [
   {
     name: 'Give-Our-Kids-a-Home',
+    id: 133154303,
     toDoColumnId: 2702966,
     inProgressColumnId: 2702967,
     doneColumnId: 2702968,
@@ -131,6 +132,7 @@ const repos = [
   },
   {
     name: 'Federation-for-Orphans-Website-Update',
+    id: 133154324,
     toDoColumnId: 2702969,
     inProgressColumnId: 2702970,
     doneColumnId: 2702971,
@@ -138,6 +140,7 @@ const repos = [
   },
   {
     name: 'Volunteer-Platform',
+    id: 133154338,
     toDoColumnId: 2702972,
     inProgressColumnId: 2702973,
     doneColumnId: 2702974,
@@ -145,6 +148,7 @@ const repos = [
   },
   {
     name: 'Database-Management-System-Migration',
+    id: 133154570,
     toDoColumnId: 2702975,
     inProgressColumnId: 2702976,
     doneColumnId: 2702977,
@@ -152,6 +156,7 @@ const repos = [
   },
   {
     name: 'Save-the-Cyborg-Bamboo-Forest',
+    id: 133154620,
     toDoColumnId: 2702978,
     inProgressColumnId: 2702979,
     doneColumnId: 2702980,
@@ -159,6 +164,7 @@ const repos = [
   },
   {
     name: 'Cyborg-Panda-Maintanence-Tool',
+    id: 133154646,
     toDoColumnId: 2702981,
     inProgressColumnId: 2702982,
     doneColumnId: 2702983,
@@ -166,6 +172,7 @@ const repos = [
   },
   {
     name: 'Firebase-Integration',
+    id: 133154676,
     toDoColumnId: 2702986,
     inProgressColumnId: 2702987,
     doneColumnId: 2702988,
@@ -173,6 +180,7 @@ const repos = [
   },
   {
     name: 'Manual-Data-Entry',
+    id: 133154691,
     toDoColumnId: 2702989,
     inProgressColumnId: 2702990,
     doneColumnId: 2702991,
@@ -180,6 +188,7 @@ const repos = [
   },
   {
     name: 'Feed-the-cats',
+    id: 133154715,
     toDoColumnId: 2702992,
     inProgressColumnId: 2702993,
     doneColumnId: 2702994,
@@ -188,6 +197,22 @@ const repos = [
 ]
 
 const users = [
+  {
+    firstname: 'Debbie',
+    lastname: 'Developer',
+    email: 'dev@fullstack.com',
+    password:
+      'd0751a79c977de8cb0a5ad0889b104398a6c836333e448ece8c35fffd6f6af60',
+    salt: 'TDWmW7wWC/AOsWREjpi33w=='
+  },
+  {
+    firstname: 'Randy',
+    lastname: 'Representative',
+    email: 'rep@nonprofit.org',
+    password:
+      'd0751a79c977de8cb0a5ad0889b104398a6c836333e448ece8c35fffd6f6af60',
+    salt: 'TDWmW7wWC/AOsWREjpi33w=='
+  },
   {
     firstname: 'Cody',
     lastname: 'Smith',
@@ -204,7 +229,8 @@ const users = [
     firstname: 'Danny',
     lastname: 'Brown',
     email: 'danny@email.com',
-    password: '123'
+    password: '123',
+    projectId: 2
   },
   {
     firstname: 'Geena',
@@ -223,6 +249,48 @@ const users = [
     lastname: 'Slotwiner',
     email: 'yoni@email.com',
     password: 'abc'
+  },
+  {
+    firstname: 'Sample 1',
+    lastname: 'User 2',
+    email: 'user1@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 2',
+    lastname: 'User 2',
+    email: 'user2@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 3',
+    lastname: 'User 3',
+    email: 'user3@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 4',
+    lastname: 'User 4',
+    email: 'user4@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 5',
+    lastname: 'User 5',
+    email: 'user5@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 6',
+    lastname: 'User 6',
+    email: 'user6@email.com',
+    password: 'abc'
+  },
+  {
+    firstname: 'Sample 7',
+    lastname: 'User 7',
+    email: 'user7@email.com',
+    password: 'abc'
   }
 ]
 
@@ -230,7 +298,21 @@ const causes = [
   { name: 'Mentoring' },
   { name: 'Arts' },
   { name: 'Counselling' },
-  { name: 'Conservation' }
+  { name: 'Conservation' },
+  { name: 'Climate Change' },
+  { name: 'Human Rights' },
+  { name: 'Equality' },
+  { name: 'Animal Welfare' },
+  { name: 'Criminal Justice' },
+  { name: 'Youth Issues' },
+  { name: 'Resource Preservation' },
+  { name: 'Water' },
+  { name: 'Diversity' },
+  { name: 'Equal Access' },
+  { name: 'Microfinance' },
+  { name: 'Early Childhood Development' },
+  { name: 'Disaster Relief' },
+  { name: 'Conflict Resolution' }
 ]
 
 const organizations = [
@@ -339,14 +421,15 @@ const proposals = [
 ]
 
 const seed = async () => {
-  await User.bulkCreate(users)
   await Organization.bulkCreate(organizations)
   await Proposal.bulkCreate(proposals)
-  await Cause.bulkCreate(causes)
   await Project.bulkCreate(projects)
+  await User.bulkCreate(users)
+  await Cause.bulkCreate(causes)
   await Chatroom.bulkCreate(chatrooms)
   await Message.bulkCreate(messages)
   await Repo.bulkCreate(repos)
+  // await Collaboration.bulkCreate(collaborations)
 }
 
 const main = () => {
@@ -354,7 +437,7 @@ const main = () => {
   db
     .sync({ force: true })
     .then(() => {
-      console.log('Seeding databse...')
+      console.log('Seeding database...')
       console.log(`seeded ${users.length} users`)
       console.log(`seeded ${chatrooms.length} chatrooms`)
       console.log(`seeded ${organizations.length} organizations`)

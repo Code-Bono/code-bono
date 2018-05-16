@@ -71,7 +71,19 @@ nav a {
   color: #309aabd9;
 }
 
+#Feed {
+  height: 100%;
+  overflow: scroll;
+}
 
+.feedDiv {
+  height: 8em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
 
 /* #gum-local {
   height: 250px;
@@ -402,6 +414,10 @@ video {
   justify-content: center;
 }
 
+.profilePicture {
+  height: 25em;
+}
+
 .inspirational-quote {
   font-style: italic;
 }
@@ -420,7 +436,6 @@ video {
 
 .form {
   margin: 1em 0;
-
 }
 
 form div {
@@ -514,7 +529,7 @@ form div {
   width: 25.5em;
 }
 
-.dropdown {
+.causes-menu {
   width: 15em;
   margin: 1em;
 }
@@ -525,4 +540,16 @@ form div {
 
 #landingpage-card-img {
   height: 300px;
+}
+
+.page-name {
+  margin-top: 5em;
+}
+
+.page-bottom {
+  margin-bottom: 5em;
+}
+
+.centered-elem {
+  justify-content: center;
 }

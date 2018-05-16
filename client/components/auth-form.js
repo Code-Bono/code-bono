@@ -3,7 +3,15 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 import { createOrg } from '../store/organization'
-import { Form, Button, Container, Icon, Grid, Header, Checkbox } from 'semantic-ui-react'
+import {
+  Form,
+  Button,
+  Container,
+  Icon,
+  Grid,
+  Header,
+  Checkbox
+} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -41,12 +49,12 @@ class AuthForm extends Component {
     return (
       <div className="form">
         <Container>
-          <Header as='h2' icon textAlign='center'>
-            {
-              name === 'signup' ?
-              <Icon name='signup' />
-              : <Icon name='sign in' />
-            }
+          <Header as="h2" icon textAlign="center">
+            {name === 'signup' ? (
+              <Icon name="signup" />
+            ) : (
+              <Icon name="sign in" />
+            )}
 
             {displayName}
           </Header>
@@ -54,8 +62,8 @@ class AuthForm extends Component {
         <Container textAlign="center" id="github-oauth">
           <a href="/auth/github">
             <Button color="facebook" size="medium">
-              <Icon name="github"/>
-              Developer?  {displayName} with GitHub!
+              <Icon name="github" />
+              Developer? {displayName} with GitHub!
             </Button>
           </a>
         </Container>
@@ -70,39 +78,59 @@ class AuthForm extends Component {
             </Form.Field>
           )}
           <Grid className="grid-style">
-            {
-              name === 'signup' ?
-              FormInput('firstname', 'text', 'First Name', 'Jane')
-              : null
-            }
-            {
-              name === 'signup' ?
-              FormInput('lastname', 'text', 'Last Name', 'Doe')
-              : null
-            }
+            {name === 'signup'
+              ? FormInput('firstname', 'text', 'First Name', 'Jane')
+              : null}
+            {name === 'signup'
+              ? FormInput('lastname', 'text', 'Last Name', 'Doe')
+              : null}
             {FormInput('email', 'email', 'Email', 'jane@doe.com')}
             {FormInput('password', 'password', 'Password', 'password123')}
           </Grid>
           {this.state.isOrg && (
             <Grid className="grid-style">
-              {FormInput('orgName', 'text', 'Organizaton Name', "Jane's Wildlife Fund")}
-              {FormInput('orgAddress', 'text', 'Organization Address', "15 Jane Street, Suite 2, Tortuguero, Costa Rica")}
-              {FormInput('orgNumber', 'text', 'Organization Phone #', '+506 123 4567')}
-              {FormInput('orgEmail', 'email', 'Organizaton Email', 'wildlifefund@info.org')}
-              {FormInput('orgDescription', 'text', 'Organization Description', 'Tell us about your organization!')}
+              {FormInput(
+                'orgName',
+                'text',
+                'Organizaton Name',
+                "Jane's Wildlife Fund"
+              )}
+              {FormInput(
+                'orgAddress',
+                'text',
+                'Organization Address',
+                '15 Jane Street, Suite 2, Tortuguero, Costa Rica'
+              )}
+              {FormInput(
+                'orgNumber',
+                'text',
+                'Organization Phone #',
+                '+506 123 4567'
+              )}
+              {FormInput(
+                'orgEmail',
+                'email',
+                'Organizaton Email',
+                'wildlifefund@info.org'
+              )}
+              {FormInput(
+                'orgDescription',
+                'text',
+                'Organization Description',
+                'Tell us about your organization!'
+              )}
             </Grid>
           )}
 
           <Container textAlign="center">
             {error && error.response && <div> {error.response.data} </div>}
           </Container>
-          <Container textAlign="center">
+          <Container className="page-name" textAlign="center">
             <Button size="medium" primary type="submit">
               {displayName}
             </Button>
           </Container>
         </Form>
-
       </div>
     )
   }
@@ -138,7 +166,7 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       let firstname
       let lastname
-      if(evt.target.firstname) {
+      if (evt.target.firstname) {
         firstname = evt.target.firstname.value
         lastname = evt.target.lastname.value
       }

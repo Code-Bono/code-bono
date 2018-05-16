@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
+import GithubFeedContainer from './GithubFeedContainer'
 import Vidchat from './vidchat'
-import GithubFeed from './GithubFeed'
 import GitHubProjectBoardContainer from './GitHubProjectBoardContainer'
 import { Container } from 'semantic-ui-react'
 
@@ -23,7 +23,8 @@ export default class Project extends Component {
 
   render() {
     const projectName = this.props.project.name
-    const projectId = this.props.project.id ? this.props.project.id : null
+    const projectId = this.props.match.params.projectId
+    // const projectId = this.props.project.id ? this.props.project.id : null
 
     return (
       <div>
@@ -45,12 +46,9 @@ export default class Project extends Component {
             </Header.Content>
           </Header>
         </div>
-        <Vidchat
-          user={this.props.user}
-          projectId={this.props.match.params.projectId}
-        />
+        <Vidchat user={this.props.user} projectId={projectId} />
+        <GithubFeedContainer projectId={projectId} />
         <GitHubProjectBoardContainer projectId={projectId} />
-        {/*<GithubFeed />*/}
       </div>
     )
   }

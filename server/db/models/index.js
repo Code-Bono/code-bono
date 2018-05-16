@@ -1,5 +1,6 @@
 const Cause = require('./cause')
 const Chatroom = require('./chatroom')
+const Event = require('./event')
 const Message = require('./message')
 const Organization = require('./organization')
 const Project = require('./project')
@@ -36,16 +37,18 @@ Project.hasOne(Chatroom)
 User.belongsTo(Organization, { as: 'org' })
 
 Project.hasOne(Repo)
+Repo.belongsTo(Project)
 
-/*
- * We'll export all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
+Project.hasMany(Event)
+Event.belongsTo(Project)
+
+Repo.hasMany(Event)
+Event.belongsTo(Repo)
+
 module.exports = {
   Cause,
   Chatroom,
+  Event,
   Message,
   Organization,
   Project,
