@@ -211,7 +211,8 @@ const users = [
     email: 'rep@nonprofit.org',
     password:
       'd0751a79c977de8cb0a5ad0889b104398a6c836333e448ece8c35fffd6f6af60',
-    salt: 'TDWmW7wWC/AOsWREjpi33w=='
+    salt: 'TDWmW7wWC/AOsWREjpi33w==',
+    orgId: 2
   },
   {
     firstname: 'Cody',
