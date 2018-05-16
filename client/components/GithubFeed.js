@@ -24,7 +24,7 @@ export default class GithubFeed extends Component {
     const { events } = this.props
     return (
       <div className="feedDiv">
-        <Header as="h3">Here are the most recent events for your repo: </Header>
+        <Header as="h3">Recent events for your repo: </Header>
         {events && events.length ? (
           <Feed id="Feed">
             {events.reverse().map(event => {

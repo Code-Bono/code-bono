@@ -181,6 +181,11 @@ video {
   color: #303030;
 }
 
+.project-header {
+  width: 100%;
+  color: #303030;
+}
+
 .header-alt {
   color: white;
 }
@@ -234,6 +239,10 @@ video {
 
 .grey-text {
   color: #303030;
+}
+
+.light-grey-text {
+  color: #e0e1e2;
 }
 
 .blue-text {
@@ -308,9 +317,7 @@ video {
 }
 
 .projectBoard-headers-container {
-  background-color: grey;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  background-color: #309aab;
 }
 
 .project-title {
@@ -322,11 +329,6 @@ video {
   margin-top: 1%;
   display: flex;
   justify-content: space-evenly;
-}
-
-.projectBoard-header {
-  padding-top: 1%;
-  margin-top: 1%;
 }
 
 .image-container {

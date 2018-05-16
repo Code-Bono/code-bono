@@ -37,23 +37,19 @@ export default class Project extends Component {
 
     return (
       <div>
-        <div className="projectBoard-headers-container">
-          <Header as="h1" icon textAlign="center">
-            <Header.Content>
-              <h1 className="project-title">{projectName}</h1>
-            </Header.Content>
-          </Header>
-          <Header as="h3" icon textAlign="center">
-            <Header.Content>
-              <h3 className="project-subtitle">
-                Welcome to {projectName}'s collaboration space. <br />This page
-                will act as home base for you and other developers working on
-                this project. <br />From here, you can message each other, video
-                chat, manage your project board, <br />and see live updates from
-                your Github repo. <br /> Go ahead, Code Bono!
-              </h3>
-            </Header.Content>
-          </Header>
+        <div className="ui inverted vertical masthead center aligned segment">
+          <div className="ui text container stripe">
+            <h2 className="project-header">
+              Collaboration Page:
+              <span className="header-alt"> {projectName}</span>
+            </h2>
+            <p className="grey-text">
+              This page is home base for you and other developers working on
+              this project. <br />You can message each other, video chat, manage
+              your project board, and see live updates from your Github repo.
+            </p>
+            <h3>Go ahead, Code Bono!</h3>
+          </div>
         </div>
         <Vidchat user={this.props.user} projectId={projectId} />
         <GithubFeedContainer projectId={projectId} />
