@@ -104,7 +104,6 @@ export default class Vidchat extends Component {
       })
       connection.close()
       this.setState({ isChatLive: false })
-      alert('video chat channel has been closed!')
     })
     let broadcast = this.state.broadcastName
     return (

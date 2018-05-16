@@ -71,7 +71,7 @@ nav a {
   color: #309aabd9;
 }
 
-#Feed {
+<<<<<<< head ======= #Feed {
   height: 100%;
   overflow: scroll;
 }
@@ -85,6 +85,7 @@ form div {
   display: inline-block;
 }
 
+>>>>>>> master
 /* #gum-local {
   height: 250px;
 } */
@@ -513,6 +514,14 @@ form div {
   margin: 1em;
 }
 
+.toast {
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
+}
 .page-name {
   margin-top: 5em;
 }
