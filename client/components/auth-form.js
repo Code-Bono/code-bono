@@ -25,42 +25,40 @@ class AuthForm extends Component {
     //didn't modularize organization sign up because it would be annoying to pass up form values
     const { name, displayName, handleSubmit, error } = this.props
     const FormInput = (name, type, label) => (
-      <Grid.Column className="form-inputs" width={9}>
-        <Form.Input
-          width={14}
-          required={true}
-          name={name}
-          type={type}
-          fluid
-          label={label}
-        />
-      </Grid.Column>
+      <Grid.Row>
+        <Grid.Column className="form-inputs" width={5}>
+          <Form.Input
+            required={true}
+            name={name}
+            type={type}
+            fluid
+            label={label}
+          />
+        </Grid.Column>
+      </Grid.Row>
     )
     return (
-      <div className="form">
-        <Container>
-          <h3>{displayName}</h3>
-          {displayName === 'Sign Up' && (
-            <Form.Checkbox
-              onChange={this.handleChange}
-              label="I am a representative for an organization"
-            />
-          )}
-        </Container>
+      <div className="page-name">
+        <h1 className="blue-text text-center">{displayName}</h1>
         <Form onSubmit={handleSubmit} name={name}>
           <Grid className="grid-style">
-            {
-              name === 'signup' ?
-              FormInput('firstname', 'text', 'First Name')
-              : null
-            }
-            {
-              name === 'signup' ?
-              FormInput('lastname', 'text', 'Last Name')
-              : null
-            }
+            {name === 'signup'
+              ? FormInput('firstname', 'text', 'First Name')
+              : null}
+            {name === 'signup'
+              ? FormInput('lastname', 'text', 'Last Name')
+              : null}
             {FormInput('email', 'email', 'Email')}
             {FormInput('password', 'password', 'Password')}
+            <Grid.Row>
+              {displayName === 'Sign Up' && (
+                <Form.Checkbox
+                  className="five wide column form-inputs"
+                  onChange={this.handleChange}
+                  label="I am a representative for an organization"
+                />
+              )}
+            </Grid.Row>
           </Grid>
           {this.state.isOrg && (
             <Grid className="grid-style">
@@ -74,13 +72,16 @@ class AuthForm extends Component {
           <Container textAlign="center">
             {error && error.response && <div> {error.response.data} </div>}
           </Container>
-          <Container textAlign="center">
+          <Container className="page-name" textAlign="center">
             <Button size="medium" primary type="submit">
               {displayName}
             </Button>
           </Container>
         </Form>
-        <Container textAlign="center">
+        <Container textAlign="center" style={{ margin: 7 }}>
+          or
+        </Container>
+        <Container className="page-bottom" textAlign="center">
           <a href="/auth/github">
             <Button color="facebook" size="medium">
               <Icon name="github" />
@@ -123,7 +124,7 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       let firstname
       let lastname
-      if(evt.target.firstname) {
+      if (evt.target.firstname) {
         firstname = evt.target.firstname.value
         lastname = evt.target.lastname.value
       }

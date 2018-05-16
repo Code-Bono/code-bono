@@ -71,11 +71,6 @@ nav a {
   color: #309aabd9;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 /* #gum-local {
   height: 250px;
 } */
@@ -478,7 +473,19 @@ video {
   width: 25.5em;
 }
 
-.dropdown {
+.causes-menu {
   width: 15em;
   margin: 1em;
+}
+
+.page-name {
+  margin-top: 5em;
+}
+
+.page-bottom {
+  margin-bottom: 5em;
+}
+
+.centered-elem {
+  justify-content: center;
 }
