@@ -15,7 +15,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     fetchCurrentOrg: id => {
-      dispatch(getCurrentOrg(id))
+      return dispatch(getCurrentOrg(id))
     },
     //retrieves the user after being assigned an org id to correctly render the nav home button
     fetchUpdatedUser: function(id) {

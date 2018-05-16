@@ -57,7 +57,7 @@ export default class LandingPage extends React.Component {
                 return (
                   <Card key={proposal.id} className="ui card">
                     <div className="image">
-                      <img src={proposal.image} />
+                      <img src={proposal.image} id="landingpage-card-img" />
                     </div>
                     <div className="content">
                       <a className="header">{proposal.name}</a>

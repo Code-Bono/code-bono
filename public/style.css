@@ -453,12 +453,33 @@ form div {
   margin-bottom: 2em;
 }
 
+.org-profile-buttons {
+  float: right;
+  background-color: #e0e1e2 !important;
+}
+.org-profile-buttons-text {
+  color: #5a5a5a;
+}
+
+#org-profile-header {
+  font-size: 32px;
+  color: #309aab;
+}
+
+#org-profile-subheader {
+  margin-top: 1em;
+}
+
+#org-profile-img {
+  height: 225px;
+}
+
 #org-checkbox {
   margin-left: 21.5%;
 }
 
 .org-home {
-  margin-top: 5%;
+  margin-top: 1em;
 }
 
 .org-proposal-view {
@@ -489,7 +510,7 @@ form div {
   margin-top: 0.5em;
 }
 
-#user-profile-projects-header {
+.user-profile-projects-header {
   color: #309aab;
 }
 
@@ -513,6 +534,23 @@ form div {
 .causes-menu {
   width: 15em;
   margin: 1em;
+}
+
+#proposals-card-img {
+  height: 300px;
+}
+
+#landingpage-card-img {
+  height: 300px;
+}
+
+.toast {
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
 }
 
 .page-name {

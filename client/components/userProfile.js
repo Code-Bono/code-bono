@@ -35,7 +35,7 @@ export default class UserProfile extends Component {
           ) : (
             <h3 className="loading">Loading current user...</h3>
           )}
-          <h2 id="user-profile-projects-header">Your Projects</h2>
+          <h2 className="user-profile-projects-header">Your Projects</h2>
 
           {projects.length ? (
             <Item.Group>
