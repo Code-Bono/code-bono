@@ -28,7 +28,7 @@ export default class GithubFeed extends Component {
         {events && events.length ? (
           <Feed>
             {events
-              .slice(events.length - events.length % 10)
+              .slice(events.length < 10 ? events.length : events.length - 10)
               .reverse()
               .map(event => {
                 return (
@@ -42,7 +42,7 @@ export default class GithubFeed extends Component {
                       </Feed.Date>
                       <Feed.Summary>
                         <Feed.User>{event.githubUser}</Feed.User>
-                        {` ${event.description}`}
+                        <a href="event.url">{` ${event.description}`}</a>
                       </Feed.Summary>
                     </Feed.Content>
                   </Feed.Event>
