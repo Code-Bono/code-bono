@@ -71,6 +71,8 @@ nav a {
   color: #309aabd9;
 }
 
+
+
 /* #gum-local {
   height: 250px;
 } */
@@ -348,7 +350,7 @@ video {
 #inside-box {
   background-color: white;
   overflow: auto;
-  height: 150px;
+  height: 130px;
   padding: 10px 0 0 10px;
   border-radius: 5%;
   margin-top: 20px;
@@ -417,7 +419,25 @@ video {
 }
 
 .form {
-  margin-top: 5%;
+  margin: 1em 0;
+
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+#signup-subheader {
+  margin-bottom: 2em;
+}
+
+#github-oauth {
+  margin-bottom: 2em;
+}
+
+#org-checkbox {
+  margin-left: 21.5%;
 }
 
 .org-home {
