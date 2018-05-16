@@ -6,19 +6,32 @@ export default class Chatbox extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentChannel: 0
+      currentChannel: 0,
+      notification: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
+    //sets channel to nothing to show no messages when re-opened
+    this.setState({ currentChannel: 0 }, () =>
+      this.props.loadMessages(this.state.currentChannel)
+    )
     this.props.loadUsers()
     this.props.loadProjects(this.props.currentUser.id)
+    let sendNotification = this.props.notification
     socket.on('updateChat', data => {
       //checks if the message you received is for the right channel before appending it
       if (data.channelId === this.state.currentChannel) {
         this.addToBox(data.message)
+      } else if (
+        //checks if user is assigned to the project before emitting the notification
+        this.props.assignedProjects.find(
+          project => project.id === data.channelId
+        )
+      ) {
+        sendNotification(data.channelId)
       }
     })
   }
@@ -59,6 +72,7 @@ export default class Chatbox extends Component {
     box.scrollTop = box.scrollHeight
   }
   render() {
+    console.log(this.props)
     const { currentUser, allMessages, assignedProjects } = this.props
     //listens for the emit for updating the chatbox
     return (

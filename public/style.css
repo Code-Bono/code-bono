@@ -71,8 +71,6 @@ nav a {
   color: #309aabd9;
 }
 
-
-
 /* #gum-local {
   height: 250px;
 } */
@@ -420,7 +418,6 @@ video {
 
 .form {
   margin: 1em 0;
-
 }
 
 form div {
@@ -496,4 +493,13 @@ form div {
 .dropdown {
   width: 15em;
   margin: 1em;
+}
+
+.toast {
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
 }
