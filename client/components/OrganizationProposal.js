@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Dropdown, Container, Button } from 'semantic-ui-react'
+import { Form, Dropdown, Container, Button, Grid } from 'semantic-ui-react'
 
 export default class OrganizationProposal extends Component {
   constructor(props) {
@@ -41,57 +41,77 @@ export default class OrganizationProposal extends Component {
     })
     const FormInput = (name, type, label, placeholder) => {
       return (
-        <Form.Input
-          required={true}
-          width={9}
-          type={type}
-          name={name}
-          fluid
-          label={label}
-          placeholder={placeholder}
-        />
+        <Grid.Row>
+          <Grid.Column className="form-inputs" width={9}>
+            <Form.Input
+              required={true}
+              type={type}
+              name={name}
+              fluid
+              label={label}
+              placeholder={placeholder}
+            />
+          </Grid.Column>
+        </Grid.Row>
       )
     }
     return (
-      <Container>
+      <Container className="page-name">
+        <h1 className="blue-text text-center">Create a Proposal</h1>
         <div className="form">
           <Form onSubmit={this.handleSubmit}>
-            {FormInput(
-              'proposalName',
-              'text',
-              'Proposal Name',
-              'Proposal Name'
-            )}
-            <Form.Input
-              width={9}
-              type="text"
-              name="proposalImage"
-              fluid
-              label="Proposal Image"
-              placeholder="Proposal ImageURL"
-            />
-            {FormInput('proposalDeadline', 'date', 'Deadline', 'Deadline')}
-            {causes && (
-              <Dropdown
-                placeholder="Select Causes"
-                fluid
-                multiple
-                search
-                selection
-                options={options}
-                onChange={this.handleChange}
-              />
-            )}
-            <Form.Group>
-              <Form.TextArea
-                required={true}
-                width="16"
-                name="proposalDescription"
-                label="Description"
-                placeholder="Description for the proposal"
-              />
-            </Form.Group>
-            <Form.Button>Submit</Form.Button>
+            <Grid className="grid-style">
+              {FormInput(
+                'proposalName',
+                'text',
+                'Proposal Name',
+                'Proposal Name'
+              )}
+              <Grid.Row>
+                <Grid.Column width={9}>
+                  <Form.Input
+                    type="text"
+                    name="proposalImage"
+                    fluid
+                    label="Proposal Image"
+                    placeholder="Proposal ImageURL"
+                  />
+                </Grid.Column>
+              </Grid.Row>
+              {FormInput('proposalDeadline', 'date', 'Deadline', 'Deadline')}
+              {causes && (
+                <Grid.Row>
+                  <Grid.Column width={9}>
+                    <Form.Dropdown
+                      placeholder="Select Causes"
+                      fluid
+                      multiple
+                      search
+                      selection
+                      options={options}
+                      onChange={this.handleChange}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              )}
+              {/*<Form.Group>*/}
+              <Grid.Row>
+                <Grid.Column width={9}>
+                  <Form.TextArea
+                    required={true}
+                    name="proposalDescription"
+                    label="Description"
+                    placeholder="Description for the proposal"
+                  />
+                </Grid.Column>
+              </Grid.Row>
+              {/*</Form.Group>*/}
+              <Grid.Row className="page-bottom">
+                <Grid.Column width={9}>
+                  <Form.Button>Submit</Form.Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Form>
         </div>
       </Container>
