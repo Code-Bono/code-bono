@@ -124,6 +124,7 @@ const projects = [
 const repos = [
   {
     name: 'Give-Our-Kids-a-Home',
+    id: 133154303,
     toDoColumnId: 2702966,
     inProgressColumnId: 2702967,
     doneColumnId: 2702968,
@@ -131,6 +132,7 @@ const repos = [
   },
   {
     name: 'Federation-for-Orphans-Website-Update',
+    id: 133154324,
     toDoColumnId: 2702969,
     inProgressColumnId: 2702970,
     doneColumnId: 2702971,
@@ -138,6 +140,7 @@ const repos = [
   },
   {
     name: 'Volunteer-Platform',
+    id: 133154338,
     toDoColumnId: 2702972,
     inProgressColumnId: 2702973,
     doneColumnId: 2702974,
@@ -145,6 +148,7 @@ const repos = [
   },
   {
     name: 'Database-Management-System-Migration',
+    id: 133154570,
     toDoColumnId: 2702975,
     inProgressColumnId: 2702976,
     doneColumnId: 2702977,
@@ -152,6 +156,7 @@ const repos = [
   },
   {
     name: 'Save-the-Cyborg-Bamboo-Forest',
+    id: 133154620,
     toDoColumnId: 2702978,
     inProgressColumnId: 2702979,
     doneColumnId: 2702980,
@@ -159,6 +164,7 @@ const repos = [
   },
   {
     name: 'Cyborg-Panda-Maintanence-Tool',
+    id: 133154646,
     toDoColumnId: 2702981,
     inProgressColumnId: 2702982,
     doneColumnId: 2702983,
@@ -166,6 +172,7 @@ const repos = [
   },
   {
     name: 'Firebase-Integration',
+    id: 133154676,
     toDoColumnId: 2702986,
     inProgressColumnId: 2702987,
     doneColumnId: 2702988,
@@ -173,6 +180,7 @@ const repos = [
   },
   {
     name: 'Manual-Data-Entry',
+    id: 133154691,
     toDoColumnId: 2702989,
     inProgressColumnId: 2702990,
     doneColumnId: 2702991,
@@ -180,6 +188,7 @@ const repos = [
   },
   {
     name: 'Feed-the-cats',
+    id: 133154715,
     toDoColumnId: 2702992,
     inProgressColumnId: 2702993,
     doneColumnId: 2702994,
@@ -230,7 +239,21 @@ const causes = [
   { name: 'Mentoring' },
   { name: 'Arts' },
   { name: 'Counselling' },
-  { name: 'Conservation' }
+  { name: 'Conservation' },
+  { name: 'Climate Change' },
+  { name: 'Human Rights' },
+  { name: 'Equality' },
+  { name: 'Animal Welfare' },
+  { name: 'Criminal Justice' },
+  { name: 'Youth Issues' },
+  { name: 'Resource Preservation' },
+  { name: 'Water' },
+  { name: 'Diversity' },
+  { name: 'Equal Access' },
+  { name: 'Microfinance' },
+  { name: 'Early Childhood Development' },
+  { name: 'Disaster Relief' },
+  { name: 'Conflict Resolution' }
 ]
 
 const organizations = [
