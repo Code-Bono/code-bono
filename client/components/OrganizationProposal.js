@@ -44,6 +44,7 @@ export default class OrganizationProposal extends Component {
         <Grid.Row>
           <Grid.Column className="form-inputs" width={9}>
             <Form.Input
+              width={14}
               required={true}
               type={type}
               name={name}
@@ -70,6 +71,7 @@ export default class OrganizationProposal extends Component {
               <Grid.Row>
                 <Grid.Column width={9}>
                   <Form.Input
+                    width={14}
                     type="text"
                     name="proposalImage"
                     fluid
@@ -83,6 +85,7 @@ export default class OrganizationProposal extends Component {
                 <Grid.Row>
                   <Grid.Column width={9}>
                     <Form.Dropdown
+                      width={14}
                       placeholder="Select Causes"
                       fluid
                       multiple
@@ -98,6 +101,7 @@ export default class OrganizationProposal extends Component {
               <Grid.Row>
                 <Grid.Column width={9}>
                   <Form.TextArea
+                    width={14}
                     required={true}
                     name="proposalDescription"
                     label="Description"
