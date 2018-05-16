@@ -155,7 +155,7 @@ video {
   padding-bottom: 5em;
 }
 
-.about {
+.stripe {
   padding: 3em;
 }
 
@@ -483,4 +483,17 @@ form div {
 #user-profile-project-list {
   margin-bottom: 1em;
   font-size: 16px;
+}
+
+.search {
+  border-color: #309aab;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  width: 25.5em;
+}
+
+.dropdown {
+  width: 15em;
+  margin: 1em;
 }
