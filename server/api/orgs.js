@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Organization, Proposal, User, Cause } = require('../db/models')
+const { Organization, Proposal, User, Cause, Project } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -23,9 +23,14 @@ router.get('/:id/proposals', (req, res, next) => {
   Proposal.findAll({
     where: {
       organizationId: req.params.id
-    }
+    },
+    include: [
+      {model: Project}
+    ]
   })
-    .then(proposals => res.json(proposals))
+    .then(proposals => {
+      res.json(proposals)
+    })
     .catch(next)
 })
 

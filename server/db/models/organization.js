@@ -29,7 +29,7 @@ const Organization = db.define('organization', {
   image: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://vignette.wikia.nocookie.net/undertale-rho/images/5/5f/Placeholder.jpg/revision/latest?cb=20180213155916'
+      'http://dlmedia.com/wp-content/uploads/2016/07/canstockphoto35453249-862x646.jpg'
   }
 })
 
