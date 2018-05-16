@@ -6,7 +6,7 @@ import { fetchEvents, addEvent } from '../store/githubFeed'
 const mapState = (state, ownProps) => {
   return {
     projectId: ownProps.projectId,
-    events: state.events
+    events: [...state.events].reverse()
   }
 }
 

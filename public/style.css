@@ -297,11 +297,16 @@ video {
   float: right;
 }
 
-#project-signup-button {
-  /*color: #e0e1e2;*/
+/* .project-signup-button {
+  color: #e0e1e2;
   background-color: #5a5a5a;
+} */
+.single-proposal-container {
+  margin-top: 3em;
 }
-
+.feedDiv {
+  margin: 2em 1em;
+}
 .project-card {
   border-bottom: 1px solid black;
   margin-bottom: 20px;

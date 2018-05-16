@@ -27,7 +27,7 @@ export default class GithubFeed extends Component {
         <Header as="h3">Recent events for your repo: </Header>
         {events && events.length ? (
           <Feed id="Feed">
-            {events.reverse().map(event => {
+            {events.map(event => {
               return (
                 <Feed.Event key={event.id}>
                   <Feed.Label>
@@ -38,22 +38,34 @@ export default class GithubFeed extends Component {
                       <TimeAgo datetime={event.updatedAt} />
                     </Feed.Date>
                     <Feed.Summary>
-                      <Feed.User>{event.githubUser}</Feed.User>
+                      Github user {event.githubUser}
                       {event.type === 'push' && (
                         <a target="_blank" href={event.url}>{` ${
                           event.description
                         }`}</a>
                       )}
-                      {event.type === 'pull request' && (
-                        <span>
-                          {' '}
-                          {event.action} a{' '}
-                          <a
-                            target="_blank"
-                            href={event.url}
-                          >{` pull request`}</a>
-                        </span>
-                      )}
+                      {event.type === 'pull request' &&
+                        event.action === 'closed' && (
+                          <span>
+                            {' '}
+                            {event.action} a{' '}
+                            <a target="_blank" href={event.url}>
+                              {' pull request'}
+                            </a>
+                            {event.merged ? ' ' : ' without'} merging the
+                            requested changes
+                          </span>
+                        )}
+                      {event.type === 'pull request' &&
+                        event.action !== 'closed' && (
+                          <span>
+                            {' '}
+                            {event.action} a{' '}
+                            <a target="_blank" href={event.url}>
+                              {' pull request'}
+                            </a>
+                          </span>
+                        )}
                     </Feed.Summary>
                   </Feed.Content>
                 </Feed.Event>
