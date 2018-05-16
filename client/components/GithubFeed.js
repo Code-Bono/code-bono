@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import socket from '../socket'
 import { Header, Feed } from 'semantic-ui-react'
-import TimeAgo from 'react-time-ago'
+import TimeAgo from 'timeago-react'
 
 export default class GithubFeed extends Component {
   handleGithubEvent = event => {
@@ -34,7 +34,9 @@ export default class GithubFeed extends Component {
                 return (
                   <Feed.Content key={event.id}>
                     <Feed.User>{event.githubUser}</Feed.User>
-                    <Feed.Date>{event.updatedAt}</Feed.Date>
+                    <Feed.Date>
+                      <TimeAgo datetime={event.updatedAt} />
+                    </Feed.Date>
                   </Feed.Content>
                 )
               })}

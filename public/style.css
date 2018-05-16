@@ -59,7 +59,7 @@ nav a {
 }
 
 .nav-buttons {
-  padding: .5em 0;
+  padding: 0.5em 0;
 }
 
 .nav-buttons:hover {
@@ -405,6 +405,10 @@ video {
   justify-content: center;
 }
 
+.profilePicture {
+  height: 25em;
+}
+
 .inspirational-quote {
   font-style: italic;
 }
@@ -445,7 +449,7 @@ video {
 }
 
 #user-profile-title {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 #user-profile-projects-header {
@@ -460,6 +464,3 @@ video {
   margin-bottom: 1em;
   font-size: 16px;
 }
-
-
-

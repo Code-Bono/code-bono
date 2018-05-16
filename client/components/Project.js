@@ -47,8 +47,8 @@ export default class Project extends Component {
           </Header>
         </div>
         <Vidchat user={this.props.user} projectId={projectId} />
-        <GitHubProjectBoardContainer projectId={projectId} />
         <GithubFeedContainer projectId={projectId} />
+        <GitHubProjectBoardContainer projectId={projectId} />
       </div>
     )
   }
