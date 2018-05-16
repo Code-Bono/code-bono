@@ -26,7 +26,7 @@ export default class EditOrganization extends Component {
         <Link to="/organization/home">
           <Button size="mini">Go Back</Button>
         </Link>
-        <h1 className="blue-text text-center">Create a Proposal</h1>
+        <h1 className="blue-text text-center">Edit Organization Details</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
