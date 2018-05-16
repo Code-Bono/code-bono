@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import socket from '../socket'
-import { Header, Feed } from 'semantic-ui-react'
+import { Header, Feed, Icon } from 'semantic-ui-react'
 import TimeAgo from 'timeago-react'
 
 export default class GithubFeed extends Component {
@@ -24,25 +24,35 @@ export default class GithubFeed extends Component {
     const { events } = this.props
     return (
       <div>
-        <Header as="h2">Here are the most recent events for your repo: </Header>
+        <Header as="h3">Here are the most recent events for your repo: </Header>
         {events && events.length ? (
           <Feed>
             {events
-              .slice(events.length - 10, events.length - 1)
+              .slice(events.length - events.length % 10)
               .reverse()
               .map(event => {
                 return (
-                  <Feed.Content key={event.id}>
-                    <Feed.User>{event.githubUser}</Feed.User>
-                    <Feed.Date>
-                      <TimeAgo datetime={event.updatedAt} />
-                    </Feed.Date>
-                  </Feed.Content>
+                  <Feed.Event key={event.id}>
+                    <Feed.Label>
+                      <Icon circular color="teal" name="github alternate" />
+                    </Feed.Label>
+                    <Feed.Content>
+                      <Feed.Date>
+                        <TimeAgo datetime={event.updatedAt} />
+                      </Feed.Date>
+                      <Feed.Summary>
+                        <Feed.User>{event.githubUser}</Feed.User>
+                        {` ${event.description}`}
+                      </Feed.Summary>
+                    </Feed.Content>
+                  </Feed.Event>
                 )
               })}
           </Feed>
         ) : (
-          <h3>Loading events...</h3>
+          <Header as="h3">
+            <Icon loading name="spinner" />Loading events...
+          </Header>
         )}
       </div>
     )

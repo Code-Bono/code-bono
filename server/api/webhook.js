@@ -6,7 +6,9 @@ router.post('/push', (req, res, next) => {
   let size = req.body.commits.length
   let pathLength = req.body.ref.split('/').length
   let branch = req.body.ref.split('/')[pathLength - 1]
-  let description = `pushed to the ${branch} branch`
+  let description = `pushed ${size} commit${
+    size !== 1 ? 's' : ''
+  } to the ${branch} branch`
   let newEvent = {
     type: 'push',
     description,
