@@ -3,7 +3,7 @@ import Chatbox from './chatbox'
 import { connect } from 'react-redux'
 import { fetchOtherUsers } from '../store/otherUsers'
 import { fetchMessagesForChannel, postMessageToDb } from '../store/chatbox'
-import { fetchAllProjectsForUser } from '../store/project'
+import { fetchAllProjectsForUser } from '../store/projectsForUser'
 
 const mapState = state => {
   return {
@@ -11,7 +11,7 @@ const mapState = state => {
     //filters current user out of the others state
     otherUsers: state.others.filter(user => user.id !== state.user.id),
     allMessages: state.messages,
-    assignedProjects: state.singleProject
+    assignedProjects: state.assignedProjects
   }
 }
 

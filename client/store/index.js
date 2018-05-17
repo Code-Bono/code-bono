@@ -17,6 +17,7 @@ import singleProject from './project'
 import singleProposal from './singleProposal'
 import user from './user'
 import toastProject from './fetchProjectForToast'
+import assignedProjects from './projectsForUser'
 
 const reducer = combineReducers({
   causes,
@@ -33,7 +34,8 @@ const reducer = combineReducers({
   singleProject,
   singleProposal,
   user,
-  toastProject
+  toastProject,
+  assignedProjects
 })
 
 const middleware = composeWithDevTools(
