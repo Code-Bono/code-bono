@@ -25,14 +25,6 @@ export const fetchSingleProject = projectId => dispatch =>
     })
     .catch(err => console.log(err))
 
-export const fetchAllProjectsForUser = userId => dispatch =>
-  axios
-    .get(`/api/users/${userId}/projects/`)
-    .then(res => {
-      dispatch(getAllProjectsForUser(res.data))
-    })
-    .catch(err => console.log(err))
-
 export default function(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_PROJECT:
