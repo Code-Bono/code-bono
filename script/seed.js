@@ -68,42 +68,42 @@ const projects = [
     description:
       'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
     isActive: true,
-    proposalId: 2
+    proposalId: 7
   },
   {
     name: 'Volunteer Platform',
     description:
       'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers. The end project is a user-friendly way for us to review profiles and select passionate volunteers with appropriate backgrounds to help us with long-term contributions.',
     isActive: true,
-    proposalId: 3
+    proposalId: 2
   },
   {
     name: 'Database Management System Migration',
     description:
       'We are changing how we manage our data and are are looking for a team with experience in database transformation. We currenly use an Oracle database management system and are considering switching to SQL. We are also open to other alternatives, and are hoping to gather expertise from the team working on this project.',
     isActive: true,
-    proposalId: 4
+    proposalId: 3
   },
   {
     name: 'Save the Bamboo Forest',
     description:
       'Help us build a mobile app that tracks bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
     isActive: true,
-    proposalId: 5
+    proposalId: 4
   },
   {
     name: 'Help The Panda\'s Maintanence Tool',
     description:
       'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific needs. Pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
     isActive: true,
-    proposalId: 6
+    proposalId: 5
   },
   {
     name: 'Firebase Integration',
     description:
       'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it. We are also open to the use of Cloud FireStore - experience with either of these technologies would be greatly appreciated.',
     isActive: true,
-    proposalId: 7
+    proposalId: 6
   },
   {
     name: 'Manual Data Entry',
