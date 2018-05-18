@@ -13,28 +13,30 @@ export default class Chatbox extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  receiveMessage = data => {
+    //checks if the message you received is for the right channel before appending it
+    if (data.channelId === this.state.currentChannel) {
+      this.addToBox(data.message)
+    } else if (
+      //checks if user is assigned to the project before emitting the notification
+      this.props.assignedProjects.length &&
+      this.props.assignedProjects.find(project => project.id === data.channelId)
+    ) {
+      this.props.notification(data.channelId)
+    }
+  }
   componentDidMount() {
     //sets channel to nothing to show no messages when re-opened
-    let sendNotification = this.props.notification
     this.setState({ currentChannel: 0 }, () =>
       this.props.loadMessages(this.state.currentChannel)
     )
     this.props.loadUsers()
-    this.props.loadProjects(this.props.currentUser.id).then(() => {
-      socket.on('updateChat', data => {
-        //checks if the message you received is for the right channel before appending it
-        if (data.channelId === this.state.currentChannel) {
-          this.addToBox(data.message)
-        } else if (
-          //checks if user is assigned to the project before emitting the notification
-          this.props.assignedProjects.find(
-            project => project.id === data.channelId
-          )
-        ) {
-          sendNotification(data.channelId)
-        }
-      })
-    })
+    this.props.loadProjects(this.props.currentUser.id)
+    socket.on('updateChat', this.receiveMessage)
+  }
+
+  componentWillUnmount() {
+    socket.off('updateChat', this.receiveMessage)
   }
 
   //when message is sent, emits to the socket to broadcast to all with the message and appends that mesasge to our current chatbox div
