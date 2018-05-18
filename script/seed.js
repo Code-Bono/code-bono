@@ -23,19 +23,19 @@ const {
 
 const messages = [
   {
-    content: 'Hello friends and cats',
+    content: 'Hello friends!',
     userId: 1,
-    chatroomId: 9
+    chatroomId: 8
   },
   {
-    content: 'I prefer hard liquor',
+    content: 'How is everyone doing?',
     userId: 2,
-    chatroomId: 9
+    chatroomId: 8
   },
   {
     content: '...',
     userId: 1,
-    chatroomId: 9
+    chatroomId: 8
   },
   {
     content: "Let's save the trees!",
@@ -50,10 +50,9 @@ const chatrooms = [
   { name: 'Volunteer Platform!', projectId: 3 },
   { name: 'Database Migration!', projectId: 4 },
   { name: 'Save the Trees!', projectId: 5 },
-  { name: 'Cyborg Pandas!', projectId: 6 },
-  { name: 'Firebas!', projectId: 7 },
-  { name: 'Manual Data Entry!', projectId: 8 },
-  { name: 'Wine Cats!', projectId: 9 }
+  { name: 'Help the Pandas!', projectId: 6 },
+  { name: 'Firebase!', projectId: 7 },
+  { name: 'Manual Data Entry!', projectId: 8 }
 ]
 
 const projects = [
@@ -86,16 +85,16 @@ const projects = [
     proposalId: 4
   },
   {
-    name: 'Save the Cyborg Bamboo Forest',
+    name: 'Save the Bamboo Forest',
     description:
-      'Help us build a mobile app that tracks cyborg bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
+      'Help us build a mobile app that tracks bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
     isActive: true,
     proposalId: 5
   },
   {
-    name: 'Cyborg Panda Maintanence Tool',
+    name: 'Help The Panda\'s Maintanence Tool',
     description:
-      'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs. Cyborg pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
+      'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific needs. Pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
     isActive: true,
     proposalId: 6
   },
@@ -112,12 +111,6 @@ const projects = [
       'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system. This will definitely be the most efficient way of completing the task.',
     isActive: true,
     proposalId: 8
-  },
-  {
-    name: 'Feed the cats',
-    description: 'Wine cats would appreciate some wine.',
-    isActive: true,
-    proposalId: 9
   }
 ]
 
@@ -185,14 +178,6 @@ const repos = [
     inProgressColumnId: 2702990,
     doneColumnId: 2702991,
     projectId: 8
-  },
-  {
-    name: 'Feed-the-cats',
-    id: 133154715,
-    toDoColumnId: 2702992,
-    inProgressColumnId: 2702993,
-    doneColumnId: 2702994,
-    projectId: 9
   }
 ]
 
@@ -326,9 +311,9 @@ const organizations = [
     phoneNumber: '1234567890'
   },
   {
-    name: 'Cyborg Panda Conservation Consortium',
+    name: 'Panda Conservation Consortium',
     description:
-      'Cyborg pandas play a crucial role in the cyborg bamboo forests where they roam by spreading seeds and facilitating growth of cyborg vegetation. In the Yangtze Basin where cyborg pandas live, the cyborg forests are home to a stunning array of cyborg wildlife such as cyborg dwarf blue sheep, cyborg multicolored pheasants and other endangered cyborg species, including the cyborg golden monkey, cyborg takin and cyborg crested ibis. The cyborg  panda’s habitat is at the geographic and economic heart of China, home to millions of people. By making this area more sustainable, we are also helping to increase the quality of life of local populations. Cyborg pandas bring huge economic benefits to local communities through cyborg ecotourism.',
+      'Pandas play a crucial role in the bamboo forests where they roam by spreading seeds and facilitating growth of vegetation. In the Yangtze Basin where pandas live, the forests are home to a stunning array of wildlife such as dwarf blue sheep, multicolored pheasants and other endangered species, including the golden monkey, takin and crested ibis. The  panda’s habitat is at the geographic and economic heart of China, home to millions of people. By making this area more sustainable, we are also helping to increase the quality of life of local populations. pandas bring huge economic benefits to local communities through ecotourism.',
     address: '987 Wall St, New York, NY 10005',
     email: 'hello@cpcc.org',
     phoneNumber: '0987654321'
@@ -346,16 +331,6 @@ const proposals = [
     organizationId: 1
   },
   {
-    name: 'Federation for Orphans Website Update',
-    description:
-      'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
-    deadline: '2018-08-13',
-    image:
-      'https://s3-media2.fl.yelpcdn.com/bphoto/yzBRa3vDfi6rlh0TnqeByg/o.jpg',
-    isActive: true,
-    organizationId: 1
-  },
-  {
     name: 'Volunteer Platform',
     description:
       'We are looking for a team to create a web app that will help us gather, screen, and onboard interested volunteers. The end project is a user-friendly way for us to review profiles and select passionate volunteers with appropriate backgrounds to help us with long-term contributions.',
@@ -370,26 +345,27 @@ const proposals = [
     description:
       'We are changing how we manage our data and are are looking for a team with experience in database transformation. We currenly use an Oracle database management system and are considering switching to SQL. We are also open to other alternatives, and are hoping to gather expertise from the team working on this project.',
     deadline: '2018-05-29',
+    image: 'https://www.issart.com/blog/wp-content/uploads/2017/03/boxbarimage5.jpg',
     isActive: true,
     organizationId: 1
   },
   {
-    name: 'Save the Cyborg Bamboo Forest',
+    name: 'Save the Bamboo Forest',
     description:
-      'Help us build a mobile app that tracks cyborg bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
+      'Help us build a mobile app that tracks bamboo deforestation. The app should incorporate data visualization in a user-friendly interface. It should provide alerts for accelerated deforestation and identify the location in which it occurs.',
     deadline: '2018-10-17',
     image:
-      'http://www.wormfood.co.uk/wp-content/uploads/2013/05/cyborgs-bamboo-bw.jpg',
+      'https://i.ytimg.com/vi/aPtNP6HtRPU/hqdefault.jpg',
     isActive: true,
     organizationId: 2
   },
   {
-    name: 'Cyborg Panda Maintanence Tool',
+    name: 'Help-The-Panda\'s Maintanence Tool',
     description:
-      'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific cyborg needs. Cyborg pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
+      'We are looking or a team to build a web app that helps zookeepers provide the best care for their specific needs. Pandas are some of the most beautiful creatures in captivity. As they are part robot, they require an increased amount of care in both biological and mechanical form.',
     deadline: '2018-08-13',
     image:
-      'https://orig00.deviantart.net/b481/f/2013/136/e/5/cyborg_pandas_by_z_studios-d65htmk.png',
+      'https://timeincsecure-a.akamaihd.net/rtmp_uds/293884104/201609/2165/293884104_5112162189001_5112146586001-vs.jpg?pubId=293884104&videoId=5112146586001',
     isActive: true,
     organizationId: 2
   },
@@ -398,8 +374,19 @@ const proposals = [
     description:
       'Despite the popular opinion that Firebase is trash, we would like to find a team to help us implement it. We are also open to the use of Cloud FireStore - experience with either of these technologies would be greatly appreciated.',
     deadline: '2018-12-19',
+    image: 'https://pbs.twimg.com/profile_images/862445411017138176/ZZV_0Xlt_400x400.jpg',
     isActive: true,
     organizationId: 2
+  },
+  {
+    name: 'Federation for Orphans Website Update',
+    description:
+      'We are looking for a team to help us migrate our website from Angular to React. We are also open to a redesign of our website. Our backend uses Express and Sequelize, so it would be helpful for team members to have familiary with these technologies.',
+    deadline: '2018-08-13',
+    image:
+      'http://data.freehdw.com/hiro-baymax-and-tadashi-big-hero-6.jpg',
+    isActive: true,
+    organizationId: 1
   },
   {
     name: 'Manual Data Entry',
@@ -407,15 +394,7 @@ const proposals = [
       'We know that developers are good at typing, so we would like to find a team to type a bunch of things into our system. This will definitely be the most efficient way of completing the task.',
     deadline: '2019-01-15',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuqkdNkU2FgaEss7GdUh2-YA2XXYuFEqVlxSHbqj58UN9tT_hNoA',
-    isActive: true,
-    organizationId: 2
-  },
-  {
-    name: 'Feed the cats',
-    description: 'Wine cats would appreciate some wine.',
-    deadline: '2018-04-13',
-    image: 'https://i.imgflip.com/f0g9y.jpg',
+      'https://www.laserfiche.com/content/uploads/2014/07/shutterstock_99775238.jpg',
     isActive: true,
     organizationId: 2
   }
