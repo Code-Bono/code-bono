@@ -78,6 +78,7 @@ nav a {
 
 .feedDiv {
   height: 8em;
+  margin-bottom: 4em !important;
 }
 
 form div {
@@ -324,7 +325,9 @@ video {
 .projectBoard-headers-container {
   background-color: #309aab;
 }
-
+.projectBoard-header {
+  margin-top: 1em;
+}
 .project-title {
   padding-top: 2%;
   font-size: 46px;
@@ -525,10 +528,8 @@ form div {
 }
 
 #user-profile-title {
-
   margin-right: 0.5em;
   display: inline;
-
 }
 
 .user-profile-projects-header {

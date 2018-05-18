@@ -46,7 +46,7 @@ const GitHubProjectBoard = props => {
   }
 
   return (
-    <div>
+    <div className="projectBoard-div">
       <div className="projectBoard-header">
         <Header as="h2" icon textAlign="center">
           <Header.Content>Github Project Board</Header.Content>
