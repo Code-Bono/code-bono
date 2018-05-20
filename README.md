@@ -6,29 +6,32 @@ The perfect platform to match eager and well-meaning developers with great organ
 
 When signing up, a user can opt to sign up, as either a developer or as an organization
 
-##### Developer Sign Up
+#### Developer Sign Up
 
 <p align='center'>
   <img src='./public/readmePics/dev-signup.png' width='70%' height='70%'>
 </p>
 
 
-##### Organization Sign Up
+#### Organization Sign Up
 
 <p align='center'>
   <img src='./public/readmePics/org-signup.png' width='70%' height='70%'>
 </p>
 
+## Browsing for proposals 
 Developers can browse proposals posted by nonprofits and form teams by selecting a project that interests them.
 
 <p align='center'>
   <img src='./public/readmePics/proposals.png' width='70%' height='70%'>
 </p>
 
+#### Single Proposal View
 <p align='center'>
   <img src='./public/readmePics/singleProposal.png' width='70%' height='70%'>
 </p>
 
+## Collaboration Page
 Once a team is formed for a project, users gain access to a shared collaboration space which includes GitHub Project Board integration and realtime video and text chat capabilities.
 
 <p align='center'>
