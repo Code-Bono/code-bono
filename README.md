@@ -2,15 +2,18 @@
 
 The perfect platform to match eager and well-meaning developers with great organizations in need of tech talent on a project-based basis. Code Bono is a platform that connects nonprofit organizations with software developers looking to contribute their skills through pro bono work. Code Bono is a web application built using React, Redux, Express, Socket.io, and GitHub API Integration.
 
-## Features
+## Signing Up
 
-When signing up, a user can opt to sign up, as either a developer
+When signing up, a user can opt to sign up, as either a developer or as an organization
+
+##### Developer Sign Up
 
 <p align='center'>
   <img src='./public/readmePics/dev-signup.png' width='70%' height='70%'>
 </p>
 
-or an organization.
+
+##### Organization Sign Up
 
 <p align='center'>
   <img src='./public/readmePics/org-signup.png' width='70%' height='70%'>
