@@ -4,21 +4,30 @@ The perfect platform to match eager and well-meaning developers with great organ
 
 ## Features
 
-When signing up, a user can opt to sign up, as either a developer or an organization as depicted below.
+When signing up, a user can opt to sign up, as either a developer
 
-<img src='./public/readmePics/dev-signup.png' width='70%' height='70%'>
-*as a developer*
+<p align='center'>
+  <img src='./public/readmePics/dev-signup.png' width='70%' height='70%'>
+</p>
 
-<img src='./public/readmePics/org-signup.png' width='70%' height='70%'>
-*as an organization*
+or an organization.
 
-Developers can browse proposals posted by nonprofits and form teams by selecting a project that interests them. 
-<img src='./public/readmePics/proposals.png' width='70%' height='70%'>
-*all proposals view*
+<p align='center'>
+  <img src='./public/readmePics/org-signup.png' width='70%' height='70%'>
+</p>
 
-<img src='./public/readmePics/singleProposal.png' width='70%' height='70%'>
-*single proposal view*
+Developers can browse proposals posted by nonprofits and form teams by selecting a project that interests them.
+
+<p align='center'>
+  <img src='./public/readmePics/proposals.png' width='70%' height='70%'>
+</p>
+
+<p align='center'>
+  <img src='./public/readmePics/singleProposal.png' width='70%' height='70%'>
+</p>
 
 Once a team is formed for a project, users gain access to a shared collaboration space which includes GitHub Project Board integration and realtime video and text chat capabilities.
 
-<img src='./public/readmePics/collabpage.png' width='70%' height='70%'>
+<p align='center'>
+  <img src='./public/readmePics/collabpage.png' width='70%' height='70%'>
+</p>
