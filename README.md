@@ -5,4 +5,9 @@ The perfect platform to match eager and well-meaning developers with great organ
 ## Features
 
 When signing up, a user can opt to sign up, as either a developer or an organization as depicted below.
+
+![alt text](./public/readmePics/dev-signup.png)*as a developer*
+
+![alt text](./public/readmePics/org-signup.png)*as an organization*
+
 Developers can browse proposals posted by nonprofits and form teams by selecting a project that interests them. Once a team is formed for a project, users gain access to a shared collaboration space which includes GitHub Project Board integration and realtime video and text chat capabilities.
