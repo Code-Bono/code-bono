@@ -88,6 +88,7 @@ export const updateProfile = (userId, userObj, history) => dispatch =>
 //     history.push('/proposals')
 //   })
 //   .catch(err => console.log(err))
+
 /**
  * REDUCER
  */
