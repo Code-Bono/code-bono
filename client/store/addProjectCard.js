@@ -20,7 +20,8 @@ export function postProjectCard (note, projectId, columnId) {
       .then(res => res.data)
       .then(() => {
         dispatch(submitProjectCard())
-      })
+    })
+    .catch(err => console.log(err))
   }
 }
 
